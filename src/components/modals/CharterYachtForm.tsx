@@ -232,7 +232,7 @@ export function CharterYachtForm() {
                 <p className="font-inter text-xs text-silver-400 mb-3">
                   Discover our curated Mediterranean charter collection
                 </p>
-                {/* PDF: Place europe-charter.pdf at /public/assets/pdf/europe-charter.pdf */}
+                
                 <a
                   href="/assets/pdf/europe-charter.pdf"
                   target="_blank"

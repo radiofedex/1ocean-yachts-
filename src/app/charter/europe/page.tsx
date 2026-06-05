@@ -66,7 +66,7 @@ export default function CharterEuropePage() {
             <CTAButton variant="primary" size="lg" onClick={handleCharterEnquiry}>
               Plan My Mediterranean Charter
             </CTAButton>
-            {/* PDF: Place europe-charter.pdf at /public/assets/pdf/europe-charter.pdf */}
+            
             <a
               href="/assets/pdf/europe-charter.pdf"
               target="_blank"
@@ -93,7 +93,7 @@ export default function CharterEuropePage() {
               Download our comprehensive guide to Mediterranean charter destinations, vessels, and services.
             </p>
           </div>
-          {/* PDF: Place europe-charter.pdf at /public/assets/pdf/europe-charter.pdf */}
+          
           <a
             href="/assets/pdf/europe-charter.pdf"
             target="_blank"
@@ -154,7 +154,7 @@ export default function CharterEuropePage() {
             >
               Enquire About Mediterranean Charters
             </CTAButton>
-            {/* PDF: Place europe-charter.pdf at /public/assets/pdf/europe-charter.pdf */}
+            
             <a
               href="/assets/pdf/europe-charter.pdf"
               target="_blank"

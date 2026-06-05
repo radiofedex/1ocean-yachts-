@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Circle ring -->
+  <circle cx="32" cy="30" r="26" fill="none" stroke="#1B2D50" stroke-width="4.5"/>
+  <!-- "1" numeral -->
+  <text x="32" y="42" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#1B2D50" text-anchor="middle">1</text>
+  <!-- Wave -->
+  <path d="M6 54 Q16 48 26 54 Q36 60 46 54 Q56 48 62 52" fill="none" stroke="#0099C8" stroke-width="3.5" stroke-linecap="round"/>
+</svg>

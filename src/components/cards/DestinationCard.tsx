@@ -79,7 +79,7 @@ export function DestinationCard({
             </svg>
           </Link>
 
-          {/* PDF: Place europe-charter.pdf at /public/assets/pdf/europe-charter.pdf */}
+          
           {showPDFButton && (
             <a
               href="/assets/pdf/europe-charter.pdf"

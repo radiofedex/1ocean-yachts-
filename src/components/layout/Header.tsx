@@ -88,15 +88,12 @@ export function Header() {
         <div className="container-luxury flex items-center justify-between" ref={dropdownRef}>
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 group">
-            {/* REPLACE: Place logo at /public/assets/logo.svg or /public/assets/logo.png */}
-            <div className="flex flex-col">
-              <span className="font-cormorant text-xl md:text-2xl text-white font-light tracking-[0.15em] group-hover:text-gold-300 transition-colors duration-300">
-                1 OCEAN
-              </span>
-              <span className="font-inter text-[9px] tracking-[0.5em] text-gold-400 uppercase -mt-0.5">
-                YACHTS
-              </span>
-            </div>
+            <img
+              src="/logo.png"
+              alt="1 Ocean Yachts Group"
+              className="h-9 w-auto brightness-0 invert transition-all duration-400 group-hover:drop-shadow-[0_0_8px_rgba(0,153,200,0.6)] group-hover:scale-105"
+              style={{ transformOrigin: 'left center' }}
+            />
           </Link>
 
           {/* Desktop Navigation */}
