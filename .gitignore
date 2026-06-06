@@ -17,6 +17,11 @@
 .DS_Store
 *.pem
 
+# large videos (too big for GitHub — host separately or use Git LFS)
+public/assets/videos/lifestyle-01.mp4
+public/assets/videos/pj-db9.mp4
+public/assets/videos/pj63-running.mp4
+
 # debug
 npm-debug.log*
 yarn-debug.log*

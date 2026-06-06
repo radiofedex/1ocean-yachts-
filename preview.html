@@ -5,26 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1 Ocean Yachts Group</title>
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #0A1628;
-      --navy-dark: #050D1A;
-      --navy-mid: #122035;
-      --celeste: #0099C8;
-      --celeste-light: #33B8DC;
+      --navy: #09202C;
+      --navy-dark: #060F18;
+      --navy-mid: #0D2A3A;
+      --celeste: #7AC5C8;
+      --celeste-light: #9AD4D7;
       --white: #FFFFFF;
-      --off-white: #F6F7F9;
-      --light-grey: #EAECF0;
-      --mid-grey: #CBD2DA;
-      --text-dark: #0D1B2A;
-      --text-mid: #4A5568;
-      --text-light: #8896A4;
+      --off-white: #F5F5F3;
+      --light-grey: #E8E8E6;
+      --mid-grey: #C4C4C2;
+      --text-dark: #09202C;
+      --text-mid: #5A6270;
+      --text-light: #8A8D8F;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; }
-    h1,h2,h3,h4,h5 { font-family: 'Cormorant Garant', Georgia, serif; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; letter-spacing: 0.02em; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    h1,h2,h3,h4,h5 { font-family: 'Cormorant Garant', Georgia, serif; letter-spacing: -0.02em; text-wrap: balance; font-weight: 300; }
+
+    /* ── GRAIN OVERLAY (premium texture) ─── */
+    body::after {
+      content: ''; pointer-events: none;
+      position: fixed; inset: 0; z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
 
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--off-white); }
@@ -58,8 +68,8 @@
     /* Logo */
     .header-logo { text-decoration: none; flex-shrink: 0; margin-right: 2rem; }
     .header-logo img {
-      height: 34px; width: auto; display: block;
-      filter: brightness(0) invert(1);
+      height: 46px; width: auto; display: block;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.5));
       transition: filter 0.4s ease, transform 0.3s ease;
     }
     header.scrolled .header-logo img { filter: brightness(0); }
@@ -70,13 +80,12 @@
     .nav-item { position: relative; }
     .nav-link {
       display: flex; align-items: center; gap: 5px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem; font-weight: 400; letter-spacing: 0.01em;
-      color: rgba(255,255,255,0.88); text-decoration: none;
-      padding: 0 1.5rem; line-height: 88px; height: 88px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      padding: 0 1.2rem; line-height: 88px; height: 88px;
       border: none; background: none; cursor: pointer;
-      white-space: nowrap;
-      position: relative;
+      white-space: nowrap; position: relative;
       transition: color 0.25s ease, line-height 0.3s ease, height 0.3s ease;
     }
     header.scrolled .nav-link { color: var(--text-dark); line-height: 72px; height: 72px; }
@@ -108,7 +117,7 @@
     .nav-item.open .nav-dropdown { display: block; }
     .nav-dropdown a, .nav-dropdown button {
       display: block; width: 100%;
-      font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 400;
       color: var(--text-dark); text-decoration: none; background: none; border: none;
       padding: 0.6rem 1.5rem; cursor: pointer; text-align: left; white-space: nowrap;
       transition: color 0.15s, background 0.15s;
@@ -126,7 +135,7 @@
     .lang-wrap { position: relative; }
     .lang-btn {
       display: flex; align-items: center; gap: 4px;
-      font-family: 'DM Sans', sans-serif; font-size: 0.78rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 400;
       color: rgba(255,255,255,0.7); background: none; border: none; cursor: pointer;
       padding: 0.3rem 0.4rem; transition: color 0.2s;
     }
@@ -148,8 +157,8 @@
 
     /* Header CTA */
     .btn-header-cta {
-      font-family: 'DM Sans', sans-serif; font-size: 0.73rem; font-weight: 400;
-      letter-spacing: 0.1em; text-transform: uppercase;
+      font-family: 'Raleway', sans-serif; font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
       color: rgba(255,255,255,0.88); background: none;
       border: 1px solid rgba(255,255,255,0.35); cursor: pointer;
       padding: 0.55rem 1.3rem; text-decoration: none;
@@ -163,7 +172,7 @@
 
     /* Keep old btn-outline / btn-celeste for page content */
     .btn-outline {
-      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 400;
       color: var(--text-dark); background: none;
       border: 1px solid var(--mid-grey); cursor: pointer;
       padding: 0.55rem 1.2rem; text-decoration: none;
@@ -171,12 +180,13 @@
     }
     .btn-outline:hover { border-color: var(--celeste); color: var(--celeste); }
     .btn-celeste {
-      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.55rem 1.3rem; text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
     }
-    .btn-celeste:hover { background: var(--celeste-light); transform: translateY(-1px); }
+    .btn-celeste:hover { background: var(--celeste-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,197,200,0.35); }
+    .btn-celeste:active { transform: scale(0.97) translateY(0); box-shadow: none; }
 
     /* Hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 210; }
@@ -197,60 +207,258 @@
     .bg-navy { background: var(--navy); }
     .bg-navy-dark { background: var(--navy-dark); }
     .eyebrow {
-      font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--celeste); margin-bottom: 1rem;
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--celeste); margin-bottom: 1.2rem;
     }
     .fade-in-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
     /* ── PAGE BANNER ─────────────────────────── */
     .page-banner {
-      background: var(--navy); padding: 140px 0 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative; padding: 160px 0 80px;
+      background-color: var(--navy);
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      overflow: hidden;
     }
+    .page-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(6,15,24,0.65) 0%, rgba(6,15,24,0.5) 60%, rgba(6,15,24,0.7) 100%);
+      z-index: 1;
+    }
+    .page-banner .container { position: relative; z-index: 2; }
     .page-banner h1 {
-      font-size: 3rem; font-weight: 300; color: var(--white); margin-bottom: 0.6rem;
+      font-size: clamp(2.2rem,4vw,3.5rem); font-weight: 300; color: var(--white); margin-bottom: 0.6rem;
     }
-    .page-banner p { font-size: 1rem; color: rgba(255,255,255,0.6); font-weight: 300; }
-    .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 0.8rem; }
+    .page-banner p { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300; }
+    .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; letter-spacing:0.04em; }
     .breadcrumb span { color: rgba(255,255,255,0.6); cursor: pointer; transition: color 0.2s; }
     .breadcrumb span:hover { color: var(--celeste); }
 
     /* ── HOME HERO ───────────────────────────── */
     .hero {
       height: 100vh; min-height: 700px;
-      background: url('https://static.wixstatic.com/media/87e673_f91c2fe41311400a9c71b5b8d72f8919f000.jpg') center center/cover no-repeat;
       position: relative; display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: url('public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg') center/cover no-repeat;
+    }
+
+    /* ── FEATURED YACHTS ─────────────────────── */
+    .featured-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 3px;
+    }
+    .fy-card {
+      background: #fff; overflow: hidden; cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fy-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(9,32,44,0.12); }
+    .fy-card-img {
+      position: relative; overflow: hidden; aspect-ratio: 4/3;
+    }
+    .fy-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .fy-card:hover .fy-card-img img { transform: scale(1.07); }
+    .fy-badge {
+      position: absolute; top: 1.2rem; left: 1.2rem;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.28rem 0.8rem; font-family: 'Raleway', sans-serif; font-weight: 500;
+    }
+    .fy-badge-sale { background: var(--navy); color: #fff; }
+    .fy-badge-charter { background: var(--celeste); color: #fff; }
+    .fy-body { padding: 1.5rem 1.6rem 1.8rem; }
+    .fy-name {
+      font-family: 'Cormorant Garant', serif; font-size: 1.55rem; font-weight: 400;
+      color: var(--text-dark); margin-bottom: 0.5rem; letter-spacing: -0.01em;
+    }
+    .fy-specs {
+      display: flex; gap: 1.2rem; font-size: 0.75rem; color: var(--text-light);
+      margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .fy-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--light-grey); padding-top: 1rem;
+    }
+    .fy-price { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+    .fy-cta {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--celeste); display: flex; align-items: center; gap: 4px;
+      transition: gap 0.2s;
+    }
+    .fy-card:hover .fy-cta { gap: 8px; }
+
+    /* ── CINEMATIC STRIP ─────────────────────── */
+    .cine-strip {
+      position: relative; height: 520px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cine-strip img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.08);
+      transition: transform 8s ease;
+    }
+    .cine-strip:hover img { transform: scale(1.0); }
+    .cine-strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(9,32,44,0.75) 0%, rgba(9,32,44,0.3) 100%);
+    }
+    .cine-strip-text {
+      position: relative; z-index: 2; text-align: center; padding: 0 2rem;
+      max-width: 700px;
+    }
+    .cine-strip-text blockquote {
+      font-family: 'Cormorant Garant', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300; font-style: italic; color: #fff; line-height: 1.35;
+      letter-spacing: -0.02em; text-wrap: balance;
+    }
+    .cine-strip-text cite {
+      display: block; margin-top: 1.5rem;
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--celeste);
+      font-style: normal;
+    }
+
+    /* ── VIDEO SECTION ───────────────────────── */
+    .video-section { background: var(--navy-dark); padding: 100px 0; }
+    .video-wrap {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      max-width: 960px; margin: 0 auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+    .video-wrap iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+
+    /* ── PJ VIDEO HERO ───────────────────────── */
+    .pj-video-hero {
+      position: relative; height: 100vh; min-height: 700px;
+      overflow: hidden; display: flex; align-items: center;
+    }
+    .pj-video-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+    }
+    .pj-video-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(4,10,20,0.85) 0%, rgba(4,10,20,0.5) 60%, rgba(4,10,20,0.4) 100%);
+    }
+    .pj-video-blocker {
+      position: absolute; bottom: 0; right: 0;
+      width: 340px; height: 80px;
+      background: linear-gradient(to top left, rgba(4,10,20,0.95) 0%, transparent 100%);
+      z-index: 3; pointer-events: none;
+    }
+    .pj-video-content {
+      position: relative; z-index: 4; padding: 0 5rem; max-width: 820px;
+    }
+
+    /* ── PJ VIDEO STRIP ──────────────────────── */
+    .pj-video-strip {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--navy-dark);
+    }
+    .pj-video-strip--reverse { direction: rtl; }
+    .pj-video-strip--reverse > * { direction: ltr; }
+    .pj-vs-text {
+      padding: 6rem 4rem; display: flex; flex-direction: column; justify-content: center;
+    }
+    .pj-vs-video {
+      position: relative; min-height: 500px; overflow: hidden;
+    }
+    @media (max-width: 900px) {
+      .pj-video-strip { grid-template-columns: 1fr; }
+      .pj-video-strip--reverse { direction: ltr; }
+      .pj-vs-video { min-height: 300px; }
+      .pj-vs-text { padding: 3rem 2rem; }
+      .pj-video-content { padding: 0 2rem; }
+    }
+
+    /* ── TESTIMONIALS ────────────────────────── */
+    .testimonials-section {
+      background: var(--off-white); padding: 80px 0;
+    }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 3rem; }
+    .testi-card {
+      background: var(--white); padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .testi-quote-mark {
+      font-family: 'Cormorant Garant', serif; font-size: 5rem; line-height: 0.6;
+      color: var(--celeste); opacity: 0.3; font-weight: 300; margin-bottom: 1.2rem; display: block;
+    }
+    .testi-text {
+      font-family: 'Cormorant Garant', serif; font-size: 1.15rem; font-weight: 300;
+      font-style: italic; color: var(--navy); line-height: 1.65; margin-bottom: 1.5rem;
+    }
+    .testi-author { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); }
+    .testi-role { font-size: 0.74rem; color: var(--text-light); margin-top: 0.2rem; }
+    .testi-stars { color: #C4A35A; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 1rem; }
+
+    /* ── NUMBERS STRIP ───────────────────────── */
+    .numbers-strip {
+      background: var(--navy); padding: 60px 0;
+    }
+    .numbers-strip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .ns-item {
+      padding: 2rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .ns-item:last-child { border-right: none; }
+    .ns-num {
+      font-family: 'Cormorant Garant', serif; font-size: clamp(3rem,5vw,4.5rem);
+      font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .ns-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--celeste); margin-top: 0.5rem; }
+
+    @media (max-width: 1024px) {
+      .featured-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .cine-strip { height: 380px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .numbers-strip-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .charter-cards { grid-template-columns: 1fr; }
     }
     .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(5,13,26,0.82) 0%, rgba(10,22,40,0.60) 100%);
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(5,13,26,0.45) 0%, rgba(10,22,40,0.65) 85%);
     }
-    .hero-content { position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; }
+    .hero-content { position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; margin-top: 5rem; }
     .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 500;
+      font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--celeste); margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.8rem;
     }
     .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--celeste); }
     .hero h1 {
-      font-size: clamp(2.6rem, 5vw, 4.2rem); font-weight: 300; line-height: 1.12;
+      font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.08;
       color: var(--white); margin-bottom: 1.5rem;
+      letter-spacing: -0.04em; text-wrap: balance;
     }
     .hero h1 em { font-style: italic; color: var(--celeste); }
     .hero-line { width: 1px; height: 60px; background: var(--celeste); margin: 1.8rem 0; opacity: 0.7; }
     .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
     .hero-btn-primary {
-      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s;
     }
     .hero-btn-primary:hover { background: var(--celeste-light); }
     .hero-btn-ghost {
-      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 400;
       color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer;
       padding: 0.85rem 2rem; text-decoration: none; transition: border-color 0.2s;
     }
@@ -280,16 +488,20 @@
     .stat-label { font-size: 0.82rem; color: var(--text-mid); margin-top: 0.3rem; }
 
     /* ── SERVICES CARDS ──────────────────────── */
-    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
     .service-card {
-      background: var(--white); border: 1px solid var(--light-grey);
-      padding: 2.5rem 2rem; transition: border-color 0.3s, box-shadow 0.3s;
-      border-left: 3px solid transparent; cursor: default;
+      background: var(--white); overflow: hidden;
+      transition: box-shadow 0.3s; cursor: default; position: relative;
     }
-    .service-card:hover { border-left-color: var(--celeste); box-shadow: 0 6px 24px rgba(0,0,0,0.07); }
-    .service-roman { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--celeste); font-family: 'DM Sans', sans-serif; margin-bottom: 1rem; }
-    .service-card h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; }
-    .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+    .service-card-img { height: 220px; overflow: hidden; }
+    .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.9); }
+    .service-card:hover .service-card-img img { transform: scale(1.06); filter: brightness(1); }
+    .service-card-body { padding: 2.2rem 2rem; border-top: 3px solid transparent; transition: border-color 0.3s; }
+    .service-card:hover .service-card-body { border-top-color: var(--celeste); }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(9,32,44,0.1); }
+    .service-roman { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--celeste); font-family: 'Raleway', sans-serif; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .service-card h3 { font-size: 1.45rem; font-weight: 400; margin-bottom: 0.7rem; }
+    .service-card p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; }
 
     /* ── ACTION CARDS ────────────────────────── */
     .action-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
@@ -314,18 +526,18 @@
     .dest-panel:hover img { transform: scale(1.04); }
     .dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.88) 0%, rgba(5,13,26,0.2) 60%); }
     .dest-content { position: relative; z-index: 2; }
-    .dest-region { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.6rem; font-family: 'DM Sans', sans-serif; }
+    .dest-region { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.6rem; font-family: 'Raleway', sans-serif; }
     .dest-panel h2 { font-size: 2rem; font-weight: 300; color: #fff; margin-bottom: 1rem; }
     .dest-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
     .dest-tag { font-size: 0.75rem; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.25); padding: 0.25rem 0.75rem; }
     .dest-btn {
-      display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+      display: inline-block; font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.7rem 1.5rem; text-decoration: none; transition: background 0.2s; margin-right: 0.75rem;
     }
     .dest-btn:hover { background: var(--celeste-light); }
     .dest-btn-ghost {
-      display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+      display: inline-block; font-family: 'Raleway', sans-serif; font-size: 0.82rem;
       color: rgba(255,255,255,0.8); background: none; border: 1px solid rgba(255,255,255,0.4);
       cursor: pointer; padding: 0.7rem 1.5rem; text-decoration: none; transition: border-color 0.2s;
     }
@@ -333,7 +545,7 @@
 
     /* ── ABOUT TEASER ────────────────────────── */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .about-img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    .about-img { width: 100%; height: 520px; object-fit: cover; display: block; box-shadow: 20px 20px 0 var(--off-white), 22px 22px 0 var(--celeste); }
     .about-text .eyebrow { margin-bottom: 0.8rem; }
     .about-text h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; line-height: 1.25; }
     .about-text p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
@@ -349,17 +561,22 @@
     .brand-card:hover img { transform: scale(1.04); }
     .brand-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.8) 0%, rgba(5,13,26,0.1) 55%); }
     .brand-content { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; z-index: 2; }
-    .brand-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.4rem; font-family: 'DM Sans', sans-serif; }
+    .brand-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.4rem; font-family: 'Raleway', sans-serif; }
     .brand-content h3 { font-size: 1.8rem; font-weight: 300; color: #fff; margin-bottom: 0.4rem; }
     .brand-content p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
     /* ── EVENTS ──────────────────────────────── */
     .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
-    .event-card { border: 1px solid var(--light-grey); padding: 0; overflow: hidden; }
-    .event-header { background: var(--navy); padding: 1.4rem 1.5rem; }
-    .event-date { font-size: 0.78rem; color: var(--celeste); font-family: 'DM Sans', sans-serif; letter-spacing: 0.06em; }
-    .event-header h3 { font-size: 1.2rem; font-weight: 400; color: #fff; margin-top: 0.4rem; }
-    .event-body { padding: 1.4rem 1.5rem; }
+    .event-card { border: 1px solid var(--light-grey); padding: 0; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; }
+    .event-card:hover { box-shadow: 0 8px 30px rgba(9,32,44,0.1); transform: translateY(-4px); }
+    .event-card-img { height: 180px; overflow: hidden; position: relative; }
+    .event-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .event-card:hover .event-card-img img { transform: scale(1.06); }
+    .event-card-img-overlay { position: absolute; inset: 0; background: rgba(9,32,44,0.35); }
+    .event-header { background: var(--navy); padding: 1.2rem 1.5rem; }
+    .event-date { font-size: 0.75rem; color: var(--celeste); font-family: 'Raleway', sans-serif; letter-spacing: 0.06em; }
+    .event-header h3 { font-size: 1.1rem; font-weight: 400; color: #fff; margin-top: 0.3rem; }
+    .event-body { padding: 1.3rem 1.5rem; }
     .event-body p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
     .event-location { font-size: 0.78rem; color: var(--celeste); margin-top: 0.8rem; display: flex; align-items: center; gap: 4px; }
 
@@ -370,7 +587,7 @@
     .lead-card p { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
     .lead-card-btn {
       margin-top: 1.2rem; display: inline-block; font-size: 0.8rem; color: var(--celeste);
-      font-family: 'DM Sans', sans-serif; cursor: pointer; background: none; border: none;
+      font-family: 'Raleway', sans-serif; cursor: pointer; background: none; border: none;
       padding: 0; text-decoration: underline; text-underline-offset: 3px;
     }
     .lead-contact-txt { text-align: center; color: rgba(255,255,255,0.55); font-size: 0.88rem; }
@@ -385,7 +602,7 @@
     /* ── YACHT GRID ──────────────────────────── */
     .filter-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; border: 1px solid var(--light-grey); width: fit-content; }
     .filter-tab {
-      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 400;
       color: var(--text-mid); background: none; border: none; cursor: pointer;
       padding: 0.65rem 1.5rem; transition: background 0.2s, color 0.2s; border-right: 1px solid var(--light-grey);
     }
@@ -403,7 +620,7 @@
     .yacht-badge {
       position: absolute; top: 0.8rem; left: 0.8rem;
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.25rem 0.65rem; font-family: 'DM Sans', sans-serif;
+      padding: 0.25rem 0.65rem; font-family: 'Raleway', sans-serif;
     }
     .badge-sale { background: var(--celeste); color: #fff; }
     .badge-charter { background: var(--navy); color: #fff; }
@@ -415,7 +632,7 @@
     .yacht-price { font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; font-family: 'Cormorant Garant', Georgia, serif; }
     .yacht-btn {
       display: block; width: 100%; text-align: center;
-      font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 400;
+      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 400;
       color: var(--celeste); background: none; border: 1px solid var(--celeste);
       padding: 0.6rem; cursor: pointer; transition: background 0.2s, color 0.2s;
     }
@@ -436,15 +653,17 @@
     /* ── CHARTER PAGE ────────────────────────── */
     .charter-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
     .charter-card { border: 1px solid var(--light-grey); overflow: hidden; }
-    .charter-card-img { height: 220px; background: linear-gradient(135deg, var(--navy-mid), var(--navy)); display: flex; align-items: center; justify-content: center; }
-    .charter-card-img span { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1rem; color: rgba(255,255,255,0.4); }
+    .charter-card-img { height: 280px; position: relative; overflow: hidden; }
+    .charter-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .charter-card:hover .charter-card-img img { transform: scale(1.05); }
+    .charter-card-img span { display: none; }
     .charter-card-body { padding: 2rem; }
     .charter-card-body h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; }
     .charter-card-body p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
     .charter-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
     .charter-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--light-grey); padding: 0.2rem 0.65rem; }
     .charter-card-btn {
-      font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500;
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.2s; display: inline-block;
     }
@@ -497,7 +716,7 @@
     .contact-int-btn {
       font-size: 0.8rem; color: var(--text-dark); border: 1px solid var(--light-grey);
       background: none; cursor: pointer; padding: 0.45rem 1rem; transition: border-color 0.2s, color 0.2s;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Raleway', sans-serif;
     }
     .contact-int-btn:hover { border-color: var(--celeste); color: var(--celeste); }
     .social-links { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -513,7 +732,7 @@
     .form-group label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 0.35rem; font-weight: 400; }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%; padding: 0.65rem 0.9rem;
-      font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--text-dark);
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; color: var(--text-dark);
       border: 1px solid var(--light-grey); background: var(--off-white);
       outline: none; transition: border-color 0.2s;
       -webkit-appearance: none;
@@ -522,7 +741,7 @@
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-note { font-size: 0.75rem; color: var(--text-light); margin-top: 0.8rem; font-style: italic; }
     .form-submit {
-      width: 100%; padding: 0.85rem; font-family: 'DM Sans', sans-serif;
+      width: 100%; padding: 0.85rem; font-family: 'Raleway', sans-serif;
       font-size: 0.88rem; font-weight: 500; color: #fff; background: var(--celeste);
       border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
     }
@@ -566,13 +785,13 @@
     .dest-chip {
       font-size: 0.78rem; color: var(--text-mid); border: 1px solid var(--light-grey);
       background: none; padding: 0.3rem 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Raleway', sans-serif;
     }
     .dest-chip:hover, .dest-chip.selected { border-color: var(--celeste); color: var(--celeste); background: rgba(0,153,200,0.06); }
     .modal-back-btn {
       background: none; border: none; font-size: 0.82rem; color: var(--text-light);
       cursor: pointer; padding: 0 0 1rem; display: flex; align-items: center; gap: 5px;
-      font-family: 'DM Sans', sans-serif; transition: color 0.2s;
+      font-family: 'Raleway', sans-serif; transition: color 0.2s;
     }
     .modal-back-btn:hover { color: var(--celeste); }
 
@@ -584,12 +803,12 @@
     .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
     .footer-contact-detail a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
     .footer-contact-detail a:hover { color: var(--celeste); }
-    .footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.6rem; }
     .footer-col ul li a, .footer-col ul li button {
       font-size: 0.84rem; color: rgba(255,255,255,0.5); text-decoration: none;
-      background: none; border: none; cursor: pointer; padding: 0; font-family: 'DM Sans', sans-serif;
+      background: none; border: none; cursor: pointer; padding: 0; font-family: 'Raleway', sans-serif;
       transition: color 0.2s; text-align: left;
     }
     .footer-col ul li a:hover, .footer-col ul li button:hover { color: var(--celeste); }
@@ -641,47 +860,15 @@
   </a>
 
   <nav class="header-nav" id="main-nav">
-    <!-- Yachts for Sale -->
-    <div class="nav-item" id="ni-sale">
-      <button class="nav-link" onclick="toggleNav('ni-sale')">
-        Yachts for Sale
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <button onclick="showPage('page-sale');closeAllNav()">All Listings</button>
-        <button onclick="showPage('page-sale');filterYachts('sale');closeAllNav()">Motor Yachts</button>
-        <button onclick="showPage('page-sale');closeAllNav()">Sailing Yachts</button>
-        <button onclick="showPage('page-sale');closeAllNav()">Superyachts</button>
-        <button onclick="showPage('page-sale');closeAllNav()">New Construction</button>
-        <button onclick="showPage('page-sale');closeAllNav()">Off-Market Listings</button>
-      </div>
-    </div>
-    <!-- Sell Your Yacht -->
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sell')">Sell Your Yacht</button>
+      <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
     </div>
-    <!-- Charter -->
-    <div class="nav-item" id="ni-charter">
-      <button class="nav-link" onclick="toggleNav('ni-charter')">
-        Charter
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <button onclick="showPage('page-charter');closeAllNav()">All Charter</button>
-        <div class="dd-separator">Americas</div>
-        <button onclick="showPage('page-charter');closeAllNav()">Miami &amp; South Florida</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Bahamas &amp; Exumas</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Florida Keys</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Caribbean Islands</button>
-        <div class="dd-separator">Mediterranean</div>
-        <button onclick="showPage('page-charter');closeAllNav()">Costa Smeralda</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Sardinia</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Balearic Islands</button>
-        <button onclick="showPage('page-charter');closeAllNav()">Elba &amp; Corsica</button>
-        <button onclick="showPage('page-charter');closeAllNav()">French Riviera</button>
-      </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
     </div>
-    <!-- Exclusive Brands -->
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
+    </div>
     <div class="nav-item" id="ni-brands">
       <button class="nav-link" onclick="toggleNav('ni-brands')">
         Exclusive Brands
@@ -692,7 +879,6 @@
         <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
       </div>
     </div>
-    <!-- About -->
     <div class="nav-item">
       <button class="nav-link" onclick="showPage('page-about')">About</button>
     </div>
@@ -726,9 +912,17 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-bg">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="public/assets/videos/pj-db9.mp4" type="video/mp4">
+        <source src="public/assets/videos/sailing-hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-bg-fallback"></div>
+    </div>
     <div class="hero-overlay"></div>
+    <!-- inscription blocker -->
+    <div class="pj-video-blocker"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Miami — Mediterranean</div>
       <h1>Curating Yachting <em>Excellence</em>,<br>One Client at a Time.</h1>
       <div class="hero-line"></div>
       <p class="hero-sub">A private advisory firm specialising in the acquisition, sale and charter of the world's finest yachts. Personal. Discreet. Uncompromising.</p>
@@ -743,104 +937,71 @@
     </div>
   </section>
 
-  <!-- INTRO / STATS -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="intro-grid fade-in-up">
-        <div>
-          <p class="intro-quote">We don't sell yachts — we curate a <em>lifestyle</em> built around your vision of the perfect time on the water.</p>
-        </div>
-        <div class="stats-grid">
-          <div class="stat-item fade-in-up">
-            <div class="stat-num">25+</div>
-            <div class="stat-label">Years of Experience</div>
-          </div>
-          <div class="stat-item fade-in-up">
-            <div class="stat-num">180+</div>
-            <div class="stat-label">Yachts Transacted</div>
-          </div>
-          <div class="stat-item fade-in-up">
-            <div class="stat-num">40+</div>
-            <div class="stat-label">Destinations</div>
-          </div>
-          <div class="stat-item fade-in-up">
-            <div class="stat-num">500+</div>
-            <div class="stat-label">Clients Served</div>
-          </div>
-        </div>
-      </div>
+  <!-- INTRO -->
+  <section class="section bg-white" style="padding:60px 0;">
+    <div class="container" style="max-width:800px;text-align:center;" data-aos="fade-up">
+      <p class="intro-quote" style="font-size:clamp(1.4rem,3vw,2rem);text-align:center;max-width:700px;margin:0 auto;">We don't sell yachts — we curate a <em>lifestyle</em> built around your vision of the perfect time on the water.</p>
     </div>
   </section>
 
   <!-- SERVICES -->
-  <section class="section bg-off">
+  <section class="section bg-white" style="padding-bottom:0;">
     <div class="container">
       <div class="section-header fade-in-up">
         <div class="eyebrow">What We Do</div>
         <h2>End-to-End Yachting Services</h2>
         <p>From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.</p>
       </div>
-      <div class="services-grid">
-        <div class="service-card fade-in-up">
-          <div class="service-roman">I</div>
-          <h3>Yacht Sales</h3>
-          <p>Access our curated portfolio of motor yachts, sailing yachts, superyachts and exclusive off-market listings. We represent both buyers and sellers with equal discretion and market expertise.</p>
+    </div>
+    <div class="services-grid" style="margin-top:3rem;">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-card-img">
+            <img src="public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg" alt="Yacht Sales" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">I — Yacht Sales</div>
+            <h3>Buy or Sell</h3>
+            <p>Access our curated portfolio of motor yachts, sailing yachts, superyachts and exclusive off-market listings. We represent both buyers and sellers with equal discretion and market expertise.</p>
+          </div>
         </div>
-        <div class="service-card fade-in-up">
-          <div class="service-roman">II</div>
-          <h3>Yacht Charter</h3>
-          <p>Private charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="service-card-img">
+            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Yacht Charter" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">II — Charter</div>
+            <h3>Private Charter</h3>
+            <p>Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
+          </div>
         </div>
-        <div class="service-card fade-in-up">
-          <div class="service-roman">III</div>
-          <h3>Yacht Management</h3>
-          <p>Comprehensive management services for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card-img">
+            <img src="public/assets/photos/sailboats/Dufour-48-1024x683.jpg" alt="Yacht Management" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">III — Management</div>
+            <h3>Yacht Management</h3>
+            <p>Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
+          </div>
         </div>
-      </div>
     </div>
   </section>
 
-  <!-- ACTION CARDS -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="section-header fade-in-up">
-        <div class="eyebrow">How Can We Help?</div>
-        <h2>Your Next Step</h2>
-      </div>
-      <div class="action-cards">
-        <div class="action-card fade-in-up" onclick="openModal('buy')">
-          <svg class="action-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="20" cy="20" r="18"/><path d="M13 20h14M20 13l7 7-7 7"/>
-          </svg>
-          <h3>Buy a Yacht</h3>
-          <p>Personalised search and advisory across our full portfolio and off-market network. We find the right vessel, negotiate, and guide you through closing.</p>
-          <div class="action-card-cta">Start a Conversation <span>→</span></div>
-        </div>
-        <div class="action-card fade-in-up" onclick="showPage('page-sell')">
-          <svg class="action-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M8 32l24-24M20 8h12v12"/><circle cx="12" cy="28" r="4"/>
-          </svg>
-          <h3>Sell Your Yacht</h3>
-          <p>A confidential, strategic approach to selling your vessel at the right price to the right buyer — through our global network of qualified clients.</p>
-          <div class="action-card-cta">Request a Valuation <span>→</span></div>
-        </div>
-        <div class="action-card fade-in-up" onclick="openModal('charter')">
-          <svg class="action-card-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M4 28s4-8 16-8 16 8 16 8"/><path d="M20 20V8"/><path d="M12 14l8-6 8 6"/>
-          </svg>
-          <h3>Charter a Yacht</h3>
-          <p>Explore the Americas or the Mediterranean aboard a handpicked vessel. We create bespoke itineraries for every season and every style of adventure.</p>
-          <div class="action-card-cta">Plan Your Charter <span>→</span></div>
-        </div>
-      </div>
+  <!-- CINEMATIC STRIP -->
+  <div class="cine-strip">
+    <img src="public/assets/photos/sardinia/8A36A4EB-402B-453D-86A0-A00B153972BD.jpg" alt="Luxury yacht at anchor" loading="lazy">
+    <div class="cine-strip-overlay"></div>
+    <div class="cine-strip-text" data-aos="fade-up">
+      <blockquote>"The sea, once it casts its spell, holds one in its net of wonder forever."</blockquote>
+      <cite>— Jacques Cousteau</cite>
     </div>
-  </section>
+  </div>
 
   <!-- DESTINATIONS -->
   <section class="fade-in-up">
     <div class="dest-split">
       <div class="dest-panel">
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80" alt="Americas">
+        <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Caribbean yacht charter — turquoise waters Bahamas">
         <div class="dest-overlay"></div>
         <div class="dest-content">
           <div class="dest-region">The Americas</div>
@@ -856,7 +1017,7 @@
         </div>
       </div>
       <div class="dest-panel">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80" alt="Mediterranean">
+        <img src="public/assets/photos/sardinia/cala-goloritze.jpg" alt="Mediterranean yacht charter — Sardinia Costa Smeralda French Riviera">
         <div class="dest-overlay"></div>
         <div class="dest-content">
           <div class="dest-region">The Mediterranean</div>
@@ -874,14 +1035,55 @@
     </div>
   </section>
 
+  <!-- LIFESTYLE VIDEO -->
+  <section class="video-section" style="padding:80px 0;">
+    <div class="container" style="text-align:center;margin-bottom:3rem;" data-aos="fade-up">
+      <div class="eyebrow" style="color:var(--celeste);">Life on the Water</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin-bottom:0.75rem;">The 1 Ocean Experience</h2>
+    </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="150">
+      <div style="position:relative;max-width:960px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6);overflow:hidden;">
+        <video controls muted playsinline preload="none" style="width:100%;display:block;">
+          <source src="public/assets/videos/lifestyle-01.mp4" type="video/mp4">
+        </video>
+        <div style="position:absolute;bottom:0;right:0;width:280px;height:60px;background:linear-gradient(to top left,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+        <div style="position:absolute;bottom:0;left:0;width:200px;height:50px;background:linear-gradient(to top right,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS STRIP -->
+  <section class="numbers-strip">
+    <div class="container">
+      <div class="numbers-strip-grid">
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="ns-num" data-target="25" data-suffix="+">0</div>
+          <div class="ns-label">Years of Experience</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="ns-num" data-target="180" data-suffix="+">0</div>
+          <div class="ns-label">Yachts Transacted</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="ns-num" data-target="40" data-suffix="+">0</div>
+          <div class="ns-label">Destinations</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="ns-num" data-target="500" data-suffix="+">0</div>
+          <div class="ns-label">Clients Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT TEASER -->
   <section class="section bg-white">
     <div class="container">
       <div class="about-grid">
-        <div class="fade-in-up">
-          <img src="https://static.wixstatic.com/media/87e673_3776b02465ec4d6db6fb6b9e989f17b6~mv2.png" alt="Jose Arana" class="about-img">
+        <div data-aos="fade-right" data-aos-delay="0">
+          <img src="public/assets/jose.avif" alt="Jose Arana" class="about-img">
         </div>
-        <div class="about-text fade-in-up">
+        <div class="about-text" data-aos="fade-left" data-aos-delay="200">
           <div class="eyebrow">Our Founder</div>
           <h2>Jose Arana Muñoz De Cote</h2>
           <p>With over 25 years of experience in luxury yachting, Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter. His career spans Ferretti of America, Koch Newton &amp; Partners, Merrill-Stevens and Fraser Yachts.</p>
@@ -892,16 +1094,26 @@
     </div>
   </section>
 
+  <!-- SECOND CINE STRIP -->
+  <div class="cine-strip" style="height:400px;">
+    <img src="public/assets/photos/romer/Azimut-Fly-53-Running-5.jpg" alt="Luxury superyacht sunset" loading="lazy">
+    <div class="cine-strip-overlay" style="background:linear-gradient(to right, rgba(6,15,24,0.75) 0%, rgba(6,15,24,0.35) 100%);"></div>
+    <div class="cine-strip-text" style="text-align:left;left:10%;transform:none;max-width:500px;" data-aos="fade-right">
+      <blockquote style="font-size:clamp(1.5rem,3vw,2.2rem);">"The art of seamless service is knowing what you need before you know it yourself."</blockquote>
+      <cite>— 1 Ocean Yachts Philosophy</cite>
+    </div>
+  </div>
+
   <!-- BRANDS -->
-  <section class="section bg-off">
+  <section class="section bg-white">
     <div class="container">
-      <div class="section-header fade-in-up">
+      <div class="section-header" data-aos="fade-up">
         <div class="eyebrow">Exclusive Representation</div>
         <h2>Our Brands</h2>
         <p>1 Ocean Yachts Group holds exclusive U.S. dealership rights for two of the world's most distinguished yacht manufacturers.</p>
       </div>
-      <div class="brands-grid fade-in-up">
-        <div class="brand-card" onclick="showPage('page-pj')">
+      <div class="brands-grid">
+        <div class="brand-card" data-aos="fade-right" data-aos-delay="0" onclick="showPage('page-pj')">
           <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson">
           <div class="brand-overlay"></div>
           <div class="brand-content">
@@ -910,56 +1122,13 @@
             <p>Nearly a century of iconic design and performance yachting.</p>
           </div>
         </div>
-        <div class="brand-card" onclick="showPage('page-gtender')">
+        <div class="brand-card" data-aos="fade-left" data-aos-delay="150" onclick="showPage('page-gtender')">
           <img src="https://static.wixstatic.com/media/87e673_c74ad4a6f6a643898d52b1f552105565~mv2.jpg" alt="G-Tender">
           <div class="brand-overlay"></div>
           <div class="brand-content">
             <div class="brand-tag">Leading U.S. Dealer</div>
             <h3>G-Tender</h3>
             <p>Handcrafted in Sardinia — power, elegance and uniqueness.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTS -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="section-header fade-in-up">
-        <div class="eyebrow">2026 Calendar</div>
-        <h2>Upcoming Events</h2>
-        <p>Meet us at the world's most prestigious yacht shows and industry gatherings.</p>
-      </div>
-      <div class="events-grid fade-in-up">
-        <div class="event-card">
-          <div class="event-header">
-            <div class="event-date">February 12 – 16, 2026</div>
-            <h3>Miami International Boat Show</h3>
-          </div>
-          <div class="event-body">
-            <p>The world's premier marine event, returning to Miami Marine Stadium. Visit us in the superyacht pavilion to view our current listings and meet the team.</p>
-            <div class="event-location">📍 Miami, Florida</div>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-header">
-            <div class="event-date">September 24 – 29, 2026</div>
-            <h3>Monaco Yacht Show</h3>
-          </div>
-          <div class="event-body">
-            <p>The world's most exclusive superyacht event. We will have representation dockside at Port Hercules with access to our off-market Mediterranean listings.</p>
-            <div class="event-location">📍 Monaco</div>
-          </div>
-        </div>
-        <div class="event-card">
-          <div class="event-header">
-            <div class="event-date">October 28 – November 1, 2026</div>
-            <h3>Fort Lauderdale Boat Show</h3>
-          </div>
-          <div class="event-body">
-            <p>The largest in-water boat show in the world, featuring the full Palmer Johnson and G-Tender ranges alongside curated brokerage listings.</p>
-            <div class="event-location">📍 Fort Lauderdale, Florida</div>
           </div>
         </div>
       </div>
@@ -1002,11 +1171,24 @@
      PAGE: YACHTS FOR SALE
 ══════════════════════════════════════════════════ -->
 <div id="page-sale" class="page-section">
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Yachts for Sale</div>
-      <h1>Yachts for Sale</h1>
-      <p>Curated listings from our brokerage portfolio.</p>
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.65) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / Yachts for Sale
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Live Brokerage Portfolio</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">Yachts for Sale</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:480px;margin:0 auto;line-height:1.8;">Motor yachts, sailing yachts and superyachts — our portfolio is updated in real time via YachtWorld.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>View Listings</span>
+      <div class="scroll-arrow"></div>
     </div>
   </div>
 
@@ -1070,7 +1252,7 @@
      PAGE: SELL YOUR YACHT
 ══════════════════════════════════════════════════ -->
 <div id="page-sell" class="page-section">
-  <div class="page-banner">
+  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg');">
     <div class="container">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Sell Your Yacht</div>
       <h1>Sell Your Yacht</h1>
@@ -1183,11 +1365,24 @@
      PAGE: CHARTER
 ══════════════════════════════════════════════════ -->
 <div id="page-charter" class="page-section">
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Charter</div>
-      <h1>Yacht Charter</h1>
-      <p>A private yachting experience shaped around your lifestyle.</p>
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/sailing-hero.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.55) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / Charter
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Americas &amp; Mediterranean</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">Yacht Charter</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:500px;margin:0 auto;line-height:1.8;">A private yachting experience shaped entirely around your lifestyle — from the Bahamas to the French Riviera.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+        <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
+        <button style="font-family:'Raleway',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);background:none;border:1px solid rgba(255,255,255,0.3);cursor:pointer;padding:0.8rem 2rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--celeste)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'">View Brochure</button>
+      </div>
     </div>
   </div>
 
@@ -1202,7 +1397,7 @@
       <div class="charter-cards fade-in-up">
         <div class="charter-card">
           <div class="charter-card-img">
-            <span>The Americas</span>
+            <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Caribbean charter — turquoise waters Bahamas" loading="lazy">
           </div>
           <div class="charter-card-body">
             <div class="eyebrow">The Americas</div>
@@ -1222,7 +1417,7 @@
 
         <div class="charter-card">
           <div class="charter-card-img">
-            <span>The Mediterranean</span>
+            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean charter — Sardinia French Riviera" loading="lazy">
           </div>
           <div class="charter-card-body">
             <div class="eyebrow">The Mediterranean</div>
@@ -1242,6 +1437,22 @@
       </div>
     </div>
   </section>
+
+  <!-- CHARTER VIDEO STRIP -->
+  <div class="pj-video-strip" style="min-height:420px;">
+    <div class="pj-vs-text">
+      <div class="eyebrow" style="color:var(--celeste);">The Experience</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Every Detail, Handled</h2>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:2rem;">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
+    </div>
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+  </div>
 
   <!-- BROCHURE PDF -->
   <section class="brochure-section bg-off">
@@ -1265,7 +1476,7 @@
      PAGE: ABOUT
 ══════════════════════════════════════════════════ -->
 <div id="page-about" class="page-section">
-  <div class="page-banner">
+  <div class="page-banner" style="background-image:url('public/assets/photos/sardinia/8A36A4EB-402B-453D-86A0-A00B153972BD.jpg');">
     <div class="container">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / About</div>
       <h1>About 1 Ocean Yachts Group</h1>
@@ -1289,7 +1500,7 @@
           </div>
         </div>
         <div class="fade-in-up">
-          <img src="https://static.wixstatic.com/media/87e673_3776b02465ec4d6db6fb6b9e989f17b6~mv2.png" alt="1 Ocean Yachts Group" class="about-page-img">
+          <img src="public/assets/jose.avif" alt="1 Ocean Yachts Group" class="about-page-img">
         </div>
       </div>
     </div>
@@ -1357,19 +1568,36 @@
      PAGE: PALMER JOHNSON
 ══════════════════════════════════════════════════ -->
 <div id="page-pj" class="page-section">
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span onclick="showPage('page-pj')">Palmer Johnson</span></div>
-      <h1>Palmer Johnson</h1>
-      <p>Exclusive U.S. Dealer</p>
+
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/pj63-running.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay"></div>
+    <!-- inscription blocker: covers any bottom-right watermark area -->
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.45);margin-bottom:1.5rem;">
+        <span onclick="showPage('home')" style="color:rgba(255,255,255,0.55);cursor:pointer;">Home</span> / Palmer Johnson
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);">Exclusive U.S. Dealer</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:#fff;margin:1rem 0 1.5rem;letter-spacing:-0.04em;line-height:1.05;">Palmer Johnson</h1>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:520px;line-height:1.7;margin-bottom:2.5rem;">Nearly a century of iconic design, relentless performance and uncompromising luxury — represented exclusively in the United States by 1 Ocean Yachts Group.</p>
+      <button class="btn-celeste" style="padding:0.9rem 2.4rem;font-size:0.9rem;" onclick="openModal('buy')">Request Information</button>
+    </div>
+    <div class="scroll-indicator">
+      <span>Discover</span>
+      <div class="scroll-arrow"></div>
     </div>
   </div>
 
+  <!-- BRAND INTRO -->
   <section class="section bg-white">
     <div class="container">
       <div class="brand-page-grid">
         <div class="fade-in-up">
-          <div class="eyebrow">Exclusive U.S. Dealer</div>
+          <div class="eyebrow">The Brand</div>
           <h2>Iconic Design, Performance &amp; Luxury</h2>
           <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">Palmer Johnson has operated for nearly a century, evolving from a wooden boat builder to a contemporary luxury yacht manufacturer known for groundbreaking design. Their vessels represent a statement of timeless elegance, built for those who seek the extraordinary in both design and performance.</p>
           <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">1 Ocean Yachts Group is the exclusive dealer for Palmer Johnson in the United States, offering our clients access to the full range of Palmer Johnson models — including the revolutionary SuperSport series — with full after-sales support, warranty and dockage at our Miami facility.</p>
@@ -1379,15 +1607,32 @@
             <li>Customisable luxury interiors</li>
             <li>Built to the highest standards of quality</li>
           </ul>
-          <button class="btn-celeste" style="padding:0.85rem 2rem;margin-top:0.5rem;" onclick="openModal('buy')">Request Information</button>
+          <button class="btn-celeste" style="padding:0.85rem 2rem;margin-top:1rem;" onclick="openModal('buy')">Request Information</button>
         </div>
         <div class="fade-in-up">
-          <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson" class="brand-page-img">
+          <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson SuperSport" class="brand-page-img">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- VIDEO STRIP: DB9 -->
+  <div class="pj-video-strip">
+    <div class="pj-vs-text" data-aos="fade-right">
+      <div class="eyebrow" style="color:var(--celeste);">The DB9</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Power Meets Elegance</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">The DB9 represents the pinnacle of Palmer Johnson engineering — a superyacht that defies convention with its dramatic hull lines, carbon fibre construction and breathtaking interior volume.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Enquire About DB9</button>
+    </div>
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/pj-db9.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
   <section class="section bg-off">
     <div class="container">
       <div class="section-header fade-in-up" style="text-align:center;">
@@ -1414,6 +1659,22 @@
     </div>
   </section>
 
+  <!-- KHALILAH VIDEO STRIP -->
+  <div class="pj-video-strip pj-video-strip--reverse">
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+    <div class="pj-vs-text" data-aos="fade-left">
+      <div class="eyebrow" style="color:var(--celeste);">Khalilah</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Born to Run</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">Khalilah is a stunning example of what Palmer Johnson does best — combining raw speed with effortless elegance. A vessel that commands attention in every port it enters.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Request Private Viewing</button>
+    </div>
+  </div>
+
   <div class="contact-strip">
     <div class="container">
       <h3>Interested in Palmer Johnson?</h3>
@@ -1426,11 +1687,23 @@
      PAGE: G-TENDER
 ══════════════════════════════════════════════════ -->
 <div id="page-gtender" class="page-section">
-  <div class="page-banner">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span onclick="showPage('page-gtender')">G-Tender</span></div>
-      <h1>G-Tender</h1>
-      <p>Leading U.S. Dealer</p>
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/gtender.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.55) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / G-Tender
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Exclusive U.S. Dealer</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">G-Tender</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:480px;margin:0 auto;line-height:1.8;">Handcrafted in Sardinia — where performance meets pure Italian elegance.</p>
+      <div style="margin-top:2rem;">
+        <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Request Information</button>
+      </div>
     </div>
   </div>
 
@@ -1459,6 +1732,24 @@
     </div>
   </section>
 
+  <!-- T40 OASIS VIDEO -->
+  <section class="video-section" style="padding:80px 0;">
+    <div class="container" style="text-align:center;margin-bottom:3rem;" data-aos="fade-up">
+      <div class="eyebrow" style="color:var(--celeste);">G-Tender · T40 Oasis</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin-bottom:0.75rem;">Experience the T40 Oasis</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:480px;margin:0 auto;">Miami Boat Show 2024 — the G-Tender T40 Oasis in motion.</p>
+    </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="150">
+      <div style="position:relative;max-width:960px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6);overflow:hidden;">
+        <video controls muted playsinline preload="metadata" style="width:100%;display:block;">
+          <source src="public/assets/videos/t40-oasis.mp4" type="video/mp4">
+        </video>
+        <div style="position:absolute;bottom:0;right:0;width:280px;height:60px;background:linear-gradient(to top left,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+        <div style="position:absolute;bottom:0;left:0;width:200px;height:50px;background:linear-gradient(to top right,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+      </div>
+    </div>
+  </section>
+
   <div class="contact-strip">
     <div class="container">
       <h3>Interested in G-Tender?</h3>
@@ -1471,7 +1762,7 @@
      PAGE: CONTACT
 ══════════════════════════════════════════════════ -->
 <div id="page-contact" class="page-section">
-  <div class="page-banner">
+  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-5.jpg');">
     <div class="container">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Contact</div>
       <h1>Contact Us</h1>
@@ -1578,6 +1869,17 @@
       </div>
     </div>
   </section>
+
+  <!-- MAP -->
+  <div style="height:400px;position:relative;overflow:hidden;">
+    <iframe
+      src="https://maps.google.com/maps?q=888+Biscayne+Blvd,+Miami,+FL+33132&z=15&output=embed"
+      width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy"
+      title="1 Ocean Yachts — Miami Office Location">
+    </iframe>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+  </div>
+
 </div><!-- /page-contact -->
 
 <!-- ══════════════════════════════════════════════════
@@ -1902,7 +2204,6 @@
           <li><button onclick="showPage('page-about')">About</button></li>
           <li><button onclick="showPage('page-pj')">Palmer Johnson</button></li>
           <li><button onclick="showPage('page-gtender')">G-Tender</button></li>
-          <li><a href="#">Events</a></li>
           <li><button onclick="showPage('page-contact')">Contact</button></li>
         </ul>
       </div>
@@ -1963,6 +2264,7 @@
     closeAllNav();
     closeLang();
     updateHeaderScroll(id);
+    document.dispatchEvent(new CustomEvent('pageChanged', { detail: id }));
   }
 
   function updateHeaderScroll(pageId) {
@@ -2258,7 +2560,102 @@
   /* ── INIT ────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function() {
     initFadeObserver();
+    initAOS();
+    initHeroGSAP();
   });
+</script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  /* ── AOS INIT ────────────────────────────── */
+  function initAOS() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60
+      });
+    }
+  }
+
+  /* ── GSAP HERO ANIMATION ─────────────────── */
+  function initHeroGSAP() {
+    if (typeof gsap === 'undefined') return;
+    var eyebrow  = document.querySelector('.hero-eyebrow');
+    var title    = document.querySelector('.hero h1');
+    var line     = document.querySelector('.hero-line');
+    var sub      = document.querySelector('.hero-sub');
+    var ctas     = document.querySelector('.hero-ctas');
+    var scroll   = document.querySelector('.scroll-indicator');
+
+    var els = [eyebrow, title, line, sub, ctas, scroll].filter(Boolean);
+    gsap.set(els, { opacity: 0, y: 30 });
+
+    var tl = gsap.timeline({ delay: 0.3 });
+    tl.to(eyebrow,  { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+      .to(title,    { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, '-=0.5')
+      .to(line,     { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+      .to(sub,      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.3')
+      .to(ctas,     { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+      .to(scroll,   { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.2');
+  }
+
+  /* AOS refresh su ogni cambio pagina */
+  document.addEventListener('pageChanged', function(e) {
+    if (typeof AOS !== 'undefined') setTimeout(function(){ AOS.refresh(); }, 300);
+    if (e.detail === 'home') setTimeout(initHeroGSAP, 250);
+  });
+
+  /* ── COUNTER ANIMATION ─────────────────────── */
+  (function() {
+    var counters = document.querySelectorAll('.ns-num[data-target]');
+    var triggered = false;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateCounter(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1800;
+      var start = null;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var elapsed = timestamp - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var value = Math.floor(easeOutCubic(progress) * target);
+        el.textContent = value + (progress === 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function runCounters() {
+      if (triggered) return;
+      var strip = document.querySelector('.numbers-strip');
+      if (!strip) return;
+      var rect = strip.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        triggered = true;
+        counters.forEach(function(el, i) {
+          setTimeout(function() { animateCounter(el); }, i * 120);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', runCounters, { passive: true });
+    /* Also fire when navigating to home page */
+    document.addEventListener('pageChanged', function(e) {
+      if (e.detail === 'home') { triggered = false; setTimeout(runCounters, 600); }
+    });
+    /* Initial check */
+    setTimeout(runCounters, 500);
+  })();
 </script>
 </body>
 </html>
