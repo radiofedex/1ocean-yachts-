@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 Ocean Yachts Group</title>
+  <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #09202C;
+      --navy-dark: #060F18;
+      --navy-mid: #0D2A3A;
+      --celeste: #7AC5C8;
+      --celeste-light: #9AD4D7;
+      --white: #FFFFFF;
+      --off-white: #F5F5F3;
+      --light-grey: #E8E8E6;
+      --mid-grey: #C4C4C2;
+      --text-dark: #09202C;
+      --text-mid: #5A6270;
+      --text-light: #8A8D8F;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Raleway', sans-serif; font-weight: 300; letter-spacing: 0.02em; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    h1,h2,h3,h4,h5 { font-family: 'Cormorant Garant', Georgia, serif; letter-spacing: -0.02em; text-wrap: balance; font-weight: 300; }
+
+    /* ── GRAIN OVERLAY (premium texture) ─── */
+    body::after {
+      content: ''; pointer-events: none;
+      position: fixed; inset: 0; z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--off-white); }
+    ::-webkit-scrollbar-thumb { background: var(--celeste); border-radius: 2px; }
+
+    @keyframes pageFade { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes scrollPulse { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+    /* ── PAGE SECTIONS ───────────────────────── */
+    .page-section { display: none; }
+    .page-section.active { display: block; animation: pageFade 0.35s ease both; }
+
+    /* ── HEADER ─────────────────────────────── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: 88px;
+      display: flex; align-items: center;
+      padding: 0 3rem;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease, height 0.3s ease;
+    }
+    header.scrolled {
+      height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    }
+
+    /* Logo */
+    .header-logo { text-decoration: none; flex-shrink: 0; margin-right: 2rem; }
+    .header-logo img {
+      height: 46px; width: auto; display: block;
+      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+      transition: filter 0.4s ease, transform 0.3s ease;
+    }
+    header.scrolled .header-logo img { filter: brightness(0); }
+    .header-logo:hover img { transform: scale(1.04); }
+
+    /* Nav */
+    .header-nav { display: flex; align-items: center; flex: 1; justify-content: center; }
+    .nav-item { position: relative; }
+    .nav-link {
+      display: flex; align-items: center; gap: 5px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); text-decoration: none;
+      padding: 0 1.2rem; line-height: 88px; height: 88px;
+      border: none; background: none; cursor: pointer;
+      white-space: nowrap; position: relative;
+      transition: color 0.25s ease, line-height 0.3s ease, height 0.3s ease;
+    }
+    header.scrolled .nav-link { color: var(--text-dark); line-height: 72px; height: 72px; }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 1.5rem; right: 1.5rem;
+      height: 2px; background: var(--celeste);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { transform: scaleX(1); }
+    .nav-link:hover { color: var(--celeste); }
+    header.scrolled .nav-link:hover { color: var(--celeste); }
+    .nav-link.active { color: var(--celeste); }
+    .nav-item.open .nav-link { color: var(--celeste); }
+
+    .nav-link svg { width: 9px; height: 9px; transition: transform 0.25s ease; flex-shrink: 0; opacity: 0.65; }
+    .nav-item.open .nav-link svg { transform: rotate(180deg); }
+
+    /* Dropdown */
+    .nav-dropdown {
+      display: none; position: absolute; top: 88px; left: 50%; transform: translateX(-50%);
+      background: #fff; border-top: 2px solid var(--celeste);
+      min-width: 230px; box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+      z-index: 300; padding: 0.5rem 0;
+      animation: ddFade 0.2s ease;
+    }
+    header.scrolled .nav-dropdown { top: 72px; }
+    @keyframes ddFade { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+    .nav-item.open .nav-dropdown { display: block; }
+    .nav-dropdown a, .nav-dropdown button {
+      display: block; width: 100%;
+      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 400;
+      color: var(--text-dark); text-decoration: none; background: none; border: none;
+      padding: 0.6rem 1.5rem; cursor: pointer; text-align: left; white-space: nowrap;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-dropdown a:hover, .nav-dropdown button:hover { color: var(--celeste); background: rgba(0,153,200,0.04); }
+    .nav-dropdown .dd-separator {
+      font-size: 0.68rem; font-weight: 500; color: var(--text-light);
+      padding: 0.7rem 1.5rem 0.25rem; letter-spacing: 0.1em; text-transform: uppercase;
+      pointer-events: none;
+    }
+    .dd-divider { height: 1px; background: var(--light-grey); margin: 0.3rem 0; }
+
+    /* Header right */
+    .header-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
+    .lang-wrap { position: relative; }
+    .lang-btn {
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Raleway', sans-serif; font-size: 0.78rem; font-weight: 400;
+      color: rgba(255,255,255,0.7); background: none; border: none; cursor: pointer;
+      padding: 0.3rem 0.4rem; transition: color 0.2s;
+    }
+    header.scrolled .lang-btn { color: var(--text-mid); }
+    .lang-btn:hover { color: var(--celeste); }
+    .lang-btn svg { width: 9px; height: 9px; }
+    .lang-dropdown {
+      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      background: #fff; border: 1px solid var(--light-grey);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10); min-width: 130px; z-index: 400;
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-dropdown a {
+      display: block; padding: 0.55rem 1rem;
+      font-size: 0.8rem; color: var(--text-dark); text-decoration: none;
+      transition: color 0.15s, background 0.15s;
+    }
+    .lang-dropdown a:hover { color: var(--celeste); background: rgba(0,153,200,0.04); }
+
+    /* Header CTA */
+    .btn-header-cta {
+      font-family: 'Raleway', sans-serif; font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.88); background: none;
+      border: 1px solid rgba(255,255,255,0.35); cursor: pointer;
+      padding: 0.55rem 1.3rem; text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-header-cta:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
+    header.scrolled .btn-header-cta {
+      color: var(--celeste); border-color: var(--celeste);
+    }
+    header.scrolled .btn-header-cta:hover { background: var(--celeste); color: #fff; }
+
+    /* Keep old btn-outline / btn-celeste for page content */
+    .btn-outline {
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 400;
+      color: var(--text-dark); background: none;
+      border: 1px solid var(--mid-grey); cursor: pointer;
+      padding: 0.55rem 1.2rem; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--celeste); color: var(--celeste); }
+    .btn-celeste {
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
+      color: #fff; background: var(--celeste); border: none; cursor: pointer;
+      padding: 0.55rem 1.3rem; text-decoration: none;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .btn-celeste:hover { background: var(--celeste-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(122,197,200,0.35); }
+    .btn-celeste:active { transform: scale(0.97) translateY(0); box-shadow: none; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 210; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: 0.3s ease; }
+    header.scrolled .hamburger span { background: var(--text-dark); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    /* ── UTILITY ─────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .container-wide { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 100px 0; }
+    .section-sm { padding: 60px 0; }
+    .section-lg { padding: 120px 0; }
+    .bg-white { background: var(--white); }
+    .bg-off { background: var(--off-white); }
+    .bg-navy { background: var(--navy); }
+    .bg-navy-dark { background: var(--navy-dark); }
+    .eyebrow {
+      font-family: 'Raleway', sans-serif; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--celeste); margin-bottom: 1.2rem;
+    }
+    .fade-in-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── PAGE BANNER ─────────────────────────── */
+    .page-banner {
+      position: relative; padding: 160px 0 80px;
+      background-color: var(--navy);
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      overflow: hidden;
+    }
+    .page-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(6,15,24,0.65) 0%, rgba(6,15,24,0.5) 60%, rgba(6,15,24,0.7) 100%);
+      z-index: 1;
+    }
+    .page-banner .container { position: relative; z-index: 2; }
+    .page-banner h1 {
+      font-size: clamp(2.2rem,4vw,3.5rem); font-weight: 300; color: var(--white); margin-bottom: 0.6rem;
+    }
+    .page-banner p { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300; }
+    .breadcrumb { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 1rem; letter-spacing:0.04em; }
+    .breadcrumb span { color: rgba(255,255,255,0.6); cursor: pointer; transition: color 0.2s; }
+    .breadcrumb span:hover { color: var(--celeste); }
+
+    /* ── HOME HERO ───────────────────────────── */
+    .hero {
+      height: 100vh; min-height: 700px;
+      position: relative; display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg video {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .hero-bg-fallback {
+      position: absolute; inset: 0;
+      background: url('public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg') center/cover no-repeat;
+    }
+
+    /* ── FEATURED YACHTS ─────────────────────── */
+    .featured-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 3px;
+    }
+    .fy-card {
+      background: #fff; overflow: hidden; cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fy-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(9,32,44,0.12); }
+    .fy-card-img {
+      position: relative; overflow: hidden; aspect-ratio: 4/3;
+    }
+    .fy-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+    .fy-card:hover .fy-card-img img { transform: scale(1.07); }
+    .fy-badge {
+      position: absolute; top: 1.2rem; left: 1.2rem;
+      font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.28rem 0.8rem; font-family: 'Raleway', sans-serif; font-weight: 500;
+    }
+    .fy-badge-sale { background: var(--navy); color: #fff; }
+    .fy-badge-charter { background: var(--celeste); color: #fff; }
+    .fy-body { padding: 1.5rem 1.6rem 1.8rem; }
+    .fy-name {
+      font-family: 'Cormorant Garant', serif; font-size: 1.55rem; font-weight: 400;
+      color: var(--text-dark); margin-bottom: 0.5rem; letter-spacing: -0.01em;
+    }
+    .fy-specs {
+      display: flex; gap: 1.2rem; font-size: 0.75rem; color: var(--text-light);
+      margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .fy-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--light-grey); padding-top: 1rem;
+    }
+    .fy-price { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+    .fy-cta {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--celeste); display: flex; align-items: center; gap: 4px;
+      transition: gap 0.2s;
+    }
+    .fy-card:hover .fy-cta { gap: 8px; }
+
+    /* ── CINEMATIC STRIP ─────────────────────── */
+    .cine-strip {
+      position: relative; height: 520px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cine-strip img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transform: scale(1.08);
+      transition: transform 8s ease;
+    }
+    .cine-strip:hover img { transform: scale(1.0); }
+    .cine-strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(0deg, rgba(9,32,44,0.75) 0%, rgba(9,32,44,0.3) 100%);
+    }
+    .cine-strip-text {
+      position: relative; z-index: 2; text-align: center; padding: 0 2rem;
+      max-width: 700px;
+    }
+    .cine-strip-text blockquote {
+      font-family: 'Cormorant Garant', serif; font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300; font-style: italic; color: #fff; line-height: 1.35;
+      letter-spacing: -0.02em; text-wrap: balance;
+    }
+    .cine-strip-text cite {
+      display: block; margin-top: 1.5rem;
+      font-family: 'Raleway', sans-serif; font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--celeste);
+      font-style: normal;
+    }
+
+    /* ── VIDEO SECTION ───────────────────────── */
+    .video-section { background: var(--navy-dark); padding: 100px 0; }
+    .video-wrap {
+      position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+      max-width: 960px; margin: 0 auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+    .video-wrap iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+
+    /* ── PJ VIDEO HERO ───────────────────────── */
+    .pj-video-hero {
+      position: relative; height: 100vh; min-height: 700px;
+      overflow: hidden; display: flex; align-items: center;
+    }
+    .pj-video-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; z-index: 0;
+    }
+    .pj-video-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(135deg, rgba(4,10,20,0.85) 0%, rgba(4,10,20,0.5) 60%, rgba(4,10,20,0.4) 100%);
+    }
+    .pj-video-blocker {
+      position: absolute; bottom: 0; right: 0;
+      width: 340px; height: 80px;
+      background: linear-gradient(to top left, rgba(4,10,20,0.95) 0%, transparent 100%);
+      z-index: 3; pointer-events: none;
+    }
+    .pj-video-content {
+      position: relative; z-index: 4; padding: 0 5rem; max-width: 820px;
+    }
+
+    /* ── PJ VIDEO STRIP ──────────────────────── */
+    .pj-video-strip {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--navy-dark);
+    }
+    .pj-video-strip--reverse { direction: rtl; }
+    .pj-video-strip--reverse > * { direction: ltr; }
+    .pj-vs-text {
+      padding: 6rem 4rem; display: flex; flex-direction: column; justify-content: center;
+    }
+    .pj-vs-video {
+      position: relative; min-height: 500px; overflow: hidden;
+    }
+    @media (max-width: 900px) {
+      .pj-video-strip { grid-template-columns: 1fr; }
+      .pj-video-strip--reverse { direction: ltr; }
+      .pj-vs-video { min-height: 300px; }
+      .pj-vs-text { padding: 3rem 2rem; }
+      .pj-video-content { padding: 0 2rem; }
+    }
+
+    /* ── TESTIMONIALS ────────────────────────── */
+    .testimonials-section {
+      background: var(--off-white); padding: 80px 0;
+    }
+    .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 3rem; }
+    .testi-card {
+      background: var(--white); padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .testi-quote-mark {
+      font-family: 'Cormorant Garant', serif; font-size: 5rem; line-height: 0.6;
+      color: var(--celeste); opacity: 0.3; font-weight: 300; margin-bottom: 1.2rem; display: block;
+    }
+    .testi-text {
+      font-family: 'Cormorant Garant', serif; font-size: 1.15rem; font-weight: 300;
+      font-style: italic; color: var(--navy); line-height: 1.65; margin-bottom: 1.5rem;
+    }
+    .testi-author { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); }
+    .testi-role { font-size: 0.74rem; color: var(--text-light); margin-top: 0.2rem; }
+    .testi-stars { color: #C4A35A; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 1rem; }
+
+    /* ── NUMBERS STRIP ───────────────────────── */
+    .numbers-strip {
+      background: var(--navy); padding: 60px 0;
+    }
+    .numbers-strip-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
+    .ns-item {
+      padding: 2rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .ns-item:last-child { border-right: none; }
+    .ns-num {
+      font-family: 'Cormorant Garant', serif; font-size: clamp(3rem,5vw,4.5rem);
+      font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .ns-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--celeste); margin-top: 0.5rem; }
+
+    @media (max-width: 1024px) {
+      .featured-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .featured-grid { grid-template-columns: 1fr; }
+      .cine-strip { height: 380px; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .numbers-strip-grid { grid-template-columns: 1fr 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .charter-cards { grid-template-columns: 1fr; }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(5,13,26,0.45) 0%, rgba(10,22,40,0.65) 85%);
+    }
+    .hero-content { position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; margin-top: 5rem; }
+    .hero-eyebrow {
+      font-family: 'Raleway', sans-serif; font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--celeste); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .hero-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--celeste); }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.08;
+      color: var(--white); margin-bottom: 1.5rem;
+      letter-spacing: -0.04em; text-wrap: balance;
+    }
+    .hero h1 em { font-style: italic; color: var(--celeste); }
+    .hero-line { width: 1px; height: 60px; background: var(--celeste); margin: 1.8rem 0; opacity: 0.7; }
+    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-btn-primary {
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 500;
+      color: #fff; background: var(--celeste); border: none; cursor: pointer;
+      padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s;
+    }
+    .hero-btn-primary:hover { background: var(--celeste-light); }
+    .hero-btn-ghost {
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; font-weight: 400;
+      color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer;
+      padding: 0.85rem 2rem; text-decoration: none; transition: border-color 0.2s;
+    }
+    .hero-btn-ghost:hover { border-color: var(--celeste); }
+    .scroll-indicator {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 2;
+    }
+    .scroll-indicator span { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .scroll-arrow { width: 20px; height: 20px; border-right: 1px solid rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.4); transform: rotate(45deg); animation: scrollPulse 1.6s ease-in-out infinite; }
+
+    /* ── HOME INTRO ──────────────────────────── */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .intro-quote {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(1.7rem, 2.5vw, 2.2rem); font-style: italic; font-weight: 300;
+      line-height: 1.5; color: var(--navy);
+    }
+    .intro-quote em { color: var(--celeste); font-style: italic; }
+    .intro-quote::before { content: '"'; font-size: 4rem; color: var(--celeste); opacity: 0.3; line-height: 0; vertical-align: -1rem; margin-right: 0.2rem; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .stat-item { padding: 1.5rem; border-left: 2px solid var(--light-grey); }
+    .stat-num {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 2.8rem; font-weight: 300; color: var(--navy); line-height: 1;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--text-mid); margin-top: 0.3rem; }
+
+    /* ── SERVICES CARDS ──────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+    .service-card {
+      background: var(--white); overflow: hidden;
+      transition: box-shadow 0.3s; cursor: default; position: relative;
+    }
+    .service-card-img { height: 220px; overflow: hidden; }
+    .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.9); }
+    .service-card:hover .service-card-img img { transform: scale(1.06); filter: brightness(1); }
+    .service-card-body { padding: 2.2rem 2rem; border-top: 3px solid transparent; transition: border-color 0.3s; }
+    .service-card:hover .service-card-body { border-top-color: var(--celeste); }
+    .service-card:hover { box-shadow: 0 8px 32px rgba(9,32,44,0.1); }
+    .service-roman { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--celeste); font-family: 'Raleway', sans-serif; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .service-card h3 { font-size: 1.45rem; font-weight: 400; margin-bottom: 0.7rem; }
+    .service-card p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; }
+
+    /* ── ACTION CARDS ────────────────────────── */
+    .action-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .action-card {
+      border: 1px solid var(--light-grey); padding: 2.5rem 2rem;
+      cursor: pointer; transition: box-shadow 0.25s, transform 0.25s;
+      text-align: left; background: var(--white);
+    }
+    .action-card:hover { box-shadow: 0 8px 32px rgba(0,153,200,0.12); transform: translateY(-3px); }
+    .action-card-icon { width: 40px; height: 40px; margin-bottom: 1.2rem; color: var(--celeste); }
+    .action-card h3 { font-size: 1.4rem; font-weight: 400; margin-bottom: 0.6rem; }
+    .action-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+    .action-card-cta { display: flex; align-items: center; gap: 6px; margin-top: 1.4rem; font-size: 0.82rem; color: var(--celeste); font-weight: 500; }
+
+    /* ── DESTINATIONS ────────────────────────── */
+    .dest-split { display: grid; grid-template-columns: 1fr 1fr; height: 520px; }
+    .dest-panel {
+      position: relative; overflow: hidden; cursor: pointer;
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+    }
+    .dest-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .dest-panel:hover img { transform: scale(1.04); }
+    .dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.88) 0%, rgba(5,13,26,0.2) 60%); }
+    .dest-content { position: relative; z-index: 2; }
+    .dest-region { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.6rem; font-family: 'Raleway', sans-serif; }
+    .dest-panel h2 { font-size: 2rem; font-weight: 300; color: #fff; margin-bottom: 1rem; }
+    .dest-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .dest-tag { font-size: 0.75rem; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.25); padding: 0.25rem 0.75rem; }
+    .dest-btn {
+      display: inline-block; font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
+      color: #fff; background: var(--celeste); border: none; cursor: pointer;
+      padding: 0.7rem 1.5rem; text-decoration: none; transition: background 0.2s; margin-right: 0.75rem;
+    }
+    .dest-btn:hover { background: var(--celeste-light); }
+    .dest-btn-ghost {
+      display: inline-block; font-family: 'Raleway', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.8); background: none; border: 1px solid rgba(255,255,255,0.4);
+      cursor: pointer; padding: 0.7rem 1.5rem; text-decoration: none; transition: border-color 0.2s;
+    }
+    .dest-btn-ghost:hover { border-color: var(--celeste); color: #fff; }
+
+    /* ── ABOUT TEASER ────────────────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-img { width: 100%; height: 520px; object-fit: cover; display: block; box-shadow: 20px 20px 0 var(--off-white), 22px 22px 0 var(--celeste); }
+    .about-text .eyebrow { margin-bottom: 0.8rem; }
+    .about-text h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; line-height: 1.25; }
+    .about-text p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+
+    /* ── BRANDS ──────────────────────────────── */
+    .brands-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .brand-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      height: 380px; transition: box-shadow 0.3s;
+    }
+    .brand-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+    .brand-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .brand-card:hover img { transform: scale(1.04); }
+    .brand-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.8) 0%, rgba(5,13,26,0.1) 55%); }
+    .brand-content { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; z-index: 2; }
+    .brand-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.4rem; font-family: 'Raleway', sans-serif; }
+    .brand-content h3 { font-size: 1.8rem; font-weight: 300; color: #fff; margin-bottom: 0.4rem; }
+    .brand-content p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
+
+    /* ── EVENTS ──────────────────────────────── */
+    .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .event-card { border: 1px solid var(--light-grey); padding: 0; overflow: hidden; transition: box-shadow 0.3s, transform 0.3s; }
+    .event-card:hover { box-shadow: 0 8px 30px rgba(9,32,44,0.1); transform: translateY(-4px); }
+    .event-card-img { height: 180px; overflow: hidden; position: relative; }
+    .event-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .event-card:hover .event-card-img img { transform: scale(1.06); }
+    .event-card-img-overlay { position: absolute; inset: 0; background: rgba(9,32,44,0.35); }
+    .event-header { background: var(--navy); padding: 1.2rem 1.5rem; }
+    .event-date { font-size: 0.75rem; color: var(--celeste); font-family: 'Raleway', sans-serif; letter-spacing: 0.06em; }
+    .event-header h3 { font-size: 1.1rem; font-weight: 400; color: #fff; margin-top: 0.3rem; }
+    .event-body { padding: 1.3rem 1.5rem; }
+    .event-body p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+    .event-location { font-size: 0.78rem; color: var(--celeste); margin-top: 0.8rem; display: flex; align-items: center; gap: 4px; }
+
+    /* ── LEAD CTA SECTION ────────────────────── */
+    .lead-cta-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-bottom: 3rem; }
+    .lead-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; }
+    .lead-card h3 { font-size: 1.3rem; font-weight: 300; color: #fff; margin-bottom: 0.6rem; }
+    .lead-card p { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+    .lead-card-btn {
+      margin-top: 1.2rem; display: inline-block; font-size: 0.8rem; color: var(--celeste);
+      font-family: 'Raleway', sans-serif; cursor: pointer; background: none; border: none;
+      padding: 0; text-decoration: underline; text-underline-offset: 3px;
+    }
+    .lead-contact-txt { text-align: center; color: rgba(255,255,255,0.55); font-size: 0.88rem; }
+    .lead-contact-txt a { color: var(--celeste); text-decoration: none; }
+    .lead-contact-txt a:hover { text-decoration: underline; }
+
+    /* ── SECTION HEADER ──────────────────────── */
+    .section-header { margin-bottom: 3.5rem; }
+    .section-header h2 { font-size: clamp(1.8rem,2.8vw,2.5rem); font-weight: 300; line-height: 1.2; margin-top: 0.4rem; }
+    .section-header p { font-size: 0.9rem; color: var(--text-mid); margin-top: 0.8rem; max-width: 560px; line-height: 1.7; }
+
+    /* ── YACHT GRID ──────────────────────────── */
+    .filter-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; border: 1px solid var(--light-grey); width: fit-content; }
+    .filter-tab {
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 400;
+      color: var(--text-mid); background: none; border: none; cursor: pointer;
+      padding: 0.65rem 1.5rem; transition: background 0.2s, color 0.2s; border-right: 1px solid var(--light-grey);
+    }
+    .filter-tab:last-child { border-right: none; }
+    .filter-tab.active { background: var(--celeste); color: #fff; }
+    .yacht-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; }
+    .yacht-card { background: #fff; border: 1px solid var(--light-grey); overflow: hidden; transition: box-shadow 0.25s; }
+    .yacht-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); }
+    .yacht-img {
+      height: 220px;
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+    }
+    .yacht-img-text { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.55); }
+    .yacht-badge {
+      position: absolute; top: 0.8rem; left: 0.8rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.65rem; font-family: 'Raleway', sans-serif;
+    }
+    .badge-sale { background: var(--celeste); color: #fff; }
+    .badge-charter { background: var(--navy); color: #fff; }
+    .yacht-body { padding: 1.4rem; }
+    .yacht-name { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .yacht-specs { font-size: 0.78rem; color: var(--text-light); margin-bottom: 1rem; }
+    .yacht-specs span::after { content: ' · '; }
+    .yacht-specs span:last-child::after { content: ''; }
+    .yacht-price { font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; font-family: 'Cormorant Garant', Georgia, serif; }
+    .yacht-btn {
+      display: block; width: 100%; text-align: center;
+      font-family: 'Raleway', sans-serif; font-size: 0.8rem; font-weight: 400;
+      color: var(--celeste); background: none; border: 1px solid var(--celeste);
+      padding: 0.6rem; cursor: pointer; transition: background 0.2s, color 0.2s;
+    }
+    .yacht-btn:hover { background: var(--celeste); color: #fff; }
+    .yacht-card.hidden { display: none; }
+
+    /* ── SELL PAGE ───────────────────────────── */
+    .sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .process-step { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .step-num {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 2.5rem; font-weight: 300; color: var(--celeste);
+      line-height: 1; flex-shrink: 0; min-width: 3rem;
+    }
+    .step-content h3 { font-size: 1.2rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .step-content p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ── CHARTER PAGE ────────────────────────── */
+    .charter-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .charter-card { border: 1px solid var(--light-grey); overflow: hidden; }
+    .charter-card-img { height: 280px; position: relative; overflow: hidden; }
+    .charter-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .charter-card:hover .charter-card-img img { transform: scale(1.05); }
+    .charter-card-img span { display: none; }
+    .charter-card-body { padding: 2rem; }
+    .charter-card-body h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.8rem; }
+    .charter-card-body p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
+    .charter-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
+    .charter-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--light-grey); padding: 0.2rem 0.65rem; }
+    .charter-card-btn {
+      font-family: 'Raleway', sans-serif; font-size: 0.82rem; font-weight: 500;
+      color: #fff; background: var(--celeste); border: none; cursor: pointer;
+      padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.2s; display: inline-block;
+    }
+    .charter-card-btn:hover { background: var(--celeste-light); }
+    .brochure-section { padding: 60px 0; }
+    .brochure-section h2 { font-size: 2rem; font-weight: 300; margin-bottom: 0.6rem; }
+    .brochure-section p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 2rem; }
+
+    /* ── ABOUT PAGE ──────────────────────────── */
+    .about-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-page-img { width: 100%; height: 580px; object-fit: cover; display: block; }
+    .about-text-body h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
+    .about-text-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
+    .member-badges { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .member-badge { font-size: 0.75rem; font-weight: 500; color: var(--celeste); border: 1px solid var(--celeste); padding: 0.3rem 0.9rem; letter-spacing: 0.06em; }
+    .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .founder-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .founder-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--mid-grey); padding: 0.25rem 0.75rem; }
+    .about-services { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
+    .about-service-item { border-left: 2px solid var(--light-grey); padding-left: 1.2rem; }
+    .about-service-item h4 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.4rem; }
+    .about-service-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── BRAND PAGES ─────────────────────────── */
+    .brand-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .brand-page-img { width: 100%; height: 480px; object-fit: cover; display: block; }
+    .brand-features { list-style: none; margin: 1.5rem 0; }
+    .brand-features li {
+      font-size: 0.87rem; color: var(--text-mid); padding: 0.55rem 0;
+      border-bottom: 1px solid var(--light-grey); display: flex; align-items: center; gap: 0.6rem;
+    }
+    .brand-features li::before { content: '—'; color: var(--celeste); flex-shrink: 0; }
+    .brand-feature-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .brand-feature-card { background: #fff; border: 1px solid var(--light-grey); padding: 2rem; }
+    .brand-feature-card h4 { font-size: 1.15rem; font-weight: 400; margin-bottom: 0.6rem; }
+    .brand-feature-card p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.6; }
+    .contact-strip { background: var(--navy); padding: 60px 0; text-align: center; }
+    .contact-strip h3 { font-size: 1.8rem; font-weight: 300; color: #fff; margin-bottom: 1.5rem; }
+
+    /* ── CONTACT PAGE ────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; }
+    .contact-info h2 { font-size: 2rem; font-weight: 300; margin-bottom: 1.2rem; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 0.8rem; margin-bottom: 0.9rem; }
+    .contact-detail-label { font-size: 0.75rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; min-width: 60px; margin-top: 2px; }
+    .contact-detail-value { font-size: 0.9rem; color: var(--text-dark); }
+    .contact-detail-value a { color: var(--celeste); text-decoration: none; }
+    .contact-detail-value a:hover { text-decoration: underline; }
+    .contact-sep { height: 1px; background: var(--light-grey); margin: 1.5rem 0; }
+    .contact-interest-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+    .contact-int-btn {
+      font-size: 0.8rem; color: var(--text-dark); border: 1px solid var(--light-grey);
+      background: none; cursor: pointer; padding: 0.45rem 1rem; transition: border-color 0.2s, color 0.2s;
+      font-family: 'Raleway', sans-serif;
+    }
+    .contact-int-btn:hover { border-color: var(--celeste); color: var(--celeste); }
+    .social-links { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .social-link { display: flex; align-items: center; gap: 6px; font-size: 0.84rem; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .social-link:hover { color: var(--celeste); }
+    .social-link::after { content: '↗'; font-size: 0.7rem; }
+
+    /* ── FORMS ───────────────────────────────── */
+    .form-card { background: #fff; border: 1px solid var(--light-grey); box-shadow: 0 4px 20px rgba(0,0,0,0.05); padding: 2.5rem; }
+    .form-card h3 { font-size: 1.4rem; font-weight: 400; margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 0.35rem; font-weight: 400; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.65rem 0.9rem;
+      font-family: 'Raleway', sans-serif; font-size: 0.85rem; color: var(--text-dark);
+      border: 1px solid var(--light-grey); background: var(--off-white);
+      outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--celeste); background: #fff; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-note { font-size: 0.75rem; color: var(--text-light); margin-top: 0.8rem; font-style: italic; }
+    .form-submit {
+      width: 100%; padding: 0.85rem; font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem; font-weight: 500; color: #fff; background: var(--celeste);
+      border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: var(--celeste-light); }
+    .success-msg { display: none; text-align: center; padding: 3rem 1rem; }
+    .success-msg h3 { font-size: 1.4rem; font-weight: 400; color: var(--navy); margin-bottom: 0.6rem; }
+    .success-msg p { font-size: 0.88rem; color: var(--text-mid); }
+    .success-checkmark { font-size: 2.5rem; color: var(--celeste); margin-bottom: 1rem; }
+
+    /* ── MODALS ──────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(5,13,26,0.7); backdrop-filter: blur(4px);
+      align-items: center; justify-content: center; padding: 2rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-panel {
+      background: #fff; width: 100%; max-width: 560px; max-height: 90vh;
+      overflow-y: auto; position: relative; padding: 2.5rem;
+      animation: pageFade 0.25s ease both;
+    }
+    .modal-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: none; border: none; font-size: 1.3rem; cursor: pointer;
+      color: var(--text-light); line-height: 1; transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--text-dark); }
+    .modal-title { font-size: 1.6rem; font-weight: 300; margin-bottom: 0.4rem; }
+    .modal-sub { font-size: 0.84rem; color: var(--text-mid); margin-bottom: 1.8rem; }
+    .charter-step { display: none; }
+    .charter-step.active { display: block; }
+    .region-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .region-card {
+      border: 1px solid var(--light-grey); padding: 1.8rem 1.2rem; text-align: center;
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .region-card:hover, .region-card.selected { border-color: var(--celeste); background: rgba(0,153,200,0.04); }
+    .region-numeral { font-size: 2rem; font-weight: 300; color: var(--celeste); font-family: 'Cormorant Garant', Georgia, serif; display: block; margin-bottom: 0.4rem; }
+    .region-card h4 { font-size: 1rem; font-weight: 400; }
+    .dest-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .dest-chip {
+      font-size: 0.78rem; color: var(--text-mid); border: 1px solid var(--light-grey);
+      background: none; padding: 0.3rem 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+      font-family: 'Raleway', sans-serif;
+    }
+    .dest-chip:hover, .dest-chip.selected { border-color: var(--celeste); color: var(--celeste); background: rgba(0,153,200,0.06); }
+    .modal-back-btn {
+      background: none; border: none; font-size: 0.82rem; color: var(--text-light);
+      cursor: pointer; padding: 0 0 1rem; display: flex; align-items: center; gap: 5px;
+      font-family: 'Raleway', sans-serif; transition: color 0.2s;
+    }
+    .modal-back-btn:hover { color: var(--celeste); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer { background: var(--navy-dark); padding: 70px 0 0; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-logo-img { height: 30px; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; }
+    .footer-tagline { font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 1.4rem; }
+    .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
+    .footer-contact-detail a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-contact-detail a:hover { color: var(--celeste); }
+    .footer-col h4 { font-family: 'Raleway', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a, .footer-col ul li button {
+      font-size: 0.84rem; color: rgba(255,255,255,0.5); text-decoration: none;
+      background: none; border: none; cursor: pointer; padding: 0; font-family: 'Raleway', sans-serif;
+      transition: color 0.2s; text-align: left;
+    }
+    .footer-col ul li a:hover, .footer-col ul li button:hover { color: var(--celeste); }
+    .footer-social { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .footer-social a { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-social a:hover { color: var(--celeste); }
+    .footer-bar { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bar span { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    .footer-bar-links { display: flex; gap: 1.5rem; }
+    .footer-bar-links a { font-size: 0.75rem; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
+    .footer-bar-links a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── RESPONSIVE ──────────────────────────── */
+    @media (max-width: 960px) {
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+      header { padding: 0 2rem; }
+      .hero-content { padding: 0 2rem; }
+      .intro-grid, .about-grid, .sell-grid, .about-page-grid, .founder-grid, .brand-page-grid, .contact-grid, .charter-cards { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid, .action-cards, .events-grid, .lead-cta-grid { grid-template-columns: 1fr; }
+      .yacht-grid, .brands-grid { grid-template-columns: 1fr 1fr; }
+      .dest-split { grid-template-columns: 1fr; height: auto; }
+      .dest-panel { min-height: 320px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-services { grid-template-columns: 1fr 1fr; }
+      .brand-feature-cards { grid-template-columns: 1fr; }
+      .about-page-img { height: 360px; }
+      .brand-page-img { height: 320px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .section { padding: 60px 0; }
+    }
+    @media (max-width: 600px) {
+      .yacht-grid, .brands-grid, .footer-grid, .about-services { grid-template-columns: 1fr; }
+      .page-banner h1 { font-size: 2rem; }
+      .action-cards, .lead-cta-grid { grid-template-columns: 1fr; }
+      .region-cards { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════════════ -->
+<header id="site-header">
+  <a class="header-logo" href="#" onclick="showPage('home');return false;">
+    <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
+  </a>
+
+  <nav class="header-nav" id="main-nav">
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
+    </div>
+    <div class="nav-item" id="ni-brands">
+      <button class="nav-link" onclick="toggleNav('ni-brands')">
+        Exclusive Brands
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
+        <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-about')">About</button>
+    </div>
+  </nav>
+
+  <div class="header-right">
+    <!-- Language -->
+    <div class="lang-wrap">
+      <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
+        EN
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <a href="#" onclick="setLang('EN','English');return false;">English</a>
+        <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
+        <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
+        <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
+      </div>
+    </div>
+    <button class="btn-header-cta" onclick="showPage('page-contact')">Contact Us</button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════
+     HOME PAGE
+══════════════════════════════════════════════════ -->
+<div id="home" class="page-section active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <video id="hero-video" autoplay muted loop playsinline preload="auto">
+        <source src="public/assets/videos/pj-db9.mp4" type="video/mp4">
+        <source src="public/assets/videos/sailing-hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-bg-fallback"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <!-- inscription blocker -->
+    <div class="pj-video-blocker"></div>
+    <div class="hero-content">
+      <h1>Curating Yachting <em>Excellence</em>,<br>One Client at a Time.</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">A private advisory firm specialising in the acquisition, sale and charter of the world's finest yachts. Personal. Discreet. Uncompromising.</p>
+      <div class="hero-ctas">
+        <button class="hero-btn-primary" onclick="showPage('page-sale')">Explore Yachts</button>
+        <button class="hero-btn-ghost" onclick="openModal('charter')">Plan a Charter</button>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section bg-white" style="padding:60px 0;">
+    <div class="container" style="max-width:800px;text-align:center;" data-aos="fade-up">
+      <p class="intro-quote" style="font-size:clamp(1.4rem,3vw,2rem);text-align:center;max-width:700px;margin:0 auto;">We don't sell yachts — we curate a <em>lifestyle</em> built around your vision of the perfect time on the water.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section bg-white" style="padding-bottom:0;">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="eyebrow">What We Do</div>
+        <h2>End-to-End Yachting Services</h2>
+        <p>From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.</p>
+      </div>
+    </div>
+    <div class="services-grid" style="margin-top:3rem;">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="service-card-img">
+            <img src="public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg" alt="Yacht Sales" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">I — Yacht Sales</div>
+            <h3>Buy or Sell</h3>
+            <p>Access our curated portfolio of motor yachts, sailing yachts, superyachts and exclusive off-market listings. We represent both buyers and sellers with equal discretion and market expertise.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="service-card-img">
+            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Yacht Charter" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">II — Charter</div>
+            <h3>Private Charter</h3>
+            <p>Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-card-img">
+            <img src="public/assets/photos/sailboats/Dufour-48-1024x683.jpg" alt="Yacht Management" loading="lazy">
+          </div>
+          <div class="service-card-body">
+            <div class="service-roman">III — Management</div>
+            <h3>Yacht Management</h3>
+            <p>Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- CINEMATIC STRIP -->
+  <div class="cine-strip">
+    <img src="public/assets/photos/sardinia/8A36A4EB-402B-453D-86A0-A00B153972BD.jpg" alt="Luxury yacht at anchor" loading="lazy">
+    <div class="cine-strip-overlay"></div>
+    <div class="cine-strip-text" data-aos="fade-up">
+      <blockquote>"The sea, once it casts its spell, holds one in its net of wonder forever."</blockquote>
+      <cite>— Jacques Cousteau</cite>
+    </div>
+  </div>
+
+  <!-- DESTINATIONS -->
+  <section class="fade-in-up">
+    <div class="dest-split">
+      <div class="dest-panel">
+        <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Caribbean yacht charter — turquoise waters Bahamas">
+        <div class="dest-overlay"></div>
+        <div class="dest-content">
+          <div class="dest-region">The Americas</div>
+          <h2>Miami to the Caribbean</h2>
+          <div class="dest-tags">
+            <span class="dest-tag">Miami</span>
+            <span class="dest-tag">Bahamas</span>
+            <span class="dest-tag">Florida Keys</span>
+            <span class="dest-tag">Caribbean</span>
+            <span class="dest-tag">USVI</span>
+          </div>
+          <button class="dest-btn" onclick="openModal('charter')">Explore Americas</button>
+        </div>
+      </div>
+      <div class="dest-panel">
+        <img src="public/assets/photos/sardinia/cala-goloritze.jpg" alt="Mediterranean yacht charter — Sardinia Costa Smeralda French Riviera">
+        <div class="dest-overlay"></div>
+        <div class="dest-content">
+          <div class="dest-region">The Mediterranean</div>
+          <h2>Sardinia to the Riviera</h2>
+          <div class="dest-tags">
+            <span class="dest-tag">Costa Smeralda</span>
+            <span class="dest-tag">Sardinia</span>
+            <span class="dest-tag">Balearics</span>
+            <span class="dest-tag">French Riviera</span>
+          </div>
+          <button class="dest-btn" onclick="openModal('charter')">Explore Europe</button>
+          <button class="dest-btn-ghost" onclick="showPage('page-charter')">View Brochure</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE VIDEO -->
+  <section class="video-section" style="padding:80px 0;">
+    <div class="container" style="text-align:center;margin-bottom:3rem;" data-aos="fade-up">
+      <div class="eyebrow" style="color:var(--celeste);">Life on the Water</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin-bottom:0.75rem;">The 1 Ocean Experience</h2>
+    </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="150">
+      <div style="position:relative;max-width:960px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6);overflow:hidden;">
+        <video controls muted playsinline preload="none" style="width:100%;display:block;">
+          <source src="public/assets/videos/lifestyle-01.mp4" type="video/mp4">
+        </video>
+        <div style="position:absolute;bottom:0;right:0;width:280px;height:60px;background:linear-gradient(to top left,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+        <div style="position:absolute;bottom:0;left:0;width:200px;height:50px;background:linear-gradient(to top right,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUMBERS STRIP -->
+  <section class="numbers-strip">
+    <div class="container">
+      <div class="numbers-strip-grid">
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="0">
+          <div class="ns-num" data-target="25" data-suffix="+">0</div>
+          <div class="ns-label">Years of Experience</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="ns-num" data-target="180" data-suffix="+">0</div>
+          <div class="ns-label">Yachts Transacted</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="ns-num" data-target="40" data-suffix="+">0</div>
+          <div class="ns-label">Destinations</div>
+        </div>
+        <div class="ns-item" data-aos="fade-up" data-aos-delay="300">
+          <div class="ns-num" data-target="500" data-suffix="+">0</div>
+          <div class="ns-label">Clients Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="about-grid">
+        <div data-aos="fade-right" data-aos-delay="0">
+          <img src="public/assets/jose.avif" alt="Jose Arana" class="about-img">
+        </div>
+        <div class="about-text" data-aos="fade-left" data-aos-delay="200">
+          <div class="eyebrow">Our Founder</div>
+          <h2>Jose Arana Muñoz De Cote</h2>
+          <p>With over 25 years of experience in luxury yachting, Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter. His career spans Ferretti of America, Koch Newton &amp; Partners, Merrill-Stevens and Fraser Yachts.</p>
+          <p>Fluent in English, Spanish and Italian, Jose brings a uniquely global perspective and an unwavering commitment to personal service. Prior to yachting, he held senior roles at Microsoft, Ericsson and Bell South.</p>
+          <button class="btn-outline" onclick="showPage('page-about')" style="margin-top:1.5rem;padding:0.7rem 1.8rem;">Our Story →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND CINE STRIP -->
+  <div class="cine-strip" style="height:400px;">
+    <img src="public/assets/photos/romer/Azimut-Fly-53-Running-5.jpg" alt="Luxury superyacht sunset" loading="lazy">
+    <div class="cine-strip-overlay" style="background:linear-gradient(to right, rgba(6,15,24,0.75) 0%, rgba(6,15,24,0.35) 100%);"></div>
+    <div class="cine-strip-text" style="text-align:left;left:10%;transform:none;max-width:500px;" data-aos="fade-right">
+      <blockquote style="font-size:clamp(1.5rem,3vw,2.2rem);">"The art of seamless service is knowing what you need before you know it yourself."</blockquote>
+      <cite>— 1 Ocean Yachts Philosophy</cite>
+    </div>
+  </div>
+
+  <!-- BRANDS -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <div class="eyebrow">Exclusive Representation</div>
+        <h2>Our Brands</h2>
+        <p>1 Ocean Yachts Group holds exclusive U.S. dealership rights for two of the world's most distinguished yacht manufacturers.</p>
+      </div>
+      <div class="brands-grid">
+        <div class="brand-card" data-aos="fade-right" data-aos-delay="0" onclick="showPage('page-pj')">
+          <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson">
+          <div class="brand-overlay"></div>
+          <div class="brand-content">
+            <div class="brand-tag">Exclusive U.S. Dealer</div>
+            <h3>Palmer Johnson</h3>
+            <p>Nearly a century of iconic design and performance yachting.</p>
+          </div>
+        </div>
+        <div class="brand-card" data-aos="fade-left" data-aos-delay="150" onclick="showPage('page-gtender')">
+          <img src="https://static.wixstatic.com/media/87e673_c74ad4a6f6a643898d52b1f552105565~mv2.jpg" alt="G-Tender">
+          <div class="brand-overlay"></div>
+          <div class="brand-content">
+            <div class="brand-tag">Leading U.S. Dealer</div>
+            <h3>G-Tender</h3>
+            <p>Handcrafted in Sardinia — power, elegance and uniqueness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEAD CTA -->
+  <section class="section bg-navy-dark">
+    <div class="container">
+      <div class="section-header fade-in-up" style="text-align:center;">
+        <div class="eyebrow" style="text-align:center;">Ready to Begin?</div>
+        <h2 style="color:#fff;">Your Yachting Journey Starts Here</h2>
+      </div>
+      <div class="lead-cta-grid fade-in-up">
+        <div class="lead-card">
+          <h3>Buy a Yacht</h3>
+          <p>Exclusive access to our curated portfolio and off-market network. Personal advisory from search to signing.</p>
+          <button class="lead-card-btn" onclick="openModal('buy')">Request Private Advisory →</button>
+        </div>
+        <div class="lead-card">
+          <h3>Sell Your Yacht</h3>
+          <p>Strategic marketing to qualified global buyers. Confidential, professional, and results-driven.</p>
+          <button class="lead-card-btn" onclick="showPage('page-sell')">Request Valuation →</button>
+        </div>
+        <div class="lead-card">
+          <h3>Charter a Yacht</h3>
+          <p>Bespoke charter experiences in the Americas and Mediterranean — tailored to your season and style.</p>
+          <button class="lead-card-btn" onclick="openModal('charter')">Plan My Charter →</button>
+        </div>
+      </div>
+      <div class="lead-contact-txt fade-in-up">
+        Prefer to speak directly? Call <a href="tel:+13054917794">+1 305 491 7794</a> or email <a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /home -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: YACHTS FOR SALE
+══════════════════════════════════════════════════ -->
+<div id="page-sale" class="page-section">
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.65) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / Yachts for Sale
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Live Brokerage Portfolio</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">Yachts for Sale</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:480px;margin:0 auto;line-height:1.8;">Motor yachts, sailing yachts and superyachts — our portfolio is updated in real time via YachtWorld.</p>
+    </div>
+    <div class="scroll-indicator">
+      <span>View Listings</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+
+  <!-- YachtWorld Live Listings -->
+  <section class="section bg-white" style="padding-top:60px;padding-bottom:80px;">
+    <div class="container">
+      <div class="section-header fade-in-up" style="margin-bottom:2.5rem;">
+        <div class="eyebrow">Live Portfolio</div>
+        <h2 style="font-family:'Cormorant Garant',serif;font-size:2.4rem;font-weight:300;color:var(--text-dark);margin-bottom:0.5rem;">Our Current Listings</h2>
+        <p style="font-size:0.9rem;color:var(--text-mid);font-weight:300;">Listings powered by YachtWorld — updated in real time.</p>
+      </div>
+    </div>
+
+    <!-- iframe wrapper -->
+    <div id="yw-wrap" style="position:relative;width:100%;min-height:800px;">
+      <div id="yw-loading" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:var(--text-light);font-size:0.85rem;letter-spacing:0.05em;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0099C8" stroke-width="2" style="animation:spin 1s linear infinite">
+          <circle cx="18" cy="18" r="15" stroke-opacity="0.2"/>
+          <path d="M18 3 A15 15 0 0 1 33 18" stroke-linecap="round"/>
+        </svg>
+        Loading listings…
+      </div>
+      <iframe
+        id="yw-frame"
+        src="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
+        style="width:100%;height:900px;border:none;opacity:0;transition:opacity 0.4s ease;"
+        title="1 Ocean Yachts — Live Listings on YachtWorld"
+        onload="onYWLoad(this)"
+        onerror="onYWError()"
+      ></iframe>
+      <!-- Fallback shown if iframe is blocked -->
+      <div id="yw-fallback" style="display:none;text-align:center;padding:60px 24px;">
+        <div style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--celeste);margin-bottom:1rem;">Our Listings</div>
+        <h3 style="font-family:'Cormorant Garant',serif;font-size:2rem;font-weight:300;color:var(--text-dark);margin-bottom:1rem;">View Our Full Portfolio on YachtWorld</h3>
+        <p style="font-size:0.9rem;color:var(--text-mid);max-width:440px;margin:0 auto 2rem;font-weight:300;line-height:1.7;">Our complete and up-to-date listings are hosted on YachtWorld, the world's largest yacht marketplace.</p>
+        <a href="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/" target="_blank" rel="noopener"
+          style="display:inline-flex;align-items:center;gap:8px;background:var(--celeste);color:#fff;font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 2rem;text-decoration:none;transition:background 0.2s;">
+          View All Listings
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <p style="margin-top:1.5rem;font-size:0.82rem;color:var(--text-light);">Or contact us directly: <a href="tel:+13054917794" style="color:var(--celeste);">+1 305 491 7794</a></p>
+      </div>
+    </div>
+
+    <!-- spacer below iframe, removed from old static grid -->
+    </div><!-- /hidden yacht-grid placeholder -->
+
+  </section>
+
+  <!-- Private advisory strip -->
+  <div style="background:var(--off-white);padding:2rem 0;border-top:1px solid var(--light-grey);">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p style="font-size:0.88rem;color:var(--text-mid);font-weight:300;">Looking for something not listed? We have access to exclusive off-market yachts.</p>
+      <button class="btn-celeste" style="padding:0.7rem 1.8rem;white-space:nowrap;" onclick="openModal('buy')">Request Private Advisory</button>
+    </div>
+  </div>
+
+</div><!-- /page-sale -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: SELL YOUR YACHT
+══════════════════════════════════════════════════ -->
+<div id="page-sell" class="page-section">
+  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg');">
+    <div class="container">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Sell Your Yacht</div>
+      <h1>Sell Your Yacht</h1>
+      <p>A confidential approach to selling your vessel at the right price.</p>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="sell-grid">
+        <!-- LEFT: Process -->
+        <div class="fade-in-up">
+          <div class="eyebrow">Our Process</div>
+          <h2 style="font-size:2.2rem;font-weight:300;margin-bottom:2rem;line-height:1.25;">Three Steps to a Successful Sale</h2>
+
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <div class="step-content">
+              <h3>Confidential Valuation</h3>
+              <p>A thorough market analysis and professional assessment of your vessel's value and positioning. We review comparable sales, current demand and your yacht's unique attributes to arrive at a competitive asking price.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <div class="step-content">
+              <h3>Strategic Marketing</h3>
+              <p>Professional photography, targeted outreach to our global network of qualified buyers and bespoke marketing materials. Your yacht is presented to the right audience through the right channels — discreetly and effectively.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <div class="step-content">
+              <h3>Negotiation &amp; Closing</h3>
+              <p>Expert negotiation on your behalf, with full support through legal review, survey, sea trial and transfer of ownership. We manage every step so you can focus on what matters most.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;padding:1.5rem;background:var(--off-white);border-left:3px solid var(--celeste);">
+            <p style="font-size:0.84rem;color:var(--text-mid);line-height:1.7;">We are members of <strong>IYBA</strong> and <strong>MYBA</strong> — the industry's leading professional associations — ensuring the highest standards of conduct and market access for your sale.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="fade-in-up">
+          <div class="form-card">
+            <h3>Request a Confidential Valuation</h3>
+            <div id="sell-form-wrap">
+              <form onsubmit="handleSellSubmit(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Your name">
+                  </div>
+                  <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="your@email.com">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="tel" placeholder="+1 (000) 000-0000">
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Yacht Brand &amp; Model</label>
+                    <input type="text" placeholder="e.g. Azimut 55">
+                  </div>
+                  <div class="form-group">
+                    <label>Year</label>
+                    <input type="text" placeholder="e.g. 2018">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Length (ft / m)</label>
+                    <input type="text" placeholder="e.g. 55ft / 17m">
+                  </div>
+                  <div class="form-group">
+                    <label>Current Location</label>
+                    <input type="text" placeholder="e.g. Fort Lauderdale, FL">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Asking Price (optional — confidential if preferred)</label>
+                  <input type="text" placeholder="USD or EUR">
+                </div>
+                <div class="form-group">
+                  <label>Additional Notes</label>
+                  <textarea placeholder="Condition, recent upgrades, charter history, reason for sale…"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Request a Confidential Valuation</button>
+                <p class="form-note">All inquiries are handled with complete confidentiality.</p>
+              </form>
+            </div>
+            <div class="success-msg" id="sell-success">
+              <div class="success-checkmark">✓</div>
+              <h3>Thank You</h3>
+              <p>We have received your valuation request. A member of our team will be in touch within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-sell -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: CHARTER
+══════════════════════════════════════════════════ -->
+<div id="page-charter" class="page-section">
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/sailing-hero.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.55) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / Charter
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Americas &amp; Mediterranean</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">Yacht Charter</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:500px;margin:0 auto;line-height:1.8;">A private yachting experience shaped entirely around your lifestyle — from the Bahamas to the French Riviera.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
+        <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
+        <button style="font-family:'Raleway',sans-serif;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);background:none;border:1px solid rgba(255,255,255,0.3);cursor:pointer;padding:0.8rem 2rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--celeste)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'">View Brochure</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header fade-in-up">
+        <div class="eyebrow">Choose Your Destination</div>
+        <h2>Where Will You Go?</h2>
+        <p>From the turquoise waters of the Bahamas to the glittering coastlines of Sardinia — we plan private yacht charters in the world's most sought-after destinations.</p>
+      </div>
+
+      <div class="charter-cards fade-in-up">
+        <div class="charter-card">
+          <div class="charter-card-img">
+            <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Caribbean charter — turquoise waters Bahamas" loading="lazy">
+          </div>
+          <div class="charter-card-body">
+            <div class="eyebrow">The Americas</div>
+            <h3>Charter in America</h3>
+            <p>Explore the warm waters of South Florida, the crystal cays of the Bahamas, or cruise the stunning island chains of the US and British Virgin Islands. Departure from Miami or Fort Lauderdale year-round.</p>
+            <div class="charter-tags">
+              <span class="charter-tag">Miami</span>
+              <span class="charter-tag">Bahamas</span>
+              <span class="charter-tag">Florida Keys</span>
+              <span class="charter-tag">Caribbean</span>
+              <span class="charter-tag">USVI</span>
+              <span class="charter-tag">BVI</span>
+            </div>
+            <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
+          </div>
+        </div>
+
+        <div class="charter-card">
+          <div class="charter-card-img">
+            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean charter — Sardinia French Riviera" loading="lazy">
+          </div>
+          <div class="charter-card-body">
+            <div class="eyebrow">The Mediterranean</div>
+            <h3>Charter in Europe</h3>
+            <p>Discover the timeless elegance of the Italian Riviera, the wild beauty of Sardinia's Costa Smeralda, the chicness of the Balearics, or the romance of the French Riviera. Summer seasons from June through September.</p>
+            <div class="charter-tags">
+              <span class="charter-tag">Costa Smeralda</span>
+              <span class="charter-tag">Sardinia</span>
+              <span class="charter-tag">Balearic Islands</span>
+              <span class="charter-tag">Elba</span>
+              <span class="charter-tag">Corsica</span>
+              <span class="charter-tag">French Riviera</span>
+            </div>
+            <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHARTER VIDEO STRIP -->
+  <div class="pj-video-strip" style="min-height:420px;">
+    <div class="pj-vs-text">
+      <div class="eyebrow" style="color:var(--celeste);">The Experience</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Every Detail, Handled</h2>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:2rem;">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
+    </div>
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+  </div>
+
+  <!-- BROCHURE PDF -->
+  <section class="brochure-section bg-off">
+    <div class="container">
+      <div class="fade-in-up">
+        <div class="eyebrow">2026 Season</div>
+        <h2>Mediterranean Charter Brochure</h2>
+        <p>Download or browse our full 2026 Mediterranean charter brochure, featuring exclusive destinations, featured yachts and seasonal itinerary suggestions.</p>
+      </div>
+      <iframe
+        src="public/assets/pdf/europe-charter.pdf"
+        style="width:100%;height:80vh;min-height:600px;border:none;border:1px solid var(--light-grey);display:block;margin-top:2rem;"
+        title="Europe Charter Brochure">
+        <p>Your browser does not support iframes. <a href="public/assets/pdf/europe-charter.pdf">Download the brochure here.</a></p>
+      </iframe>
+    </div>
+  </section>
+</div><!-- /page-charter -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════════════════ -->
+<div id="page-about" class="page-section">
+  <div class="page-banner" style="background-image:url('public/assets/photos/sardinia/8A36A4EB-402B-453D-86A0-A00B153972BD.jpg');">
+    <div class="container">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / About</div>
+      <h1>About 1 Ocean Yachts Group</h1>
+      <p>25 years of personalised yachting excellence.</p>
+    </div>
+  </div>
+
+  <!-- OUR STORY -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="about-page-grid">
+        <div class="about-text-body fade-in-up">
+          <div class="eyebrow">Our Story</div>
+          <h2>25 Years of Yachting Excellence</h2>
+          <p>1 Ocean Yachts Group was established with a commitment to delivering personalised, high-quality service in a market often driven by volume. Based in Miami, Florida, we operate as an exclusive dealer for world-renowned brands and serve as a trusted partner for yacht sales, charters, management, new construction and advisory services for ultra-luxury assets.</p>
+          <p>What began as exclusive representation of a single brand has grown into a multi-brand powerhouse representing Palmer Johnson and G-Tender, two of the most prestigious names in luxury yachting.</p>
+          <p>We are active at the world's most prestigious yacht shows — Miami, Fort Lauderdale, Palm Beach, Monaco and Cannes — maintaining a global presence that reflects our international clientele.</p>
+          <div class="member-badges">
+            <span class="member-badge">IYBA Member</span>
+            <span class="member-badge">MYBA Member</span>
+          </div>
+        </div>
+        <div class="fade-in-up">
+          <img src="public/assets/jose.avif" alt="1 Ocean Yachts Group" class="about-page-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="section bg-off">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="fade-in-up">
+          <div class="eyebrow">Our Founder</div>
+          <h2>Jose Arana Muñoz De Cote</h2>
+          <p style="font-size:1rem;color:var(--text-mid);margin-bottom:1rem;font-style:italic;">Founder &amp; CEO</p>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">With over 25 years of experience in luxury yachting, Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter. His career began in 1997 at Ferretti of America and has since included senior roles at Koch Newton &amp; Partners, Merrill-Stevens Yachts, and Fraser Yachts — one of the world's leading superyacht brokerages.</p>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">Prior to yachting, Jose developed a strong commercial background in marketing and business strategy at Microsoft, Ericsson, and Bell South. Fluent in English, Spanish, and Italian, he serves a global clientele with complete discretion and expertise.</p>
+          <div class="founder-tags">
+            <span class="founder-tag">English</span>
+            <span class="founder-tag">Spanish</span>
+            <span class="founder-tag">Italian</span>
+            <span class="founder-tag">IYBA</span>
+            <span class="founder-tag">MYBA</span>
+          </div>
+        </div>
+        <div class="fade-in-up" style="display:flex;align-items:flex-start;">
+          <div style="background:var(--white);border:1px solid var(--light-grey);padding:2.5rem;width:100%;">
+            <div style="font-size:2rem;color:var(--celeste);opacity:0.4;font-family:'Cormorant Garant',Georgia,serif;line-height:1;margin-bottom:0.6rem;">"</div>
+            <p style="font-family:'Cormorant Garant',Georgia,serif;font-size:1.4rem;font-weight:300;font-style:italic;line-height:1.6;color:var(--navy);margin-bottom:1.5rem;">Our business is built on trust. Every client is a long-term relationship, not a transaction. We bring the same level of care to a charter inquiry as we do to a superyacht sale.</p>
+            <p style="font-size:0.84rem;color:var(--text-mid);">Jose Arana Muñoz De Cote — Founder &amp; CEO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES OVERVIEW -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="section-header fade-in-up" style="text-align:center;">
+        <div class="eyebrow">What We Offer</div>
+        <h2>Our Services</h2>
+      </div>
+      <div class="about-services fade-in-up">
+        <div class="about-service-item">
+          <h4>Yacht Sales</h4>
+          <p>Curated brokerage of motor yachts, sailing yachts, superyachts and off-market vessels for buyers and sellers worldwide.</p>
+        </div>
+        <div class="about-service-item">
+          <h4>Yacht Charter</h4>
+          <p>Bespoke private charter experiences in the Americas and Mediterranean — fully crewed and tailored to your itinerary.</p>
+        </div>
+        <div class="about-service-item">
+          <h4>Yacht Management</h4>
+          <p>Full management services for owners: maintenance, compliance, crew, logistics and financial reporting.</p>
+        </div>
+        <div class="about-service-item">
+          <h4>Crew Placement</h4>
+          <p>Sourcing and vetting of experienced captains, officers and crew for private and commercially operated yachts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div><!-- /page-about -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: PALMER JOHNSON
+══════════════════════════════════════════════════ -->
+<div id="page-pj" class="page-section">
+
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/pj63-running.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay"></div>
+    <!-- inscription blocker: covers any bottom-right watermark area -->
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.45);margin-bottom:1.5rem;">
+        <span onclick="showPage('home')" style="color:rgba(255,255,255,0.55);cursor:pointer;">Home</span> / Palmer Johnson
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);">Exclusive U.S. Dealer</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;color:#fff;margin:1rem 0 1.5rem;letter-spacing:-0.04em;line-height:1.05;">Palmer Johnson</h1>
+      <p style="font-size:1rem;color:rgba(255,255,255,0.65);font-weight:300;max-width:520px;line-height:1.7;margin-bottom:2.5rem;">Nearly a century of iconic design, relentless performance and uncompromising luxury — represented exclusively in the United States by 1 Ocean Yachts Group.</p>
+      <button class="btn-celeste" style="padding:0.9rem 2.4rem;font-size:0.9rem;" onclick="openModal('buy')">Request Information</button>
+    </div>
+    <div class="scroll-indicator">
+      <span>Discover</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+
+  <!-- BRAND INTRO -->
+  <section class="section bg-white">
+    <div class="container">
+      <div class="brand-page-grid">
+        <div class="fade-in-up">
+          <div class="eyebrow">The Brand</div>
+          <h2>Iconic Design, Performance &amp; Luxury</h2>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">Palmer Johnson has operated for nearly a century, evolving from a wooden boat builder to a contemporary luxury yacht manufacturer known for groundbreaking design. Their vessels represent a statement of timeless elegance, built for those who seek the extraordinary in both design and performance.</p>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">1 Ocean Yachts Group is the exclusive dealer for Palmer Johnson in the United States, offering our clients access to the full range of Palmer Johnson models — including the revolutionary SuperSport series — with full after-sales support, warranty and dockage at our Miami facility.</p>
+          <ul class="brand-features">
+            <li>Heritage design with modern innovation</li>
+            <li>Next-level performance on the water</li>
+            <li>Customisable luxury interiors</li>
+            <li>Built to the highest standards of quality</li>
+          </ul>
+          <button class="btn-celeste" style="padding:0.85rem 2rem;margin-top:1rem;" onclick="openModal('buy')">Request Information</button>
+        </div>
+        <div class="fade-in-up">
+          <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson SuperSport" class="brand-page-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO STRIP: DB9 -->
+  <div class="pj-video-strip">
+    <div class="pj-vs-text" data-aos="fade-right">
+      <div class="eyebrow" style="color:var(--celeste);">The DB9</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Power Meets Elegance</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">The DB9 represents the pinnacle of Palmer Johnson engineering — a superyacht that defies convention with its dramatic hull lines, carbon fibre construction and breathtaking interior volume.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Enquire About DB9</button>
+    </div>
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/pj-db9.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+  </div>
+
+  <!-- FEATURE CARDS -->
+  <section class="section bg-off">
+    <div class="container">
+      <div class="section-header fade-in-up" style="text-align:center;">
+        <div class="eyebrow">Why Palmer Johnson</div>
+        <h2>A Legacy of Excellence</h2>
+      </div>
+      <div class="brand-feature-cards fade-in-up">
+        <div class="brand-feature-card">
+          <div class="eyebrow">Heritage</div>
+          <h4>100 Years of Craftsmanship</h4>
+          <p>Founded in 1918, Palmer Johnson has spent over a century perfecting the art of yacht building — combining tradition with relentless innovation.</p>
+        </div>
+        <div class="brand-feature-card">
+          <div class="eyebrow">Performance</div>
+          <h4>SuperSport Series</h4>
+          <p>The SuperSport range pushes the boundaries of speed, style and efficiency — carbon fibre construction, aggressive lines and unmatched on-water performance.</p>
+        </div>
+        <div class="brand-feature-card">
+          <div class="eyebrow">Custom</div>
+          <h4>Bespoke Interiors</h4>
+          <p>Every Palmer Johnson is a unique creation. Our design team works alongside clients to create interiors that reflect their personal taste and lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KHALILAH VIDEO STRIP -->
+  <div class="pj-video-strip pj-video-strip--reverse">
+    <div class="pj-vs-video">
+      <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
+        <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+      </video>
+      <div class="pj-video-blocker"></div>
+    </div>
+    <div class="pj-vs-text" data-aos="fade-left">
+      <div class="eyebrow" style="color:var(--celeste);">Khalilah</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Born to Run</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">Khalilah is a stunning example of what Palmer Johnson does best — combining raw speed with effortless elegance. A vessel that commands attention in every port it enters.</p>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Request Private Viewing</button>
+    </div>
+  </div>
+
+  <div class="contact-strip">
+    <div class="container">
+      <h3>Interested in Palmer Johnson?</h3>
+      <button class="btn-celeste" style="padding:0.85rem 2.2rem;font-size:0.9rem;" onclick="showPage('page-contact')">Get in Touch</button>
+    </div>
+  </div>
+</div><!-- /page-pj -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: G-TENDER
+══════════════════════════════════════════════════ -->
+<div id="page-gtender" class="page-section">
+  <!-- VIDEO HERO -->
+  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
+    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
+      <source src="public/assets/videos/gtender.mp4" type="video/mp4">
+    </video>
+    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.55) 0%,rgba(4,10,20,0.75) 100%);"></div>
+    <div class="pj-video-blocker"></div>
+    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
+      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
+        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / G-Tender
+      </div>
+      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Exclusive U.S. Dealer</div>
+      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">G-Tender</h1>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:480px;margin:0 auto;line-height:1.8;">Handcrafted in Sardinia — where performance meets pure Italian elegance.</p>
+      <div style="margin-top:2rem;">
+        <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Request Information</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="brand-page-grid">
+        <div class="fade-in-up">
+          <div class="eyebrow">Leading U.S. Dealer</div>
+          <h2>Power, Elegance &amp; Uniqueness — Crafted in Sardinia</h2>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">G-Tender combines cutting-edge technology with superior craftsmanship, designed for those who prioritise performance without sacrificing luxury. Each vessel is handcrafted in Sardinia, resulting from meticulous attention to detail and the finest Italian materials.</p>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">Not just a yacht, but a statement of style and performance. G-Tender features an advanced deep-V hull for ultimate stability and speed, paired with a luxurious, fully customisable interior that redefines the experience on the water.</p>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">1 Ocean Yachts Group holds exclusive rights in the United States for G-Tender, providing our clients with access to the full range of models alongside complete warranty and after-sales support.</p>
+          <ul class="brand-features">
+            <li>Handcrafted in Sardinia</li>
+            <li>Deep-V hull technology</li>
+            <li>Fully customisable configuration</li>
+            <li>Premium Italian materials throughout</li>
+          </ul>
+          <button class="btn-celeste" style="padding:0.85rem 2rem;margin-top:0.5rem;" onclick="openModal('buy')">Request Information</button>
+        </div>
+        <div class="fade-in-up" style="display:flex;flex-direction:column;gap:1.5rem;">
+          <img src="https://static.wixstatic.com/media/87e673_c74ad4a6f6a643898d52b1f552105565~mv2.jpg" alt="G-Tender" class="brand-page-img" style="height:300px;">
+          <img src="https://static.wixstatic.com/media/87e673_79f91d88409346d581417c9ee9e0edb9~mv2.jpg" alt="G-Tender interior" class="brand-page-img" style="height:200px;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- T40 OASIS VIDEO -->
+  <section class="video-section" style="padding:80px 0;">
+    <div class="container" style="text-align:center;margin-bottom:3rem;" data-aos="fade-up">
+      <div class="eyebrow" style="color:var(--celeste);">G-Tender · T40 Oasis</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin-bottom:0.75rem;">Experience the T40 Oasis</h2>
+      <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:480px;margin:0 auto;">Miami Boat Show 2024 — the G-Tender T40 Oasis in motion.</p>
+    </div>
+    <div class="container" data-aos="fade-up" data-aos-delay="150">
+      <div style="position:relative;max-width:960px;margin:0 auto;box-shadow:0 40px 100px rgba(0,0,0,0.6);overflow:hidden;">
+        <video controls muted playsinline preload="metadata" style="width:100%;display:block;">
+          <source src="public/assets/videos/t40-oasis.mp4" type="video/mp4">
+        </video>
+        <div style="position:absolute;bottom:0;right:0;width:280px;height:60px;background:linear-gradient(to top left,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+        <div style="position:absolute;bottom:0;left:0;width:200px;height:50px;background:linear-gradient(to top right,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact-strip">
+    <div class="container">
+      <h3>Interested in G-Tender?</h3>
+      <button class="btn-celeste" style="padding:0.85rem 2.2rem;font-size:0.9rem;" onclick="showPage('page-contact')">Get in Touch</button>
+    </div>
+  </div>
+</div><!-- /page-gtender -->
+
+<!-- ══════════════════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════════════════ -->
+<div id="page-contact" class="page-section">
+  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-5.jpg');">
+    <div class="container">
+      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Contact</div>
+      <h1>Contact Us</h1>
+      <p>Our team is available for any inquiry.</p>
+    </div>
+  </div>
+
+  <section class="section bg-white">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- LEFT: Info -->
+        <div class="fade-in-up">
+          <div class="eyebrow">Get in Touch</div>
+          <h2>Miami, Florida</h2>
+
+          <div class="contact-detail">
+            <span class="contact-detail-label">Address</span>
+            <span class="contact-detail-value">888 Biscayne Blvd, Suite 505<br>Miami, Florida 33132</span>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-label">Phone</span>
+            <span class="contact-detail-value"><a href="tel:+13054917794">+1 305 491 7794</a></span>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-label">Email</span>
+            <span class="contact-detail-value"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></span>
+          </div>
+
+          <div class="contact-sep"></div>
+
+          <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;">I'm interested in:</p>
+          <div class="contact-interest-btns">
+            <button class="contact-int-btn" onclick="openModal('buy')">Buy a Yacht</button>
+            <button class="contact-int-btn" onclick="showPage('page-sell')">Sell a Yacht</button>
+            <button class="contact-int-btn" onclick="openModal('charter')">Charter</button>
+          </div>
+
+          <div class="contact-sep"></div>
+
+          <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;">Follow us</p>
+          <div class="social-links">
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">LinkedIn</a>
+            <a href="#" class="social-link">YouTube</a>
+            <a href="#" class="social-link">Facebook</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: Form -->
+        <div class="fade-in-up">
+          <div class="form-card">
+            <h3>Send a Message</h3>
+            <div id="contact-form-wrap">
+              <form onsubmit="handleContactSubmit(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="First name">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Last name">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="your@email.com">
+                  </div>
+                  <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" placeholder="+1 (000) 000-0000">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Subject</label>
+                  <select>
+                    <option value="">Select a topic…</option>
+                    <option>Buy a Yacht</option>
+                    <option>Sell a Yacht</option>
+                    <option>Charter — Americas</option>
+                    <option>Charter — Mediterranean</option>
+                    <option>Yacht Management</option>
+                    <option>Crew Placement</option>
+                    <option>Palmer Johnson</option>
+                    <option>G-Tender</option>
+                    <option>General Inquiry</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Message</label>
+                  <textarea placeholder="Tell us how we can help…" style="min-height:130px;"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+              </form>
+            </div>
+            <div class="success-msg" id="contact-success">
+              <div class="success-checkmark">✓</div>
+              <h3>Message Sent</h3>
+              <p>Thank you for reaching out. We will reply within one business day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <div style="height:400px;position:relative;overflow:hidden;">
+    <iframe
+      src="https://maps.google.com/maps?q=888+Biscayne+Blvd,+Miami,+FL+33132&z=15&output=embed"
+      width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy"
+      title="1 Ocean Yachts — Miami Office Location">
+    </iframe>
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+  </div>
+
+</div><!-- /page-contact -->
+
+<!-- ══════════════════════════════════════════════════
+     MODALS
+══════════════════════════════════════════════════ -->
+
+<!-- BUY MODAL -->
+<div class="modal-overlay" id="modal-buy" onclick="handleOverlayClick(event,'modal-buy')">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Buy a Yacht</div>
+    <p class="modal-sub">Tell us about your ideal vessel and we'll match it from our portfolio and off-market network.</p>
+    <div id="buy-form-wrap">
+      <form onsubmit="handleBuySubmit(event)">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" required placeholder="Your full name">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" required placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+1 (000) 000-0000">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Size</label>
+            <select>
+              <option value="">Any size</option>
+              <option>Under 20m</option>
+              <option>20 – 30m</option>
+              <option>30 – 45m</option>
+              <option>45 – 60m</option>
+              <option>60m+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Budget</label>
+            <select>
+              <option value="">Any budget</option>
+              <option>Under USD 1M</option>
+              <option>USD 1M – 3M</option>
+              <option>USD 3M – 7M</option>
+              <option>USD 7M – 15M</option>
+              <option>USD 15M – 30M</option>
+              <option>USD 30M+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>New or Pre-Owned</label>
+            <select>
+              <option value="">No preference</option>
+              <option>New</option>
+              <option>Pre-Owned</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Location</label>
+            <input type="text" placeholder="e.g. Miami, Mediterranean">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us more about your requirements…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request Private Advisory</button>
+      </form>
+    </div>
+    <div class="success-msg" id="buy-success">
+      <div class="success-checkmark">✓</div>
+      <h3>Request Received</h3>
+      <p>Our advisory team will contact you within 24 hours with personalised recommendations.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SELL MODAL (quick version) -->
+<div class="modal-overlay" id="modal-sell" onclick="handleOverlayClick(event,'modal-sell')">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Sell Your Yacht</div>
+    <p class="modal-sub">Confidential valuation and strategic representation to qualified global buyers.</p>
+    <div id="sell-modal-form-wrap">
+      <form onsubmit="handleSellModalSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" required placeholder="your@email.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+1 (000) 000-0000">
+          </div>
+          <div class="form-group">
+            <label>Yacht Brand &amp; Model *</label>
+            <input type="text" required placeholder="e.g. Azimut 55">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Year</label>
+            <input type="text" placeholder="e.g. 2018">
+          </div>
+          <div class="form-group">
+            <label>Length</label>
+            <input type="text" placeholder="ft or m">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Current Location</label>
+            <input type="text" placeholder="e.g. Fort Lauderdale">
+          </div>
+          <div class="form-group">
+            <label>Asking Price (optional)</label>
+            <input type="text" placeholder="Confidential if preferred">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          <textarea placeholder="Condition, upgrades, reason for sale…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Request a Confidential Valuation</button>
+        <p class="form-note">All inquiries are handled with complete discretion.</p>
+      </form>
+    </div>
+    <div class="success-msg" id="sell-modal-success">
+      <div class="success-checkmark">✓</div>
+      <h3>Request Received</h3>
+      <p>We will reach out within 24 hours with a confidential market assessment.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHARTER MODAL (3-step) -->
+<div class="modal-overlay" id="modal-charter" onclick="handleOverlayClick(event,'modal-charter')">
+  <div class="modal-panel" style="max-width:600px;">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+
+    <!-- Step 1: Choose Region -->
+    <div class="charter-step active" id="cs-1">
+      <div class="modal-title">Plan My Charter</div>
+      <p class="modal-sub">Choose your preferred destination to get started.</p>
+      <div class="region-cards">
+        <div class="region-card" onclick="selectRegion('americas')">
+          <span class="region-numeral">I</span>
+          <h4>The Americas</h4>
+          <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.3rem;">Miami · Bahamas · Caribbean</p>
+        </div>
+        <div class="region-card" onclick="selectRegion('mediterranean')">
+          <span class="region-numeral">II</span>
+          <h4>The Mediterranean</h4>
+          <p style="font-size:0.78rem;color:var(--text-light);margin-top:0.3rem;">Sardinia · Balearics · Riviera</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2A: Americas destinations -->
+    <div class="charter-step" id="cs-2a">
+      <button class="modal-back-btn" onclick="goBack(1)">← Back</button>
+      <div class="modal-title">The Americas</div>
+      <p class="modal-sub">Select your preferred destination(s).</p>
+      <div class="dest-chips" id="chips-americas">
+        <button class="dest-chip" onclick="toggleChip(this)">Miami</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Bahamas</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Florida Keys</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Caribbean</button>
+        <button class="dest-chip" onclick="toggleChip(this)">USVI</button>
+        <button class="dest-chip" onclick="toggleChip(this)">BVI</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Other</button>
+      </div>
+      <button class="form-submit" onclick="goStep(3)" style="margin-top:0.5rem;">Continue →</button>
+    </div>
+
+    <!-- Step 2B: Mediterranean destinations -->
+    <div class="charter-step" id="cs-2b">
+      <button class="modal-back-btn" onclick="goBack(1)">← Back</button>
+      <div class="modal-title">The Mediterranean</div>
+      <p class="modal-sub">Select your preferred destination(s). Browse our brochure below.</p>
+      <iframe src="public/assets/pdf/europe-charter.pdf" style="width:100%;height:260px;border:1px solid var(--light-grey);display:block;margin-bottom:1rem;" title="Mediterranean Charter Brochure"></iframe>
+      <div class="dest-chips" id="chips-med">
+        <button class="dest-chip" onclick="toggleChip(this)">Costa Smeralda</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Sardinia</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Balearic Islands</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Elba</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Corsica</button>
+        <button class="dest-chip" onclick="toggleChip(this)">French Riviera</button>
+        <button class="dest-chip" onclick="toggleChip(this)">Other</button>
+      </div>
+      <button class="form-submit" onclick="goStep(3)" style="margin-top:0.5rem;">Continue →</button>
+    </div>
+
+    <!-- Step 3: Details form -->
+    <div class="charter-step" id="cs-3">
+      <button class="modal-back-btn" onclick="goBackCharter()">← Back</button>
+      <div class="modal-title">Your Charter Details</div>
+      <p class="modal-sub">Share a few details and we'll craft your perfect itinerary.</p>
+      <div id="charter-form-wrap">
+        <form onsubmit="handleCharterSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" required placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" required placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="tel" placeholder="+1 (000) 000-0000">
+            </div>
+            <div class="form-group">
+              <label>Destination</label>
+              <input type="text" id="charter-dest-input" placeholder="Auto-filled from selection">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Preferred Dates</label>
+              <input type="text" placeholder="e.g. July 10 – 20, 2026">
+            </div>
+            <div class="form-group">
+              <label>Guests</label>
+              <select>
+                <option>1 – 4 guests</option>
+                <option>5 – 8 guests</option>
+                <option>9 – 12 guests</option>
+                <option>12+ guests</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Yacht Type</label>
+              <select>
+                <option>No preference</option>
+                <option>Motor Yacht</option>
+                <option>Sailing Yacht</option>
+                <option>Catamaran</option>
+                <option>Superyacht</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Budget / week</label>
+              <select>
+                <option>Under USD 20k</option>
+                <option>USD 20k – 40k</option>
+                <option>USD 40k – 80k</option>
+                <option>USD 80k – 150k</option>
+                <option>USD 150k+</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your ideal charter experience…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Plan My Private Charter</button>
+        </form>
+      </div>
+      <div class="success-msg" id="charter-success">
+        <div class="success-checkmark">✓</div>
+        <h3>Charter Request Received</h3>
+        <p>Our charter team will be in touch within 24 hours with personalised yacht suggestions and availability.</p>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /modal-charter -->
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="public/assets/logo.png" alt="1 Ocean Yachts Group" class="footer-logo-img">
+        <p class="footer-tagline">Curating yachting excellence across the Americas and Mediterranean. Personal advisory. Uncompromising service.</p>
+        <p class="footer-contact-detail">888 Biscayne Blvd, Suite 505, Miami, FL 33132</p>
+        <p class="footer-contact-detail"><a href="tel:+13054917794">+1 305 491 7794</a></p>
+        <p class="footer-contact-detail"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><button onclick="showPage('page-sale')">Yachts for Sale</button></li>
+          <li><button onclick="showPage('page-sell')">Sell Your Yacht</button></li>
+          <li><button onclick="showPage('page-charter')">Charter</button></li>
+          <li><a href="#">Yacht Management</a></li>
+          <li><a href="#">Crew Placement</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Charter</h4>
+        <ul>
+          <li><button onclick="openModal('charter')">Charter Americas</button></li>
+          <li><button onclick="openModal('charter')">Charter Mediterranean</button></li>
+          <li><button onclick="openModal('charter')">Miami &amp; Bahamas</button></li>
+          <li><button onclick="openModal('charter')">Sardinia &amp; Corsica</button></li>
+          <li><a href="public/assets/pdf/europe-charter.pdf" target="_blank">Download Brochure</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><button onclick="showPage('page-about')">About</button></li>
+          <li><button onclick="showPage('page-pj')">Palmer Johnson</button></li>
+          <li><button onclick="showPage('page-gtender')">G-Tender</button></li>
+          <li><button onclick="showPage('page-contact')">Contact</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+    </div>
+
+    <div class="footer-bar">
+      <span>© 2026 1 Ocean Yachts Group. All rights reserved.</span>
+      <div class="footer-bar-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════ -->
+<script>
+  /* ── PAGE TRANSITIONS ────────────────────── */
+  var currentPage = 'home';
+  var charterRegion = '';
+  var charterStep = 1;
+
+  function showPage(id) {
+    var current = document.getElementById(currentPage);
+    var next = document.getElementById(id);
+    if (!next) return;
+    if (current) {
+      current.style.opacity = '0';
+      current.style.transform = 'translateY(8px)';
+      current.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+      setTimeout(function() {
+        current.classList.remove('active');
+        current.style.opacity = '';
+        current.style.transform = '';
+        current.style.transition = '';
+        next.classList.add('active');
+        window.scrollTo({top:0,behavior:'instant'});
+        initFadeObserver();
+        updateActiveNav(id);
+        currentPage = id;
+      }, 200);
+    } else {
+      next.classList.add('active');
+      window.scrollTo({top:0,behavior:'instant'});
+      initFadeObserver();
+      updateActiveNav(id);
+      currentPage = id;
+    }
+    closeAllNav();
+    closeLang();
+    updateHeaderScroll(id);
+    document.dispatchEvent(new CustomEvent('pageChanged', { detail: id }));
+  }
+
+  function updateHeaderScroll(pageId) {
+    var header = document.getElementById('site-header');
+    if (!header) return;
+    if (pageId !== 'home') {
+      header.classList.add('scrolled');
+    } else {
+      if (window.scrollY > 20) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    if (currentPage === 'home') {
+      updateHeaderScroll('home');
+    }
+  }, { passive: true });
+
+  function updateActiveNav(id) {
+    document.querySelectorAll('.nav-link').forEach(function(el){ el.classList.remove('active'); });
+    var map = {
+      'home': null,
+      'page-sale': 0,
+      'page-sell': 1,
+      'page-charter': 2,
+      'page-pj': 3,
+      'page-gtender': 3,
+      'page-about': 4,
+      'page-contact': 5
+    };
+    var idx = map[id];
+    if (idx !== null && idx !== undefined) {
+      var links = document.querySelectorAll('.header-nav .nav-link');
+      if (links[idx]) links[idx].classList.add('active');
+    }
+  }
+
+  /* ── NAV DROPDOWNS ───────────────────────── */
+  function toggleNav(id) {
+    var item = document.getElementById(id);
+    var wasOpen = item.classList.contains('open');
+    closeAllNav();
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function closeAllNav() {
+    document.querySelectorAll('.nav-item.open').forEach(function(el){ el.classList.remove('open'); });
+  }
+
+  /* ── LANGUAGE ────────────────────────────── */
+  function toggleLang() {
+    var dd = document.getElementById('lang-dropdown');
+    dd.classList.toggle('open');
+  }
+
+  function closeLang() {
+    var dd = document.getElementById('lang-dropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function setLang(code, label) {
+    document.getElementById('lang-btn-display').childNodes[0].textContent = code + ' ';
+    closeLang();
+    console.log('Language set to:', label);
+  }
+
+  /* ── CLICK OUTSIDE ───────────────────────── */
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item') && !e.target.closest('.lang-wrap')) {
+      closeAllNav();
+      closeLang();
+    }
+  });
+
+  /* ── MOBILE NAV ──────────────────────────── */
+  function toggleMobileNav() {
+    var nav = document.getElementById('main-nav');
+    if (nav.style.display === 'flex') {
+      nav.style.display = '';
+      nav.style.position = '';
+      nav.style.flexDirection = '';
+    } else {
+      nav.style.display = 'flex';
+      nav.style.position = 'fixed';
+      nav.style.top = '80px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = '#fff';
+      nav.style.flexDirection = 'column';
+      nav.style.alignItems = 'flex-start';
+      nav.style.padding = '1rem 2rem 2rem';
+      nav.style.borderBottom = '1px solid var(--light-grey)';
+      nav.style.zIndex = '199';
+      nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.08)';
+    }
+  }
+
+  /* ── MODALS ──────────────────────────────── */
+  function openModal(type) {
+    closeAllNav();
+    closeLang();
+    if (type === 'buy') {
+      document.getElementById('modal-buy').classList.add('open');
+    } else if (type === 'sell') {
+      document.getElementById('modal-sell').classList.add('open');
+    } else if (type === 'charter') {
+      resetCharterModal();
+      document.getElementById('modal-charter').classList.add('open');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(el){ el.classList.remove('open'); });
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e, id) {
+    if (e.target.id === id) closeModal();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ── CHARTER FLOW ────────────────────────── */
+  function resetCharterModal() {
+    charterRegion = '';
+    charterStep = 1;
+    document.querySelectorAll('.charter-step').forEach(function(el){ el.classList.remove('active'); });
+    document.getElementById('cs-1').classList.add('active');
+    document.querySelectorAll('.dest-chip').forEach(function(el){ el.classList.remove('selected'); });
+    document.getElementById('charter-dest-input').value = '';
+    document.getElementById('charter-form-wrap').style.display = '';
+    document.getElementById('charter-success').style.display = 'none';
+  }
+
+  function selectRegion(region) {
+    charterRegion = region;
+    document.querySelectorAll('.charter-step').forEach(function(el){ el.classList.remove('active'); });
+    if (region === 'americas') {
+      document.getElementById('cs-2a').classList.add('active');
+    } else {
+      document.getElementById('cs-2b').classList.add('active');
+    }
+    charterStep = 2;
+  }
+
+  function goStep(n) {
+    var selectedChips = [];
+    var chipContainer = charterRegion === 'americas' ? 'chips-americas' : 'chips-med';
+    document.querySelectorAll('#' + chipContainer + ' .selected').forEach(function(el){ selectedChips.push(el.textContent.trim()); });
+    if (selectedChips.length > 0) {
+      document.getElementById('charter-dest-input').value = selectedChips.join(', ');
+    } else {
+      document.getElementById('charter-dest-input').value = charterRegion === 'americas' ? 'Americas' : 'Mediterranean';
+    }
+    document.querySelectorAll('.charter-step').forEach(function(el){ el.classList.remove('active'); });
+    document.getElementById('cs-' + n).classList.add('active');
+    charterStep = n;
+  }
+
+  function goBack(n) {
+    document.querySelectorAll('.charter-step').forEach(function(el){ el.classList.remove('active'); });
+    document.getElementById('cs-' + n).classList.add('active');
+    charterStep = n;
+  }
+
+  function goBackCharter() {
+    document.querySelectorAll('.charter-step').forEach(function(el){ el.classList.remove('active'); });
+    if (charterRegion === 'americas') {
+      document.getElementById('cs-2a').classList.add('active');
+    } else {
+      document.getElementById('cs-2b').classList.add('active');
+    }
+    charterStep = 2;
+  }
+
+  function toggleChip(el) {
+    el.classList.toggle('selected');
+  }
+
+  /* ── FORM HANDLERS ───────────────────────── */
+  function handleBuySubmit(e) {
+    e.preventDefault();
+    console.log('Buy form submitted');
+    document.getElementById('buy-form-wrap').style.display = 'none';
+    var s = document.getElementById('buy-success');
+    s.style.display = 'block';
+  }
+
+  function handleSellSubmit(e) {
+    e.preventDefault();
+    console.log('Sell form submitted');
+    document.getElementById('sell-form-wrap').style.display = 'none';
+    var s = document.getElementById('sell-success');
+    s.style.display = 'block';
+  }
+
+  function handleSellModalSubmit(e) {
+    e.preventDefault();
+    console.log('Sell modal form submitted');
+    document.getElementById('sell-modal-form-wrap').style.display = 'none';
+    var s = document.getElementById('sell-modal-success');
+    s.style.display = 'block';
+  }
+
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    console.log('Contact form submitted');
+    document.getElementById('contact-form-wrap').style.display = 'none';
+    var s = document.getElementById('contact-success');
+    s.style.display = 'block';
+  }
+
+  function handleCharterSubmit(e) {
+    e.preventDefault();
+    console.log('Charter form submitted');
+    document.getElementById('charter-form-wrap').style.display = 'none';
+    var s = document.getElementById('charter-success');
+    s.style.display = 'block';
+  }
+
+  /* ── YACHT FILTER TABS ───────────────────── */
+  function filterYachts(type, btn) {
+    document.querySelectorAll('.filter-tab').forEach(function(t){ t.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    document.querySelectorAll('.yacht-card').forEach(function(card) {
+      if (type === 'all') {
+        card.classList.remove('hidden');
+      } else {
+        if (card.dataset.type === type) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      }
+    });
+  }
+
+  /* ── INTERSECTION OBSERVER (fade-in-up) ─── */
+  function initFadeObserver() {
+    var els = document.querySelectorAll('.page-section.active .fade-in-up');
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function(el) { observer.observe(el); });
+  }
+
+  /* ── YACHTWORLD IFRAME ───────────────────── */
+  function onYWLoad(iframe) {
+    var loading = document.getElementById('yw-loading');
+    var fallback = document.getElementById('yw-fallback');
+    try {
+      /* If same-origin, this works; if cross-origin blocked it throws */
+      var doc = iframe.contentDocument || iframe.contentWindow.document;
+      if (doc && doc.body && doc.body.innerHTML.length > 100) {
+        if (loading) loading.style.display = 'none';
+        iframe.style.opacity = '1';
+        return;
+      }
+    } catch(e) { /* cross-origin — check if it loaded visually */ }
+    /* YachtWorld blocked the iframe — show fallback */
+    if (loading) loading.style.display = 'none';
+    iframe.style.display = 'none';
+    if (fallback) fallback.style.display = 'block';
+  }
+  function onYWError() {
+    var loading = document.getElementById('yw-loading');
+    var fallback = document.getElementById('yw-fallback');
+    var iframe = document.getElementById('yw-frame');
+    if (loading) loading.style.display = 'none';
+    if (iframe) iframe.style.display = 'none';
+    if (fallback) fallback.style.display = 'block';
+  }
+  /* Timeout fallback: if after 8s the iframe hasn't resolved, show fallback */
+  setTimeout(function() {
+    var iframe = document.getElementById('yw-frame');
+    if (iframe && iframe.style.opacity !== '1') {
+      onYWError();
+    }
+  }, 8000);
+
+  /* ── INIT ────────────────────────────────── */
+  document.addEventListener('DOMContentLoaded', function() {
+    initFadeObserver();
+    initAOS();
+    initHeroGSAP();
+  });
+</script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  /* ── AOS INIT ────────────────────────────── */
+  function initAOS() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60
+      });
+    }
+  }
+
+  /* ── GSAP HERO ANIMATION ─────────────────── */
+  function initHeroGSAP() {
+    if (typeof gsap === 'undefined') return;
+    var eyebrow  = document.querySelector('.hero-eyebrow');
+    var title    = document.querySelector('.hero h1');
+    var line     = document.querySelector('.hero-line');
+    var sub      = document.querySelector('.hero-sub');
+    var ctas     = document.querySelector('.hero-ctas');
+    var scroll   = document.querySelector('.scroll-indicator');
+
+    var els = [eyebrow, title, line, sub, ctas, scroll].filter(Boolean);
+    gsap.set(els, { opacity: 0, y: 30 });
+
+    var tl = gsap.timeline({ delay: 0.3 });
+    tl.to(eyebrow,  { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' })
+      .to(title,    { opacity: 1, y: 0, duration: 1.1, ease: 'power3.out' }, '-=0.5')
+      .to(line,     { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+      .to(sub,      { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.3')
+      .to(ctas,     { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.4')
+      .to(scroll,   { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.2');
+  }
+
+  /* AOS refresh su ogni cambio pagina */
+  document.addEventListener('pageChanged', function(e) {
+    if (typeof AOS !== 'undefined') setTimeout(function(){ AOS.refresh(); }, 300);
+    if (e.detail === 'home') setTimeout(initHeroGSAP, 250);
+  });
+
+  /* ── COUNTER ANIMATION ─────────────────────── */
+  (function() {
+    var counters = document.querySelectorAll('.ns-num[data-target]');
+    var triggered = false;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function animateCounter(el) {
+      var target = parseInt(el.getAttribute('data-target'), 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1800;
+      var start = null;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        var elapsed = timestamp - start;
+        var progress = Math.min(elapsed / duration, 1);
+        var value = Math.floor(easeOutCubic(progress) * target);
+        el.textContent = value + (progress === 1 ? suffix : '');
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    function runCounters() {
+      if (triggered) return;
+      var strip = document.querySelector('.numbers-strip');
+      if (!strip) return;
+      var rect = strip.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        triggered = true;
+        counters.forEach(function(el, i) {
+          setTimeout(function() { animateCounter(el); }, i * 120);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', runCounters, { passive: true });
+    /* Also fire when navigating to home page */
+    document.addEventListener('pageChanged', function(e) {
+      if (e.detail === 'home') { triggered = false; setTimeout(runCounters, 600); }
+    });
+    /* Initial check */
+    setTimeout(runCounters, 500);
+  })();
+</script>
+</body>
+</html>
