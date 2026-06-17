@@ -723,6 +723,38 @@
       padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.2s; display: inline-block;
     }
     .charter-card-btn:hover { background: var(--celeste-light); }
+
+    /* ── DESTINATION REGIONS ─────────────────── */
+    .dest-regions { display: flex; flex-direction: column; border: 1px solid var(--light-grey); overflow: hidden; }
+    .dest-region { display: grid; grid-template-columns: 42% 58%; }
+    .dest-region:not(:last-child) { border-bottom: 1px solid var(--light-grey); }
+    .dest-region.dest-flip { grid-template-columns: 58% 42%; }
+    .dest-region.dest-flip .dest-region-img { order: 2; }
+    .dest-region.dest-flip .dest-region-body { order: 1; }
+    .dest-region-img { position: relative; overflow: hidden; min-height: 440px; }
+    .dest-region-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; display: block; }
+    .dest-region:hover .dest-region-img img { transform: scale(1.04); }
+    .dest-region-img-overlay { position: absolute; inset: 0; background: rgba(9,32,44,0.12); }
+    .dest-region-img-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.92); background: rgba(9,32,44,0.55); backdrop-filter: blur(6px);
+      padding: 0.38rem 1rem;
+    }
+    .dest-region-body { padding: 3rem 3.5rem; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+    .dest-region-body h3 { font-size: clamp(2rem,3vw,2.8rem); font-weight: 300; color: var(--navy); margin-bottom: 0.5rem; letter-spacing: -0.01em; margin-top: 0; }
+    .dest-region-body > p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 2rem; max-width: 440px; }
+    .dest-countries { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem; }
+    .dest-country { display: grid; grid-template-columns: 80px 1fr; gap: 1.2rem; align-items: start; }
+    .dest-country-name {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--celeste); padding-top: 0.35rem;
+      border-right: 1px solid var(--light-grey); padding-right: 1rem;
+    }
+    .dest-places { display: flex; flex-direction: column; gap: 0.2rem; }
+    .dest-place { font-size: 0.9rem; font-weight: 300; color: var(--text-dark); line-height: 1.65; }
+    .dest-place-sub { font-size: 0.78rem; font-style: italic; color: var(--text-mid); padding-left: 0.5rem; }
+
     .brochure-section { padding: 60px 0; }
     .brochure-section h2 { font-size: 2rem; font-weight: 300; margin-bottom: 0.6rem; }
     .brochure-section p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 2rem; }
@@ -883,6 +915,10 @@
       header { padding: 0 2rem; }
       .hero-content { padding: 0 2rem; }
       .intro-grid, .about-grid, .sell-grid, .about-page-grid, .founder-grid, .brand-page-grid, .contact-grid, .charter-cards { grid-template-columns: 1fr; gap: 2.5rem; }
+      .dest-region, .dest-region.dest-flip { grid-template-columns: 1fr; }
+      .dest-region-img { min-height: 300px; order: 0 !important; }
+      .dest-region-body { order: 1 !important; padding: 2rem 1.5rem; }
+      .dest-country { grid-template-columns: 70px 1fr; gap: 0.9rem; }
       .services-grid, .action-cards, .events-grid, .lead-cta-grid { grid-template-columns: 1fr; }
       .yacht-grid, .brands-grid { grid-template-columns: 1fr 1fr; }
       .dest-split { grid-template-columns: 1fr; height: auto; }
@@ -1401,46 +1437,72 @@
         <p>From the turquoise waters of the Bahamas to the glittering coastlines of Sardinia — we plan private yacht charters in the world's most sought-after destinations.</p>
       </div>
 
-      <div class="charter-cards fade-in-up">
-        <div class="charter-card">
-          <div class="charter-card-img">
-            <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Caribbean charter — turquoise waters Bahamas" loading="lazy">
+      <div class="dest-regions fade-in-up">
+
+        <!-- EUROPE -->
+        <div class="dest-region">
+          <div class="dest-region-img">
+            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean charter — Sardinia, French Riviera, Amalfi" loading="lazy">
+            <div class="dest-region-img-overlay"></div>
+            <div class="dest-region-img-badge">The Mediterranean</div>
           </div>
-          <div class="charter-card-body">
-            <div class="eyebrow">The Americas</div>
-            <h3>Charter in America</h3>
-            <p>Explore the warm waters of South Florida, the crystal cays of the Bahamas, or cruise the stunning island chains of the US and British Virgin Islands. Departure from Miami or Fort Lauderdale year-round.</p>
-            <div class="charter-tags">
-              <span class="charter-tag">Miami</span>
-              <span class="charter-tag">Bahamas</span>
-              <span class="charter-tag">Florida Keys</span>
-              <span class="charter-tag">Caribbean</span>
-              <span class="charter-tag">USVI</span>
-              <span class="charter-tag">BVI</span>
+          <div class="dest-region-body">
+            <h3>Europe</h3>
+            <p>Timeless coastlines, secret coves and glamorous ports — from the wild islands of southern Italy to the glamour of Monaco and the French Riviera.</p>
+            <div class="dest-countries">
+              <div class="dest-country">
+                <span class="dest-country-name">Italy</span>
+                <div class="dest-places">
+                  <span class="dest-place">Costa Smeralda &amp; Sardinia</span>
+                  <span class="dest-place">Corsica</span>
+                  <span class="dest-place">Isole Eolie &amp; Egadi</span>
+                  <span class="dest-place">Amalfi Coast</span>
+                  <span class="dest-place dest-place-sub">Ponza · Capri · Naples</span>
+                </div>
+              </div>
+              <div class="dest-country">
+                <span class="dest-country-name">Spain</span>
+                <div class="dest-places">
+                  <span class="dest-place">Balearic Islands</span>
+                </div>
+              </div>
+              <div class="dest-country">
+                <span class="dest-country-name">France</span>
+                <div class="dest-places">
+                  <span class="dest-place">French Riviera</span>
+                  <span class="dest-place">Monaco</span>
+                </div>
+              </div>
             </div>
             <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
           </div>
         </div>
 
-        <div class="charter-card">
-          <div class="charter-card-img">
-            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean charter — Sardinia French Riviera" loading="lazy">
+        <!-- AMERICAS -->
+        <div class="dest-region dest-flip">
+          <div class="dest-region-img">
+            <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Americas charter — Bahamas, Caribbean, BVI" loading="lazy">
+            <div class="dest-region-img-overlay"></div>
+            <div class="dest-region-img-badge">The Americas</div>
           </div>
-          <div class="charter-card-body">
-            <div class="eyebrow">The Mediterranean</div>
-            <h3>Charter in Europe</h3>
-            <p>Discover the timeless elegance of the Italian Riviera, the wild beauty of Sardinia's Costa Smeralda, the chicness of the Balearics, or the romance of the French Riviera. Summer seasons from June through September.</p>
-            <div class="charter-tags">
-              <span class="charter-tag">Costa Smeralda</span>
-              <span class="charter-tag">Sardinia</span>
-              <span class="charter-tag">Balearic Islands</span>
-              <span class="charter-tag">Elba</span>
-              <span class="charter-tag">Corsica</span>
-              <span class="charter-tag">French Riviera</span>
+          <div class="dest-region-body">
+            <h3>Americas</h3>
+            <p>Year-round departures from Miami into the warm waters of the Bahamas and the Caribbean — crystal cays, secluded anchorages and private island life.</p>
+            <div class="dest-countries">
+              <div class="dest-country">
+                <span class="dest-country-name">Destinations</span>
+                <div class="dest-places">
+                  <span class="dest-place">Miami</span>
+                  <span class="dest-place">Bahamas</span>
+                  <span class="dest-place">Caribbean</span>
+                  <span class="dest-place">British Virgin Islands</span>
+                </div>
+              </div>
             </div>
             <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
