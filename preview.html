@@ -488,20 +488,75 @@
     .stat-label { font-size: 0.82rem; color: var(--text-mid); margin-top: 0.3rem; }
 
     /* ── SERVICES CARDS ──────────────────────── */
-    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
-    .service-card {
-      background: var(--white); overflow: hidden;
-      transition: box-shadow 0.3s; cursor: default; position: relative;
+    /* ── SERVICES EXPAND PANELS ─────────────────── */
+    .services-expand {
+      display: flex; height: 580px; overflow: hidden;
     }
-    .service-card-img { height: 220px; overflow: hidden; }
-    .service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; filter: brightness(0.9); }
-    .service-card:hover .service-card-img img { transform: scale(1.06); filter: brightness(1); }
-    .service-card-body { padding: 2.2rem 2rem; border-top: 3px solid transparent; transition: border-color 0.3s; }
-    .service-card:hover .service-card-body { border-top-color: var(--celeste); }
-    .service-card:hover { box-shadow: 0 8px 32px rgba(9,32,44,0.1); }
-    .service-roman { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--celeste); font-family: 'Cormorant Garant', Georgia, serif; margin-bottom: 0.8rem; text-transform: uppercase; }
-    .service-card h3 { font-size: 1.45rem; font-weight: 400; margin-bottom: 0.7rem; }
-    .service-card p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.75; }
+    .se-panel {
+      flex: 1; position: relative; overflow: hidden; cursor: pointer;
+      transition: flex 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .services-expand:has(.se-panel:hover) .se-panel { flex: 0.55; }
+    .services-expand .se-panel:hover { flex: 1.9; }
+    .se-panel img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform 0.75s ease; filter: brightness(0.75);
+    }
+    .se-panel:hover img { transform: scale(1.06); filter: brightness(0.6); }
+    .se-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to top, rgba(6,15,24,0.92) 0%, rgba(6,15,24,0.35) 55%, rgba(6,15,24,0.15) 100%);
+      transition: background 0.5s;
+    }
+    .se-panel:hover .se-overlay {
+      background: linear-gradient(to top, rgba(6,15,24,0.95) 0%, rgba(6,15,24,0.5) 60%, rgba(6,15,24,0.2) 100%);
+    }
+    .se-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.8rem 2.4rem; z-index: 2;
+    }
+    .se-num {
+      font-size: 0.78rem; letter-spacing: 0.3em; color: var(--celeste);
+      text-transform: uppercase; display: block; margin-bottom: 0.6rem;
+      opacity: 0.8;
+    }
+    .se-content h3 {
+      font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 300;
+      color: #fff; margin: 0; line-height: 1.15;
+      transition: margin-bottom 0.4s ease;
+    }
+    .se-panel:hover .se-content h3 { margin-bottom: 1.2rem; }
+    .se-divider {
+      width: 0; height: 1px; background: var(--celeste);
+      margin-bottom: 1rem;
+      transition: width 0.45s ease 0.15s;
+    }
+    .se-panel:hover .se-divider { width: 40px; }
+    .se-desc {
+      font-size: 0.95rem; color: rgba(255,255,255,0.65);
+      line-height: 1.8; max-height: 0; overflow: hidden;
+      opacity: 0; transition: max-height 0.5s ease 0.1s, opacity 0.4s ease 0.15s;
+    }
+    .se-panel:hover .se-desc { max-height: 180px; opacity: 1; }
+    .se-cta {
+      display: inline-block; margin-top: 1.4rem;
+      font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--celeste); border: none; background: none;
+      cursor: pointer; padding: 0;
+      opacity: 0; transform: translateY(8px);
+      transition: opacity 0.35s ease 0.2s, transform 0.35s ease 0.2s, color 0.2s;
+    }
+    .se-panel:hover .se-cta { opacity: 1; transform: translateY(0); }
+    .se-cta:hover { color: #fff; }
+    @media (max-width: 768px) {
+      .services-expand { flex-direction: column; height: auto; }
+      .se-panel { flex: none !important; height: 320px; }
+      .se-desc { max-height: 180px; opacity: 1; }
+      .se-panel .se-content h3 { margin-bottom: 0.8rem; }
+      .se-divider { width: 30px; }
+      .se-cta { opacity: 1; transform: translateY(0); }
+    }
 
     /* ── ACTION CARDS ────────────────────────── */
     .action-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
@@ -953,37 +1008,44 @@
         <p>From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.</p>
       </div>
     </div>
-    <div class="services-grid" style="margin-top:3rem;">
-        <div class="service-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="service-card-img">
-            <img src="public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg" alt="Yacht Sales" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <div class="service-roman">I — Yacht Sales</div>
-            <h3>Buy or Sell</h3>
-            <p>Access our curated portfolio of motor yachts, sailing yachts, superyachts and exclusive off-market listings. We represent both buyers and sellers with equal discretion and market expertise.</p>
-          </div>
+    <div class="services-expand" style="margin-top:3rem;" data-aos="fade-up">
+
+      <div class="se-panel" onclick="showPage('page-sale')">
+        <img src="public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg" alt="Yacht Sales">
+        <div class="se-overlay"></div>
+        <div class="se-content">
+          <span class="se-num">I — Yacht Sales</span>
+          <h3>Buy or Sell</h3>
+          <div class="se-divider"></div>
+          <p class="se-desc">Access our curated portfolio of motor yachts, sailing yachts and superyachts — including exclusive off-market listings. We represent buyers and sellers with equal discretion and expertise.</p>
+          <button class="se-cta">Explore Listings →</button>
         </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
-          <div class="service-card-img">
-            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Yacht Charter" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <div class="service-roman">II — Charter</div>
-            <h3>Private Charter</h3>
-            <p>Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
-          </div>
+      </div>
+
+      <div class="se-panel" onclick="showPage('page-charter')">
+        <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Yacht Charter">
+        <div class="se-overlay"></div>
+        <div class="se-content">
+          <span class="se-num">II — Charter</span>
+          <h3>Private Charter</h3>
+          <div class="se-divider"></div>
+          <p class="se-desc">Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
+          <button class="se-cta">Plan a Charter →</button>
         </div>
-        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="service-card-img">
-            <img src="public/assets/photos/sailboats/Dufour-48-1024x683.jpg" alt="Yacht Management" loading="lazy">
-          </div>
-          <div class="service-card-body">
-            <div class="service-roman">III — Management</div>
-            <h3>Yacht Management</h3>
-            <p>Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
-          </div>
+      </div>
+
+      <div class="se-panel" onclick="showPage('page-management')">
+        <img src="public/assets/photos/sailboats/Dufour-48-1024x683.jpg" alt="Yacht Management">
+        <div class="se-overlay"></div>
+        <div class="se-content">
+          <span class="se-num">III — Management</span>
+          <h3>Yacht Management</h3>
+          <div class="se-divider"></div>
+          <p class="se-desc">Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
+          <button class="se-cta">Learn More →</button>
         </div>
+      </div>
+
     </div>
   </section>
 
