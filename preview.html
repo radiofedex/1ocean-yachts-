@@ -6,6 +6,7 @@
   <title>1 Ocean Yachts Group</title>
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -938,6 +939,92 @@
       .region-cards { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    /* ── CHARTER PAGE ────────────────────────── */
+    .ch-split-wrap { display: flex; height: 85vh; min-height: 500px; overflow: hidden; }
+    .ch-split-panel { position: relative; overflow: hidden; flex: 1; cursor: pointer; }
+    .ch-split-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); }
+    .ch-split-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,10,20,0.88) 0%, rgba(4,10,20,0.25) 55%, transparent 100%); z-index: 1; }
+    .ch-split-divider { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.3); z-index: 10; pointer-events: none; }
+    .ch-split-content { position: absolute; bottom: 3rem; left: 3rem; z-index: 5; }
+    .ch-split-eyebrow { display: block; font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.65rem; font-family: 'Cormorant Garant', Georgia, serif; }
+    .ch-split-title { font-family: 'Cormorant Garant', Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; color: #fff; margin: 0 0 1rem; line-height: 1; letter-spacing: -0.02em; }
+    .ch-split-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.72; max-width: 300px; margin-bottom: 1.4rem; }
+    .ch-split-cta { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.45); cursor: pointer; padding: 0.7rem 1.5rem; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .ch-split-panel { transition: flex 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+      .ch-split-divider { transition: opacity 0.4s ease; }
+      .ch-split-wrap:hover .ch-split-divider { opacity: 0; }
+      .ch-split-wrap:hover .ch-split-panel { flex: 0.35; }
+      .ch-split-wrap:hover .ch-split-panel:hover { flex: 0.65; }
+      .ch-split-panel img { transition: transform 0.6s ease, filter 0.6s ease; }
+      .ch-split-wrap:hover .ch-split-panel:not(:hover) img { filter: brightness(0.55); }
+      .ch-split-panel:hover img { transform: scale(1.05); filter: brightness(0.82); }
+      .ch-split-desc, .ch-split-cta { opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; }
+      .ch-split-panel:hover .ch-split-desc,
+      .ch-split-panel:hover .ch-split-cta { opacity: 1; transform: translateY(0); }
+      .ch-split-cta { transition: border-color 0.2s, background 0.2s, opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s; }
+    }
+    .ch-split-cta:hover { border-color: var(--celeste); background: rgba(122,197,200,0.12); }
+
+    /* Destination tabs */
+    .ch-dest-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--light-grey); margin-bottom: 3rem; }
+    .ch-dest-tab { position: relative; font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); background: none; border: none; cursor: pointer; padding: 0.9rem 2.5rem 0.9rem 0; }
+    .ch-dest-tab.active { color: var(--navy); }
+    .ch-dest-tab::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--celeste); transition: width 0.3s ease; }
+    .ch-dest-tab.active::after { width: 100%; }
+
+    /* Destination layout */
+    .ch-dest-panel { display: none; }
+    .ch-dest-panel.active { display: block; }
+    .ch-dest-layout { display: grid; grid-template-columns: 55% 45%; gap: 4rem; align-items: start; }
+    .ch-dest-img-sticky { position: sticky; top: 100px; height: 480px; overflow: hidden; }
+    .ch-dest-img-wrap { position: relative; width: 100%; height: 100%; background: var(--navy-mid); }
+    .ch-dest-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease; }
+    .ch-dest-img-wrap img.ch-img-active { opacity: 1; }
+
+    /* Destination items */
+    .ch-dest-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 0.6rem; border-bottom: 1px solid #eee; cursor: default; transition: background 0.2s; }
+    .ch-dest-item:hover { background: rgba(0,153,200,0.04); }
+    .ch-dest-num { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.9rem; color: var(--celeste); min-width: 2rem; transition: font-size 0.2s; flex-shrink: 0; }
+    .ch-dest-item:hover .ch-dest-num { font-size: 1.15rem; }
+    .ch-dest-info { flex: 1; }
+    .ch-dest-name { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); margin: 0 0 0.1rem; }
+    .ch-dest-tagline { font-size: 0.82rem; color: var(--text-mid); margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.3s ease, opacity 0.25s ease; }
+    .ch-dest-item:hover .ch-dest-tagline { max-height: 2.5rem; opacity: 1; }
+    .ch-dest-arrow { font-size: 1rem; color: var(--celeste); opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
+    .ch-dest-item:hover .ch-dest-arrow { opacity: 1; }
+
+    /* Icons strip */
+    .ch-icons-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .ch-icon-item { display: flex; flex-direction: column; gap: 0.4rem; }
+    .ch-icon-label { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.92); margin-top: 0.3rem; }
+    .ch-icon-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+    /* Brochure */
+    .ch-brochure { background: var(--navy); padding: 6rem 0; }
+    .ch-brochure-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .ch-brochure-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 2.2rem; flex-wrap: wrap; }
+    .ch-btn-outline-white { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; padding: 0.85rem 2rem; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
+    .ch-btn-outline-white:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); }
+    .ch-brochure-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; }
+    .ch-brochure-overlay.open { display: flex; }
+    .ch-brochure-iframe-wrap { position: relative; width: 90vw; height: 85vh; }
+    .ch-brochure-iframe-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .ch-brochure-close { position: absolute; top: -2.8rem; right: 0; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; padding: 0.4rem 0.8rem; line-height: 1; opacity: 0.8; }
+    .ch-brochure-close:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .ch-split-wrap { flex-direction: column; height: auto; }
+      .ch-split-panel { height: 50vh; flex: none !important; }
+      .ch-split-divider { display: none; }
+      .ch-split-desc, .ch-split-cta { opacity: 1; transform: none; }
+      .ch-dest-layout { grid-template-columns: 1fr; }
+      .ch-dest-img-sticky { display: none; }
+      .ch-dest-tagline { max-height: none !important; opacity: 1 !important; margin-top: 0.3rem; }
+      .ch-icons-strip { grid-template-columns: 1fr; gap: 1.4rem; }
+    }
   </style>
 </head>
 <body>
@@ -1370,112 +1457,174 @@
      PAGE: CHARTER
 ══════════════════════════════════════════════════ -->
 <div id="page-charter" class="page-section">
-  <!-- VIDEO HERO -->
-  <div class="pj-video-hero" style="height:70vh;min-height:500px;">
-    <video autoplay muted loop playsinline preload="metadata" class="pj-video-bg">
-      <source src="public/assets/videos/sailing-hero.mp4" type="video/mp4">
-    </video>
-    <div class="pj-video-overlay" style="background:linear-gradient(to bottom,rgba(4,10,20,0.55) 0%,rgba(4,10,20,0.75) 100%);"></div>
-    <div class="pj-video-blocker"></div>
-    <div class="pj-video-content" style="text-align:center;max-width:700px;margin:0 auto;padding:0 2rem;">
-      <div class="breadcrumb" style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;text-align:center;">
-        <span onclick="showPage('home')" style="cursor:pointer;color:rgba(255,255,255,0.55);">Home</span> / Charter
+
+  <!-- 1. SPLIT HERO -->
+  <div class="ch-split-wrap">
+    <div class="ch-split-panel" onclick="document.getElementById('ch-destinations').scrollIntoView({behavior:'smooth'});chSwitchTab('americas');">
+      <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Americas yacht charter">
+      <div class="ch-split-overlay"></div>
+      <div class="ch-split-content">
+        <span class="ch-split-eyebrow">The Americas</span>
+        <h2 class="ch-split-title">Americas</h2>
+        <p class="ch-split-desc">Year-round departures from Miami into the warm turquoise waters of the Bahamas, Caribbean and British Virgin Islands.</p>
+        <button class="ch-split-cta">Explore Americas →</button>
       </div>
-      <div class="eyebrow" style="color:var(--celeste);text-align:center;">Americas &amp; Mediterranean</div>
-      <h1 style="font-family:'Cormorant Garant',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:#fff;margin:1rem 0 1.2rem;letter-spacing:-0.03em;line-height:1.05;">Yacht Charter</h1>
-      <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;max-width:500px;margin:0 auto;line-height:1.8;">A private yachting experience shaped entirely around your lifestyle — from the Bahamas to the French Riviera.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap;">
-        <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
-        <button style="font-family:'Cormorant Garant',Georgia,serif;font-size:0.95rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);background:none;border:1px solid rgba(255,255,255,0.3);cursor:pointer;padding:0.8rem 2rem;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--celeste)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)'">View Brochure</button>
+    </div>
+    <div class="ch-split-divider"></div>
+    <div class="ch-split-panel" onclick="document.getElementById('ch-destinations').scrollIntoView({behavior:'smooth'});chSwitchTab('med');">
+      <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean yacht charter">
+      <div class="ch-split-overlay"></div>
+      <div class="ch-split-content">
+        <span class="ch-split-eyebrow">The Mediterranean</span>
+        <h2 class="ch-split-title">Mediterranean</h2>
+        <p class="ch-split-desc">From the wild coves of Sardinia to the glamour of Monaco — the world's most coveted coastlines, curated.</p>
+        <button class="ch-split-cta">Explore Mediterranean →</button>
       </div>
     </div>
   </div>
 
-  <section class="section bg-white">
+  <!-- 2. DESTINATIONS -->
+  <section id="ch-destinations" style="background:#fff;padding:80px 0;">
     <div class="container">
-      <div class="section-header fade-in-up">
-        <div class="eyebrow">Choose Your Destination</div>
-        <h2>Where Will You Go?</h2>
-        <p>From the turquoise waters of the Bahamas to the glittering coastlines of Sardinia — we plan private yacht charters in the world's most sought-after destinations.</p>
+      <div class="ch-dest-tabs">
+        <button class="ch-dest-tab active" data-region="americas" onclick="chSwitchTab('americas')">Americas</button>
+        <button class="ch-dest-tab" data-region="med" onclick="chSwitchTab('med')">Mediterranean</button>
       </div>
 
-      <div class="dest-regions fade-in-up">
-
-        <!-- EUROPE -->
-        <div class="dest-region">
-          <div class="dest-region-img">
-            <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Mediterranean charter — Sardinia, French Riviera, Amalfi" loading="lazy">
-            <div class="dest-region-img-overlay"></div>
-            <div class="dest-region-img-badge">The Mediterranean</div>
-          </div>
-          <div class="dest-region-body">
-            <h3>Europe</h3>
-            <p>Timeless coastlines, secret coves and glamorous ports — from the wild islands of southern Italy to the glamour of Monaco and the French Riviera.</p>
-            <div class="dest-countries">
-              <div class="dest-country">
-                <span class="dest-country-name">Italy</span>
-                <div class="dest-places">
-                  <span class="dest-place">Costa Smeralda &amp; Sardinia</span>
-                  <span class="dest-place">Corsica</span>
-                  <span class="dest-place">Isole Eolie &amp; Egadi</span>
-                  <span class="dest-place">Amalfi Coast</span>
-                  <span class="dest-place dest-place-sub">Ponza · Capri · Naples</span>
-                </div>
+      <!-- Americas panel -->
+      <div class="ch-dest-panel active" id="ch-panel-americas">
+        <div class="ch-dest-layout">
+          <div class="ch-dest-list" id="ch-list-americas">
+            <div class="ch-dest-item" data-imgidx="0">
+              <span class="ch-dest-num">I</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Miami &amp; South Florida</h4>
+                <p class="ch-dest-tagline">Gateway to the Caribbean. Turquoise waters, year-round sunshine.</p>
               </div>
-              <div class="dest-country">
-                <span class="dest-country-name">Spain</span>
-                <div class="dest-places">
-                  <span class="dest-place">Balearic Islands</span>
-                </div>
-              </div>
-              <div class="dest-country">
-                <span class="dest-country-name">France</span>
-                <div class="dest-places">
-                  <span class="dest-place">French Riviera</span>
-                  <span class="dest-place">Monaco</span>
-                </div>
-              </div>
+              <span class="ch-dest-arrow">→</span>
             </div>
-            <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
+            <div class="ch-dest-item" data-imgidx="1">
+              <span class="ch-dest-num">II</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">The Bahamas</h4>
+                <p class="ch-dest-tagline">700 islands of pristine white sand and crystal-clear shallows.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+            <div class="ch-dest-item" data-imgidx="0">
+              <span class="ch-dest-num">III</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Caribbean</h4>
+                <p class="ch-dest-tagline">Trade winds, rum punches, and legendary anchorages.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+            <div class="ch-dest-item" data-imgidx="1">
+              <span class="ch-dest-num">IV</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">British Virgin Islands</h4>
+                <p class="ch-dest-tagline">The sailing capital of the world. Pure, unspoilt, extraordinary.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+          </div>
+          <div class="ch-dest-img-sticky">
+            <div class="ch-dest-img-wrap" id="ch-imgwrap-americas">
+              <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" class="ch-img-active" alt="Miami charter">
+              <img src="public/assets/photos/lagoon/Lagoon-40-10Eris.jpg" alt="Bahamas charter">
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- AMERICAS -->
-        <div class="dest-region dest-flip">
-          <div class="dest-region-img">
-            <img src="public/assets/photos/lagoon/Lagoon-40-Eris16esterno.jpg" alt="Americas charter — Bahamas, Caribbean, BVI" loading="lazy">
-            <div class="dest-region-img-overlay"></div>
-            <div class="dest-region-img-badge">The Americas</div>
-          </div>
-          <div class="dest-region-body">
-            <h3>Americas</h3>
-            <p>Year-round departures from Miami into the warm waters of the Bahamas and the Caribbean — crystal cays, secluded anchorages and private island life.</p>
-            <div class="dest-countries">
-              <div class="dest-country">
-                <span class="dest-country-name">Destinations</span>
-                <div class="dest-places">
-                  <span class="dest-place">Miami</span>
-                  <span class="dest-place">Bahamas</span>
-                  <span class="dest-place">Caribbean</span>
-                  <span class="dest-place">British Virgin Islands</span>
-                </div>
+      <!-- Mediterranean panel -->
+      <div class="ch-dest-panel" id="ch-panel-med">
+        <div class="ch-dest-layout">
+          <div class="ch-dest-list" id="ch-list-med">
+            <div class="ch-dest-item" data-imgidx="0">
+              <span class="ch-dest-num">I</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Costa Smeralda, Sardinia</h4>
+                <p class="ch-dest-tagline">Emerald waters, pink granite cliffs, legendary beach clubs.</p>
               </div>
+              <span class="ch-dest-arrow">→</span>
             </div>
-            <button class="charter-card-btn" onclick="openModal('charter')">Plan My Charter</button>
+            <div class="ch-dest-item" data-imgidx="1">
+              <span class="ch-dest-num">II</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Balearic Islands</h4>
+                <p class="ch-dest-tagline">Ibiza, Formentera, Mallorca — four islands, each a world apart.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+            <div class="ch-dest-item" data-imgidx="2">
+              <span class="ch-dest-num">III</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">French Riviera &amp; Monaco</h4>
+                <p class="ch-dest-tagline">Saint-Tropez to Monaco. The pinnacle of Mediterranean glamour.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+            <div class="ch-dest-item" data-imgidx="3">
+              <span class="ch-dest-num">IV</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Corsica &amp; Elba</h4>
+                <p class="ch-dest-tagline">Wild, unspoilt beauty. Secret coves away from the summer crowds.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+            <div class="ch-dest-item" data-imgidx="4">
+              <span class="ch-dest-num">V</span>
+              <div class="ch-dest-info">
+                <h4 class="ch-dest-name">Amalfi Coast</h4>
+                <p class="ch-dest-tagline">Clifftop villages, sapphire water, the most dramatic coastline in Italy.</p>
+              </div>
+              <span class="ch-dest-arrow">→</span>
+            </div>
+          </div>
+          <div class="ch-dest-img-sticky">
+            <div class="ch-dest-img-wrap" id="ch-imgwrap-med">
+              <img src="public/assets/photos/sardinia/IMG_6866.jpg" class="ch-img-active" alt="Sardinia charter">
+              <img src="public/assets/photos/sardinia/IMG_7648.jpg" alt="Balearics charter">
+              <img src="public/assets/photos/sardinia/IMG_7820.jpg" alt="French Riviera charter">
+              <img src="public/assets/photos/sardinia/cala-goloritze.jpg" alt="Corsica charter">
+              <img src="public/assets/photos/sardinia/IMG_8393.jpg" alt="Amalfi charter">
+            </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- CHARTER VIDEO STRIP -->
-  <div class="pj-video-strip" style="min-height:420px;">
+  <!-- 3. VIDEO STRIP -->
+  <div class="pj-video-strip" style="min-height:480px;">
     <div class="pj-vs-text">
       <div class="eyebrow" style="color:var(--celeste);">The Experience</div>
       <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Every Detail, Handled</h2>
-      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:2rem;">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
-      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('charter')">Plan My Charter</button>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:0;">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
+      <div class="ch-icons-strip">
+        <div class="ch-icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12M12 12L8 16M12 12L16 16"/><circle cx="12" cy="7" r="3"/><path d="M5 20c1.5-2 3.5-3 7-3s5.5 1 7 3"/>
+          </svg>
+          <span class="ch-icon-label">Fully Crewed</span>
+          <span class="ch-icon-desc">Captain, chef, and crew selected for your voyage</span>
+        </div>
+        <div class="ch-icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span class="ch-icon-label">Custom Itinerary</span>
+          <span class="ch-icon-desc">Every detail planned around your schedule</span>
+        </div>
+        <div class="ch-icon-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 18h20M4 18l2-6h12l2 6"/><path d="M9 12V8a3 3 0 0 1 6 0v4"/>
+          </svg>
+          <span class="ch-icon-label">Fleet Access</span>
+          <span class="ch-icon-desc">Motor yachts, sailing yachts, catamarans</span>
+        </div>
+      </div>
     </div>
     <div class="pj-vs-video">
       <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -1485,22 +1634,31 @@
     </div>
   </div>
 
-  <!-- BROCHURE PDF -->
-  <section class="brochure-section bg-off">
+  <!-- 4. BROCHURE -->
+  <section class="ch-brochure">
     <div class="container">
-      <div class="fade-in-up">
-        <div class="eyebrow">2026 Season</div>
-        <h2>Mediterranean Charter Brochure</h2>
-        <p>Download or browse our full 2026 Mediterranean charter brochure, featuring exclusive destinations, featured yachts and seasonal itinerary suggestions.</p>
+      <div class="ch-brochure-inner">
+        <div class="eyebrow" style="color:var(--celeste);">2026 Season</div>
+        <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;margin:0.8rem 0 1rem;">Mediterranean Charter Brochure</h2>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.8;">Download or browse our full 2026 Mediterranean charter brochure — featuring curated destinations, featured yachts and seasonal itinerary suggestions.</p>
+        <div class="ch-brochure-btns">
+          <a href="public/assets/pdf/europe-charter.pdf" download class="ch-btn-outline-white">Download PDF</a>
+          <button class="ch-btn-outline-white" onclick="document.getElementById('ch-overlay').classList.add('open')">View Online</button>
+        </div>
       </div>
-      <iframe
-        src="public/assets/pdf/europe-charter.pdf"
-        style="width:100%;height:80vh;min-height:600px;border:none;border:1px solid var(--light-grey);display:block;margin-top:2rem;"
-        title="Europe Charter Brochure">
-        <p>Your browser does not support iframes. <a href="public/assets/pdf/europe-charter.pdf">Download the brochure here.</a></p>
-      </iframe>
     </div>
   </section>
+
+  <!-- Brochure overlay -->
+  <div id="ch-overlay" class="ch-brochure-overlay" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="ch-brochure-iframe-wrap">
+      <button class="ch-brochure-close" onclick="document.getElementById('ch-overlay').classList.remove('open')">✕</button>
+      <iframe src="public/assets/pdf/europe-charter.pdf" title="Mediterranean Charter Brochure">
+        <p>Your browser does not support iframes. <a href="public/assets/pdf/europe-charter.pdf" style="color:var(--celeste)">Download here.</a></p>
+      </iframe>
+    </div>
+  </div>
+
 </div><!-- /page-charter -->
 
 <!-- ══════════════════════════════════════════════════
@@ -2668,6 +2826,36 @@
     });
     /* Initial check */
     setTimeout(runCounters, 500);
+  })();
+</script>
+<script>
+  /* Charter page — tab switcher + destination image crossfade */
+  function chSwitchTab(region) {
+    document.querySelectorAll('.ch-dest-tab').forEach(function(t) {
+      t.classList.toggle('active', t.dataset.region === region);
+    });
+    document.querySelectorAll('.ch-dest-panel').forEach(function(p) {
+      p.classList.toggle('active', p.id === 'ch-panel-' + region);
+    });
+  }
+
+  (function() {
+    function initDestHover(listId, imgWrapId) {
+      var list = document.getElementById(listId);
+      var wrap = document.getElementById(imgWrapId);
+      if (!list || !wrap) return;
+      var imgs = wrap.querySelectorAll('img');
+      list.querySelectorAll('.ch-dest-item').forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+          var idx = parseInt(item.dataset.imgidx, 10) || 0;
+          imgs.forEach(function(img, i) {
+            img.classList.toggle('ch-img-active', i === idx);
+          });
+        });
+      });
+    }
+    initDestHover('ch-list-americas', 'ch-imgwrap-americas');
+    initDestHover('ch-list-med', 'ch-imgwrap-med');
   })();
 </script>
 </body>
