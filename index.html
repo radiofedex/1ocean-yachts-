@@ -52,23 +52,25 @@
     /* ── HEADER FRASER STYLE ────────────────── */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 72px; background: #0D1B2A;
-      transition: box-shadow 0.3s;
-    }
-    header.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.35); }
-
-    .nav-inner {
+      height: 88px;
       display: flex; align-items: center; justify-content: space-between;
-      height: 100%; padding: 0 2rem; gap: 1rem; position: relative;
+      padding: 0 2.5rem; gap: 1rem;
+      background: transparent;
+      transition: background 0.4s ease, height 0.3s ease, box-shadow 0.3s ease;
+    }
+    header.scrolled {
+      background: #0D1B2A;
+      height: 72px;
+      box-shadow: 0 2px 24px rgba(0,0,0,0.3);
     }
 
     /* Logo — centered absolute */
     .nav-logo {
       position: absolute; left: 50%; transform: translateX(-50%);
       background: none; border: none; cursor: pointer; padding: 0;
-      height: 38px; flex-shrink: 0;
+      height: 44px; flex-shrink: 0;
     }
-    .nav-logo img { height: 38px; width: auto; filter: brightness(0) invert(1); display: block; }
+    .nav-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); display: block; }
     .nav-logo:hover img { opacity: 0.85; }
 
     /* Nav halves */
@@ -80,27 +82,29 @@
     .nav-link {
       display: flex; align-items: center; gap: 4px;
       font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.72); background: none; border: none; cursor: pointer;
-      padding: 0 0.9rem; height: 72px; white-space: nowrap; position: relative;
-      transition: color 0.2s;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer;
+      padding: 0 1rem; height: 88px; white-space: nowrap; position: relative;
+      transition: color 0.25s ease, height 0.3s ease;
     }
-    .nav-link svg { width: 8px; height: 8px; opacity: 0.55; flex-shrink: 0; transition: transform 0.25s; }
+    header.scrolled .nav-link { height: 72px; }
+    .nav-link svg { width: 8px; height: 8px; opacity: 0.5; flex-shrink: 0; transition: transform 0.25s; }
     .nav-item.open .nav-link svg { transform: rotate(180deg); }
     .nav-link:hover, .nav-link.active { color: #fff; }
     .nav-link::after {
-      content: ''; position: absolute; bottom: 0; left: 0.9rem; right: 0.9rem;
-      height: 2px; background: var(--celeste);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px; background: var(--celeste);
+      transition: width 0.25s ease;
     }
-    .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { transform: scaleX(1); }
+    .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { width: calc(100% - 1.5rem); }
 
     /* Dropdown */
     .nav-dropdown {
-      display: none; position: absolute; top: 72px; left: 50%; transform: translateX(-50%);
+      display: none; position: absolute; top: 88px; left: 50%; transform: translateX(-50%);
       background: #fff; border-top: 2px solid var(--celeste);
       min-width: 200px; box-shadow: 0 16px 48px rgba(0,0,0,0.15); z-index: 300; padding: 0.5rem 0;
     }
+    header.scrolled .nav-dropdown { top: 72px; }
     @keyframes ddFade { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
     .nav-item.open .nav-dropdown { display: block; animation: ddFade 0.2s ease; }
     .nav-dropdown a, .nav-dropdown button {
@@ -1043,55 +1047,51 @@
       .sell-step-num { font-size: 3rem; width: 3rem; }
     }
 
-    /* ── CONTACT PAGE FRASER ─────────────────── */
-    .contact-hero { position: relative; height: 55vh; min-height: 380px; overflow: hidden; display: flex; align-items: flex-end; }
-    .contact-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .contact-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.3) 55%, transparent 100%); }
-    .contact-hero-content { position: relative; padding: 3.5rem 5vw; color: #fff; }
-    .contact-hero-content h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.8rem,6vw,5rem); font-weight: 400; color: #fff; margin: 0.4rem 0; }
-    .contact-hero-sub { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.62); max-width: 500px; margin-top: 0.5rem; line-height: 1.7; }
+    /* ── CONTACT PAGE ────────────────────────── */
+    .contact-hero { position: relative; height: 60vh; min-height: 400px; overflow: hidden; display: flex; align-items: flex-end; }
+    .contact-hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .contact-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.2) 60%, transparent 100%); }
+    .contact-hero-txt { position: relative; padding: 3.5rem 5vw; color: #fff; }
+    .contact-hero-txt h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.8rem,6vw,5.5rem); font-weight: 400; color: #fff; margin: 0.3rem 0; }
+    .contact-hero-sub { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.6); max-width: 480px; margin-top: 0.5rem; line-height: 1.7; }
 
-    .contact-body { display: grid; grid-template-columns: 1fr 1.65fr; }
-    .contact-info { background: #0D1B2A; padding: 5rem 4vw; display: flex; flex-direction: column; gap: 2rem; }
-    .contact-info-label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 0.3rem; }
-    .contact-info-value { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.92rem; color: rgba(255,255,255,0.82); text-decoration: none; display: block; transition: color 0.2s; }
-    a.contact-info-value:hover { color: var(--celeste); }
-    .contact-social { display: flex; gap: 1.2rem; margin-top: auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
-    .contact-social a { color: rgba(255,255,255,0.38); transition: color 0.2s; }
-    .contact-social a:hover { color: var(--celeste); }
+    .contact-body { display: grid; grid-template-columns: 1fr 1.7fr; min-height: 55vh; }
+    .contact-info-col { background: #0D1B2A; padding: 5rem 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .ci-block { display: flex; flex-direction: column; gap: 0.25rem; }
+    .ci-label { font-family: 'DM Sans', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .ci-value { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.82); text-decoration: none; transition: color 0.2s; }
+    a.ci-value:hover { color: var(--celeste); }
+    .ci-social { display: flex; gap: 1.2rem; margin-top: auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .ci-social a { color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    .ci-social a:hover { color: var(--celeste); }
 
-    .contact-form-wrap { background: #fff; padding: 5rem 5vw; }
-    .contact-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 400; color: #0D1B2A; margin-bottom: 2.5rem; margin-top: 0.5rem; }
-
-    .cf-row { display: flex; gap: 1.5rem; }
-    .cf-row-2 > .cf-field { flex: 1; }
-    .cf-field { margin-bottom: 1.8rem; }
-    .cf-field label { display: block; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #999; margin-bottom: 0.5rem; }
-    .cf-field input, .cf-field textarea { width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 0.7rem 0; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; color: #0D1B2A; background: transparent; outline: none; transition: border-color 0.2s; resize: none; }
-    .cf-field input:focus, .cf-field textarea:focus { border-bottom-color: #0D1B2A; }
-    .cf-field input::placeholder, .cf-field textarea::placeholder { color: #ccc; }
-
-    .cf-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
-    .cf-pill { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid #ddd; color: #999; padding: 0.45rem 1rem; cursor: pointer; transition: all 0.15s; }
-    .cf-pill:hover { border-color: #0D1B2A; color: #0D1B2A; }
-    .cf-pill.active { background: #0D1B2A; border-color: #0D1B2A; color: #fff; }
-
-    .cf-submit { display: flex; align-items: center; gap: 0.7rem; background: #0D1B2A; color: #fff; border: none; cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 1rem 2.5rem; margin-top: 0.5rem; transition: background 0.2s; }
-    .cf-submit:hover { background: var(--celeste); }
-    .cf-submit svg { transition: transform 0.2s; }
-    .cf-submit:hover svg { transform: translateX(4px); }
-    .cf-disclaimer { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.7rem; color: #bbb; margin-top: 1rem; }
-
-    .cf-success { text-align: center; padding: 4rem 2rem; }
-    .cf-success-icon { width: 60px; height: 60px; border-radius: 50%; background: #0D1B2A; color: #fff; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
-    .cf-success h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #0D1B2A; margin-bottom: 0.5rem; }
-    .cf-success p { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.88rem; color: #888; }
+    .contact-form-col { background: #fff; padding: 5rem 5vw; }
+    .cf2-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; color: #0D1B2A; margin-bottom: 2.5rem; margin-top: 0.4rem; }
+    .cf2-row { display: flex; gap: 1.5rem; }
+    .cf2-row .cf2-field { flex: 1; }
+    .cf2-field { margin-bottom: 1.8rem; }
+    .cf2-field label { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; margin-bottom: 0.5rem; }
+    .cf2-field input, .cf2-field textarea { width: 100%; border: none; border-bottom: 1px solid #e0e0e0; padding: 0.7rem 0; font-family: 'DM Sans', sans-serif; font-size: 0.92rem; color: #0D1B2A; background: transparent; outline: none; transition: border-color 0.2s; resize: none; }
+    .cf2-field input:focus, .cf2-field textarea:focus { border-bottom-color: #0D1B2A; }
+    .cf2-field input::placeholder, .cf2-field textarea::placeholder { color: #ccc; }
+    .cf2-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+    .cf2-pill { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid #ddd; color: #aaa; padding: 0.45rem 1rem; cursor: pointer; transition: all 0.15s; }
+    .cf2-pill:hover { border-color: #0D1B2A; color: #0D1B2A; }
+    .cf2-pill.active { background: #0D1B2A; border-color: #0D1B2A; color: #fff; }
+    .cf2-submit { display: inline-flex; align-items: center; gap: 0.7rem; background: #0D1B2A; color: #fff; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 1rem 2.5rem; margin-top: 0.5rem; transition: background 0.2s; }
+    .cf2-submit:hover { background: var(--celeste); }
+    .cf2-submit svg { transition: transform 0.2s; }
+    .cf2-submit:hover svg { transform: translateX(4px); }
+    .cf2-note { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: #bbb; margin-top: 1rem; }
+    .cf2-success { text-align: center; padding: 5rem 2rem; }
+    .cf2-success-icon { width: 60px; height: 60px; border-radius: 50%; background: #0D1B2A; color: #fff; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+    .cf2-success h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #0D1B2A; margin-bottom: 0.5rem; }
+    .cf2-success p { font-family: 'DM Sans', sans-serif; font-size: 0.88rem; color: #999; }
 
     @media (max-width: 768px) {
       .contact-body { grid-template-columns: 1fr; }
-      .contact-info { padding: 3rem 2rem; }
-      .contact-form-wrap { padding: 3rem 2rem; }
-      .cf-row { flex-direction: column; gap: 0; }
+      .contact-info-col, .contact-form-col { padding: 3rem 2rem; }
+      .cf2-row { flex-direction: column; gap: 0; }
     }
   </style>
 </head>
@@ -1101,64 +1101,62 @@
      HEADER
 ══════════════════════════════════════════════════ -->
 <header id="site-header">
-  <div class="nav-inner">
 
-    <!-- Left nav -->
-    <nav class="header-nav nav-left">
-      <div class="nav-item">
-        <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
-      </div>
-      <div class="nav-item">
-        <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
-      </div>
-      <div class="nav-item">
-        <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
-      </div>
-    </nav>
+  <!-- Left nav -->
+  <nav class="header-nav nav-left">
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
+    </div>
+  </nav>
 
-    <!-- Logo centrato -->
-    <button class="nav-logo" onclick="showPage('home')">
-      <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
-    </button>
+  <!-- Logo centrato -->
+  <button class="nav-logo" onclick="showPage('home')">
+    <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
+  </button>
 
-    <!-- Right nav -->
-    <nav class="header-nav nav-right">
-      <div class="nav-item" id="ni-brands">
-        <button class="nav-link" onclick="toggleNav('ni-brands')">
-          Exclusive Brands
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-        </button>
-        <div class="nav-dropdown">
-          <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
-          <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
-        </div>
+  <!-- Right nav -->
+  <nav class="header-nav nav-right">
+    <div class="nav-item" id="ni-brands">
+      <button class="nav-link" onclick="toggleNav('ni-brands')">
+        Exclusive Brands
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <div class="nav-dropdown">
+        <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
+        <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
       </div>
-      <div class="nav-item">
-        <button class="nav-link" onclick="showPage('page-about')">About</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-about')">About</button>
+    </div>
+    <div class="lang-wrap">
+      <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
+        EN
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <a href="#" onclick="setLang('EN','English');return false;">English</a>
+        <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
+        <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
+        <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
       </div>
-      <div class="lang-wrap">
-        <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
-          EN
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-        </button>
-        <div class="lang-dropdown" id="lang-dropdown">
-          <a href="#" onclick="setLang('EN','English');return false;">English</a>
-          <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
-          <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
-          <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
-        </div>
-      </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- CTA -->
-    <button class="btn-header-cta" onclick="showPage('page-contact')">Contact Us</button>
+  <!-- CTA -->
+  <button class="btn-header-cta" onclick="showPage('page-contact')">Contact Us</button>
 
-    <!-- Hamburger mobile -->
-    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+  <!-- Hamburger mobile -->
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 
-  </div>
 </header>
 
 <!-- ══════════════════════════════════════════════════
@@ -1980,12 +1978,12 @@
 
   <!-- Hero video -->
   <div class="contact-hero">
-    <video autoplay muted loop playsinline class="contact-hero-video">
+    <video autoplay muted loop playsinline class="contact-hero-vid">
       <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
     </video>
     <div class="contact-hero-overlay"></div>
-    <div class="contact-hero-content">
-      <p class="eyebrow" style="color:var(--celeste);">Get in Touch</p>
+    <div class="contact-hero-txt">
+      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.8rem">Get in Touch</p>
       <h1>Contact Us</h1>
       <p class="contact-hero-sub">Whether you're buying, selling or planning your next charter — our team is only a message away.</p>
     </div>
@@ -1995,83 +1993,83 @@
   <div class="contact-body">
 
     <!-- Left: info -->
-    <div class="contact-info">
-      <div>
-        <p class="contact-info-label">Phone</p>
-        <a href="tel:+13054917794" class="contact-info-value">+1 305 491 7794</a>
+    <div class="contact-info-col">
+      <div class="ci-block">
+        <span class="ci-label">Phone</span>
+        <a href="tel:+13054917794" class="ci-value">+1 305 491 7794</a>
       </div>
-      <div>
-        <p class="contact-info-label">Email</p>
-        <a href="mailto:info@1oceanyachts.com" class="contact-info-value">info@1oceanyachts.com</a>
+      <div class="ci-block">
+        <span class="ci-label">Email</span>
+        <a href="mailto:info@1oceanyachts.com" class="ci-value">info@1oceanyachts.com</a>
       </div>
-      <div>
-        <p class="contact-info-label">Base</p>
-        <p class="contact-info-value">Miami, Florida — USA</p>
+      <div class="ci-block">
+        <span class="ci-label">WhatsApp</span>
+        <a href="https://wa.me/13054917794" target="_blank" rel="noopener" class="ci-value">+1 305 491 7794</a>
       </div>
-      <div>
-        <p class="contact-info-label">Operations</p>
-        <p class="contact-info-value">Americas &amp; Mediterranean</p>
+      <div class="ci-block">
+        <span class="ci-label">Base</span>
+        <span class="ci-value">Miami, Florida — USA</span>
       </div>
-      <div>
-        <p class="contact-info-label">WhatsApp</p>
-        <a href="https://wa.me/13054917794" target="_blank" rel="noopener" class="contact-info-value">+1 305 491 7794</a>
+      <div class="ci-block">
+        <span class="ci-label">Operations</span>
+        <span class="ci-value">Americas &amp; Mediterranean</span>
       </div>
-      <div class="contact-social">
+      <div class="ci-social">
         <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
         </a>
         <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
         <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
         </a>
       </div>
     </div>
 
     <!-- Right: form -->
-    <div class="contact-form-wrap">
-      <p class="eyebrow" style="color:var(--celeste);">Send a Message</p>
-      <h2 class="contact-form-title">How can we help?</h2>
+    <div class="contact-form-col">
+      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.4rem">Send a Message</p>
+      <h2 class="cf2-title">How can we help?</h2>
 
-      <form class="contact-form-fraser" onsubmit="handleContactForm(event)">
-        <div class="cf-row cf-row-2">
-          <div class="cf-field">
+      <form class="cf2-form" onsubmit="handleContactForm(event)">
+        <div class="cf2-row">
+          <div class="cf2-field">
             <label>First Name</label>
             <input type="text" name="fname" placeholder="James" required>
           </div>
-          <div class="cf-field">
+          <div class="cf2-field">
             <label>Last Name</label>
             <input type="text" name="lname" placeholder="Harrington" required>
           </div>
         </div>
-        <div class="cf-field">
+        <div class="cf2-field">
           <label>Email</label>
           <input type="email" name="email" placeholder="james@email.com" required>
         </div>
-        <div class="cf-field">
+        <div class="cf2-field">
           <label>I'm interested in</label>
-          <div class="cf-pills">
-            <button type="button" class="cf-pill active" onclick="togglePill(this)">Charter</button>
-            <button type="button" class="cf-pill" onclick="togglePill(this)">Buying</button>
-            <button type="button" class="cf-pill" onclick="togglePill(this)">Selling</button>
-            <button type="button" class="cf-pill" onclick="togglePill(this)">Management</button>
-            <button type="button" class="cf-pill" onclick="togglePill(this)">Other</button>
+          <div class="cf2-pills">
+            <button type="button" class="cf2-pill active" onclick="this.classList.toggle('active')">Charter</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Buying</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Selling</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Management</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Other</button>
           </div>
         </div>
-        <div class="cf-field">
+        <div class="cf2-field">
           <label>Message <span style="opacity:0.4;font-weight:300">(optional)</span></label>
-          <textarea name="message" rows="3" placeholder="Tell us more about what you're looking for…"></textarea>
+          <textarea name="message" rows="3" placeholder="Tell us more about what you're looking for..."></textarea>
         </div>
-        <button type="submit" class="cf-submit">
+        <button type="submit" class="cf2-submit">
           Send Message
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
-        <p class="cf-disclaimer">We respond to all enquiries within 24 hours.</p>
+        <p class="cf2-note">We respond to all enquiries within 24 hours.</p>
       </form>
 
-      <div class="cf-success" style="display:none;opacity:0;transition:opacity 0.3s ease;">
-        <div class="cf-success-icon">✓</div>
+      <div class="cf2-success" style="display:none;opacity:0;transition:opacity 0.3s ease;">
+        <div class="cf2-success-icon">✓</div>
         <h3>Message received.</h3>
         <p>A member of our team will be in touch within 24 hours.</p>
       </div>
@@ -2701,8 +2699,8 @@
 
   function handleContactForm(e) {
     e.preventDefault();
-    var form = document.querySelector('.contact-form-fraser');
-    var success = document.querySelector('.cf-success');
+    var form = document.querySelector('.cf2-form');
+    var success = document.querySelector('.cf2-success');
     form.style.opacity = '0';
     form.style.pointerEvents = 'none';
     setTimeout(function() {
