@@ -1025,6 +1025,47 @@
       .ch-dest-tagline { max-height: none !important; opacity: 1 !important; margin-top: 0.3rem; }
       .ch-icons-strip { grid-template-columns: 1fr; gap: 1.4rem; }
     }
+
+    /* ── SELL PAGE ───────────────────────────── */
+    .sell-split { display: grid; grid-template-columns: 55fr 45fr; min-height: 100vh; }
+    .sell-left { background: var(--navy); padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+    .sell-right { background: #fff; padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; }
+
+    .sell-steps { display: flex; flex-direction: column; gap: 2.8rem; margin: 2.8rem 0; }
+    .sell-step { display: flex; gap: 2rem; opacity: 0; }
+    .sell-step.visible { animation: sellStepIn 0.6s ease forwards; }
+    .sell-step:nth-child(2) { animation-delay: 0.2s; }
+    .sell-step:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes sellStepIn { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+    .sell-step-num { font-family: 'Cormorant Garant', Georgia, serif; font-size: 4.5rem; font-weight: 300; color: rgba(122,197,200,0.2); line-height: 1; flex-shrink: 0; width: 4rem; }
+    .sell-step-body h4 { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.5rem; margin-top: 0.5rem; }
+    .sell-step-body p { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.75; margin: 0; }
+
+    .sell-badges { display: flex; gap: 2rem; margin-top: 2.8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .sell-badge { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.45); }
+
+    .sell-field { margin-bottom: 1.6rem; }
+    .sell-field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 0.5rem; }
+    .sell-field input { width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 0.75rem 0; font-family: 'Cormorant Garant', Georgia, serif; font-size: 1rem; color: var(--navy); background: transparent; outline: none; transition: border-color 0.2s; }
+    .sell-field input:focus { border-bottom-color: var(--celeste); }
+    .sell-field input::placeholder { color: #bbb; font-weight: 300; }
+
+    .sell-submit { display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%; background: var(--navy); color: #fff; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: none; cursor: pointer; padding: 1.1rem 2rem; margin-top: 2rem; transition: background 0.2s; }
+    .sell-submit:hover { background: var(--celeste); }
+    .sell-submit svg { transition: transform 0.2s; flex-shrink: 0; }
+    .sell-submit:hover svg { transform: translateX(4px); }
+    .sell-disclaimer { font-size: 0.72rem; color: #bbb; text-align: center; margin-top: 1.2rem; line-height: 1.6; }
+
+    .sell-success { text-align: center; display: none; opacity: 0; transition: opacity 0.4s ease; }
+    .sell-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--celeste); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin: 0 auto 1.5rem; }
+    .sell-success h4 { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.7rem; font-weight: 300; color: var(--navy); margin-bottom: 0.5rem; }
+    .sell-success p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .sell-split { grid-template-columns: 1fr; }
+      .sell-left, .sell-right { padding: 60px 2rem; }
+      .sell-step-num { font-size: 3rem; width: 3rem; }
+    }
   </style>
 </head>
 <body>
@@ -1344,113 +1385,79 @@
      PAGE: SELL YOUR YACHT
 ══════════════════════════════════════════════════ -->
 <div id="page-sell" class="page-section">
-  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-3.jpg');">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Sell Your Yacht</div>
-      <h1>Sell Your Yacht</h1>
-      <p>A confidential approach to selling your vessel at the right price.</p>
-    </div>
-  </div>
+  <div class="sell-split">
 
-  <section class="section bg-white">
-    <div class="container">
-      <div class="sell-grid">
-        <!-- LEFT: Process -->
-        <div class="fade-in-up">
-          <div class="eyebrow">Our Process</div>
-          <h2 style="font-size:2.2rem;font-weight:300;margin-bottom:2rem;line-height:1.25;">Three Steps to a Successful Sale</h2>
+    <!-- LEFT — process -->
+    <div class="sell-left">
+      <div class="eyebrow" style="color:var(--celeste);">Sell With Us</div>
+      <h2 style="font-family:'Cormorant Garant',Georgia,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin:0.7rem 0 0;line-height:1.15;">The Smartest Way<br>to Sell Your Yacht.</h2>
 
-          <div class="process-step">
-            <div class="step-num">01</div>
-            <div class="step-content">
-              <h3>Confidential Valuation</h3>
-              <p>A thorough market analysis and professional assessment of your vessel's value and positioning. We review comparable sales, current demand and your yacht's unique attributes to arrive at a competitive asking price.</p>
-            </div>
-          </div>
-
-          <div class="process-step">
-            <div class="step-num">02</div>
-            <div class="step-content">
-              <h3>Strategic Marketing</h3>
-              <p>Professional photography, targeted outreach to our global network of qualified buyers and bespoke marketing materials. Your yacht is presented to the right audience through the right channels — discreetly and effectively.</p>
-            </div>
-          </div>
-
-          <div class="process-step">
-            <div class="step-num">03</div>
-            <div class="step-content">
-              <h3>Negotiation &amp; Closing</h3>
-              <p>Expert negotiation on your behalf, with full support through legal review, survey, sea trial and transfer of ownership. We manage every step so you can focus on what matters most.</p>
-            </div>
-          </div>
-
-          <div style="margin-top:1rem;padding:1.5rem;background:var(--off-white);border-left:3px solid var(--celeste);">
-            <p style="font-size:0.84rem;color:var(--text-mid);line-height:1.7;">We are members of <strong>IYBA</strong> and <strong>MYBA</strong> — the industry's leading professional associations — ensuring the highest standards of conduct and market access for your sale.</p>
+      <div class="sell-steps" id="sell-steps">
+        <div class="sell-step">
+          <div class="sell-step-num">01</div>
+          <div class="sell-step-body">
+            <h4>Instant Valuation</h4>
+            <p>Tell us your yacht's details and we'll provide a confidential market assessment within 24 hours — no obligation, no pressure.</p>
           </div>
         </div>
-
-        <!-- RIGHT: Form -->
-        <div class="fade-in-up">
-          <div class="form-card">
-            <h3>Request a Confidential Valuation</h3>
-            <div id="sell-form-wrap">
-              <form onsubmit="handleSellSubmit(event)">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" required placeholder="Your name">
-                  </div>
-                  <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" required placeholder="your@email.com">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Phone</label>
-                  <input type="tel" placeholder="+1 (000) 000-0000">
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Yacht Brand &amp; Model</label>
-                    <input type="text" placeholder="e.g. Azimut 55">
-                  </div>
-                  <div class="form-group">
-                    <label>Year</label>
-                    <input type="text" placeholder="e.g. 2018">
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Length (ft / m)</label>
-                    <input type="text" placeholder="e.g. 55ft / 17m">
-                  </div>
-                  <div class="form-group">
-                    <label>Current Location</label>
-                    <input type="text" placeholder="e.g. Fort Lauderdale, FL">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Asking Price (optional — confidential if preferred)</label>
-                  <input type="text" placeholder="USD or EUR">
-                </div>
-                <div class="form-group">
-                  <label>Additional Notes</label>
-                  <textarea placeholder="Condition, recent upgrades, charter history, reason for sale…"></textarea>
-                </div>
-                <button type="submit" class="form-submit">Request a Confidential Valuation</button>
-                <p class="form-note">All inquiries are handled with complete confidentiality.</p>
-              </form>
-            </div>
-            <div class="success-msg" id="sell-success">
-              <div class="success-checkmark">✓</div>
-              <h3>Thank You</h3>
-              <p>We have received your valuation request. A member of our team will be in touch within 24 hours.</p>
-            </div>
+        <div class="sell-step">
+          <div class="sell-step-num">02</div>
+          <div class="sell-step-body">
+            <h4>Strategic Exposure</h4>
+            <p>Your vessel reaches our global network of qualified buyers through targeted outreach, premium listings and off-market channels.</p>
+          </div>
+        </div>
+        <div class="sell-step">
+          <div class="sell-step-num">03</div>
+          <div class="sell-step-body">
+            <h4>Seamless Closing</h4>
+            <p>We handle survey, sea trial, legal transfer and every detail of the closing — so you stay focused on what comes next.</p>
           </div>
         </div>
       </div>
+
+      <div class="sell-badges">
+        <span class="sell-badge">IYBA Member</span>
+        <span class="sell-badge" style="border-left:1px solid rgba(255,255,255,0.15);padding-left:2rem;">MYBA Member</span>
+      </div>
     </div>
-  </section>
+
+    <!-- RIGHT — form -->
+    <div class="sell-right">
+      <div style="max-width:420px;width:100%;">
+        <div class="eyebrow" style="color:var(--celeste);">Confidential &amp; No Obligation</div>
+        <h3 style="font-family:'Cormorant Garant',Georgia,serif;font-size:1.9rem;font-weight:300;color:var(--navy);margin:0.6rem 0 0.4rem;">Tell us about your yacht.</h3>
+        <p style="font-size:0.86rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.7;">Three details. That's all we need to get started.</p>
+
+        <form class="sell-form" onsubmit="handleSellForm(event)">
+          <div class="sell-field">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="e.g. James Harrington" required>
+          </div>
+          <div class="sell-field">
+            <label>Email or WhatsApp</label>
+            <input type="text" name="contact" placeholder="email@domain.com or +1 305…" required>
+          </div>
+          <div class="sell-field">
+            <label>Your Yacht</label>
+            <input type="text" name="yacht" placeholder="e.g. Azimut 55, 2019, Miami" required>
+          </div>
+          <button type="submit" class="sell-submit">
+            Request Confidential Valuation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p class="sell-disclaimer">All inquiries are handled with complete discretion. We will respond within 24 hours.</p>
+        </form>
+
+        <div class="sell-success">
+          <div class="sell-success-icon">✓</div>
+          <h4>We'll be in touch.</h4>
+          <p>Thank you. A member of our team will contact you within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div><!-- /page-sell -->
 
 <!-- ══════════════════════════════════════════════════
@@ -2631,13 +2638,36 @@
     s.style.display = 'block';
   }
 
-  function handleSellSubmit(e) {
+  function handleSellSubmit(e) { if(e) e.preventDefault(); }
+
+  function handleSellForm(e) {
     e.preventDefault();
-    console.log('Sell form submitted');
-    document.getElementById('sell-form-wrap').style.display = 'none';
-    var s = document.getElementById('sell-success');
-    s.style.display = 'block';
+    var form = document.querySelector('.sell-form');
+    var success = document.querySelector('.sell-success');
+    form.style.opacity = '0';
+    form.style.pointerEvents = 'none';
+    setTimeout(function() {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      setTimeout(function() { success.style.opacity = '1'; }, 50);
+    }, 300);
   }
+
+  /* Sell steps stagger animation */
+  (function() {
+    function triggerSellSteps() {
+      var steps = document.querySelectorAll('#sell-steps .sell-step');
+      steps.forEach(function(step, i) {
+        setTimeout(function() { step.classList.add('visible'); }, i * 220);
+      });
+    }
+    document.addEventListener('pageChanged', function(e) {
+      if (e.detail === 'page-sell') {
+        document.querySelectorAll('#sell-steps .sell-step').forEach(function(s){ s.classList.remove('visible'); });
+        setTimeout(triggerSellSteps, 200);
+      }
+    });
+  })();
 
   function handleSellModalSubmit(e) {
     e.preventDefault();
