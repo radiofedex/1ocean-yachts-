@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1 Ocean Yachts Group</title>
   <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,8 +24,8 @@
       --text-light: #8A8D8F;
     }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Cormorant Garant', Georgia, serif; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.01em; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.75; }
-    h1,h2,h3,h4,h5 { font-family: 'Cormorant Garant', Georgia, serif; letter-spacing: -0.02em; text-wrap: balance; font-weight: 300; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; font-size: 0.95rem; letter-spacing: 0.01em; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.75; }
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; line-height: 1.15; }
 
     /* ── GRAIN OVERLAY (premium texture) ─── */
     body::after {
@@ -50,138 +49,115 @@
     .page-section { display: none; }
     .page-section.active { display: block; animation: pageFade 0.35s ease both; }
 
-    /* ── HEADER ─────────────────────────────── */
+    /* ── HEADER FRASER STYLE ────────────────── */
     header {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 88px;
-      display: flex; align-items: center;
-      padding: 0 3rem;
-      background: transparent;
-      transition: background 0.4s ease, box-shadow 0.4s ease, height 0.3s ease;
+      height: 72px; background: #0D1B2A;
+      transition: box-shadow 0.3s;
     }
-    header.scrolled {
-      height: 72px;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+    header.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.35); }
+
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; padding: 0 2rem; gap: 1rem; position: relative;
     }
 
-    /* Logo */
-    .header-logo { text-decoration: none; flex-shrink: 0; margin-right: 2rem; }
-    .header-logo img {
-      height: 46px; width: auto; display: block;
-      filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgba(0,0,0,0.5));
-      transition: filter 0.4s ease, transform 0.3s ease;
+    /* Logo — centered absolute */
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      background: none; border: none; cursor: pointer; padding: 0;
+      height: 38px; flex-shrink: 0;
     }
-    header.scrolled .header-logo img { filter: brightness(0); }
-    .header-logo:hover img { transform: scale(1.04); }
+    .nav-logo img { height: 38px; width: auto; filter: brightness(0) invert(1); display: block; }
+    .nav-logo:hover img { opacity: 0.85; }
 
-    /* Nav */
-    .header-nav { display: flex; align-items: center; flex: 1; justify-content: center; }
+    /* Nav halves */
+    .header-nav { display: flex; align-items: center; flex: 1; }
+    .nav-left { justify-content: flex-start; }
+    .nav-right { justify-content: flex-end; }
     .nav-item { position: relative; }
+
     .nav-link {
-      display: flex; align-items: center; gap: 5px;
-      font-family: 'Cormorant Garant', Georgia, serif;
-      font-size: 0.9rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); text-decoration: none;
-      padding: 0 1.2rem; line-height: 88px; height: 88px;
-      border: none; background: none; cursor: pointer;
-      white-space: nowrap; position: relative;
-      transition: color 0.25s ease, line-height 0.3s ease, height 0.3s ease;
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.67rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.72); background: none; border: none; cursor: pointer;
+      padding: 0 0.9rem; height: 72px; white-space: nowrap; position: relative;
+      transition: color 0.2s;
     }
-    header.scrolled .nav-link { color: var(--text-dark); line-height: 72px; height: 72px; }
+    .nav-link svg { width: 8px; height: 8px; opacity: 0.55; flex-shrink: 0; transition: transform 0.25s; }
+    .nav-item.open .nav-link svg { transform: rotate(180deg); }
+    .nav-link:hover, .nav-link.active { color: #fff; }
     .nav-link::after {
-      content: ''; position: absolute; bottom: 0; left: 1.5rem; right: 1.5rem;
+      content: ''; position: absolute; bottom: 0; left: 0.9rem; right: 0.9rem;
       height: 2px; background: var(--celeste);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.25s ease;
+      transform: scaleX(0); transform-origin: left; transition: transform 0.25s ease;
     }
     .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { transform: scaleX(1); }
-    .nav-link:hover { color: var(--celeste); }
-    header.scrolled .nav-link:hover { color: var(--celeste); }
-    .nav-link.active { color: var(--celeste); }
-    .nav-item.open .nav-link { color: var(--celeste); }
-
-    .nav-link svg { width: 9px; height: 9px; transition: transform 0.25s ease; flex-shrink: 0; opacity: 0.65; }
-    .nav-item.open .nav-link svg { transform: rotate(180deg); }
 
     /* Dropdown */
     .nav-dropdown {
-      display: none; position: absolute; top: 88px; left: 50%; transform: translateX(-50%);
+      display: none; position: absolute; top: 72px; left: 50%; transform: translateX(-50%);
       background: #fff; border-top: 2px solid var(--celeste);
-      min-width: 230px; box-shadow: 0 16px 48px rgba(0,0,0,0.12);
-      z-index: 300; padding: 0.5rem 0;
-      animation: ddFade 0.2s ease;
+      min-width: 200px; box-shadow: 0 16px 48px rgba(0,0,0,0.15); z-index: 300; padding: 0.5rem 0;
     }
-    header.scrolled .nav-dropdown { top: 72px; }
     @keyframes ddFade { from{opacity:0;transform:translateX(-50%) translateY(-6px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
-    .nav-item.open .nav-dropdown { display: block; }
+    .nav-item.open .nav-dropdown { display: block; animation: ddFade 0.2s ease; }
     .nav-dropdown a, .nav-dropdown button {
-      display: block; width: 100%;
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.8rem; font-weight: 400;
+      display: block; width: 100%; font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.75rem; font-weight: 400; letter-spacing: 0.05em;
       color: var(--text-dark); text-decoration: none; background: none; border: none;
-      padding: 0.6rem 1.5rem; cursor: pointer; text-align: left; white-space: nowrap;
+      padding: 0.65rem 1.5rem; cursor: pointer; text-align: left; white-space: nowrap;
       transition: color 0.15s, background 0.15s;
     }
     .nav-dropdown a:hover, .nav-dropdown button:hover { color: var(--celeste); background: rgba(0,153,200,0.04); }
-    .nav-dropdown .dd-separator {
-      font-size: 0.68rem; font-weight: 500; color: var(--text-light);
-      padding: 0.7rem 1.5rem 0.25rem; letter-spacing: 0.1em; text-transform: uppercase;
-      pointer-events: none;
-    }
     .dd-divider { height: 1px; background: var(--light-grey); margin: 0.3rem 0; }
 
-    /* Header right */
+    /* Lang */
     .header-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
     .lang-wrap { position: relative; }
     .lang-btn {
       display: flex; align-items: center; gap: 4px;
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.78rem; font-weight: 400;
-      color: rgba(255,255,255,0.7); background: none; border: none; cursor: pointer;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.67rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); background: none; border: none; cursor: pointer;
       padding: 0.3rem 0.4rem; transition: color 0.2s;
     }
-    header.scrolled .lang-btn { color: var(--text-mid); }
-    .lang-btn:hover { color: var(--celeste); }
-    .lang-btn svg { width: 9px; height: 9px; }
+    .lang-btn:hover { color: #fff; }
+    .lang-btn svg { width: 8px; height: 8px; }
     .lang-dropdown {
-      display: none; position: absolute; top: calc(100% + 6px); right: 0;
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
       background: #fff; border: 1px solid var(--light-grey);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.10); min-width: 130px; z-index: 400;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12); min-width: 130px; z-index: 400;
     }
     .lang-dropdown.open { display: block; }
     .lang-dropdown a {
-      display: block; padding: 0.55rem 1rem;
+      display: block; padding: 0.55rem 1rem; font-family: 'DM Sans', system-ui, sans-serif;
       font-size: 0.8rem; color: var(--text-dark); text-decoration: none;
       transition: color 0.15s, background 0.15s;
     }
     .lang-dropdown a:hover { color: var(--celeste); background: rgba(0,153,200,0.04); }
 
-    /* Header CTA */
+    /* CTA */
     .btn-header-cta {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.68rem; font-weight: 500;
-      letter-spacing: 0.16em; text-transform: uppercase;
-      color: rgba(255,255,255,0.88); background: none;
-      border: 1px solid rgba(255,255,255,0.35); cursor: pointer;
-      padding: 0.55rem 1.3rem; text-decoration: none;
-      transition: all 0.25s ease;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.35);
+      cursor: pointer; padding: 0.55rem 1.3rem; white-space: nowrap;
+      transition: border-color 0.2s, background 0.2s; flex-shrink: 0;
     }
-    .btn-header-cta:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.08); }
-    header.scrolled .btn-header-cta {
-      color: var(--celeste); border-color: var(--celeste);
-    }
-    header.scrolled .btn-header-cta:hover { background: var(--celeste); color: #fff; }
+    .btn-header-cta:hover { border-color: var(--celeste); background: rgba(122,197,200,0.1); }
 
-    /* Keep old btn-outline / btn-celeste for page content */
+    /* Content buttons — unchanged */
     .btn-outline {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 400;
-      color: var(--text-dark); background: none;
-      border: 1px solid var(--mid-grey); cursor: pointer;
-      padding: 0.55rem 1.2rem; text-decoration: none;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.78rem; font-weight: 500;
+      color: var(--text-dark); background: none; border: 1px solid var(--mid-grey);
+      cursor: pointer; padding: 0.55rem 1.2rem; text-decoration: none;
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-outline:hover { border-color: var(--celeste); color: var(--celeste); }
     .btn-celeste {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 500;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.78rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.55rem 1.3rem; text-decoration: none;
       transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
@@ -190,9 +166,8 @@
     .btn-celeste:active { transform: scale(0.97) translateY(0); box-shadow: none; }
 
     /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 210; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 210; flex-shrink: 0; }
     .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: 0.3s ease; }
-    header.scrolled .hamburger span { background: var(--text-dark); }
     .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
@@ -208,7 +183,7 @@
     .bg-navy { background: var(--navy); }
     .bg-navy-dark { background: var(--navy-dark); }
     .eyebrow {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 500;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
       color: var(--celeste); margin-bottom: 1.2rem;
     }
@@ -273,7 +248,7 @@
     .fy-badge {
       position: absolute; top: 1.2rem; left: 1.2rem;
       font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
-      padding: 0.28rem 0.8rem; font-family: 'Cormorant Garant', Georgia, serif; font-weight: 500;
+      padding: 0.28rem 0.8rem; font-family: 'Playfair Display', Georgia, serif; font-weight: 500;
     }
     .fy-badge-sale { background: var(--navy); color: #fff; }
     .fy-badge-charter { background: var(--celeste); color: #fff; }
@@ -324,7 +299,7 @@
     }
     .cine-strip-text cite {
       display: block; margin-top: 1.5rem;
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.72rem; font-weight: 500;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.2em; text-transform: uppercase; color: var(--celeste);
       font-style: normal;
     }
@@ -437,7 +412,7 @@
     }
     .hero-content { position: relative; z-index: 2; padding: 0 5rem; max-width: 780px; margin-top: 5rem; }
     .hero-eyebrow {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.75rem; font-weight: 500;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--celeste); margin-bottom: 1.5rem;
       display: flex; align-items: center; gap: 0.8rem;
@@ -453,13 +428,13 @@
     .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.65); font-weight: 300; max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem; }
     .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
     .hero-btn-primary {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.85rem; font-weight: 500;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.85rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s;
     }
     .hero-btn-primary:hover { background: var(--celeste-light); }
     .hero-btn-ghost {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.85rem; font-weight: 400;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.85rem; font-weight: 400;
       color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer;
       padding: 0.85rem 2rem; text-decoration: none; transition: border-color 0.2s;
     }
@@ -474,7 +449,7 @@
     /* ── HOME INTRO ──────────────────────────── */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
     .intro-quote {
-      font-family: 'Cormorant Garant', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: clamp(1.7rem, 2.5vw, 2.2rem); font-style: italic; font-weight: 300;
       line-height: 1.5; color: var(--navy);
     }
@@ -483,7 +458,7 @@
     .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .stat-item { padding: 1.5rem; border-left: 2px solid var(--light-grey); }
     .stat-num {
-      font-family: 'Cormorant Garant', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: 2.8rem; font-weight: 300; color: var(--navy); line-height: 1;
     }
     .stat-label { font-size: 0.82rem; color: var(--text-mid); margin-top: 0.3rem; }
@@ -582,18 +557,18 @@
     .dest-panel:hover img { transform: scale(1.04); }
     .dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.88) 0%, rgba(5,13,26,0.2) 60%); }
     .dest-content { position: relative; z-index: 2; }
-    .dest-region { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.6rem; font-family: 'Cormorant Garant', Georgia, serif; }
+    .dest-region { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.6rem; font-family: 'Playfair Display', Georgia, serif; }
     .dest-panel h2 { font-size: 2rem; font-weight: 300; color: #fff; margin-bottom: 1rem; }
     .dest-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
     .dest-tag { font-size: 0.75rem; color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.25); padding: 0.25rem 0.75rem; }
     .dest-btn {
-      display: inline-block; font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 500;
+      display: inline-block; font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.7rem 1.5rem; text-decoration: none; transition: background 0.2s; margin-right: 0.75rem;
     }
     .dest-btn:hover { background: var(--celeste-light); }
     .dest-btn-ghost {
-      display: inline-block; font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem;
+      display: inline-block; font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem;
       color: rgba(255,255,255,0.8); background: none; border: 1px solid rgba(255,255,255,0.4);
       cursor: pointer; padding: 0.7rem 1.5rem; text-decoration: none; transition: border-color 0.2s;
     }
@@ -617,7 +592,7 @@
     .brand-card:hover img { transform: scale(1.04); }
     .brand-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.8) 0%, rgba(5,13,26,0.1) 55%); }
     .brand-content { position: absolute; bottom: 2rem; left: 2rem; right: 2rem; z-index: 2; }
-    .brand-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.4rem; font-family: 'Cormorant Garant', Georgia, serif; }
+    .brand-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.4rem; font-family: 'Playfair Display', Georgia, serif; }
     .brand-content h3 { font-size: 1.8rem; font-weight: 300; color: #fff; margin-bottom: 0.4rem; }
     .brand-content p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
 
@@ -630,7 +605,7 @@
     .event-card:hover .event-card-img img { transform: scale(1.06); }
     .event-card-img-overlay { position: absolute; inset: 0; background: rgba(9,32,44,0.35); }
     .event-header { background: var(--navy); padding: 1.2rem 1.5rem; }
-    .event-date { font-size: 0.75rem; color: var(--celeste); font-family: 'Cormorant Garant', Georgia, serif; letter-spacing: 0.06em; }
+    .event-date { font-size: 0.75rem; color: var(--celeste); font-family: 'Playfair Display', Georgia, serif; letter-spacing: 0.06em; }
     .event-header h3 { font-size: 1.1rem; font-weight: 400; color: #fff; margin-top: 0.3rem; }
     .event-body { padding: 1.3rem 1.5rem; }
     .event-body p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
@@ -643,7 +618,7 @@
     .lead-card p { font-size: 0.84rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
     .lead-card-btn {
       margin-top: 1.2rem; display: inline-block; font-size: 0.8rem; color: var(--celeste);
-      font-family: 'Cormorant Garant', Georgia, serif; cursor: pointer; background: none; border: none;
+      font-family: 'Playfair Display', Georgia, serif; cursor: pointer; background: none; border: none;
       padding: 0; text-decoration: underline; text-underline-offset: 3px;
     }
     .lead-contact-txt { text-align: center; color: rgba(255,255,255,0.55); font-size: 0.88rem; }
@@ -658,7 +633,7 @@
     /* ── YACHT GRID ──────────────────────────── */
     .filter-tabs { display: flex; gap: 0; margin-bottom: 2.5rem; border: 1px solid var(--light-grey); width: fit-content; }
     .filter-tab {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 400;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; font-weight: 400;
       color: var(--text-mid); background: none; border: none; cursor: pointer;
       padding: 0.65rem 1.5rem; transition: background 0.2s, color 0.2s; border-right: 1px solid var(--light-grey);
     }
@@ -672,11 +647,11 @@
       background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
       display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
     }
-    .yacht-img-text { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.55); }
+    .yacht-img-text { font-family: 'Playfair Display', Georgia, serif; font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,0.55); }
     .yacht-badge {
       position: absolute; top: 0.8rem; left: 0.8rem;
       font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.25rem 0.65rem; font-family: 'Cormorant Garant', Georgia, serif;
+      padding: 0.25rem 0.65rem; font-family: 'Playfair Display', Georgia, serif;
     }
     .badge-sale { background: var(--celeste); color: #fff; }
     .badge-charter { background: var(--navy); color: #fff; }
@@ -685,10 +660,10 @@
     .yacht-specs { font-size: 0.78rem; color: var(--text-light); margin-bottom: 1rem; }
     .yacht-specs span::after { content: ' · '; }
     .yacht-specs span:last-child::after { content: ''; }
-    .yacht-price { font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; font-family: 'Cormorant Garant', Georgia, serif; }
+    .yacht-price { font-size: 1rem; font-weight: 400; color: var(--navy); margin-bottom: 1rem; font-family: 'Playfair Display', Georgia, serif; }
     .yacht-btn {
       display: block; width: 100%; text-align: center;
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.8rem; font-weight: 400;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.8rem; font-weight: 400;
       color: var(--celeste); background: none; border: 1px solid var(--celeste);
       padding: 0.6rem; cursor: pointer; transition: background 0.2s, color 0.2s;
     }
@@ -699,7 +674,7 @@
     .sell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .process-step { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; }
     .step-num {
-      font-family: 'Cormorant Garant', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
       font-size: 2.5rem; font-weight: 300; color: var(--celeste);
       line-height: 1; flex-shrink: 0; min-width: 3rem;
     }
@@ -719,7 +694,7 @@
     .charter-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.4rem; }
     .charter-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--light-grey); padding: 0.2rem 0.65rem; }
     .charter-card-btn {
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; font-weight: 500;
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; font-weight: 500;
       color: #fff; background: var(--celeste); border: none; cursor: pointer;
       padding: 0.65rem 1.4rem; text-decoration: none; transition: background 0.2s; display: inline-block;
     }
@@ -804,7 +779,7 @@
     .contact-int-btn {
       font-size: 0.8rem; color: var(--text-dark); border: 1px solid var(--light-grey);
       background: none; cursor: pointer; padding: 0.45rem 1rem; transition: border-color 0.2s, color 0.2s;
-      font-family: 'Cormorant Garant', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
     }
     .contact-int-btn:hover { border-color: var(--celeste); color: var(--celeste); }
     .social-links { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
@@ -820,7 +795,7 @@
     .form-group label { display: block; font-size: 0.78rem; color: var(--text-mid); margin-bottom: 0.35rem; font-weight: 400; }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%; padding: 0.65rem 0.9rem;
-      font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.85rem; color: var(--text-dark);
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.85rem; color: var(--text-dark);
       border: 1px solid var(--light-grey); background: var(--off-white);
       outline: none; transition: border-color 0.2s;
       -webkit-appearance: none;
@@ -829,7 +804,7 @@
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-note { font-size: 0.75rem; color: var(--text-light); margin-top: 0.8rem; font-style: italic; }
     .form-submit {
-      width: 100%; padding: 0.85rem; font-family: 'Cormorant Garant', Georgia, serif;
+      width: 100%; padding: 0.85rem; font-family: 'Playfair Display', Georgia, serif;
       font-size: 0.88rem; font-weight: 500; color: #fff; background: var(--celeste);
       border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem;
     }
@@ -867,19 +842,19 @@
       cursor: pointer; transition: border-color 0.2s, background 0.2s;
     }
     .region-card:hover, .region-card.selected { border-color: var(--celeste); background: rgba(0,153,200,0.04); }
-    .region-numeral { font-size: 2rem; font-weight: 300; color: var(--celeste); font-family: 'Cormorant Garant', Georgia, serif; display: block; margin-bottom: 0.4rem; }
+    .region-numeral { font-size: 2rem; font-weight: 300; color: var(--celeste); font-family: 'Playfair Display', Georgia, serif; display: block; margin-bottom: 0.4rem; }
     .region-card h4 { font-size: 1rem; font-weight: 400; }
     .dest-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
     .dest-chip {
       font-size: 0.78rem; color: var(--text-mid); border: 1px solid var(--light-grey);
       background: none; padding: 0.3rem 0.8rem; cursor: pointer; transition: border-color 0.2s, color 0.2s;
-      font-family: 'Cormorant Garant', Georgia, serif;
+      font-family: 'Playfair Display', Georgia, serif;
     }
     .dest-chip:hover, .dest-chip.selected { border-color: var(--celeste); color: var(--celeste); background: rgba(0,153,200,0.06); }
     .modal-back-btn {
       background: none; border: none; font-size: 0.82rem; color: var(--text-light);
       cursor: pointer; padding: 0 0 1rem; display: flex; align-items: center; gap: 5px;
-      font-family: 'Cormorant Garant', Georgia, serif; transition: color 0.2s;
+      font-family: 'Playfair Display', Georgia, serif; transition: color 0.2s;
     }
     .modal-back-btn:hover { color: var(--celeste); }
 
@@ -891,12 +866,12 @@
     .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
     .footer-contact-detail a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
     .footer-contact-detail a:hover { color: var(--celeste); }
-    .footer-col h4 { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
+    .footer-col h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
     .footer-col ul { list-style: none; }
     .footer-col ul li { margin-bottom: 0.6rem; }
     .footer-col ul li a, .footer-col ul li button {
       font-size: 0.84rem; color: rgba(255,255,255,0.5); text-decoration: none;
-      background: none; border: none; cursor: pointer; padding: 0; font-family: 'Cormorant Garant', Georgia, serif;
+      background: none; border: none; cursor: pointer; padding: 0; font-family: 'Playfair Display', Georgia, serif;
       transition: color 0.2s; text-align: left;
     }
     .footer-col ul li a:hover, .footer-col ul li button:hover { color: var(--celeste); }
@@ -912,8 +887,9 @@
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 960px) {
       .header-nav { display: none; }
+      .btn-header-cta { display: none; }
       .hamburger { display: flex; }
-      header { padding: 0 2rem; }
+      .nav-logo { position: static; transform: none; }
       .hero-content { padding: 0 2rem; }
       .intro-grid, .about-grid, .sell-grid, .about-page-grid, .founder-grid, .brand-page-grid, .contact-grid, .charter-cards { grid-template-columns: 1fr; gap: 2.5rem; }
       .dest-region, .dest-region.dest-flip { grid-template-columns: 1fr; }
@@ -947,10 +923,10 @@
     .ch-split-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(4,10,20,0.88) 0%, rgba(4,10,20,0.25) 55%, transparent 100%); z-index: 1; }
     .ch-split-divider { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.3); z-index: 10; pointer-events: none; }
     .ch-split-content { position: absolute; bottom: 3rem; left: 3rem; z-index: 5; }
-    .ch-split-eyebrow { display: block; font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.65rem; font-family: 'Cormorant Garant', Georgia, serif; }
-    .ch-split-title { font-family: 'Cormorant Garant', Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; color: #fff; margin: 0 0 1rem; line-height: 1; letter-spacing: -0.02em; }
+    .ch-split-eyebrow { display: block; font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--celeste); margin-bottom: 0.65rem; font-family: 'Playfair Display', Georgia, serif; }
+    .ch-split-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 300; color: #fff; margin: 0 0 1rem; line-height: 1; letter-spacing: -0.02em; }
     .ch-split-desc { font-size: 0.87rem; color: rgba(255,255,255,0.78); line-height: 1.72; max-width: 300px; margin-bottom: 1.4rem; }
-    .ch-split-cta { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.45); cursor: pointer; padding: 0.7rem 1.5rem; }
+    .ch-split-cta { font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.45); cursor: pointer; padding: 0.7rem 1.5rem; }
 
     @media (prefers-reduced-motion: no-preference) {
       .ch-split-panel { transition: flex 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
@@ -970,7 +946,7 @@
 
     /* Destination tabs */
     .ch-dest-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--light-grey); margin-bottom: 3rem; }
-    .ch-dest-tab { position: relative; font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); background: none; border: none; cursor: pointer; padding: 0.9rem 2.5rem 0.9rem 0; }
+    .ch-dest-tab { position: relative; font-family: 'Playfair Display', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); background: none; border: none; cursor: pointer; padding: 0.9rem 2.5rem 0.9rem 0; }
     .ch-dest-tab.active { color: var(--navy); }
     .ch-dest-tab::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--celeste); transition: width 0.3s ease; }
     .ch-dest-tab.active::after { width: 100%; }
@@ -987,10 +963,10 @@
     /* Destination items */
     .ch-dest-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 0.6rem; border-bottom: 1px solid #eee; cursor: default; transition: background 0.2s; }
     .ch-dest-item:hover { background: rgba(0,153,200,0.04); }
-    .ch-dest-num { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.9rem; color: var(--celeste); min-width: 2rem; transition: font-size 0.2s; flex-shrink: 0; }
+    .ch-dest-num { font-family: 'Playfair Display', Georgia, serif; font-size: 0.9rem; color: var(--celeste); min-width: 2rem; transition: font-size 0.2s; flex-shrink: 0; }
     .ch-dest-item:hover .ch-dest-num { font-size: 1.15rem; }
     .ch-dest-info { flex: 1; }
-    .ch-dest-name { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); margin: 0 0 0.1rem; }
+    .ch-dest-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); margin: 0 0 0.1rem; }
     .ch-dest-tagline { font-size: 0.82rem; color: var(--text-mid); margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.3s ease, opacity 0.25s ease; }
     .ch-dest-item:hover .ch-dest-tagline { max-height: 2.5rem; opacity: 1; }
     .ch-dest-arrow { font-size: 1rem; color: var(--celeste); opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
@@ -999,14 +975,14 @@
     /* Icons strip */
     .ch-icons-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
     .ch-icon-item { display: flex; flex-direction: column; gap: 0.4rem; }
-    .ch-icon-label { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.92); margin-top: 0.3rem; }
+    .ch-icon-label { font-family: 'Playfair Display', Georgia, serif; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.92); margin-top: 0.3rem; }
     .ch-icon-desc { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.6; }
 
     /* Brochure */
     .ch-brochure { background: var(--navy); padding: 6rem 0; }
     .ch-brochure-inner { max-width: 600px; margin: 0 auto; text-align: center; }
     .ch-brochure-btns { display: flex; gap: 1rem; justify-content: center; margin-top: 2.2rem; flex-wrap: wrap; }
-    .ch-btn-outline-white { font-family: 'Cormorant Garant', Georgia, serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; padding: 0.85rem 2rem; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
+    .ch-btn-outline-white { font-family: 'Playfair Display', Georgia, serif; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; background: none; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; padding: 0.85rem 2rem; text-decoration: none; display: inline-block; transition: border-color 0.2s, background 0.2s; }
     .ch-btn-outline-white:hover { border-color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.05); }
     .ch-brochure-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 9999; display: none; align-items: center; justify-content: center; }
     .ch-brochure-overlay.open { display: flex; }
@@ -1037,8 +1013,8 @@
     .sell-step:nth-child(2) { animation-delay: 0.2s; }
     .sell-step:nth-child(3) { animation-delay: 0.4s; }
     @keyframes sellStepIn { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
-    .sell-step-num { font-family: 'Cormorant Garant', Georgia, serif; font-size: 4.5rem; font-weight: 300; color: rgba(122,197,200,0.2); line-height: 1; flex-shrink: 0; width: 4rem; }
-    .sell-step-body h4 { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.5rem; margin-top: 0.5rem; }
+    .sell-step-num { font-family: 'Playfair Display', Georgia, serif; font-size: 4.5rem; font-weight: 300; color: rgba(122,197,200,0.2); line-height: 1; flex-shrink: 0; width: 4rem; }
+    .sell-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 400; color: #fff; margin-bottom: 0.5rem; margin-top: 0.5rem; }
     .sell-step-body p { font-size: 0.85rem; color: rgba(255,255,255,0.62); line-height: 1.75; margin: 0; }
 
     .sell-badges { display: flex; gap: 2rem; margin-top: 2.8rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -1046,7 +1022,7 @@
 
     .sell-field { margin-bottom: 1.6rem; }
     .sell-field label { display: block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 0.5rem; }
-    .sell-field input { width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 0.75rem 0; font-family: 'Cormorant Garant', Georgia, serif; font-size: 1rem; color: var(--navy); background: transparent; outline: none; transition: border-color 0.2s; }
+    .sell-field input { width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 0.75rem 0; font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; color: var(--navy); background: transparent; outline: none; transition: border-color 0.2s; }
     .sell-field input:focus { border-bottom-color: var(--celeste); }
     .sell-field input::placeholder { color: #bbb; font-weight: 300; }
 
@@ -1058,13 +1034,64 @@
 
     .sell-success { text-align: center; display: none; opacity: 0; transition: opacity 0.4s ease; }
     .sell-success-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--celeste); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin: 0 auto 1.5rem; }
-    .sell-success h4 { font-family: 'Cormorant Garant', Georgia, serif; font-size: 1.7rem; font-weight: 300; color: var(--navy); margin-bottom: 0.5rem; }
+    .sell-success h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.7rem; font-weight: 300; color: var(--navy); margin-bottom: 0.5rem; }
     .sell-success p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
 
     @media (max-width: 768px) {
       .sell-split { grid-template-columns: 1fr; }
       .sell-left, .sell-right { padding: 60px 2rem; }
       .sell-step-num { font-size: 3rem; width: 3rem; }
+    }
+
+    /* ── CONTACT PAGE FRASER ─────────────────── */
+    .contact-hero { position: relative; height: 55vh; min-height: 380px; overflow: hidden; display: flex; align-items: flex-end; }
+    .contact-hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .contact-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.88) 0%, rgba(10,22,40,0.3) 55%, transparent 100%); }
+    .contact-hero-content { position: relative; padding: 3.5rem 5vw; color: #fff; }
+    .contact-hero-content h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.8rem,6vw,5rem); font-weight: 400; color: #fff; margin: 0.4rem 0; }
+    .contact-hero-sub { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.62); max-width: 500px; margin-top: 0.5rem; line-height: 1.7; }
+
+    .contact-body { display: grid; grid-template-columns: 1fr 1.65fr; }
+    .contact-info { background: #0D1B2A; padding: 5rem 4vw; display: flex; flex-direction: column; gap: 2rem; }
+    .contact-info-label { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 0.3rem; }
+    .contact-info-value { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.92rem; color: rgba(255,255,255,0.82); text-decoration: none; display: block; transition: color 0.2s; }
+    a.contact-info-value:hover { color: var(--celeste); }
+    .contact-social { display: flex; gap: 1.2rem; margin-top: auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .contact-social a { color: rgba(255,255,255,0.38); transition: color 0.2s; }
+    .contact-social a:hover { color: var(--celeste); }
+
+    .contact-form-wrap { background: #fff; padding: 5rem 5vw; }
+    .contact-form-title { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; font-weight: 400; color: #0D1B2A; margin-bottom: 2.5rem; margin-top: 0.5rem; }
+
+    .cf-row { display: flex; gap: 1.5rem; }
+    .cf-row-2 > .cf-field { flex: 1; }
+    .cf-field { margin-bottom: 1.8rem; }
+    .cf-field label { display: block; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #999; margin-bottom: 0.5rem; }
+    .cf-field input, .cf-field textarea { width: 100%; border: none; border-bottom: 1px solid #ddd; padding: 0.7rem 0; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; color: #0D1B2A; background: transparent; outline: none; transition: border-color 0.2s; resize: none; }
+    .cf-field input:focus, .cf-field textarea:focus { border-bottom-color: #0D1B2A; }
+    .cf-field input::placeholder, .cf-field textarea::placeholder { color: #ccc; }
+
+    .cf-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+    .cf-pill { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: none; border: 1px solid #ddd; color: #999; padding: 0.45rem 1rem; cursor: pointer; transition: all 0.15s; }
+    .cf-pill:hover { border-color: #0D1B2A; color: #0D1B2A; }
+    .cf-pill.active { background: #0D1B2A; border-color: #0D1B2A; color: #fff; }
+
+    .cf-submit { display: flex; align-items: center; gap: 0.7rem; background: #0D1B2A; color: #fff; border: none; cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 1rem 2.5rem; margin-top: 0.5rem; transition: background 0.2s; }
+    .cf-submit:hover { background: var(--celeste); }
+    .cf-submit svg { transition: transform 0.2s; }
+    .cf-submit:hover svg { transform: translateX(4px); }
+    .cf-disclaimer { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.7rem; color: #bbb; margin-top: 1rem; }
+
+    .cf-success { text-align: center; padding: 4rem 2rem; }
+    .cf-success-icon { width: 60px; height: 60px; border-radius: 50%; background: #0D1B2A; color: #fff; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+    .cf-success h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1.8rem; color: #0D1B2A; margin-bottom: 0.5rem; }
+    .cf-success p { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.88rem; color: #888; }
+
+    @media (max-width: 768px) {
+      .contact-body { grid-template-columns: 1fr; }
+      .contact-info { padding: 3rem 2rem; }
+      .contact-form-wrap { padding: 3rem 2rem; }
+      .cf-row { flex-direction: column; gap: 0; }
     }
   </style>
 </head>
@@ -1074,53 +1101,63 @@
      HEADER
 ══════════════════════════════════════════════════ -->
 <header id="site-header">
-  <a class="header-logo" href="#" onclick="showPage('home');return false;">
-    <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
-  </a>
+  <div class="nav-inner">
 
-  <nav class="header-nav" id="main-nav">
-    <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
-    </div>
-    <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
-    </div>
-    <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
-    </div>
-    <div class="nav-item" id="ni-brands">
-      <button class="nav-link" onclick="toggleNav('ni-brands')">
-        Exclusive Brands
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="nav-dropdown">
-        <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
-        <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
+    <!-- Left nav -->
+    <nav class="header-nav nav-left">
+      <div class="nav-item">
+        <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
       </div>
-    </div>
-    <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-about')">About</button>
-    </div>
-  </nav>
+      <div class="nav-item">
+        <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
+      </div>
+    </nav>
 
-  <div class="header-right">
-    <!-- Language -->
-    <div class="lang-wrap">
-      <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
-        EN
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="lang-dropdown" id="lang-dropdown">
-        <a href="#" onclick="setLang('EN','English');return false;">English</a>
-        <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
-        <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
-        <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
+    <!-- Logo centrato -->
+    <button class="nav-logo" onclick="showPage('home')">
+      <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
+    </button>
+
+    <!-- Right nav -->
+    <nav class="header-nav nav-right">
+      <div class="nav-item" id="ni-brands">
+        <button class="nav-link" onclick="toggleNav('ni-brands')">
+          Exclusive Brands
+          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <div class="nav-dropdown">
+          <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
+          <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
+        </div>
       </div>
-    </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="showPage('page-about')">About</button>
+      </div>
+      <div class="lang-wrap">
+        <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
+          EN
+          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a href="#" onclick="setLang('EN','English');return false;">English</a>
+          <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
+          <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
+          <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CTA -->
     <button class="btn-header-cta" onclick="showPage('page-contact')">Contact Us</button>
+
+    <!-- Hamburger mobile -->
     <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
+
   </div>
 </header>
 
@@ -1940,121 +1977,106 @@
      PAGE: CONTACT
 ══════════════════════════════════════════════════ -->
 <div id="page-contact" class="page-section">
-  <div class="page-banner" style="background-image:url('public/assets/photos/romer/Azimut-Fly-53-Running-5.jpg');">
-    <div class="container">
-      <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / Contact</div>
+
+  <!-- Hero video -->
+  <div class="contact-hero">
+    <video autoplay muted loop playsinline class="contact-hero-video">
+      <source src="public/assets/videos/khalilah.mp4" type="video/mp4">
+    </video>
+    <div class="contact-hero-overlay"></div>
+    <div class="contact-hero-content">
+      <p class="eyebrow" style="color:var(--celeste);">Get in Touch</p>
       <h1>Contact Us</h1>
-      <p>Our team is available for any inquiry.</p>
+      <p class="contact-hero-sub">Whether you're buying, selling or planning your next charter — our team is only a message away.</p>
     </div>
   </div>
 
-  <section class="section bg-white">
-    <div class="container">
-      <div class="contact-grid">
-        <!-- LEFT: Info -->
-        <div class="fade-in-up">
-          <div class="eyebrow">Get in Touch</div>
-          <h2>Miami, Florida</h2>
+  <!-- Info + Form -->
+  <div class="contact-body">
 
-          <div class="contact-detail">
-            <span class="contact-detail-label">Address</span>
-            <span class="contact-detail-value">888 Biscayne Blvd, Suite 505<br>Miami, Florida 33132</span>
-          </div>
-          <div class="contact-detail">
-            <span class="contact-detail-label">Phone</span>
-            <span class="contact-detail-value"><a href="tel:+13054917794">+1 305 491 7794</a></span>
-          </div>
-          <div class="contact-detail">
-            <span class="contact-detail-label">Email</span>
-            <span class="contact-detail-value"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></span>
-          </div>
-
-          <div class="contact-sep"></div>
-
-          <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;">I'm interested in:</p>
-          <div class="contact-interest-btns">
-            <button class="contact-int-btn" onclick="openModal('buy')">Buy a Yacht</button>
-            <button class="contact-int-btn" onclick="showPage('page-sell')">Sell a Yacht</button>
-            <button class="contact-int-btn" onclick="openModal('charter')">Charter</button>
-          </div>
-
-          <div class="contact-sep"></div>
-
-          <p style="font-size:0.82rem;color:var(--text-mid);margin-bottom:0.75rem;">Follow us</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener" class="social-link">Instagram</a>
-            <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
-            <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener" class="social-link">YouTube</a>
-          </div>
-        </div>
-
-        <!-- RIGHT: Form -->
-        <div class="fade-in-up">
-          <div class="form-card">
-            <h3>Send a Message</h3>
-            <div id="contact-form-wrap">
-              <form onsubmit="handleContactSubmit(event)">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>First Name</label>
-                    <input type="text" placeholder="First name">
-                  </div>
-                  <div class="form-group">
-                    <label>Last Name</label>
-                    <input type="text" placeholder="Last name">
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" required placeholder="your@email.com">
-                  </div>
-                  <div class="form-group">
-                    <label>Phone</label>
-                    <input type="tel" placeholder="+1 (000) 000-0000">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>Subject</label>
-                  <select>
-                    <option value="">Select a topic…</option>
-                    <option>Buy a Yacht</option>
-                    <option>Sell a Yacht</option>
-                    <option>Charter — Americas</option>
-                    <option>Charter — Mediterranean</option>
-                    <option>Yacht Management</option>
-                    <option>Crew Placement</option>
-                    <option>Palmer Johnson</option>
-                    <option>G-Tender</option>
-                    <option>General Inquiry</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label>Message</label>
-                  <textarea placeholder="Tell us how we can help…" style="min-height:130px;"></textarea>
-                </div>
-                <button type="submit" class="form-submit">Send Message</button>
-              </form>
-            </div>
-            <div class="success-msg" id="contact-success">
-              <div class="success-checkmark">✓</div>
-              <h3>Message Sent</h3>
-              <p>Thank you for reaching out. We will reply within one business day.</p>
-            </div>
-          </div>
-        </div>
+    <!-- Left: info -->
+    <div class="contact-info">
+      <div>
+        <p class="contact-info-label">Phone</p>
+        <a href="tel:+13054917794" class="contact-info-value">+1 305 491 7794</a>
+      </div>
+      <div>
+        <p class="contact-info-label">Email</p>
+        <a href="mailto:info@1oceanyachts.com" class="contact-info-value">info@1oceanyachts.com</a>
+      </div>
+      <div>
+        <p class="contact-info-label">Base</p>
+        <p class="contact-info-value">Miami, Florida — USA</p>
+      </div>
+      <div>
+        <p class="contact-info-label">Operations</p>
+        <p class="contact-info-value">Americas &amp; Mediterranean</p>
+      </div>
+      <div>
+        <p class="contact-info-label">WhatsApp</p>
+        <a href="https://wa.me/13054917794" target="_blank" rel="noopener" class="contact-info-value">+1 305 491 7794</a>
+      </div>
+      <div class="contact-social">
+        <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
       </div>
     </div>
-  </section>
 
-  <!-- MAP -->
-  <div style="height:400px;position:relative;overflow:hidden;">
-    <iframe
-      src="https://maps.google.com/maps?q=888+Biscayne+Blvd,+Miami,+FL+33132&z=15&output=embed"
-      width="100%" height="100%" style="border:0;display:block;" allowfullscreen loading="lazy"
-      title="1 Ocean Yachts — Miami Office Location">
-    </iframe>
-    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;"></div>
+    <!-- Right: form -->
+    <div class="contact-form-wrap">
+      <p class="eyebrow" style="color:var(--celeste);">Send a Message</p>
+      <h2 class="contact-form-title">How can we help?</h2>
+
+      <form class="contact-form-fraser" onsubmit="handleContactForm(event)">
+        <div class="cf-row cf-row-2">
+          <div class="cf-field">
+            <label>First Name</label>
+            <input type="text" name="fname" placeholder="James" required>
+          </div>
+          <div class="cf-field">
+            <label>Last Name</label>
+            <input type="text" name="lname" placeholder="Harrington" required>
+          </div>
+        </div>
+        <div class="cf-field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="james@email.com" required>
+        </div>
+        <div class="cf-field">
+          <label>I'm interested in</label>
+          <div class="cf-pills">
+            <button type="button" class="cf-pill active" onclick="togglePill(this)">Charter</button>
+            <button type="button" class="cf-pill" onclick="togglePill(this)">Buying</button>
+            <button type="button" class="cf-pill" onclick="togglePill(this)">Selling</button>
+            <button type="button" class="cf-pill" onclick="togglePill(this)">Management</button>
+            <button type="button" class="cf-pill" onclick="togglePill(this)">Other</button>
+          </div>
+        </div>
+        <div class="cf-field">
+          <label>Message <span style="opacity:0.4;font-weight:300">(optional)</span></label>
+          <textarea name="message" rows="3" placeholder="Tell us more about what you're looking for…"></textarea>
+        </div>
+        <button type="submit" class="cf-submit">
+          Send Message
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="cf-disclaimer">We respond to all enquiries within 24 hours.</p>
+      </form>
+
+      <div class="cf-success" style="display:none;opacity:0;transition:opacity 0.3s ease;">
+        <div class="cf-success-icon">✓</div>
+        <h3>Message received.</h3>
+        <p>A member of our team will be in touch within 24 hours.</p>
+      </div>
+    </div>
+
   </div>
 
 </div><!-- /page-contact -->
@@ -2675,13 +2697,22 @@
     s.style.display = 'block';
   }
 
-  function handleContactSubmit(e) {
+  function handleContactSubmit(e) { if(e) e.preventDefault(); }
+
+  function handleContactForm(e) {
     e.preventDefault();
-    console.log('Contact form submitted');
-    document.getElementById('contact-form-wrap').style.display = 'none';
-    var s = document.getElementById('contact-success');
-    s.style.display = 'block';
+    var form = document.querySelector('.contact-form-fraser');
+    var success = document.querySelector('.cf-success');
+    form.style.opacity = '0';
+    form.style.pointerEvents = 'none';
+    setTimeout(function() {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      setTimeout(function() { success.style.opacity = '1'; }, 50);
+    }, 300);
   }
+
+  function togglePill(el) { el.classList.toggle('active'); }
 
   function handleCharterSubmit(e) {
     e.preventDefault();
