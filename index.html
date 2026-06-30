@@ -959,6 +959,82 @@
     .footer-bar-links a { font-size: 0.75rem; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
     .footer-bar-links a:hover { color: rgba(255,255,255,0.5); }
 
+    /* ── QUICK BOOKING WIDGET ─────────────────── */
+    .qb-section {
+      background: var(--off-white); padding: 4rem 0;
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .qb-wrap {
+      background: #fff; border: 1px solid var(--light-grey);
+      padding: 3rem 3rem 2.5rem;
+    }
+    .qb-header { margin-bottom: 2rem; text-align: center; }
+    .qb-header h3 {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 1.8rem; font-weight: 300; color: var(--navy);
+      margin: 0.4rem 0 0.5rem;
+    }
+    .qb-header p { font-size: 0.85rem; color: var(--text-mid); max-width: 420px; margin: 0 auto; }
+    .qb-form {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.4fr auto;
+      gap: 1.2rem; align-items: end;
+    }
+    .qb-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .qb-field label {
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; color: #999;
+    }
+    .qb-field select, .qb-field input {
+      border: none; border-bottom: 1px solid #ddd;
+      padding: 0.6rem 0; font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.88rem; color: var(--navy);
+      background: transparent; outline: none; transition: border-color 0.2s;
+    }
+    .qb-field select:focus, .qb-field input:focus { border-bottom-color: #0D1B2A; }
+    .qb-submit {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: #0D1B2A; color: #fff; border: none; cursor: pointer;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.75rem 1.6rem; white-space: nowrap; transition: background 0.2s;
+    }
+    .qb-submit:hover { background: #1a3048; }
+    .qb-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .qb-submit svg { transition: transform 0.2s; }
+    .qb-submit:hover svg { transform: translateX(3px); }
+    .qb-success {
+      display: none; align-items: center; gap: 1rem; padding: 1rem 0;
+    }
+    .qb-success-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #0D1B2A; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .qb-success h4 {
+      font-size: 1.2rem; font-weight: 400; color: var(--navy); margin-bottom: 0.2rem;
+    }
+    .qb-success p { font-size: 0.84rem; color: var(--text-mid); }
+    .qb-or-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 2rem 0 1.2rem; color: #ccc;
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .qb-or-divider::before, .qb-or-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--light-grey);
+    }
+    .qb-contact-btn {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; background: none; border: 1px solid var(--light-grey);
+      cursor: pointer; padding: 0.9rem 1.5rem;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.85rem; color: var(--text-mid);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .qb-contact-btn:hover { border-color: #0D1B2A; color: #0D1B2A; }
+    .qb-contact-btn strong { color: #0D1B2A; font-weight: 600; letter-spacing: 0.04em; }
+
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 960px) {
       .header-bottom-row { display: none; }
@@ -966,6 +1042,9 @@
       .hamburger { display: flex; }
       .header-top-row { padding: 0.9rem 1.5rem; }
       .hero-content { padding: 0 2rem; }
+      .qb-form { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .qb-field-contact { grid-column: span 2; }
+      .qb-submit { grid-column: span 2; justify-content: center; }
       .intro-grid, .about-grid, .sell-grid, .about-page-grid, .founder-grid, .brand-page-grid, .contact-grid, .charter-cards { grid-template-columns: 1fr; gap: 2.5rem; }
       .dest-region, .dest-region.dest-flip { grid-template-columns: 1fr; }
       .dest-region-img { min-height: 300px; order: 0 !important; }
@@ -989,6 +1068,9 @@
       .action-cards, .lead-cta-grid { grid-template-columns: 1fr; }
       .region-cards { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .qb-wrap { padding: 2rem 1.5rem; }
+      .qb-form { grid-template-columns: 1fr; }
+      .qb-field-contact, .qb-submit { grid-column: span 1; }
     }
 
     /* ── CHARTER PAGE ────────────────────────── */
@@ -1606,6 +1688,81 @@
       </div>
     </div>
   </div>
+
+  <!-- QUICK BOOKING WIDGET -->
+  <section class="qb-section">
+    <div class="container">
+      <div class="qb-wrap fade-in-up">
+
+        <div class="qb-header">
+          <span class="eyebrow">Quick Request</span>
+          <h3>Check Availability</h3>
+          <p>Select your destination and dates — we'll get back to you within 24 hours.</p>
+        </div>
+
+        <form class="qb-form" id="qb-form" onsubmit="handleQuickBooking(event)">
+          <input type="hidden" name="form_type" value="Quick Charter Booking">
+
+          <div class="qb-field">
+            <label>Destination</label>
+            <select name="destination" required>
+              <option value="" disabled selected>Select a destination</option>
+              <optgroup label="The Americas">
+                <option value="Miami">Miami</option>
+                <option value="Bahamas">Bahamas</option>
+                <option value="Florida Keys">Florida Keys</option>
+                <option value="Caribbean">Caribbean</option>
+                <option value="BVI">British Virgin Islands</option>
+              </optgroup>
+              <optgroup label="The Mediterranean">
+                <option value="Costa Smeralda">Costa Smeralda, Sardinia</option>
+                <option value="Balearic Islands">Balearic Islands</option>
+                <option value="French Riviera">French Riviera &amp; Monaco</option>
+                <option value="Corsica">Corsica &amp; Elba</option>
+                <option value="Amalfi Coast">Amalfi Coast</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="qb-field">
+            <label>Check-in</label>
+            <input type="date" name="checkin" required>
+          </div>
+
+          <div class="qb-field">
+            <label>Check-out</label>
+            <input type="date" name="checkout" required>
+          </div>
+
+          <div class="qb-field qb-field-contact">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <button type="submit" class="qb-submit">
+            <span class="qb-submit-text">Send Request</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <div class="qb-success" id="qb-success">
+          <div class="qb-success-icon">✓</div>
+          <div>
+            <h4>Request sent.</h4>
+            <p>1 Ocean Yachts will contact you shortly to confirm availability.</p>
+          </div>
+        </div>
+
+        <div class="qb-or-divider"><span>or</span></div>
+
+        <button class="qb-contact-btn" onclick="showPage('page-contact')">
+          Prefer to write us directly?
+          <strong>Contact Us →</strong>
+        </button>
+
+      </div>
+    </div>
+  </section>
 
   <!-- 2. DESTINATIONS -->
   <section id="ch-destinations" style="background:#fff;padding:80px 0;">
@@ -2889,7 +3046,45 @@
     initFadeObserver();
     initAOS();
     initHeroGSAP();
+
+    /* Quick booking date validation */
+    var checkin = document.querySelector('#qb-form input[name="checkin"]');
+    var checkout = document.querySelector('#qb-form input[name="checkout"]');
+    if (checkin && checkout) {
+      checkin.addEventListener('change', function() {
+        checkout.min = checkin.value;
+        if (checkout.value && checkout.value < checkin.value) checkout.value = '';
+      });
+    }
   });
+
+  /* ── QUICK BOOKING WIDGET ─────────────────── */
+  function handleQuickBooking(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('.qb-submit');
+    var btnText = btn.querySelector('.qb-submit-text');
+    var originalText = btnText.textContent;
+
+    btn.disabled = true;
+    btnText.textContent = 'Sending…';
+
+    var data = new FormData(form);
+    var dest = data.get('destination');
+    var checkin = data.get('checkin');
+    var checkout = data.get('checkout');
+    var email = data.get('email');
+
+    /* Log to console (no Formspree configured yet) */
+    console.log('Quick Charter Booking:', { dest: dest, checkin: checkin, checkout: checkout, email: email });
+
+    /* Simulate success — replace with real fetch when Formspree is set up */
+    setTimeout(function() {
+      form.style.display = 'none';
+      var success = document.getElementById('qb-success');
+      success.style.display = 'flex';
+    }, 600);
+  }
 </script>
 
 <!-- GSAP -->
