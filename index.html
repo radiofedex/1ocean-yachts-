@@ -23,8 +23,10 @@
       --text-mid: #5A6270;
       --text-light: #8A8D8F;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100vw; }
     body { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; font-size: 0.95rem; letter-spacing: 0.01em; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.75; }
+    img { max-width: 100%; }
+    video { max-width: 100%; }
     h1,h2,h3,h4,h5 { font-family: 'DM Sans', system-ui, sans-serif; font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; line-height: 1.15; }
 
     /* ── GRAIN OVERLAY (premium texture) ─── */
@@ -1043,7 +1045,9 @@
       .header-social { display: none; }
       .hamburger { display: flex; }
       .header-top-row { padding: 0.9rem 1.5rem; }
+      .header-logo img { height: 36px; }
       .hero-content { padding: 0 2rem; }
+      .hero-ctas { flex-wrap: wrap; }
       .qb-form { grid-template-columns: 1fr 1fr; gap: 1rem; }
       .qb-field-contact { grid-column: span 2; }
       .qb-submit { grid-column: span 2; justify-content: center; }
@@ -1065,6 +1069,11 @@
       .brand-page-img { height: 320px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .section { padding: 60px 0; }
+      .contact-hero { height: 45vh; min-height: 300px; }
+      .about-people-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-services-minimal { grid-template-columns: 1fr; }
+      .asm-item:nth-child(odd) { border-right: none; padding-right: 0; }
+      .asm-item:nth-child(even) { padding-left: 0; }
     }
     @media (max-width: 600px) {
       .yacht-grid, .brands-grid, .footer-grid, .about-services { grid-template-columns: 1fr; }
@@ -1072,9 +1081,33 @@
       .action-cards, .lead-cta-grid { grid-template-columns: 1fr; }
       .region-cards { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .qb-wrap { padding: 2rem 1.5rem; }
+      .qb-wrap { padding: 2rem 1.2rem; }
       .qb-form { grid-template-columns: 1fr; }
       .qb-field-contact, .qb-submit { grid-column: span 1; }
+      .qb-header h3 { font-size: 1.4rem; }
+      /* Hero */
+      .hero-content { padding: 0 1.5rem; }
+      .hero-content h1 { font-size: clamp(2.2rem, 9vw, 3rem); line-height: 1.1; }
+      .hero-sub { font-size: 0.85rem; }
+      .hero-ctas { flex-direction: column; width: 100%; }
+      .hero-btn-primary, .hero-btn-ghost { width: 100%; text-align: center; justify-content: center; padding: 0.85rem 1.5rem; }
+      /* Modal */
+      .modal-panel { width: 92vw; max-width: 92vw; padding: 2rem 1.2rem; max-height: 88vh; }
+      .dest-chips { gap: 0.4rem; }
+      .dest-chip { font-size: 0.7rem; padding: 0.4rem 0.8rem; }
+      /* Contact */
+      .contact-hero { height: 40vh; min-height: 260px; }
+      .contact-hero-txt h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .contact-info-col, .contact-form-col { padding: 2.5rem 1.2rem; }
+      .cf2-title { font-size: 1.6rem; }
+      /* Sell */
+      .sell-left, .sell-right { padding: 3rem 1.2rem; }
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      /* Charter split */
+      .ch-split-panel { height: 42vh; }
+      .ch-split-content { bottom: 1.5rem; left: 1.5rem; right: 1.5rem; }
+      .ch-split-title { font-size: 2.2rem; }
     }
 
     /* ── CHARTER PAGE ────────────────────────── */
@@ -1249,6 +1282,22 @@
       .contact-body { grid-template-columns: 1fr; }
       .contact-info-col, .contact-form-col { padding: 3rem 2rem; }
       .cf2-row { flex-direction: column; gap: 0; }
+    }
+
+    /* ── MOBILE TOUCH TARGETS & SAFETY ─────────── */
+    @media (max-width: 960px) {
+      /* Mobile nav drawer: min 44px touch targets */
+      #main-nav .nav-link { min-height: 44px; padding: 0.7rem 1.5rem; font-size: 0.88rem; }
+      /* Brands dropdown inside mobile nav: static so it doesn't overflow */
+      #main-nav .nav-dropdown {
+        position: static; width: 100%; box-shadow: none;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        max-width: 100%;
+      }
+      /* Lang dropdown: keep absolute but ensure it stays in viewport */
+      .lang-dropdown { right: 0; left: auto; min-width: 130px; max-width: calc(100vw - 2rem); }
+      /* Footer bottom links: touch-friendly */
+      .footer-bar-links a { padding: 0.5rem 0.3rem; min-height: 44px; display: inline-flex; align-items: center; }
     }
   </style>
 </head>
