@@ -819,30 +819,45 @@
       font-size: 0.88rem; color: var(--text-mid);
       line-height: 1.9; margin-bottom: 1.4rem;
     }
-    .about-services-minimal {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0; border-top: 1px solid var(--light-grey);
+    /* ── ABOUT: CLOSING SECTION (quote + credentials) ── */
+    .about-closing-section { padding: 6rem 0; }
+    .about-closing-grid {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; align-items: center;
     }
-    .asm-item {
-      display: flex; gap: 1.5rem; align-items: flex-start;
-      padding: 2.5rem 2rem 2.5rem 0;
-      border-bottom: 1px solid var(--light-grey);
+    .about-closing-mark {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 5rem; line-height: 1; color: var(--celeste); opacity: 0.35; margin-bottom: -1.5rem;
     }
-    .asm-item:nth-child(odd)  { border-right: 1px solid var(--light-grey); padding-right: 3rem; }
-    .asm-item:nth-child(even) { padding-left: 3rem; }
-    .asm-num {
+    .about-closing-text {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 400; font-style: italic;
+      line-height: 1.55; color: var(--navy); margin-bottom: 1.5rem;
+    }
+    .about-closing-attr {
       font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 1.2rem; font-weight: 300; color: var(--celeste); opacity: 0.5; flex-shrink: 0; padding-top: 2px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-mid);
     }
-    .asm-item h4 {
-      font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem;
+    .about-closing-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem;
+      border-left: 1px solid var(--light-grey); padding-left: 3rem;
     }
-    .asm-item p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.75; }
+    .acs-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .acs-number {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 2.6rem; font-weight: 400; color: var(--navy); line-height: 1;
+    }
+    .acs-label {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-mid); line-height: 1.4;
+    }
     @media (max-width: 768px) {
       .about-people-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-services-minimal { grid-template-columns: 1fr; }
-      .asm-item:nth-child(odd)  { border-right: none; padding-right: 0; }
-      .asm-item:nth-child(even) { padding-left: 0; }
+      .about-closing-section { padding: 4rem 0; }
+      .about-closing-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-closing-stats { border-left: none; border-top: 1px solid var(--light-grey); padding-left: 0; padding-top: 2.5rem; }
+      .about-closing-mark { font-size: 3.5rem; }
+      .acs-number { font-size: 2rem; }
     }
     .about-services { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     .about-service-item { border-left: 2px solid var(--light-grey); padding-left: 1.2rem; }
@@ -1110,9 +1125,6 @@
       .section { padding: 60px 0; }
       .contact-hero { height: 45vh; min-height: 300px; }
       .about-people-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .about-services-minimal { grid-template-columns: 1fr; }
-      .asm-item:nth-child(odd) { border-right: none; padding-right: 0; }
-      .asm-item:nth-child(even) { padding-left: 0; }
     }
     @media (max-width: 600px) {
       .yacht-grid, .brands-grid, .about-services { grid-template-columns: 1fr; }
@@ -2131,42 +2143,6 @@
     </div>
   </section>
 
-  <!-- SERVICES — lista minimal -->
-  <section class="section bg-white">
-    <div class="container">
-      <div class="about-services-minimal fade-in-up">
-        <div class="asm-item">
-          <span class="asm-num">I</span>
-          <div>
-            <h4>Yacht Sales</h4>
-            <p>Motor yachts, sailing yachts, superyachts and off-market vessels — buyers and sellers worldwide.</p>
-          </div>
-        </div>
-        <div class="asm-item">
-          <span class="asm-num">II</span>
-          <div>
-            <h4>Yacht Charter</h4>
-            <p>Private charter in the Americas and Mediterranean — fully crewed, entirely tailored.</p>
-          </div>
-        </div>
-        <div class="asm-item">
-          <span class="asm-num">III</span>
-          <div>
-            <h4>Yacht Management</h4>
-            <p>Maintenance, compliance, crew, logistics and financial reporting — all under one roof.</p>
-          </div>
-        </div>
-        <div class="asm-item">
-          <span class="asm-num">IV</span>
-          <div>
-            <h4>Crew Placement</h4>
-            <p>Experienced captains, officers and crew for private and commercially operated yachts.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- MATTIA DEVILLA -->
   <section class="section bg-white">
     <div class="container">
@@ -2191,6 +2167,40 @@
             <span class="founder-tag">Americas</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND PHILOSOPHY / CREDENTIALS -->
+  <section class="section bg-off about-closing-section">
+    <div class="container">
+      <div class="about-closing-grid fade-in-up">
+
+        <div class="about-closing-quote">
+          <div class="about-closing-mark">"</div>
+          <p class="about-closing-text">Yachting, done properly, is not a transaction. It is a relationship built on trust, discretion and an obsessive attention to detail — long before the first sea trial, and long after the final signature.</p>
+          <p class="about-closing-attr">— 1 Ocean Yachts Group</p>
+        </div>
+
+        <div class="about-closing-stats">
+          <div class="acs-item">
+            <span class="acs-number">25+</span>
+            <span class="acs-label">Years of Experience</span>
+          </div>
+          <div class="acs-item">
+            <span class="acs-number">180+</span>
+            <span class="acs-label">Vessels Sold &amp; Chartered</span>
+          </div>
+          <div class="acs-item">
+            <span class="acs-number">2</span>
+            <span class="acs-label">Continents of Operation</span>
+          </div>
+          <div class="acs-item">
+            <span class="acs-number">3</span>
+            <span class="acs-label">Languages Spoken Fluently</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
