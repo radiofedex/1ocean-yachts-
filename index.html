@@ -779,44 +779,47 @@
     .founder-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--mid-grey); padding: 0.25rem 0.75rem; }
 
     /* ── TEAM SECTION ────────────────────────── */
-    .about-team-section {
-      margin-top: 5rem; padding-top: 4rem;
-      border-top: 1px solid var(--light-grey);
+    /* ── ABOUT MINIMAL ───────────────────────── */
+    .about-people-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
     }
-    .team-member-card {
-      display: grid; grid-template-columns: 240px 1fr;
-      gap: 3rem; align-items: start;
-    }
-    .team-member-img-wrap {
-      width: 100%; aspect-ratio: 3/4; overflow: hidden; background: #0D1B2A;
-    }
-    .team-member-img-wrap img {
-      width: 100%; height: 100%; object-fit: cover; object-position: top center;
-      display: block; transition: transform 0.5s ease;
-    }
-    .team-member-card:hover .team-member-img-wrap img { transform: scale(1.04); }
-    .team-member-body { padding-top: 0.5rem; }
-    .team-member-role {
-      display: block; font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 0.62rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--celeste); margin-bottom: 0.7rem;
-    }
-    .team-member-name {
+    .about-person-meta { margin-bottom: 1.2rem; }
+    .about-person-meta h3 {
       font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 2rem; font-weight: 300;
-      color: var(--navy); margin-bottom: 0.3rem; line-height: 1.1;
+      font-size: 1.6rem; font-weight: 300;
+      color: var(--navy); margin: 0.3rem 0 0.2rem;
     }
-    .team-member-title {
+    .about-person-role {
+      font-size: 0.75rem; color: var(--text-mid); letter-spacing: 0.04em;
+    }
+    .about-person-bio {
+      font-size: 0.88rem; color: var(--text-mid);
+      line-height: 1.9; margin-bottom: 1.4rem;
+    }
+    .about-services-minimal {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-top: 1px solid var(--light-grey);
+    }
+    .asm-item {
+      display: flex; gap: 1.5rem; align-items: flex-start;
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .asm-item:nth-child(odd)  { border-right: 1px solid var(--light-grey); padding-right: 3rem; }
+    .asm-item:nth-child(even) { padding-left: 3rem; }
+    .asm-num {
       font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 0.78rem; color: var(--text-mid);
-      margin-bottom: 1.4rem; font-style: italic;
+      font-size: 1.2rem; font-weight: 300; color: var(--celeste); opacity: 0.5; flex-shrink: 0; padding-top: 2px;
     }
-    .team-member-bio {
-      font-size: 0.9rem; color: var(--text-mid); line-height: 1.9; max-width: 480px;
+    .asm-item h4 {
+      font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.4rem;
     }
+    .asm-item p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.75; }
     @media (max-width: 768px) {
-      .team-member-card { grid-template-columns: 1fr; }
-      .team-member-img-wrap { aspect-ratio: 4/3; }
+      .about-people-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-services-minimal { grid-template-columns: 1fr; }
+      .asm-item:nth-child(odd)  { border-right: none; padding-right: 0; }
+      .asm-item:nth-child(even) { padding-left: 0; }
     }
     .about-services { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     .about-service-item { border-left: 2px solid var(--light-grey); padding-left: 1.2rem; }
@@ -1351,20 +1354,6 @@
         </div>
       </div>
 
-      <!-- Mattia Devilla preview -->
-      <div class="about-grid" style="margin-top:5rem;padding-top:4rem;border-top:1px solid var(--light-grey);" data-aos="fade-up">
-        <div>
-          <img src="public/assets/mattia.jpg" alt="Mattia Devilla" class="about-img"
-               onerror="this.style.background='#0D1B2A';this.style.display='block';this.removeAttribute('src')">
-        </div>
-        <div class="about-text">
-          <span class="eyebrow">Charter Specialist</span>
-          <h2>Mattia Devilla</h2>
-          <p style="font-size:1rem;color:var(--text-mid);margin-bottom:1rem;font-style:italic;">Charter Sales Manager</p>
-          <p>Five years on the water and a passion for placing the right client on the right yacht — Mattia brings precision and deep Mediterranean knowledge to every charter enquiry.</p>
-          <button class="btn-outline" onclick="showPage('page-about')" style="margin-top:1.5rem;padding:0.7rem 1.8rem;">Meet the Team →</button>
-        </div>
-      </div>
 
     </div>
   </section>
@@ -1784,11 +1773,12 @@
      PAGE: ABOUT
 ══════════════════════════════════════════════════ -->
 <div id="page-about" class="page-section">
+
+  <!-- BANNER -->
   <div class="page-banner" style="background-image:url('public/assets/photos/sardinia/8A36A4EB-402B-453D-86A0-A00B153972BD.jpg');">
     <div class="container">
       <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / About</div>
-      <h1>About 1 Ocean Yachts Group</h1>
-      <p>25 years of personalised yachting excellence.</p>
+      <h1>About</h1>
     </div>
   </div>
 
@@ -1796,110 +1786,97 @@
   <section class="section bg-white">
     <div class="container">
       <div class="about-page-grid">
-        <div class="about-text-body fade-in-up">
-          <div class="eyebrow">Our Story</div>
-          <h2>25 Years of Yachting Excellence</h2>
-          <p>1 Ocean Yachts Group was established with a commitment to delivering personalised, high-quality service in a market often driven by volume. Based in Miami, Florida, we operate as an exclusive dealer for world-renowned brands and serve as a trusted partner for yacht sales, charters, management, new construction and advisory services for ultra-luxury assets.</p>
-          <p>What began as exclusive representation of a single brand has grown into a multi-brand powerhouse representing Palmer Johnson and G-Tender, two of the most prestigious names in luxury yachting.</p>
-          <p>We are active at the world's most prestigious yacht shows — Miami, Fort Lauderdale, Palm Beach, Monaco and Cannes — maintaining a global presence that reflects our international clientele.</p>
-          <div class="member-badges">
-            <span class="member-badge">IYBA Member</span>
-            <span class="member-badge">MYBA Member</span>
-          </div>
-        </div>
         <div class="fade-in-up">
           <img src="public/assets/jose.avif" alt="1 Ocean Yachts Group" class="about-page-img">
+        </div>
+        <div class="about-text-body fade-in-up">
+          <div class="eyebrow">Est. Miami, Florida</div>
+          <h2>A Different Kind of Yachting Company</h2>
+          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.5rem;">Built on discretion, personal service and genuine expertise — not volume. We operate as exclusive dealers for world-renowned brands and trusted advisors for yacht sales, charter, management and new construction.</p>
+          <div class="member-badges">
+            <span class="member-badge">IYBA</span>
+            <span class="member-badge">MYBA</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOUNDER -->
+  <!-- TEAM: Jose + Mattia -->
   <section class="section bg-off">
     <div class="container">
-      <div class="founder-grid">
-        <div class="fade-in-up">
-          <div class="eyebrow">Our Founder</div>
-          <h2>Jose Arana Muñoz De Cote</h2>
-          <p style="font-size:1rem;color:var(--text-mid);margin-bottom:1rem;font-style:italic;">Founder &amp; CEO</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1rem;">With over 25 years of experience in luxury yachting, Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter. His career began in 1997 at Ferretti of America and has since included senior roles at Koch Newton &amp; Partners, Merrill-Stevens Yachts, and Fraser Yachts — one of the world's leading superyacht brokerages.</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">Prior to yachting, Jose developed a strong commercial background in marketing and business strategy at Microsoft, Ericsson, and Bell South. Fluent in English, Spanish, and Italian, he serves a global clientele with complete discretion and expertise.</p>
+      <div class="about-people-grid">
+
+        <!-- Jose -->
+        <div class="about-person fade-in-up">
+          <div class="about-person-meta">
+            <span class="eyebrow">Founder &amp; CEO</span>
+            <h3>Jose Arana Muñoz De Cote</h3>
+            <p class="about-person-role">25+ years · Ferretti · Koch Newton · Fraser Yachts</p>
+          </div>
+          <p class="about-person-bio">Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter — from first acquisition to long-term management. Fluent in English, Spanish and Italian, he serves a global clientele with complete discretion.</p>
           <div class="founder-tags">
             <span class="founder-tag">English</span>
             <span class="founder-tag">Spanish</span>
             <span class="founder-tag">Italian</span>
-            <span class="founder-tag">IYBA</span>
-            <span class="founder-tag">MYBA</span>
           </div>
         </div>
-        <div class="fade-in-up" style="display:flex;align-items:flex-start;">
-          <div style="background:var(--white);border:1px solid var(--light-grey);padding:2.5rem;width:100%;">
-            <div style="font-size:2rem;color:var(--celeste);opacity:0.4;font-family:'Cormorant Garant',Georgia,serif;line-height:1;margin-bottom:0.6rem;">"</div>
-            <p style="font-family:'Cormorant Garant',Georgia,serif;font-size:1.4rem;font-weight:300;font-style:italic;line-height:1.6;color:var(--navy);margin-bottom:1.5rem;">Our business is built on trust. Every client is a long-term relationship, not a transaction. We bring the same level of care to a charter inquiry as we do to a superyacht sale.</p>
-            <p style="font-size:0.84rem;color:var(--text-mid);">Jose Arana Muñoz De Cote — Founder &amp; CEO</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- TEAM SECTION -->
-      <div class="about-team-section fade-in-up">
-        <div style="margin-bottom:3rem">
-          <span class="eyebrow">Our Team</span>
-          <h2>The People Behind the Service</h2>
-        </div>
-        <div class="team-member-card">
-          <div class="team-member-img-wrap">
-            <img src="public/assets/mattia.jpg" alt="Mattia Devilla"
-                 onerror="this.parentElement.style.background='#0D1B2A';this.style.display='none'">
+        <!-- Mattia -->
+        <div class="about-person fade-in-up">
+          <div class="about-person-meta">
+            <span class="eyebrow">Charter Sales Manager</span>
+            <h3>Mattia Devilla</h3>
+            <p class="about-person-role">Luxury Charter Specialist · Yacht Broker</p>
           </div>
-          <div class="team-member-body">
-            <span class="team-member-role">Luxury Charter Specialist · Yacht Broker</span>
-            <h3 class="team-member-name">Mattia Devilla</h3>
-            <p class="team-member-title">Charter Sales Manager</p>
-            <p class="team-member-bio">
-              There are brokers who know yachts, and those who know the sea. Mattia Devilla is both.
-              With over five years immersed in the world of luxury yachting, he has developed an instinct
-              for the perfect charter — one shaped not by catalogues, but by time spent on the water itself.
-              Specialising in Mediterranean itineraries and private charter sales, Mattia brings the kind
-              of personal attention that transforms a booking into an experience worth remembering.
-              Whether you are stepping aboard for the first time or returning for another season,
-              his intimate knowledge of the fleet, the coastlines and the clients he serves ensures
-              that every voyage exceeds expectation — quietly, seamlessly, and exactly as it should be.
-            </p>
+          <p class="about-person-bio">Five years on the water have given Mattia an instinct for the perfect charter — shaped not by catalogues, but by time spent at sea. He specialises in Mediterranean itineraries and private charter sales, bringing a personal attention that transforms a booking into a memory.</p>
+          <div class="founder-tags">
+            <span class="founder-tag">Mediterranean</span>
+            <span class="founder-tag">Charter</span>
+            <span class="founder-tag">Americas</span>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES OVERVIEW -->
+  <!-- SERVICES — lista minimal -->
   <section class="section bg-white">
     <div class="container">
-      <div class="section-header fade-in-up" style="text-align:center;">
-        <div class="eyebrow">What We Offer</div>
-        <h2>Our Services</h2>
-      </div>
-      <div class="about-services fade-in-up">
-        <div class="about-service-item">
-          <h4>Yacht Sales</h4>
-          <p>Curated brokerage of motor yachts, sailing yachts, superyachts and off-market vessels for buyers and sellers worldwide.</p>
+      <div class="about-services-minimal fade-in-up">
+        <div class="asm-item">
+          <span class="asm-num">I</span>
+          <div>
+            <h4>Yacht Sales</h4>
+            <p>Motor yachts, sailing yachts, superyachts and off-market vessels — buyers and sellers worldwide.</p>
+          </div>
         </div>
-        <div class="about-service-item">
-          <h4>Yacht Charter</h4>
-          <p>Bespoke private charter experiences in the Americas and Mediterranean — fully crewed and tailored to your itinerary.</p>
+        <div class="asm-item">
+          <span class="asm-num">II</span>
+          <div>
+            <h4>Yacht Charter</h4>
+            <p>Private charter in the Americas and Mediterranean — fully crewed, entirely tailored.</p>
+          </div>
         </div>
-        <div class="about-service-item">
-          <h4>Yacht Management</h4>
-          <p>Full management services for owners: maintenance, compliance, crew, logistics and financial reporting.</p>
+        <div class="asm-item">
+          <span class="asm-num">III</span>
+          <div>
+            <h4>Yacht Management</h4>
+            <p>Maintenance, compliance, crew, logistics and financial reporting — all under one roof.</p>
+          </div>
         </div>
-        <div class="about-service-item">
-          <h4>Crew Placement</h4>
-          <p>Sourcing and vetting of experienced captains, officers and crew for private and commercially operated yachts.</p>
+        <div class="asm-item">
+          <span class="asm-num">IV</span>
+          <div>
+            <h4>Crew Placement</h4>
+            <p>Experienced captains, officers and crew for private and commercially operated yachts.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
 </div><!-- /page-about -->
 
 <!-- ══════════════════════════════════════════════════
