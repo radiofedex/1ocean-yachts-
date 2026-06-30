@@ -431,7 +431,7 @@
       font-family: 'Cormorant Garant', serif; font-size: clamp(3rem,5vw,4.5rem);
       font-weight: 300; color: var(--white); line-height: 1;
     }
-    .ns-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--celeste); margin-top: 0.5rem; }
+    .ns-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-top: 0.5rem; }
 
     @media (max-width: 1024px) {
       .featured-grid { grid-template-columns: repeat(2,1fr); }
@@ -2028,7 +2028,9 @@
     <div class="container">
       <div class="about-page-grid">
         <div class="fade-in-up">
-          <img src="public/assets/jose.avif" alt="1 Ocean Yachts Group" class="about-page-img">
+          <video class="about-page-img" autoplay muted loop playsinline style="object-fit:cover;">
+            <source src="public/assets/videos/about-hero.mp4" type="video/mp4">
+          </video>
         </div>
         <div class="about-text-body fade-in-up">
           <div class="eyebrow">Est. Miami, Florida</div>
