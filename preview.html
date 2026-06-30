@@ -203,12 +203,26 @@
     .btn-celeste:hover { background: var(--celeste-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(13,27,42,0.25); }
     .btn-celeste:active { transform: scale(0.97) translateY(0); box-shadow: none; }
 
-    /* Hamburger */
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; z-index: 210; flex-shrink: 0; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; transition: 0.3s ease; }
-    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    /* ── HAMBURGER BUTTON ─────────────────────── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 32px; height: 32px; cursor: pointer;
+      background: none; border: none; padding: 4px; z-index: 600; position: relative; flex-shrink: 0;
+    }
+    .hamburger span { display: block; width: 100%; height: 2px; background: #fff; border-radius: 1px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE NAV CLOSE BUTTON ─────────────── */
+    .mobile-nav-close { display: none; }
+
+    /* Overlay behind drawer */
+    body.mobile-nav-active::after {
+      content: ''; position: fixed; inset: 0; background: rgba(0,0,0,0.3);
+      z-index: 540; pointer-events: none;
+    }
+    body.mobile-nav-active { overflow: hidden; }
 
     /* ── UTILITY ─────────────────────────────── */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -1049,6 +1063,33 @@
       .header-bottom-row { display: none; }
       .header-social { display: none; }
       .hamburger { display: flex; }
+      /* ── MOBILE NAV DRAWER ───────────────────── */
+      #main-nav {
+        display: flex !important; flex-direction: column;
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100dvh;
+        background: #0D1B2A; padding: 7rem 2rem 2rem;
+        z-index: 550; transform: translateX(100%); transition: transform 0.35s ease;
+        overflow-y: auto; align-items: flex-start; justify-content: flex-start; gap: 0;
+      }
+      #main-nav.mobile-open { transform: translateX(0); }
+      #main-nav .nav-item { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      #main-nav .nav-link {
+        display: flex; width: 100%; height: auto; padding: 1.1rem 0;
+        font-size: 0.95rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.85);
+        justify-content: space-between; min-height: 44px;
+      }
+      #main-nav .nav-link::after { display: none; }
+      #main-nav .nav-dropdown {
+        position: static !important; opacity: 1 !important; visibility: visible !important;
+        transform: none !important; width: 100%; box-shadow: none; border-top: none;
+        background: rgba(255,255,255,0.03); display: none;
+      }
+      #main-nav .nav-item.open .nav-dropdown { display: block; }
+      #main-nav .nav-dropdown a, #main-nav .nav-dropdown button { padding: 0.8rem 1rem; font-size: 0.85rem; }
+      .mobile-nav-close {
+        display: block; position: absolute; top: 1.8rem; right: 1.8rem;
+        background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 560;
+      }
       .header-top-row { padding: 0.9rem 1.5rem; }
       .header-logo img { height: 36px; }
       .hero-content { padding: 0 2rem; }
@@ -1302,14 +1343,6 @@
 
     /* ── MOBILE TOUCH TARGETS & SAFETY ─────────── */
     @media (max-width: 960px) {
-      /* Mobile nav drawer: min 44px touch targets */
-      #main-nav .nav-link { min-height: 44px; padding: 0.7rem 1.5rem; font-size: 0.88rem; }
-      /* Brands dropdown inside mobile nav: static so it doesn't overflow */
-      #main-nav .nav-dropdown {
-        position: static; width: 100%; box-shadow: none;
-        border-top: 1px solid rgba(255,255,255,0.08);
-        max-width: 100%;
-      }
       /* Lang dropdown: keep absolute but ensure it stays in viewport */
       .lang-dropdown { right: 0; left: auto; min-width: 130px; max-width: calc(100vw - 2rem); }
       /* Footer bottom links: touch-friendly */
@@ -1368,14 +1401,15 @@
 
   <!-- RIGA 2: navigazione centrata -->
   <nav class="header-bottom-row" id="main-nav">
+    <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
+      <button class="nav-link" onclick="showPage('page-sale');closeMobileNav()">Yachts for Sale</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sell')">Sell</button>
+      <button class="nav-link" onclick="showPage('page-sell');closeMobileNav()">Sell</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
+      <button class="nav-link" onclick="showPage('page-charter');closeMobileNav()">Charter</button>
     </div>
     <div class="nav-item" id="ni-brands">
       <button class="nav-link" onclick="toggleNav('ni-brands')">
@@ -1383,15 +1417,15 @@
         <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
       </button>
       <div class="nav-dropdown">
-        <button onclick="showPage('page-pj');closeAllNav()">Palmer Johnson</button>
-        <button onclick="showPage('page-gtender');closeAllNav()">G-Tender</button>
+        <button onclick="showPage('page-pj');closeAllNav();closeMobileNav()">Palmer Johnson</button>
+        <button onclick="showPage('page-gtender');closeAllNav();closeMobileNav()">G-Tender</button>
       </div>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-about')">About</button>
+      <button class="nav-link" onclick="showPage('page-about');closeMobileNav()">About</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-contact')">Contact</button>
+      <button class="nav-link" onclick="showPage('page-contact');closeMobileNav()">Contact</button>
     </div>
   </nav>
 
@@ -2877,24 +2911,25 @@
   /* ── MOBILE NAV ──────────────────────────── */
   function toggleMobileNav() {
     var nav = document.getElementById('main-nav');
-    if (nav.style.display === 'flex') {
-      nav.style.display = '';
-      nav.style.position = '';
-      nav.style.flexDirection = '';
+    var hamburger = document.getElementById('hamburger');
+    var isOpen = nav.classList.contains('mobile-open');
+    if (isOpen) {
+      nav.classList.remove('mobile-open');
+      hamburger.classList.remove('open');
+      document.body.classList.remove('mobile-nav-active');
     } else {
-      nav.style.display = 'flex';
-      nav.style.position = 'fixed';
-      nav.style.top = '100%';
-      nav.style.left = '0';
-      nav.style.right = '0';
-      nav.style.background = '#0D1B2A';
-      nav.style.flexDirection = 'column';
-      nav.style.alignItems = 'flex-start';
-      nav.style.padding = '1rem 2rem 2rem';
-      nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
-      nav.style.zIndex = '199';
-      nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+      nav.classList.add('mobile-open');
+      hamburger.classList.add('open');
+      document.body.classList.add('mobile-nav-active');
     }
+  }
+
+  function closeMobileNav() {
+    var nav = document.getElementById('main-nav');
+    var hamburger = document.getElementById('hamburger');
+    nav.classList.remove('mobile-open');
+    hamburger.classList.remove('open');
+    document.body.classList.remove('mobile-nav-active');
   }
 
   /* ── MODALS ──────────────────────────────── */
