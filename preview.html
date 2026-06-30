@@ -1524,7 +1524,7 @@
       </div>
 
       <div class="se-panel" onclick="showPage('page-charter')">
-        <img src="public/assets/photos/costa-smeralda-charter.png" alt="Yacht Charter">
+        <img src="public/assets/photos/private-charter.jpg" alt="Yacht Charter">
         <div class="se-overlay"></div>
         <div class="se-content">
           <span class="se-num" data-i18n="services.ii.num">II — Charter</span>
@@ -3046,7 +3046,11 @@
     showPage('page-charter');
     setTimeout(function() {
       var el = document.getElementById('quick-booking');
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (el) {
+        var headerOffset = 100;
+        var top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
     }, 320);
   }
 
