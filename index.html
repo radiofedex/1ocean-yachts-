@@ -794,8 +794,9 @@
     .about-mattia-img { width: 100%; height: 360px; object-fit: cover; display: block; }
     .about-text-body h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
     .about-text-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
-    .member-badges { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .member-badge { font-size: 0.75rem; font-weight: 500; color: var(--celeste); border: 1px solid var(--celeste); padding: 0.3rem 0.9rem; letter-spacing: 0.06em; }
+    .member-badges { display: flex; gap: 0; margin-top: 1.5rem; flex-wrap: wrap; align-items: center; }
+    .member-badge { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; }
+    .member-badge + .member-badge::before { content: ' · '; color: rgba(255,255,255,0.25); margin: 0 0.55rem; }
     .founder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .founder-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
     .founder-tag { font-size: 0.75rem; color: var(--text-mid); border: 1px solid var(--mid-grey); padding: 0.25rem 0.75rem; }
@@ -957,24 +958,16 @@
     .modal-back-btn:hover { color: var(--celeste); }
 
     /* ── FOOTER ──────────────────────────────── */
-    footer { background: var(--navy-dark); padding: 70px 0 0; }
-    .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    .footer-logo-img { height: 30px; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; }
-    .footer-tagline { font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 1.4rem; }
-    .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
-    .footer-contact-detail a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    footer { background: var(--navy-dark); padding: 64px 0 0; }
+    .footer-simple { text-align: center; padding-bottom: 3rem; }
+    .footer-logo-img { height: 30px; filter: brightness(0) invert(1); margin: 0 auto 1rem; display: block; }
+    .footer-tagline { font-size: 0.83rem; color: rgba(255,255,255,0.35); line-height: 1.6; margin-bottom: 1.8rem; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .footer-contacts { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.3rem 1.8rem; margin-bottom: 1.8rem; }
+    .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin: 0; }
+    .footer-contact-detail a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
     .footer-contact-detail a:hover { color: var(--celeste); }
-    .footer-col h4 { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1.2rem; font-weight: 500; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.6rem; }
-    .footer-col ul li a, .footer-col ul li button {
-      font-size: 0.84rem; color: rgba(255,255,255,0.5); text-decoration: none;
-      background: none; border: none; cursor: pointer; padding: 0; font-family: 'DM Sans', system-ui, sans-serif;
-      transition: color 0.2s; text-align: left;
-    }
-    .footer-col ul li a:hover, .footer-col ul li button:hover { color: var(--celeste); }
-    .footer-social { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; }
-    .footer-social a { font-size: 0.82rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-social { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .footer-social a { font-size: 0.82rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
     .footer-social a:hover { color: var(--celeste); }
     .footer-bar { border-top: 1px solid rgba(255,255,255,0.07); padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
     .footer-bar span { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
@@ -1106,7 +1099,7 @@
       .yacht-grid, .brands-grid { grid-template-columns: 1fr 1fr; }
       .dest-split { grid-template-columns: 1fr; height: auto; }
       .dest-panel { min-height: 320px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+
       .about-services { grid-template-columns: 1fr 1fr; }
       .brand-feature-cards { grid-template-columns: 1fr; }
       .about-page-img { height: 360px; }
@@ -1122,7 +1115,7 @@
       .asm-item:nth-child(even) { padding-left: 0; }
     }
     @media (max-width: 600px) {
-      .yacht-grid, .brands-grid, .footer-grid, .about-services { grid-template-columns: 1fr; }
+      .yacht-grid, .brands-grid, .about-services { grid-template-columns: 1fr; }
       .page-banner h1 { font-size: 2rem; }
       .action-cards, .lead-cta-grid { grid-template-columns: 1fr; }
       .region-cards { grid-template-columns: 1fr; }
@@ -1149,7 +1142,6 @@
       /* Sell */
       .sell-left, .sell-right { padding: 3rem 1.2rem; }
       /* Footer */
-      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       /* Charter split */
       .ch-split-panel { height: 42vh; }
       .ch-split-content { bottom: 1.5rem; left: 1.5rem; right: 1.5rem; }
@@ -1710,7 +1702,7 @@
   <div style="background:var(--off-white);padding:2rem 0;border-top:1px solid var(--light-grey);">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
       <p style="font-size:0.88rem;color:var(--text-mid);font-weight:300;">Looking for something not listed? We have access to exclusive off-market yachts.</p>
-      <button class="btn-celeste" style="padding:0.7rem 1.8rem;white-space:nowrap;" onclick="openModal('buy')">Request Private Advisory</button>
+      <button class="btn-celeste" style="padding:0.7rem 1.8rem;white-space:nowrap;" onclick="goToContactBuying()">Request Private Advisory</button>
     </div>
   </div>
 
@@ -1824,7 +1816,7 @@
   </div>
 
   <!-- QUICK BOOKING WIDGET -->
-  <section class="qb-section">
+  <section class="qb-section" id="quick-booking">
     <div class="container">
       <div class="qb-wrap fade-in-up">
 
@@ -2022,7 +2014,7 @@
   </section>
 
   <!-- 3. VIDEO STRIP -->
-  <div class="pj-video-strip" style="min-height:480px;">
+  <div class="pj-video-strip" style="min-height:340px;">
     <div class="pj-vs-text">
       <div class="eyebrow" style="color:var(--celeste);" data-i18n="charter.exp.eyebrow">The Experience</div>
       <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;" data-i18n="charter.exp.h2">Every Detail, Handled</h2>
@@ -2263,7 +2255,7 @@
       <div class="eyebrow" style="color:var(--celeste);">The DB9</div>
       <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Power Meets Elegance</h2>
       <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">The DB9 represents the pinnacle of Palmer Johnson engineering — a superyacht that defies convention with its dramatic hull lines, carbon fibre construction and breathtaking interior volume.</p>
-      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Enquire About DB9</button>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="goToContactBuying()">Enquire About DB9</button>
     </div>
     <div class="pj-vs-video">
       <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
@@ -2312,7 +2304,7 @@
       <div class="eyebrow" style="color:var(--celeste);">Khalilah</div>
       <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Born to Run</h2>
       <p style="font-size:0.9rem;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:2rem;">Khalilah is a stunning example of what Palmer Johnson does best — combining raw speed with effortless elegance. A vessel that commands attention in every port it enters.</p>
-      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="openModal('buy')">Request Private Viewing</button>
+      <button class="btn-celeste" style="padding:0.8rem 2rem;" onclick="goToContactBuying()">Request Private Viewing</button>
     </div>
   </div>
 
@@ -2777,42 +2769,20 @@
 ══════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-
-      <div>
-        <img src="public/assets/logo.png" alt="1 Ocean Yachts Group" class="footer-logo-img">
-        <p class="footer-tagline">Curating yachting excellence across the Americas and Mediterranean. Personal advisory. Uncompromising service.</p>
+    <div class="footer-simple">
+      <img src="public/assets/logo.png" alt="1 Ocean Yachts Group" class="footer-logo-img">
+      <p class="footer-tagline" data-i18n="footer.tagline">Curating yachting excellence across the Americas and Mediterranean.</p>
+      <div class="footer-contacts">
         <p class="footer-contact-detail">888 Biscayne Blvd, Suite 505, Miami, FL 33132</p>
         <p class="footer-contact-detail"><a href="tel:+13054917794">+1 305 491 7794</a></p>
         <p class="footer-contact-detail"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></p>
       </div>
-
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><button onclick="showPage('page-sale')" data-i18n="nav.sale">Yachts for Sale</button></li>
-          <li><button onclick="showPage('page-sell')" data-i18n="footer.sell">Sell Your Yacht</button></li>
-          <li><button onclick="showPage('page-charter')" data-i18n="nav.charter">Charter</button></li>
-          <li><button onclick="showPage('page-about')" data-i18n="nav.about">About</button></li>
-        </ul>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.facebook.com/1oceanyachts/?ref=1" target="_blank" rel="noopener">Facebook</a>
       </div>
-
-      <div class="footer-col">
-        <h4 data-i18n="footer.company">Company</h4>
-        <ul>
-          <li><button onclick="showPage('page-pj')">Palmer Johnson</button></li>
-          <li><button onclick="showPage('page-gtender')">G-Tender</button></li>
-          <li><button onclick="showPage('page-contact')" data-i18n="nav.contact">Contact</button></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-social">
-      <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.facebook.com/1oceanyachts/?ref=1" target="_blank" rel="noopener">Facebook</a>
     </div>
 
     <div class="footer-bar">
@@ -3059,6 +3029,26 @@
     nav.classList.remove('mobile-open');
     hamburger.classList.remove('open');
     document.body.classList.remove('mobile-nav-active');
+  }
+
+  /* ── NAVIGATION HELPERS ─────────────────── */
+  function scrollToBooking() {
+    showPage('page-charter');
+    setTimeout(function() {
+      var el = document.getElementById('quick-booking');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 320);
+  }
+
+  function goToContactBuying() {
+    showPage('page-contact');
+    setTimeout(function() {
+      document.querySelectorAll('.cf2-pill').forEach(function(p) { p.classList.remove('active'); });
+      var buyPill = Array.from(document.querySelectorAll('.cf2-pill')).find(function(p) {
+        return p.textContent.trim().toLowerCase() === 'buying' || p.getAttribute('data-i18n') === 'contact.pill.buy';
+      });
+      if (buyPill) buyPill.classList.add('active');
+    }, 320);
   }
 
   /* ── MODALS ──────────────────────────────── */
