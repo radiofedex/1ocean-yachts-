@@ -769,6 +769,8 @@
     /* ── ABOUT PAGE ──────────────────────────── */
     .about-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .about-page-img { width: 100%; height: 580px; object-fit: cover; display: block; }
+    .about-mattia-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
+    .about-mattia-img { width: 100%; height: 360px; object-fit: cover; display: block; }
     .about-text-body h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
     .about-text-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
     .member-badges { display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap; }
@@ -1058,6 +1060,8 @@
       .about-services { grid-template-columns: 1fr 1fr; }
       .brand-feature-cards { grid-template-columns: 1fr; }
       .about-page-img { height: 360px; }
+      .about-mattia-grid { grid-template-columns: 1fr; }
+      .about-mattia-img { height: 280px; }
       .brand-page-img { height: 320px; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .section { padding: 60px 0; }
@@ -2035,19 +2039,24 @@
   </section>
 
   <!-- MATTIA DEVILLA -->
-  <section class="section bg-off">
+  <section class="section bg-white">
     <div class="container">
-      <div class="about-page-grid fade-in-up">
+      <div class="eyebrow" style="margin-bottom:2.5rem;">Our Team</div>
+      <div class="about-mattia-grid fade-in-up">
         <div>
-          <img src="public/assets/mattia.jpg" alt="Mattia Devilla" class="about-page-img" style="object-position:top center;">
+          <img src="public/assets/mattia.jpg" alt="Mattia Devilla" class="about-mattia-img" style="object-position:top center;">
         </div>
         <div class="about-text-body">
           <span class="eyebrow">Charter Sales Manager</span>
-          <h2>Mattia Devilla</h2>
-          <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:0.5rem;font-style:italic;">Luxury Charter Specialist · Yacht Broker</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.2rem;">Five years on the water have given Mattia an instinct for the perfect charter — shaped not by catalogues, but by time spent at sea. He specialises in Mediterranean itineraries and private charter sales, bringing a personal attention that transforms a booking into a memory.</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.5rem;">Whether you are stepping aboard for the first time or returning for another season, his intimate knowledge of the fleet, the coastlines and the clients he serves ensures that every voyage exceeds expectation.</p>
-          <div class="founder-tags">
+          <h3 style="font-size:1.6rem;font-weight:300;color:var(--navy);margin:0.4rem 0 0.2rem;">Mattia Devilla</h3>
+          <p style="font-size:0.78rem;color:var(--text-mid);margin-bottom:1.4rem;font-style:italic;">Luxury Charter Specialist · Yacht Broker</p>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="font-size:0.88rem;color:var(--text-mid);">· 5 years in the yacht industry</li>
+            <li style="font-size:0.88rem;color:var(--text-mid);">· Mediterranean charter specialist</li>
+            <li style="font-size:0.88rem;color:var(--text-mid);">· Americas & Caribbean itineraries</li>
+            <li style="font-size:0.88rem;color:var(--text-mid);">· Private charter sales & advisory</li>
+          </ul>
+          <div class="founder-tags" style="margin-top:1.4rem;">
             <span class="founder-tag">Mediterranean</span>
             <span class="founder-tag">Charter</span>
             <span class="founder-tag">Americas</span>
