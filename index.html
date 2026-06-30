@@ -49,59 +49,68 @@
     .page-section { display: none; }
     .page-section.active { display: block; animation: pageFade 0.35s ease both; }
 
-    /* ── HEADER FRASER STYLE ────────────────── */
+    /* ── HEADER: 2 RIGHE ─────────────────────── */
     header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: 88px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2.5rem; gap: 1rem;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
       background: transparent;
-      transition: background 0.4s ease, height 0.3s ease, box-shadow 0.3s ease;
+      transition: background 0.4s ease, box-shadow 0.3s ease;
     }
     header.scrolled {
       background: #0D1B2A;
-      height: 72px;
       box-shadow: 0 2px 24px rgba(0,0,0,0.3);
     }
 
-    /* Logo — centered absolute */
-    .nav-logo {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      background: none; border: none; cursor: pointer; padding: 0;
-      height: 44px; flex-shrink: 0;
+    /* RIGA 1: social — logo — lingua */
+    .header-top-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem 0.6rem; gap: 1rem;
     }
-    .nav-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); display: block; }
-    .nav-logo:hover img { opacity: 0.85; }
+    .header-social { display: flex; align-items: center; gap: 1.1rem; flex: 1; }
+    .header-social a {
+      color: rgba(255,255,255,0.55); transition: color 0.2s; display: flex;
+    }
+    .header-social a:hover { color: #fff; }
 
-    /* Nav halves */
-    .header-nav { display: flex; align-items: center; flex: 1; }
-    .nav-left { justify-content: flex-start; }
-    .nav-right { justify-content: flex-end; }
+    .header-logo { display: block; flex-shrink: 0; }
+    .header-logo img {
+      height: 52px; width: auto; object-fit: contain;
+      filter: brightness(0) invert(1);
+      transition: height 0.3s ease;
+    }
+    header.scrolled .header-logo img { height: 42px; }
+
+    .header-top-right {
+      display: flex; align-items: center; justify-content: flex-end; gap: 1rem; flex: 1;
+    }
+
+    /* RIGA 2: nav centrata */
+    .header-bottom-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; padding-bottom: 0.5rem;
+    }
     .nav-item { position: relative; }
 
     .nav-link {
       display: flex; align-items: center; gap: 4px;
       font-family: 'DM Sans', system-ui, sans-serif;
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer;
-      padding: 0 1rem; height: 88px; white-space: nowrap; position: relative;
-      transition: color 0.25s ease, height 0.3s ease;
+      font-size: 0.76rem; font-weight: 500; letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(255,255,255,0.82); background: none; border: none; cursor: pointer;
+      padding: 0.5rem 1.2rem; white-space: nowrap; position: relative;
+      transition: color 0.2s ease;
     }
-    header.scrolled .nav-link { height: 72px; }
-    .nav-link svg { width: 8px; height: 8px; opacity: 0.5; flex-shrink: 0; transition: transform 0.25s; }
+    .nav-link svg { width: 7px; height: 7px; opacity: 0.5; flex-shrink: 0; transition: transform 0.25s; }
     .nav-item.open .nav-link svg { transform: rotate(180deg); }
     .nav-link:hover, .nav-link.active { color: #fff; }
     .nav-link::after {
       content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 0; height: 2px; background: var(--celeste);
-      transition: width 0.25s ease;
+      width: 0; height: 2px; background: var(--celeste); transition: width 0.25s ease;
     }
-    .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { width: calc(100% - 1.5rem); }
+    .nav-link:hover::after, .nav-link.active::after, .nav-item.open .nav-link::after { width: calc(100% - 1.6rem); }
 
     /* Dropdown */
     .nav-dropdown {
       display: block;
-      position: absolute; top: 88px; left: 0;
+      position: absolute; top: 100%; left: 0;
       background: #0D1B2A;
       border-top: 2px solid rgba(255,255,255,0.15);
       min-width: 200px;
@@ -111,7 +120,6 @@
       transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
       pointer-events: none;
     }
-    header.scrolled .nav-dropdown { top: 72px; }
     .nav-item:hover .nav-dropdown {
       opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
     }
@@ -134,17 +142,16 @@
     .dd-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.3rem 0; }
 
     /* Lang */
-    .header-right { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
     .lang-wrap { position: relative; }
     .lang-btn {
-      display: flex; align-items: center; gap: 4px;
-      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.67rem; font-weight: 500;
+      display: flex; align-items: center; gap: 5px;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.72rem; font-weight: 500;
       letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.65); background: none; border: none; cursor: pointer;
-      padding: 0.3rem 0.4rem; transition: color 0.2s;
+      color: rgba(255,255,255,0.85); background: none; border: none; cursor: pointer;
+      padding: 0.4rem 0.6rem; transition: color 0.2s;
     }
     .lang-btn:hover { color: #fff; }
-    .lang-btn svg { width: 8px; height: 8px; }
+    .lang-btn svg { width: 7px; height: 7px; opacity: 0.6; }
     .lang-dropdown {
       display: block;
       position: absolute; top: calc(100% + 8px); right: 0;
@@ -170,15 +177,6 @@
     }
     .lang-dropdown a:hover { color: #fff; background: rgba(255,255,255,0.06); }
 
-    /* CTA */
-    .btn-header-cta {
-      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.62rem; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: #fff; background: transparent; border: 1px solid rgba(255,255,255,0.35);
-      cursor: pointer; padding: 0.55rem 1.3rem; white-space: nowrap;
-      transition: border-color 0.2s, background 0.2s; flex-shrink: 0;
-    }
-    .btn-header-cta:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
 
     /* Content buttons — unchanged */
     .btn-outline {
@@ -962,10 +960,10 @@
 
     /* ── RESPONSIVE ──────────────────────────── */
     @media (max-width: 960px) {
-      .header-nav { display: none; }
-      .btn-header-cta { display: none; }
+      .header-bottom-row { display: none; }
+      .header-social { display: none; }
       .hamburger { display: flex; }
-      .nav-logo { position: static; transform: none; }
+      .header-top-row { padding: 0.9rem 1.5rem; }
       .hero-content { padding: 0 2rem; }
       .intro-grid, .about-grid, .sell-grid, .about-page-grid, .founder-grid, .brand-page-grid, .contact-grid, .charter-cards { grid-template-columns: 1fr; gap: 2.5rem; }
       .dest-region, .dest-region.dest-flip { grid-template-columns: 1fr; }
@@ -1174,8 +1172,50 @@
 ══════════════════════════════════════════════════ -->
 <header id="site-header">
 
-  <!-- Left nav -->
-  <nav class="header-nav nav-left">
+  <!-- RIGA 1: social sinistra · logo centro · lingua destra -->
+  <div class="header-top-row">
+
+    <div class="header-social">
+      <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+    </div>
+
+    <a class="header-logo" href="#" onclick="showPage('home');return false;">
+      <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
+    </a>
+
+    <div class="header-top-right">
+      <div class="lang-wrap">
+        <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
+          EN
+          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a href="#" onclick="setLang('EN','English');return false;">English</a>
+          <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
+          <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
+          <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- RIGA 2: navigazione centrata -->
+  <nav class="header-bottom-row" id="main-nav">
     <div class="nav-item">
       <button class="nav-link" onclick="showPage('page-sale')">Yachts for Sale</button>
     </div>
@@ -1185,15 +1225,6 @@
     <div class="nav-item">
       <button class="nav-link" onclick="showPage('page-charter')">Charter</button>
     </div>
-  </nav>
-
-  <!-- Logo centrato -->
-  <button class="nav-logo" onclick="showPage('home')">
-    <img src="public/assets/logo.png" alt="1 Ocean Yachts Group">
-  </button>
-
-  <!-- Right nav -->
-  <nav class="header-nav nav-right">
     <div class="nav-item" id="ni-brands">
       <button class="nav-link" onclick="toggleNav('ni-brands')">
         Exclusive Brands
@@ -1207,27 +1238,10 @@
     <div class="nav-item">
       <button class="nav-link" onclick="showPage('page-about')">About</button>
     </div>
-    <div class="lang-wrap">
-      <button class="lang-btn" onclick="toggleLang()" id="lang-btn-display">
-        EN
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>
-      </button>
-      <div class="lang-dropdown" id="lang-dropdown">
-        <a href="#" onclick="setLang('EN','English');return false;">English</a>
-        <a href="#" onclick="setLang('ES','Español');return false;">Español</a>
-        <a href="#" onclick="setLang('IT','Italiano');return false;">Italiano</a>
-        <a href="#" onclick="setLang('FR','Français');return false;">Français</a>
-      </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="showPage('page-contact')">Contact</button>
     </div>
   </nav>
-
-  <!-- CTA -->
-  <button class="btn-header-cta" onclick="showPage('page-contact')">Contact Us</button>
-
-  <!-- Hamburger mobile -->
-  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
 
 </header>
 
@@ -2581,7 +2595,7 @@
     };
     var idx = map[id];
     if (idx !== null && idx !== undefined) {
-      var links = document.querySelectorAll('.header-nav .nav-link');
+      var links = document.querySelectorAll('#main-nav .nav-link');
       if (links[idx]) links[idx].classList.add('active');
     }
   }
@@ -2633,16 +2647,16 @@
     } else {
       nav.style.display = 'flex';
       nav.style.position = 'fixed';
-      nav.style.top = '80px';
+      nav.style.top = '100%';
       nav.style.left = '0';
       nav.style.right = '0';
-      nav.style.background = '#fff';
+      nav.style.background = '#0D1B2A';
       nav.style.flexDirection = 'column';
       nav.style.alignItems = 'flex-start';
       nav.style.padding = '1rem 2rem 2rem';
-      nav.style.borderBottom = '1px solid var(--light-grey)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
       nav.style.zIndex = '199';
-      nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.08)';
+      nav.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
     }
   }
 
