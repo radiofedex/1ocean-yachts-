@@ -958,7 +958,7 @@
 
     /* ── FOOTER ──────────────────────────────── */
     footer { background: var(--navy-dark); padding: 70px 0 0; }
-    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
     .footer-logo-img { height: 30px; filter: brightness(0) invert(1); margin-bottom: 1rem; display: block; }
     .footer-tagline { font-size: 0.83rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 1.4rem; }
     .footer-contact-detail { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 0.4rem; }
@@ -2737,6 +2737,7 @@
 <footer>
   <div class="container">
     <div class="footer-grid">
+
       <div>
         <img src="public/assets/logo.png" alt="1 Ocean Yachts Group" class="footer-logo-img">
         <p class="footer-tagline">Curating yachting excellence across the Americas and Mediterranean. Personal advisory. Uncompromising service.</p>
@@ -2744,41 +2745,33 @@
         <p class="footer-contact-detail"><a href="tel:+13054917794">+1 305 491 7794</a></p>
         <p class="footer-contact-detail"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></p>
       </div>
+
       <div class="footer-col">
-        <h4 data-i18n="footer.services">Services</h4>
+        <h4>Explore</h4>
         <ul>
-          <li><button onclick="showPage('page-sale')">Yachts for Sale</button></li>
+          <li><button onclick="showPage('page-sale')" data-i18n="nav.sale">Yachts for Sale</button></li>
           <li><button onclick="showPage('page-sell')" data-i18n="footer.sell">Sell Your Yacht</button></li>
-          <li><button onclick="showPage('page-charter')">Charter</button></li>
-          <li><a href="#" data-i18n="footer.management">Yacht Management</a></li>
-          <li><a href="#" data-i18n="footer.crew">Crew Placement</a></li>
+          <li><button onclick="showPage('page-charter')" data-i18n="nav.charter">Charter</button></li>
+          <li><button onclick="showPage('page-about')" data-i18n="nav.about">About</button></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer.charter">Charter</h4>
-        <ul>
-          <li><button onclick="openModal('charter')" data-i18n="footer.ch.americas">Charter Americas</button></li>
-          <li><button onclick="openModal('charter')" data-i18n="footer.ch.med">Charter Mediterranean</button></li>
-          <li><button onclick="openModal('charter')">Miami &amp; Bahamas</button></li>
-          <li><button onclick="openModal('charter')">Sardinia &amp; Corsica</button></li>
-          <li><a href="public/assets/pdf/europe-charter.pdf" target="_blank">Download Brochure</a></li>
-        </ul>
-      </div>
+
       <div class="footer-col">
         <h4 data-i18n="footer.company">Company</h4>
         <ul>
-          <li><button onclick="showPage('page-about')">About</button></li>
           <li><button onclick="showPage('page-pj')">Palmer Johnson</button></li>
           <li><button onclick="showPage('page-gtender')">G-Tender</button></li>
-          <li><button onclick="showPage('page-contact')">Contact</button></li>
+          <li><button onclick="showPage('page-contact')" data-i18n="nav.contact">Contact</button></li>
         </ul>
       </div>
+
     </div>
 
     <div class="footer-social">
       <a href="https://www.instagram.com/1oceanyachts" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.linkedin.com/company/1-ocean-yachts/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://www.youtube.com/@1oceanyachts" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.facebook.com/1oceanyachts/?ref=1" target="_blank" rel="noopener">Facebook</a>
     </div>
 
     <div class="footer-bar">
