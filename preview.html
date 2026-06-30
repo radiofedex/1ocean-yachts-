@@ -1403,13 +1403,13 @@
   <nav class="header-bottom-row" id="main-nav">
     <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Close menu">✕</button>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sale');closeMobileNav()">Yachts for Sale</button>
+      <button class="nav-link" onclick="showPage('page-sale');closeMobileNav()" data-i18n="nav.sale">Yachts for Sale</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-sell');closeMobileNav()">Sell</button>
+      <button class="nav-link" onclick="showPage('page-sell');closeMobileNav()" data-i18n="nav.sell">Sell</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-charter');closeMobileNav()">Charter</button>
+      <button class="nav-link" onclick="showPage('page-charter');closeMobileNav()" data-i18n="nav.charter">Charter</button>
     </div>
     <div class="nav-item" id="ni-brands">
       <button class="nav-link" onclick="toggleNav('ni-brands')">
@@ -1422,10 +1422,10 @@
       </div>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-about');closeMobileNav()">About</button>
+      <button class="nav-link" onclick="showPage('page-about');closeMobileNav()" data-i18n="nav.about">About</button>
     </div>
     <div class="nav-item">
-      <button class="nav-link" onclick="showPage('page-contact');closeMobileNav()">Contact</button>
+      <button class="nav-link" onclick="showPage('page-contact');closeMobileNav()" data-i18n="nav.contact">Contact</button>
     </div>
   </nav>
 
@@ -1449,16 +1449,16 @@
     <!-- inscription blocker -->
     <div class="pj-video-blocker"></div>
     <div class="hero-content">
-      <h1>Curating Yachting <em>Excellence</em>,<br>One Client at a Time.</h1>
+      <h1 data-i18n-html="hero.h1">Curating Yachting <em>Excellence</em>,<br>One Client at a Time.</h1>
       <div class="hero-line"></div>
-      <p class="hero-sub">A private advisory firm specialising in the acquisition, sale and charter of the world's finest yachts. Personal. Discreet. Uncompromising.</p>
+      <p class="hero-sub" data-i18n="hero.sub">A private advisory firm specialising in the acquisition, sale and charter of the world's finest yachts. Personal. Discreet. Uncompromising.</p>
       <div class="hero-ctas">
-        <button class="hero-btn-primary" onclick="showPage('page-sale')">Explore Yachts</button>
-        <button class="hero-btn-ghost" onclick="showPage('page-charter')">Plan a Charter</button>
+        <button class="hero-btn-primary" onclick="showPage('page-sale')" data-i18n="hero.cta1">Explore Yachts</button>
+        <button class="hero-btn-ghost" onclick="showPage('page-charter')" data-i18n="hero.cta2">Plan a Charter</button>
       </div>
     </div>
     <div class="scroll-indicator">
-      <span>Scroll</span>
+      <span data-i18n="hero.scroll">Scroll</span>
       <div class="scroll-arrow"></div>
     </div>
   </section>
@@ -1467,9 +1467,9 @@
   <section class="section bg-white" style="padding-bottom:0;">
     <div class="container">
       <div class="section-header fade-in-up">
-        <div class="eyebrow">What We Do</div>
-        <h2>End-to-End Yachting Services</h2>
-        <p>From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.</p>
+        <div class="eyebrow" data-i18n="services.eyebrow">What We Do</div>
+        <h2 data-i18n="services.h2">End-to-End Yachting Services</h2>
+        <p data-i18n="services.intro">From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.</p>
       </div>
     </div>
     <div class="services-expand" style="margin-top:3rem;" data-aos="fade-up">
@@ -1478,11 +1478,11 @@
         <img src="public/assets/photos/large-1.jpeg" alt="Yacht Sales">
         <div class="se-overlay"></div>
         <div class="se-content">
-          <span class="se-num">I — Yacht Sales</span>
-          <h3>Buy or Sell</h3>
+          <span class="se-num" data-i18n="services.i.num">I — Yacht Sales</span>
+          <h3 data-i18n="services.i.h3">Buy or Sell</h3>
           <div class="se-divider"></div>
-          <p class="se-desc">Access our curated portfolio of motor yachts, sailing yachts and superyachts — including exclusive off-market listings. We represent buyers and sellers with equal discretion and expertise.</p>
-          <button class="se-cta">Explore Listings →</button>
+          <p class="se-desc" data-i18n="services.i.desc">Access our curated portfolio of motor yachts, sailing yachts and superyachts — including exclusive off-market listings. We represent buyers and sellers with equal discretion and expertise.</p>
+          <button class="se-cta" data-i18n="services.i.cta">Explore Listings →</button>
         </div>
       </div>
 
@@ -1490,11 +1490,11 @@
         <img src="public/assets/photos/sardinia/IMG_6866.jpg" alt="Yacht Charter">
         <div class="se-overlay"></div>
         <div class="se-content">
-          <span class="se-num">II — Charter</span>
-          <h3>Private Charter</h3>
+          <span class="se-num" data-i18n="services.ii.num">II — Charter</span>
+          <h3 data-i18n="services.ii.h3">Private Charter</h3>
           <div class="se-divider"></div>
-          <p class="se-desc">Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
-          <button class="se-cta">Plan a Charter →</button>
+          <p class="se-desc" data-i18n="services.ii.desc">Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.</p>
+          <button class="se-cta" data-i18n="services.ii.cta">Plan a Charter →</button>
         </div>
       </div>
 
@@ -1502,11 +1502,11 @@
         <img src="public/assets/photos/maiora-36.png" alt="Yacht Management">
         <div class="se-overlay"></div>
         <div class="se-content">
-          <span class="se-num">III — Management</span>
-          <h3>Yacht Management</h3>
+          <span class="se-num" data-i18n="services.iii.num">III — Management</span>
+          <h3 data-i18n="services.iii.h3">Yacht Management</h3>
           <div class="se-divider"></div>
-          <p class="se-desc">Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
-          <button class="se-cta">Learn More →</button>
+          <p class="se-desc" data-i18n="services.iii.desc">Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.</p>
+          <button class="se-cta" data-i18n="services.iii.cta">Learn More →</button>
         </div>
       </div>
 
@@ -1519,19 +1519,19 @@
       <div class="numbers-strip-grid">
         <div class="ns-item" data-aos="fade-up" data-aos-delay="0">
           <div class="ns-num" data-target="25" data-suffix="+">0</div>
-          <div class="ns-label">Years of Experience</div>
+          <div class="ns-label" data-i18n="stats.years">Years of Experience</div>
         </div>
         <div class="ns-item" data-aos="fade-up" data-aos-delay="100">
           <div class="ns-num" data-target="180" data-suffix="+">0</div>
-          <div class="ns-label">Yachts Transacted</div>
+          <div class="ns-label" data-i18n="stats.yachts">Yachts Transacted</div>
         </div>
         <div class="ns-item" data-aos="fade-up" data-aos-delay="200">
           <div class="ns-num" data-target="40" data-suffix="+">0</div>
-          <div class="ns-label">Destinations</div>
+          <div class="ns-label" data-i18n="stats.destinations">Destinations</div>
         </div>
         <div class="ns-item" data-aos="fade-up" data-aos-delay="300">
           <div class="ns-num" data-target="500" data-suffix="+">0</div>
-          <div class="ns-label">Clients Served</div>
+          <div class="ns-label" data-i18n="stats.clients">Clients Served</div>
         </div>
       </div>
     </div>
@@ -1546,11 +1546,11 @@
           <img src="public/assets/jose.avif" alt="Jose Arana" class="about-img">
         </div>
         <div class="about-text" data-aos="fade-left" data-aos-delay="200">
-          <div class="eyebrow">Our Founder</div>
+          <div class="eyebrow" data-i18n="founder.eyebrow">Our Founder</div>
           <h2>Jose Arana Muñoz De Cote</h2>
           <p>With over 25 years of experience in luxury yachting, Jose has guided ultra-high-net-worth clients through every aspect of yacht ownership and charter. His career spans Ferretti of America, Koch Newton &amp; Partners, Merrill-Stevens and Fraser Yachts.</p>
           <p>Fluent in English, Spanish and Italian, Jose brings a uniquely global perspective and an unwavering commitment to personal service. Prior to yachting, he held senior roles at Microsoft, Ericsson and Bell South.</p>
-          <button class="btn-outline" onclick="showPage('page-about')" style="margin-top:1.5rem;padding:0.7rem 1.8rem;">Our Story →</button>
+          <button class="btn-outline" onclick="showPage('page-about')" style="margin-top:1.5rem;padding:0.7rem 1.8rem;" data-i18n="founder.cta">Our Story →</button>
         </div>
       </div>
 
@@ -1572,27 +1572,27 @@
   <section class="section bg-white">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <div class="eyebrow">Exclusive Representation</div>
-        <h2>Our Brands</h2>
-        <p>1 Ocean Yachts Group holds exclusive U.S. dealership rights for two of the world's most distinguished yacht manufacturers.</p>
+        <div class="eyebrow" data-i18n="brands.eyebrow">Exclusive Representation</div>
+        <h2 data-i18n="brands.h2">Our Brands</h2>
+        <p data-i18n="brands.intro">1 Ocean Yachts Group holds exclusive U.S. dealership rights for two of the world's most distinguished yacht manufacturers.</p>
       </div>
       <div class="brands-grid">
         <div class="brand-card" data-aos="fade-right" data-aos-delay="0" onclick="showPage('page-pj')">
           <img src="https://static.wixstatic.com/media/87e673_1f4925e873a84ec6992c2a45779f1094~mv2.jpg" alt="Palmer Johnson">
           <div class="brand-overlay"></div>
           <div class="brand-content">
-            <div class="brand-tag">Exclusive U.S. Dealer</div>
+            <div class="brand-tag" data-i18n="brands.pj.tag">Exclusive U.S. Dealer</div>
             <h3>Palmer Johnson</h3>
-            <p>Nearly a century of iconic design and performance yachting.</p>
+            <p data-i18n="brands.pj.desc">Nearly a century of iconic design and performance yachting.</p>
           </div>
         </div>
         <div class="brand-card" data-aos="fade-left" data-aos-delay="150" onclick="showPage('page-gtender')">
           <img src="https://static.wixstatic.com/media/87e673_c74ad4a6f6a643898d52b1f552105565~mv2.jpg" alt="G-Tender">
           <div class="brand-overlay"></div>
           <div class="brand-content">
-            <div class="brand-tag">Leading U.S. Dealer</div>
+            <div class="brand-tag" data-i18n="brands.gt.tag">Leading U.S. Dealer</div>
             <h3>G-Tender</h3>
-            <p>Handcrafted in Sardinia — power, elegance and uniqueness.</p>
+            <p data-i18n="brands.gt.desc">Handcrafted in Sardinia — power, elegance and uniqueness.</p>
           </div>
         </div>
       </div>
@@ -1691,28 +1691,28 @@
 
     <!-- LEFT — process -->
     <div class="sell-left">
-      <div class="eyebrow" style="color:var(--celeste);">Sell With Us</div>
-      <h2 style="font-family:'Cormorant Garant',Georgia,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin:0.7rem 0 0;line-height:1.15;">The Smartest Way<br>to Sell Your Yacht.</h2>
+      <div class="eyebrow" style="color:var(--celeste);" data-i18n="sell.eyebrow">Sell With Us</div>
+      <h2 style="font-family:'Cormorant Garant',Georgia,serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:#fff;margin:0.7rem 0 0;line-height:1.15;" data-i18n="sell.h2">The Smartest Way<br>to Sell Your Yacht.</h2>
 
       <div class="sell-steps" id="sell-steps">
         <div class="sell-step">
           <div class="sell-step-num">01</div>
           <div class="sell-step-body">
-            <h4>Instant Valuation</h4>
+            <h4 data-i18n="sell.step1.h4">Instant Valuation</h4>
             <p>Tell us your yacht's details and we'll provide a confidential market assessment within 24 hours — no obligation, no pressure.</p>
           </div>
         </div>
         <div class="sell-step">
           <div class="sell-step-num">02</div>
           <div class="sell-step-body">
-            <h4>Strategic Exposure</h4>
+            <h4 data-i18n="sell.step2.h4">Strategic Exposure</h4>
             <p>Your vessel reaches our global network of qualified buyers through targeted outreach, premium listings and off-market channels.</p>
           </div>
         </div>
         <div class="sell-step">
           <div class="sell-step-num">03</div>
           <div class="sell-step-body">
-            <h4>Seamless Closing</h4>
+            <h4 data-i18n="sell.step3.h4">Seamless Closing</h4>
             <p>We handle survey, sea trial, legal transfer and every detail of the closing — so you stay focused on what comes next.</p>
           </div>
         </div>
@@ -1727,28 +1727,28 @@
     <!-- RIGHT — form -->
     <div class="sell-right">
       <div style="max-width:420px;width:100%;">
-        <div class="eyebrow" style="color:var(--celeste);">Confidential &amp; No Obligation</div>
-        <h3 style="font-family:'Cormorant Garant',Georgia,serif;font-size:1.9rem;font-weight:300;color:var(--navy);margin:0.6rem 0 0.4rem;">Tell us about your yacht.</h3>
-        <p style="font-size:0.86rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.7;">Three details. That's all we need to get started.</p>
+        <div class="eyebrow" style="color:var(--celeste);" data-i18n="sell.form.eyebrow">Confidential &amp; No Obligation</div>
+        <h3 style="font-family:'Cormorant Garant',Georgia,serif;font-size:1.9rem;font-weight:300;color:var(--navy);margin:0.6rem 0 0.4rem;" data-i18n="sell.form.h3">Tell us about your yacht.</h3>
+        <p style="font-size:0.86rem;color:var(--text-mid);margin-bottom:2.5rem;line-height:1.7;" data-i18n="sell.form.intro">Three details. That's all we need to get started.</p>
 
         <form class="sell-form" onsubmit="handleSellForm(event)">
           <div class="sell-field">
-            <label>Your Name</label>
+            <label data-i18n="sell.form.name">Your Name</label>
             <input type="text" name="name" placeholder="e.g. James Harrington" required>
           </div>
           <div class="sell-field">
-            <label>Email or WhatsApp</label>
+            <label data-i18n="sell.form.contact">Email or WhatsApp</label>
             <input type="text" name="contact" placeholder="email@domain.com or +1 305…" required>
           </div>
           <div class="sell-field">
-            <label>Your Yacht</label>
+            <label data-i18n="sell.form.yacht">Your Yacht</label>
             <input type="text" name="yacht" placeholder="e.g. Azimut 55, 2019, Miami" required>
           </div>
           <button type="submit" class="sell-submit">
-            Request Confidential Valuation
+            <span data-i18n="sell.form.submit">Request Confidential Valuation</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
-          <p class="sell-disclaimer">All inquiries are handled with complete discretion. We will respond within 24 hours.</p>
+          <p class="sell-disclaimer" data-i18n="sell.form.disclaimer">All inquiries are handled with complete discretion. We will respond within 24 hours.</p>
         </form>
 
         <div class="sell-success">
@@ -1773,10 +1773,10 @@
       <img src="public/assets/photos/americas-charter.png" alt="Americas yacht charter">
       <div class="ch-split-overlay"></div>
       <div class="ch-split-content">
-        <span class="ch-split-eyebrow">The Americas</span>
-        <h2 class="ch-split-title">Americas</h2>
-        <p class="ch-split-desc">Year-round departures from Miami into the warm turquoise waters of the Bahamas, Caribbean and British Virgin Islands.</p>
-        <button class="ch-split-cta">Explore Americas →</button>
+        <span class="ch-split-eyebrow" data-i18n="charter.eyebrow.americas">The Americas</span>
+        <h2 class="ch-split-title" data-i18n="charter.title.americas">Americas</h2>
+        <p class="ch-split-desc" data-i18n="charter.desc.americas">Year-round departures from Miami into the warm turquoise waters of the Bahamas, Caribbean and British Virgin Islands.</p>
+        <button class="ch-split-cta" data-i18n="charter.cta.americas">Explore Americas →</button>
       </div>
     </div>
     <div class="ch-split-divider"></div>
@@ -1784,10 +1784,10 @@
       <img src="public/assets/photos/med-charter.png" alt="Mediterranean yacht charter">
       <div class="ch-split-overlay"></div>
       <div class="ch-split-content">
-        <span class="ch-split-eyebrow">The Mediterranean</span>
-        <h2 class="ch-split-title">Mediterranean</h2>
-        <p class="ch-split-desc">From the wild coves of Sardinia to the glamour of Monaco — the world's most coveted coastlines, curated.</p>
-        <button class="ch-split-cta">Explore Mediterranean →</button>
+        <span class="ch-split-eyebrow" data-i18n="charter.eyebrow.med">The Mediterranean</span>
+        <h2 class="ch-split-title" data-i18n="charter.title.med">Mediterranean</h2>
+        <p class="ch-split-desc" data-i18n="charter.desc.med">From the wild coves of Sardinia to the glamour of Monaco — the world's most coveted coastlines, curated.</p>
+        <button class="ch-split-cta" data-i18n="charter.cta.med">Explore Mediterranean →</button>
       </div>
     </div>
   </div>
@@ -1798,16 +1798,16 @@
       <div class="qb-wrap fade-in-up">
 
         <div class="qb-header">
-          <span class="eyebrow">Quick Request</span>
-          <h3>Check Availability</h3>
-          <p>Select your destination and dates — we'll get back to you within 24 hours.</p>
+          <span class="eyebrow" data-i18n="charter.qb.eyebrow">Quick Request</span>
+          <h3 data-i18n="charter.qb.h3">Check Availability</h3>
+          <p data-i18n="charter.qb.intro">Select your destination and dates — we'll get back to you within 24 hours.</p>
         </div>
 
         <form class="qb-form" id="qb-form" onsubmit="handleQuickBooking(event)">
           <input type="hidden" name="form_type" value="Quick Charter Booking">
 
           <div class="qb-field">
-            <label>Destination</label>
+            <label data-i18n="charter.qb.dest">Destination</label>
             <select name="destination" required>
               <option value="" disabled selected>Select a destination</option>
               <optgroup label="The Americas">
@@ -1828,22 +1828,22 @@
           </div>
 
           <div class="qb-field">
-            <label>Check-in</label>
+            <label data-i18n="charter.qb.checkin">Check-in</label>
             <input type="date" name="checkin" required>
           </div>
 
           <div class="qb-field">
-            <label>Check-out</label>
+            <label data-i18n="charter.qb.checkout">Check-out</label>
             <input type="date" name="checkout" required>
           </div>
 
           <div class="qb-field qb-field-contact">
-            <label>Email</label>
+            <label data-i18n="charter.qb.email">Email</label>
             <input type="email" name="email" placeholder="your@email.com" required>
           </div>
 
           <button type="submit" class="qb-submit">
-            <span class="qb-submit-text">Send Request</span>
+            <span class="qb-submit-text" data-i18n="charter.qb.submit">Send Request</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </form>
@@ -1983,30 +1983,30 @@
   <!-- 3. VIDEO STRIP -->
   <div class="pj-video-strip" style="min-height:480px;">
     <div class="pj-vs-text">
-      <div class="eyebrow" style="color:var(--celeste);">The Experience</div>
-      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;">Every Detail, Handled</h2>
-      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:0;">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
+      <div class="eyebrow" style="color:var(--celeste);" data-i18n="charter.exp.eyebrow">The Experience</div>
+      <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:#fff;margin:0.8rem 0 1.2rem;" data-i18n="charter.exp.h2">Every Detail, Handled</h2>
+      <p style="font-size:0.88rem;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:0;" data-i18n="charter.exp.intro">From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.</p>
       <div class="ch-icons-strip">
         <div class="ch-icon-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 22V12M12 12L8 16M12 12L16 16"/><circle cx="12" cy="7" r="3"/><path d="M5 20c1.5-2 3.5-3 7-3s5.5 1 7 3"/>
           </svg>
-          <span class="ch-icon-label">Fully Crewed</span>
-          <span class="ch-icon-desc">Captain, chef, and crew selected for your voyage</span>
+          <span class="ch-icon-label" data-i18n="charter.icon1">Fully Crewed</span>
+          <span class="ch-icon-desc" data-i18n="charter.icon1.desc">Captain, chef, and crew selected for your voyage</span>
         </div>
         <div class="ch-icon-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
-          <span class="ch-icon-label">Custom Itinerary</span>
-          <span class="ch-icon-desc">Every detail planned around your schedule</span>
+          <span class="ch-icon-label" data-i18n="charter.icon2">Custom Itinerary</span>
+          <span class="ch-icon-desc" data-i18n="charter.icon2.desc">Every detail planned around your schedule</span>
         </div>
         <div class="ch-icon-item">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7AC5C8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 18h20M4 18l2-6h12l2 6"/><path d="M9 12V8a3 3 0 0 1 6 0v4"/>
           </svg>
-          <span class="ch-icon-label">Fleet Access</span>
-          <span class="ch-icon-desc">Motor yachts, sailing yachts, catamarans</span>
+          <span class="ch-icon-label" data-i18n="charter.icon3">Fleet Access</span>
+          <span class="ch-icon-desc" data-i18n="charter.icon3.desc">Motor yachts, sailing yachts, catamarans</span>
         </div>
       </div>
     </div>
@@ -2022,11 +2022,11 @@
   <section class="ch-brochure">
     <div class="container">
       <div class="ch-brochure-inner">
-        <div class="eyebrow" style="color:var(--celeste);">2026 Season</div>
-        <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;margin:0.8rem 0 1rem;">Mediterranean Charter Brochure</h2>
-        <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.8;">Download or browse our full 2026 Mediterranean charter brochure — featuring curated destinations, featured yachts and seasonal itinerary suggestions.</p>
+        <div class="eyebrow" style="color:var(--celeste);" data-i18n="charter.brochure.eyebrow">2026 Season</div>
+        <h2 style="font-family:'Cormorant Garant',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;margin:0.8rem 0 1rem;" data-i18n="charter.brochure.h2">Mediterranean Charter Brochure</h2>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.8;" data-i18n="charter.brochure.desc">Download or browse our full 2026 Mediterranean charter brochure — featuring curated destinations, featured yachts and seasonal itinerary suggestions.</p>
         <div class="ch-brochure-btns">
-          <a href="public/assets/pdf/europe-charter.pdf" download class="ch-btn-outline-white">Download Brochure</a>
+          <a href="public/assets/pdf/europe-charter.pdf" download class="ch-btn-outline-white" data-i18n="charter.brochure.cta">Download Brochure</a>
         </div>
       </div>
     </div>
@@ -2352,9 +2352,9 @@
     </video>
     <div class="contact-hero-overlay"></div>
     <div class="contact-hero-txt">
-      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.8rem">Get in Touch</p>
-      <h1>Contact Us</h1>
-      <p class="contact-hero-sub">Whether you're buying, selling or planning your next charter — our team is only a message away.</p>
+      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.8rem" data-i18n="contact.eyebrow">Get in Touch</p>
+      <h1 data-i18n="contact.h1">Contact Us</h1>
+      <p class="contact-hero-sub" data-i18n="contact.sub">Whether you're buying, selling or planning your next charter — our team is only a message away.</p>
     </div>
   </div>
 
@@ -2398,43 +2398,43 @@
 
     <!-- Right: form -->
     <div class="contact-form-col">
-      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.4rem">Send a Message</p>
-      <h2 class="cf2-title">How can we help?</h2>
+      <p class="eyebrow" style="color:var(--celeste);margin-bottom:0.4rem" data-i18n="contact.send.eyebrow">Send a Message</p>
+      <h2 class="cf2-title" data-i18n="contact.form.title">How can we help?</h2>
 
       <form class="cf2-form" onsubmit="handleContactForm(event)">
         <div class="cf2-row">
           <div class="cf2-field">
-            <label>First Name</label>
+            <label data-i18n="contact.form.fname">First Name</label>
             <input type="text" name="fname" placeholder="James" required>
           </div>
           <div class="cf2-field">
-            <label>Last Name</label>
+            <label data-i18n="contact.form.lname">Last Name</label>
             <input type="text" name="lname" placeholder="Harrington" required>
           </div>
         </div>
         <div class="cf2-field">
-          <label>Email</label>
+          <label data-i18n="contact.form.email">Email</label>
           <input type="email" name="email" placeholder="james@email.com" required>
         </div>
         <div class="cf2-field">
-          <label>I'm interested in</label>
+          <label data-i18n="contact.form.interest">I'm interested in</label>
           <div class="cf2-pills">
-            <button type="button" class="cf2-pill active" onclick="this.classList.toggle('active')">Charter</button>
-            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Buying</button>
-            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Selling</button>
-            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Management</button>
-            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')">Other</button>
+            <button type="button" class="cf2-pill active" onclick="this.classList.toggle('active')" data-i18n="contact.pill.charter">Charter</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')" data-i18n="contact.pill.buy">Buying</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')" data-i18n="contact.pill.sell">Selling</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')" data-i18n="contact.pill.mgmt">Management</button>
+            <button type="button" class="cf2-pill" onclick="this.classList.toggle('active')" data-i18n="contact.pill.other">Other</button>
           </div>
         </div>
         <div class="cf2-field">
-          <label>Message <span style="opacity:0.4;font-weight:300">(optional)</span></label>
+          <label data-i18n="contact.form.msg">Message <span style="opacity:0.4;font-weight:300">(optional)</span></label>
           <textarea name="message" rows="3" placeholder="Tell us more about what you're looking for..."></textarea>
         </div>
         <button type="submit" class="cf2-submit">
-          Send Message
+          <span data-i18n="contact.form.submit">Send Message</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
-        <p class="cf2-note">We respond to all enquiries within 24 hours.</p>
+        <p class="cf2-note" data-i18n="contact.form.note">We respond to all enquiries within 24 hours.</p>
       </form>
 
       <div class="cf2-success" style="display:none;opacity:0;transition:opacity 0.3s ease;">
@@ -2745,27 +2745,27 @@
         <p class="footer-contact-detail"><a href="mailto:info@1oceanyachts.com">info@1oceanyachts.com</a></p>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4 data-i18n="footer.services">Services</h4>
         <ul>
           <li><button onclick="showPage('page-sale')">Yachts for Sale</button></li>
-          <li><button onclick="showPage('page-sell')">Sell Your Yacht</button></li>
+          <li><button onclick="showPage('page-sell')" data-i18n="footer.sell">Sell Your Yacht</button></li>
           <li><button onclick="showPage('page-charter')">Charter</button></li>
-          <li><a href="#">Yacht Management</a></li>
-          <li><a href="#">Crew Placement</a></li>
+          <li><a href="#" data-i18n="footer.management">Yacht Management</a></li>
+          <li><a href="#" data-i18n="footer.crew">Crew Placement</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Charter</h4>
+        <h4 data-i18n="footer.charter">Charter</h4>
         <ul>
-          <li><button onclick="openModal('charter')">Charter Americas</button></li>
-          <li><button onclick="openModal('charter')">Charter Mediterranean</button></li>
+          <li><button onclick="openModal('charter')" data-i18n="footer.ch.americas">Charter Americas</button></li>
+          <li><button onclick="openModal('charter')" data-i18n="footer.ch.med">Charter Mediterranean</button></li>
           <li><button onclick="openModal('charter')">Miami &amp; Bahamas</button></li>
           <li><button onclick="openModal('charter')">Sardinia &amp; Corsica</button></li>
           <li><a href="public/assets/pdf/europe-charter.pdf" target="_blank">Download Brochure</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <h4 data-i18n="footer.company">Company</h4>
         <ul>
           <li><button onclick="showPage('page-about')">About</button></li>
           <li><button onclick="showPage('page-pj')">Palmer Johnson</button></li>
@@ -2782,10 +2782,10 @@
     </div>
 
     <div class="footer-bar">
-      <span>© 2026 1 Ocean Yachts Group. All rights reserved.</span>
+      <span data-i18n="footer.copyright">© 2026 1 Ocean Yachts Group. All rights reserved.</span>
       <div class="footer-bar-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
+        <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="#" data-i18n="footer.cookies">Cookie Policy</a>
       </div>
     </div>
   </div>
@@ -2894,10 +2894,105 @@
     if (dd) dd.classList.remove('open');
   }
 
+  /* ── TRANSLATIONS ────────────────────────── */
+  var i18n = {
+    EN: {
+      'nav.sale':'Yachts for Sale','nav.sell':'Sell','nav.charter':'Charter','nav.brands':'Exclusive Brands','nav.about':'About','nav.contact':'Contact',
+      'hero.h1':'Curating Yachting <em>Excellence</em>,<br>One Client at a Time.','hero.sub':'A private advisory firm specialising in the acquisition, sale and charter of the world\'s finest yachts. Personal. Discreet. Uncompromising.','hero.cta1':'Explore Yachts','hero.cta2':'Plan a Charter','hero.scroll':'Scroll',
+      'stats.years':'Years of Experience','stats.yachts':'Yachts Transacted','stats.destinations':'Destinations','stats.clients':'Clients Served',
+      'services.eyebrow':'What We Do','services.h2':'End-to-End Yachting Services','services.intro':'From acquisition to charter, management to crew — we handle every dimension of your yachting life with care and precision.',
+      'services.i.num':'I — Yacht Sales','services.i.h3':'Buy or Sell','services.i.desc':'Access our curated portfolio of motor yachts, sailing yachts and superyachts — including exclusive off-market listings. We represent buyers and sellers with equal discretion and expertise.','services.i.cta':'Explore Listings →',
+      'services.ii.num':'II — Charter','services.ii.h3':'Private Charter','services.ii.desc':'Bespoke charter experiences across the Americas and Mediterranean. We match the right vessel to your itinerary, guests and lifestyle — handling every detail from crew to provisioning.','services.ii.cta':'Plan a Charter →',
+      'services.iii.num':'III — Management','services.iii.h3':'Yacht Management','services.iii.desc':'Full management for yacht owners: maintenance, compliance, crew placement, operational logistics and financial reporting — all under one roof.','services.iii.cta':'Learn More →',
+      'founder.eyebrow':'Our Founder','founder.cta':'Our Story →',
+      'brands.eyebrow':'Exclusive Representation','brands.h2':'Our Brands','brands.intro':'1 Ocean Yachts Group holds exclusive U.S. dealership rights for two of the world\'s most distinguished yacht manufacturers.','brands.pj.tag':'Exclusive U.S. Dealer','brands.pj.desc':'Nearly a century of iconic design and performance yachting.','brands.gt.tag':'Leading U.S. Dealer','brands.gt.desc':'Handcrafted in Sardinia — power, elegance and uniqueness.',
+      'footer.services':'Services','footer.sell':'Sell Your Yacht','footer.management':'Yacht Management','footer.crew':'Crew Placement','footer.charter':'Charter','footer.ch.americas':'Charter Americas','footer.ch.med':'Charter Mediterranean','footer.company':'Company','footer.privacy':'Privacy Policy','footer.cookies':'Cookie Policy','footer.copyright':'© 2026 1 Ocean Yachts Group. All rights reserved.',
+      'contact.eyebrow':'Get in Touch','contact.h1':'Contact Us','contact.sub':'Whether you\'re buying, selling or planning your next charter — our team is only a message away.','contact.send.eyebrow':'Send a Message','contact.form.title':'How can we help?','contact.form.fname':'First Name','contact.form.lname':'Last Name','contact.form.email':'Email','contact.form.interest':'I\'m interested in','contact.form.msg':'Message (optional)','contact.form.submit':'Send Message','contact.form.note':'We respond to all enquiries within 24 hours.','contact.pill.charter':'Charter','contact.pill.buy':'Buying','contact.pill.sell':'Selling','contact.pill.mgmt':'Management','contact.pill.other':'Other',
+      'sell.eyebrow':'Sell With Us','sell.h2':'The Smartest Way to Sell Your Yacht.','sell.step1.h4':'Instant Valuation','sell.step2.h4':'Strategic Exposure','sell.step3.h4':'Seamless Closing','sell.form.eyebrow':'Confidential & No Obligation','sell.form.h3':'Tell us about your yacht.','sell.form.intro':'Three details. That\'s all we need to get started.','sell.form.name':'Your Name','sell.form.contact':'Email or WhatsApp','sell.form.yacht':'Your Yacht','sell.form.submit':'Request Confidential Valuation','sell.form.disclaimer':'All inquiries are handled with complete discretion. We will respond within 24 hours.',
+      'charter.eyebrow.americas':'The Americas','charter.title.americas':'Americas','charter.desc.americas':'Year-round departures from Miami into the warm turquoise waters of the Bahamas, Caribbean and British Virgin Islands.','charter.cta.americas':'Explore Americas →','charter.eyebrow.med':'The Mediterranean','charter.title.med':'Mediterranean','charter.desc.med':'From the wild coves of Sardinia to the glamour of Monaco — the world\'s most coveted coastlines, curated.','charter.cta.med':'Explore Mediterranean →',
+      'charter.qb.eyebrow':'Quick Request','charter.qb.h3':'Check Availability','charter.qb.intro':'Select your destination and dates — we\'ll get back to you within 24 hours.','charter.qb.dest':'Destination','charter.qb.checkin':'Check-in','charter.qb.checkout':'Check-out','charter.qb.email':'Email','charter.qb.submit':'Send Request',
+      'charter.exp.eyebrow':'The Experience','charter.exp.h2':'Every Detail, Handled','charter.exp.intro':'From the moment you step aboard to the final sunset anchorage — your crew, itinerary, provisioning and every logistical detail are taken care of by 1 Ocean Yachts.','charter.icon1':'Fully Crewed','charter.icon1.desc':'Captain, chef, and crew selected for your voyage','charter.icon2':'Custom Itinerary','charter.icon2.desc':'Every detail planned around your schedule','charter.icon3':'Fleet Access','charter.icon3.desc':'Motor yachts, sailing yachts, catamarans',
+      'charter.brochure.eyebrow':'2026 Season','charter.brochure.h2':'Mediterranean Charter Brochure','charter.brochure.desc':'Download or browse our full 2026 Mediterranean charter brochure — featuring curated destinations, featured yachts and seasonal itinerary suggestions.','charter.brochure.cta':'Download Brochure'
+    },
+    ES: {
+      'nav.sale':'Yates en Venta','nav.sell':'Vender','nav.charter':'Charter','nav.brands':'Marcas Exclusivas','nav.about':'Nosotros','nav.contact':'Contacto',
+      'hero.h1':'Curating la Excelencia Náutica,<br><em>Un Cliente</em> a la Vez.','hero.sub':'Una firma privada especializada en la adquisición, venta y charter de los yates más exclusivos del mundo. Personal. Discreta. Inflexible.','hero.cta1':'Ver Yates','hero.cta2':'Planear Charter','hero.scroll':'Deslizar',
+      'stats.years':'Años de Experiencia','stats.yachts':'Yates Negociados','stats.destinations':'Destinos','stats.clients':'Clientes Atendidos',
+      'services.eyebrow':'Qué Hacemos','services.h2':'Servicios Náuticos Integrales','services.intro':'Desde la adquisición hasta el charter, gestión y tripulación — cubrimos cada dimensión de su vida náutica con cuidado y precisión.',
+      'services.i.num':'I — Venta de Yates','services.i.h3':'Comprar o Vender','services.i.desc':'Acceda a nuestro portafolio de yates de motor, yates a vela y superyates — incluyendo listados exclusivos fuera del mercado. Representamos a compradores y vendedores con igual discreción y experiencia.','services.i.cta':'Ver Listados →',
+      'services.ii.num':'II — Charter','services.ii.h3':'Charter Privado','services.ii.desc':'Experiencias de charter a medida por las Américas y el Mediterráneo. Conectamos el barco ideal con su itinerario, invitados y estilo de vida.','services.ii.cta':'Planear Charter →',
+      'services.iii.num':'III — Gestión','services.iii.h3':'Gestión de Yates','services.iii.desc':'Gestión integral para propietarios: mantenimiento, cumplimiento, tripulación, logística operativa e informes financieros — todo en un solo lugar.','services.iii.cta':'Saber Más →',
+      'founder.eyebrow':'Nuestro Fundador','founder.cta':'Nuestra Historia →',
+      'brands.eyebrow':'Representación Exclusiva','brands.h2':'Nuestras Marcas','brands.intro':'1 Ocean Yachts Group tiene derechos exclusivos de distribuidor en EE.UU. para dos de los fabricantes de yates más distinguidos del mundo.','brands.pj.tag':'Distribuidor Exclusivo EE.UU.','brands.pj.desc':'Casi un siglo de diseño icónico y náutica de alto rendimiento.','brands.gt.tag':'Distribuidor Líder EE.UU.','brands.gt.desc':'Fabricado artesanalmente en Cerdeña — potencia, elegancia y singularidad.',
+      'footer.services':'Servicios','footer.sell':'Vender tu Yate','footer.management':'Gestión de Yates','footer.crew':'Selección de Tripulación','footer.charter':'Charter','footer.ch.americas':'Charter Américas','footer.ch.med':'Charter Mediterráneo','footer.company':'Empresa','footer.privacy':'Política de Privacidad','footer.cookies':'Política de Cookies','footer.copyright':'© 2026 1 Ocean Yachts Group. Todos los derechos reservados.',
+      'contact.eyebrow':'Contáctenos','contact.h1':'Contacto','contact.sub':'Ya sea que esté comprando, vendiendo o planeando su próximo charter — nuestro equipo está a un mensaje de distancia.','contact.send.eyebrow':'Envíenos un Mensaje','contact.form.title':'¿Cómo podemos ayudarle?','contact.form.fname':'Nombre','contact.form.lname':'Apellido','contact.form.email':'Email','contact.form.interest':'Me interesa','contact.form.msg':'Mensaje (opcional)','contact.form.submit':'Enviar Mensaje','contact.form.note':'Respondemos a todas las consultas en 24 horas.','contact.pill.charter':'Charter','contact.pill.buy':'Comprar','contact.pill.sell':'Vender','contact.pill.mgmt':'Gestión','contact.pill.other':'Otro',
+      'sell.eyebrow':'Vende con Nosotros','sell.h2':'La Forma Más Inteligente de Vender tu Yate.','sell.step1.h4':'Valoración Inmediata','sell.step2.h4':'Exposición Estratégica','sell.step3.h4':'Cierre Sin Complicaciones','sell.form.eyebrow':'Confidencial y Sin Compromiso','sell.form.h3':'Cuéntenos sobre su yate.','sell.form.intro':'Tres datos. Es todo lo que necesitamos para empezar.','sell.form.name':'Su Nombre','sell.form.contact':'Email o WhatsApp','sell.form.yacht':'Su Yate','sell.form.submit':'Solicitar Valoración Confidencial','sell.form.disclaimer':'Todas las consultas se manejan con total discreción. Responderemos en 24 horas.',
+      'charter.eyebrow.americas':'Las Américas','charter.title.americas':'Américas','charter.desc.americas':'Salidas durante todo el año desde Miami hacia las cálidas aguas turquesas de Bahamas, el Caribe y las Islas Vírgenes Británicas.','charter.cta.americas':'Explorar Américas →','charter.eyebrow.med':'El Mediterráneo','charter.title.med':'Mediterráneo','charter.desc.med':'Desde las calas salvajes de Cerdeña hasta el glamour de Mónaco — las costas más codiciadas del mundo, curadas.','charter.cta.med':'Explorar Mediterráneo →',
+      'charter.qb.eyebrow':'Consulta Rápida','charter.qb.h3':'Verificar Disponibilidad','charter.qb.intro':'Seleccione su destino y fechas — le responderemos en 24 horas.','charter.qb.dest':'Destino','charter.qb.checkin':'Llegada','charter.qb.checkout':'Salida','charter.qb.email':'Email','charter.qb.submit':'Enviar Solicitud',
+      'charter.exp.eyebrow':'La Experiencia','charter.exp.h2':'Cada Detalle, Atendido','charter.exp.intro':'Desde el momento en que sube a bordo hasta el último fondeo al atardecer — su tripulación, itinerario, aprovisionamiento y cada detalle logístico son gestionados por 1 Ocean Yachts.','charter.icon1':'Tripulación Completa','charter.icon1.desc':'Capitán, chef y tripulación seleccionados para su travesía','charter.icon2':'Itinerario Personalizado','charter.icon2.desc':'Cada detalle planificado según su agenda','charter.icon3':'Acceso a la Flota','charter.icon3.desc':'Yates de motor, veleros, catamaranes',
+      'charter.brochure.eyebrow':'Temporada 2026','charter.brochure.h2':'Brochure Charter Mediterráneo','charter.brochure.desc':'Descargue o consulte nuestro completo brochure de charter mediterráneo 2026 — con destinos curados, yates destacados y sugerencias de itinerario de temporada.','charter.brochure.cta':'Descargar Folleto'
+    },
+    IT: {
+      'nav.sale':'Yacht in Vendita','nav.sell':'Vendi','nav.charter':'Charter','nav.brands':'Marchi Esclusivi','nav.about':'Chi Siamo','nav.contact':'Contatti',
+      'hero.h1':'Eccellenza Nautica <em>Curata</em>,<br>Un Cliente alla Volta.','hero.sub':'Una società di consulenza privata specializzata nell\'acquisto, vendita e charter degli yacht più pregiati al mondo. Personale. Discreta. Senza compromessi.','hero.cta1':'Esplora Yacht','hero.cta2':'Pianifica Charter','hero.scroll':'Scorri',
+      'stats.years':'Anni di Esperienza','stats.yachts':'Yacht Trattati','stats.destinations':'Destinazioni','stats.clients':'Clienti Serviti',
+      'services.eyebrow':'Cosa Facciamo','services.h2':'Servizi Nautici Completi','services.intro':'Dall\'acquisto al charter, dalla gestione all\'equipaggio — ci occupiamo di ogni aspetto della vostra vita in yacht con cura e precisione.',
+      'services.i.num':'I — Compravendita','services.i.h3':'Compra o Vendi','services.i.desc':'Accedi al nostro portafoglio curato di yacht a motore, a vela e superyacht — incluse le proposte esclusive fuori mercato. Rappresentiamo acquirenti e venditori con pari discrezione e competenza.','services.i.cta':'Esplora Annunci →',
+      'services.ii.num':'II — Charter','services.ii.h3':'Charter Privato','services.ii.desc':'Esperienze di charter su misura nelle Americhe e nel Mediterraneo. Abbiniamo l\'imbarcazione giusta al vostro itinerario, ospiti e stile di vita.','services.ii.cta':'Pianifica Charter →',
+      'services.iii.num':'III — Gestione','services.iii.h3':'Gestione Yacht','services.iii.desc':'Gestione completa per armatori: manutenzione, conformità, equipaggio, logistica operativa e reportistica finanziaria — tutto sotto un unico tetto.','services.iii.cta':'Scopri di Più →',
+      'founder.eyebrow':'Il Nostro Fondatore','founder.cta':'La Nostra Storia →',
+      'brands.eyebrow':'Rappresentanza Esclusiva','brands.h2':'I Nostri Marchi','brands.intro':'1 Ocean Yachts Group detiene i diritti esclusivi di distribuzione negli USA per due dei più prestigiosi costruttori di yacht al mondo.','brands.pj.tag':'Dealer Esclusivo USA','brands.pj.desc':'Quasi un secolo di design iconico e nautica ad alte prestazioni.','brands.gt.tag':'Dealer Leader USA','brands.gt.desc':'Realizzato artigianalmente in Sardegna — potenza, eleganza e unicità.',
+      'footer.services':'Servizi','footer.sell':'Vendi il tuo Yacht','footer.management':'Gestione Yacht','footer.crew':'Selezione Equipaggio','footer.charter':'Charter','footer.ch.americas':'Charter Americhe','footer.ch.med':'Charter Mediterraneo','footer.company':'Azienda','footer.privacy':'Privacy Policy','footer.cookies':'Cookie Policy','footer.copyright':'© 2026 1 Ocean Yachts Group. Tutti i diritti riservati.',
+      'contact.eyebrow':'Contattaci','contact.h1':'Contatti','contact.sub':'Che tu stia acquistando, vendendo o pianificando il tuo prossimo charter — il nostro team è a un messaggio di distanza.','contact.send.eyebrow':'Invia un Messaggio','contact.form.title':'Come possiamo aiutarti?','contact.form.fname':'Nome','contact.form.lname':'Cognome','contact.form.email':'Email','contact.form.interest':'Sono interessato a','contact.form.msg':'Messaggio (opzionale)','contact.form.submit':'Invia Messaggio','contact.form.note':'Rispondiamo a tutte le richieste entro 24 ore.','contact.pill.charter':'Charter','contact.pill.buy':'Acquisto','contact.pill.sell':'Vendita','contact.pill.mgmt':'Gestione','contact.pill.other':'Altro',
+      'sell.eyebrow':'Vendi con Noi','sell.h2':'Il Modo Più Intelligente per Vendere il tuo Yacht.','sell.step1.h4':'Valutazione Immediata','sell.step2.h4':'Visibilità Strategica','sell.step3.h4':'Chiusura Senza Intoppi','sell.form.eyebrow':'Riservato e Senza Impegno','sell.form.h3':'Parlaci del tuo yacht.','sell.form.intro':'Tre dettagli. È tutto ciò di cui abbiamo bisogno per iniziare.','sell.form.name':'Il Suo Nome','sell.form.contact':'Email o WhatsApp','sell.form.yacht':'Il Suo Yacht','sell.form.submit':'Richiedi Valutazione Riservata','sell.form.disclaimer':'Tutte le richieste sono gestite con la massima riservatezza. Risponderemo entro 24 ore.',
+      'charter.eyebrow.americas':'Le Americhe','charter.title.americas':'Americhe','charter.desc.americas':'Partenze tutto l\'anno da Miami verso le calde acque turchesi delle Bahamas, dei Caraibi e delle Isole Vergini Britanniche.','charter.cta.americas':'Esplora le Americhe →','charter.eyebrow.med':'Il Mediterraneo','charter.title.med':'Mediterraneo','charter.desc.med':'Dalle cale selvagge della Sardegna al glamour di Monaco — le coste più ambite al mondo, curate.','charter.cta.med':'Esplora il Mediterraneo →',
+      'charter.qb.eyebrow':'Richiesta Rapida','charter.qb.h3':'Verifica Disponibilità','charter.qb.intro':'Seleziona la tua destinazione e le date — ti risponderemo entro 24 ore.','charter.qb.dest':'Destinazione','charter.qb.checkin':'Check-in','charter.qb.checkout':'Check-out','charter.qb.email':'Email','charter.qb.submit':'Invia Richiesta',
+      'charter.exp.eyebrow':'L\'Esperienza','charter.exp.h2':'Ogni Dettaglio, Curato','charter.exp.intro':'Dal momento in cui sali a bordo fino all\'ultimo ancoraggio al tramonto — il tuo equipaggio, itinerario, approvvigionamento e ogni dettaglio logistico sono gestiti da 1 Ocean Yachts.','charter.icon1':'Equipaggio Completo','charter.icon1.desc':'Capitano, chef e equipaggio selezionati per il tuo viaggio','charter.icon2':'Itinerario Personalizzato','charter.icon2.desc':'Ogni dettaglio pianificato intorno al tuo programma','charter.icon3':'Accesso alla Flotta','charter.icon3.desc':'Yacht a motore, a vela, catamarani',
+      'charter.brochure.eyebrow':'Stagione 2026','charter.brochure.h2':'Brochure Charter Mediterraneo','charter.brochure.desc':'Scarica o sfoglia il nostro completo brochure di charter nel Mediterraneo 2026 — con destinazioni curate, yacht in evidenza e suggerimenti di itinerario stagionale.','charter.brochure.cta':'Scarica il Brochure'
+    },
+    FR: {
+      'nav.sale':'Yachts à Vendre','nav.sell':'Vendre','nav.charter':'Charter','nav.brands':'Marques Exclusives','nav.about':'À Propos','nav.contact':'Contact',
+      'hero.h1':'L\'Excellence Nautique <em>Curated</em>,<br>Un Client à la Fois.','hero.sub':'Un cabinet de conseil privé spécialisé dans l\'acquisition, la vente et l\'affrètement des plus beaux yachts au monde. Personnel. Discret. Exigeant.','hero.cta1':'Explorer les Yachts','hero.cta2':'Planifier un Charter','hero.scroll':'Défiler',
+      'stats.years':'Années d\'Expérience','stats.yachts':'Yachts Transactés','stats.destinations':'Destinations','stats.clients':'Clients Servis',
+      'services.eyebrow':'Ce Que Nous Faisons','services.h2':'Services Nautiques Complets','services.intro':'De l\'acquisition au charter, de la gestion à l\'équipage — nous gérons chaque dimension de votre vie nautique avec soin et précision.',
+      'services.i.num':'I — Vente de Yachts','services.i.h3':'Acheter ou Vendre','services.i.desc':'Accédez à notre portefeuille de yachts à moteur, voiliers et superyachts — y compris des annonces exclusives hors marché. Nous représentons acheteurs et vendeurs avec discrétion et expertise.','services.i.cta':'Explorer les Annonces →',
+      'services.ii.num':'II — Charter','services.ii.h3':'Charter Privé','services.ii.desc':'Expériences de charter sur mesure en Amériques et Méditerranée. Nous associons le bon navire à votre itinéraire, vos invités et votre style de vie.','services.ii.cta':'Planifier un Charter →',
+      'services.iii.num':'III — Gestion','services.iii.h3':'Gestion de Yacht','services.iii.desc':'Gestion complète pour propriétaires : maintenance, conformité, équipage, logistique opérationnelle et reporting financier — tout sous un même toit.','services.iii.cta':'En Savoir Plus →',
+      'founder.eyebrow':'Notre Fondateur','founder.cta':'Notre Histoire →',
+      'brands.eyebrow':'Représentation Exclusive','brands.h2':'Nos Marques','brands.intro':'1 Ocean Yachts Group détient les droits exclusifs de distribution aux États-Unis pour deux des constructeurs de yachts les plus prestigieux au monde.','brands.pj.tag':'Distributeur Exclusif USA','brands.pj.desc':'Près d\'un siècle de design iconique et de nautisme haute performance.','brands.gt.tag':'Distributeur Leader USA','brands.gt.desc':'Fabriqué artisanalement en Sardaigne — puissance, élégance et unicité.',
+      'footer.services':'Services','footer.sell':'Vendre votre Yacht','footer.management':'Gestion de Yacht','footer.crew':'Placement d\'Équipage','footer.charter':'Charter','footer.ch.americas':'Charter Amériques','footer.ch.med':'Charter Méditerranée','footer.company':'Société','footer.privacy':'Politique de Confidentialité','footer.cookies':'Politique de Cookies','footer.copyright':'© 2026 1 Ocean Yachts Group. Tous droits réservés.',
+      'contact.eyebrow':'Contactez-nous','contact.h1':'Contact','contact.sub':'Que vous achetiez, vendiez ou planifiiez votre prochain charter — notre équipe n\'est qu\'un message.','contact.send.eyebrow':'Envoyez un Message','contact.form.title':'Comment pouvons-nous vous aider?','contact.form.fname':'Prénom','contact.form.lname':'Nom','contact.form.email':'Email','contact.form.interest':'Je suis intéressé par','contact.form.msg':'Message (optionnel)','contact.form.submit':'Envoyer le Message','contact.form.note':'Nous répondons à toutes les demandes sous 24 heures.','contact.pill.charter':'Charter','contact.pill.buy':'Acheter','contact.pill.sell':'Vendre','contact.pill.mgmt':'Gestion','contact.pill.other':'Autre',
+      'sell.eyebrow':'Vendez avec Nous','sell.h2':'La Façon la Plus Intelligente de Vendre votre Yacht.','sell.step1.h4':'Évaluation Immédiate','sell.step2.h4':'Exposition Stratégique','sell.step3.h4':'Closing Sans Complexité','sell.form.eyebrow':'Confidentiel et Sans Engagement','sell.form.h3':'Parlez-nous de votre yacht.','sell.form.intro':'Trois informations. C\'est tout ce dont nous avons besoin.','sell.form.name':'Votre Nom','sell.form.contact':'Email ou WhatsApp','sell.form.yacht':'Votre Yacht','sell.form.submit':'Demander une Évaluation Confidentielle','sell.form.disclaimer':'Toutes les demandes sont traitées avec la plus grande discrétion. Nous répondrons sous 24 heures.',
+      'charter.eyebrow.americas':'Les Amériques','charter.title.americas':'Amériques','charter.desc.americas':'Départs toute l\'année depuis Miami vers les eaux turquoise chaudes des Bahamas, des Caraïbes et des Îles Vierges Britanniques.','charter.cta.americas':'Explorer les Amériques →','charter.eyebrow.med':'La Méditerranée','charter.title.med':'Méditerranée','charter.desc.med':'Des criques sauvages de Sardaigne au glamour de Monaco — les côtes les plus convoitées au monde, curées.','charter.cta.med':'Explorer la Méditerranée →',
+      'charter.qb.eyebrow':'Demande Rapide','charter.qb.h3':'Vérifier la Disponibilité','charter.qb.intro':'Sélectionnez votre destination et vos dates — nous vous répondrons dans les 24 heures.','charter.qb.dest':'Destination','charter.qb.checkin':'Arrivée','charter.qb.checkout':'Départ','charter.qb.email':'Email','charter.qb.submit':'Envoyer la Demande',
+      'charter.exp.eyebrow':'L\'Expérience','charter.exp.h2':'Chaque Détail, Maîtrisé','charter.exp.intro':'Du moment où vous montez à bord jusqu\'au dernier mouillage au coucher du soleil — votre équipage, itinéraire, avitaillement et chaque détail logistique sont pris en charge par 1 Ocean Yachts.','charter.icon1':'Équipage Complet','charter.icon1.desc':'Capitaine, chef et équipage sélectionnés pour votre voyage','charter.icon2':'Itinéraire Personnalisé','charter.icon2.desc':'Chaque détail planifié autour de votre programme','charter.icon3':'Accès à la Flotte','charter.icon3.desc':'Yachts à moteur, voiliers, catamarans',
+      'charter.brochure.eyebrow':'Saison 2026','charter.brochure.h2':'Brochure Charter Méditerranée','charter.brochure.desc':'Téléchargez ou parcourez notre brochure complète de charter méditerranéen 2026 — avec des destinations curées, des yachts en vedette et des suggestions d\'itinéraires saisonniers.','charter.brochure.cta':'Télécharger la Brochure'
+    }
+  };
+
+  var currentLang = 'EN';
+
+  function applyTranslations(lang) {
+    var t = i18n[lang] || i18n['EN'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.textContent = t[key];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-html');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-placeholder');
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+  }
+
   function setLang(code, label) {
+    currentLang = code;
     document.getElementById('lang-btn-display').childNodes[0].textContent = code + ' ';
+    applyTranslations(code);
     closeLang();
-    console.log('Language set to:', label);
   }
 
   /* ── CLICK OUTSIDE ───────────────────────── */
