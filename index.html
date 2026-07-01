@@ -903,11 +903,86 @@
       .about-closing-stats { border-left: none; border-top: 1px solid var(--light-grey); padding-left: 0; padding-top: 2.5rem; }
       .about-closing-mark { font-size: 3.5rem; }
       .acs-number { font-size: 2rem; }
+      .og-slide { width: 85vw; height: 240px; }
+      .og-arrow { display: none; }
+      .office-map-grid { grid-template-columns: 1fr; }
+      .office-address-col { padding: 3rem 1.5rem; }
+      .office-map-col { min-height: 300px; }
     }
     .about-services { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     .about-service-item { border-left: 2px solid var(--light-grey); padding-left: 1.2rem; }
     .about-service-item h4 { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.4rem; }
     .about-service-item p { font-size: 0.83rem; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── OFFICE GALLERY ──────────────────────── */
+    .office-section { padding-bottom: 0; }
+    .office-header { margin-bottom: 2.5rem; }
+    .office-header h2 {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400; color: var(--navy);
+    }
+    .office-gallery-wrap { position: relative; overflow: hidden; }
+    .office-gallery {
+      display: flex; gap: 1.5rem; overflow-x: auto;
+      scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;
+      padding: 0 max(2rem, calc((100vw - 1200px) / 2)); padding-bottom: 2rem; cursor: grab;
+    }
+    .office-gallery::-webkit-scrollbar { display: none; }
+    .office-gallery.dragging { cursor: grabbing; }
+    .og-slide { flex-shrink: 0; width: 480px; height: 320px; overflow: hidden; background: var(--off-white); }
+    .og-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .og-slide:hover img { transform: scale(1.03); }
+    .og-slide-placeholder { background: #0D1B2A; display: flex; align-items: center; justify-content: center; }
+    .og-slide-placeholder::after {
+      content: 'Photo coming soon';
+      font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3);
+    }
+    .og-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12); transition: background 0.2s, transform 0.2s;
+      z-index: 10; color: var(--navy);
+    }
+    .og-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
+    .og-arrow-prev { left: 1.5rem; }
+    .og-arrow-next { right: 1.5rem; }
+    .og-dots { display: flex; justify-content: center; gap: 0.5rem; padding: 1rem 0 2rem; }
+    .og-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--light-grey); border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.2s; padding: 0;
+    }
+    .og-dot.active { background: var(--celeste); transform: scale(1.3); }
+
+    /* ── OFFICE MAP ──────────────────────────── */
+    .office-map-section { border-top: 1px solid var(--light-grey); }
+    .office-map-grid { display: grid; grid-template-columns: 1fr 2fr; min-height: 420px; }
+    .office-address-col {
+      background: #0D1B2A; padding: 4rem 3rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 0;
+    }
+    .office-address-col .eyebrow { color: var(--celeste); margin-bottom: 0.5rem; }
+    .office-address-col h3 {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 1.8rem; font-weight: 400; color: #fff; margin-bottom: 2rem;
+    }
+    .office-address-detail { margin-bottom: 2rem; }
+    .office-address-detail p { font-size: 0.92rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .office-address-links {
+      display: flex; flex-direction: column; gap: 0.8rem;
+      padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .office-map-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s;
+    }
+    .office-map-link:hover { color: var(--celeste); }
+    .office-map-col { position: relative; min-height: 420px; }
+    .office-map-col iframe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
     /* ── BRAND PAGES ─────────────────────────── */
     .brand-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -2308,6 +2383,79 @@
     </div>
   </section>
 
+  <!-- OFFICE GALLERY -->
+  <section class="section bg-white office-section">
+    <div class="container">
+      <div class="office-header fade-in-up">
+        <span class="eyebrow">Our Office</span>
+        <h2>Where You'll Find Us</h2>
+      </div>
+    </div>
+
+    <div class="office-gallery-wrap">
+      <div class="office-gallery" id="officeGallery">
+        <div class="og-slide">
+          <img src="public/assets/office/office-01.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
+        </div>
+        <div class="og-slide">
+          <img src="public/assets/office/office-02.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
+        </div>
+        <div class="og-slide">
+          <img src="public/assets/office/office-03.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
+        </div>
+        <div class="og-slide">
+          <img src="public/assets/office/office-04.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
+        </div>
+      </div>
+
+      <button class="og-arrow og-arrow-prev" onclick="slideGallery(-1)" aria-label="Previous">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="og-arrow og-arrow-next" onclick="slideGallery(1)" aria-label="Next">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+
+      <div class="og-dots" id="ogDots"></div>
+    </div>
+  </section>
+
+  <!-- MAPPA + INDIRIZZO -->
+  <section class="office-map-section">
+    <div class="office-map-grid">
+
+      <div class="office-address-col">
+        <span class="eyebrow">Visit Us</span>
+        <h3>Miami Office</h3>
+        <div class="office-address-detail">
+          <p>888 Biscayne Blvd, Suite 505</p>
+          <p>Miami, FL 33132</p>
+          <p>United States</p>
+        </div>
+        <div class="office-address-links">
+          <a href="https://maps.google.com/?q=888+Biscayne+Blvd+Suite+505+Miami+FL+33132" target="_blank" rel="noopener" class="office-map-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
+          <a href="tel:+13054917794" class="office-map-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.2.01h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.55-.55a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            +1 305 491 7794
+          </a>
+        </div>
+      </div>
+
+      <div class="office-map-col">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.8!2d-80.1878!3d25.7750!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b6a1e8d1c7a9%3A0x0!2s888+Biscayne+Blvd%2C+Miami%2C+FL+33132!5e0!3m2!1sen!2sus!4v1"
+          width="100%" height="100%" style="border:0;"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="1 Ocean Yachts Group Office Location">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
 </div><!-- /page-about -->
 
 <!-- ══════════════════════════════════════════════════
@@ -3167,6 +3315,53 @@
       if (buyPill) buyPill.classList.add('active');
     }, 320);
   }
+
+  /* ── OFFICE GALLERY ──────────────────────── */
+  (function() {
+    var gallery = document.getElementById('officeGallery');
+    var dotsWrap = document.getElementById('ogDots');
+    if (!gallery) return;
+    var slides = gallery.querySelectorAll('.og-slide');
+    var currentIndex = 0;
+    slides.forEach(function(_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'og-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.onclick = function() { goToSlide(i); };
+      dotsWrap.appendChild(dot);
+    });
+    function goToSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentIndex = index;
+      var slideWidth = slides[0].offsetWidth + 24;
+      gallery.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+      document.querySelectorAll('.og-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === index);
+      });
+    }
+    var isDown = false, startX, scrollLeft;
+    gallery.addEventListener('mousedown', function(e) {
+      isDown = true; gallery.classList.add('dragging');
+      startX = e.pageX - gallery.offsetLeft; scrollLeft = gallery.scrollLeft;
+    });
+    gallery.addEventListener('mouseleave', function() { isDown = false; gallery.classList.remove('dragging'); });
+    gallery.addEventListener('mouseup', function() { isDown = false; gallery.classList.remove('dragging'); });
+    gallery.addEventListener('mousemove', function(e) {
+      if (!isDown) return;
+      e.preventDefault();
+      gallery.scrollLeft = scrollLeft - (e.pageX - gallery.offsetLeft - startX) * 1.5;
+    });
+    gallery.addEventListener('scroll', function() {
+      var slideWidth = slides[0].offsetWidth + 24;
+      var idx = Math.round(gallery.scrollLeft / slideWidth);
+      if (idx !== currentIndex) {
+        currentIndex = idx;
+        document.querySelectorAll('.og-dot').forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+      }
+    }, { passive: true });
+    window.slideGallery = function(dir) { goToSlide(currentIndex + dir); };
+  })();
 
   /* ── MODALS ──────────────────────────────── */
   function openModal(type) {
