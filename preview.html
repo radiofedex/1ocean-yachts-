@@ -633,6 +633,51 @@
     .about-text h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; line-height: 1.25; }
     .about-text p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
 
+    /* ── UPCOMING EVENTS ─────────────────────── */
+    .events-section { position: relative; overflow: hidden; min-height: 520px; display: flex; align-items: center; }
+    .events-bg-video { position: absolute; inset: 0; z-index: 0; }
+    .events-bg-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .events-overlay { position: absolute; inset: 0; background: rgba(6,14,24,0.72); }
+    .events-content { position: relative; z-index: 1; padding: 4rem 0; width: 100%; }
+    .events-title {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; color: #fff;
+      margin-bottom: 2.5rem; letter-spacing: -0.01em;
+    }
+    .events-list { display: flex; flex-direction: column; gap: 0; max-width: 760px; }
+    .event-item {
+      display: grid; grid-template-columns: 100px 1px 1fr;
+      align-items: center; gap: 2rem;
+      padding: 1.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .event-item:first-child { border-top: 1px solid rgba(255,255,255,0.12); }
+    .event-date { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+    .event-month {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45); line-height: 1; margin-bottom: 0.1rem;
+    }
+    .event-day {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: 2.8rem; font-weight: 400; color: #fff; line-height: 1; letter-spacing: -0.02em;
+    }
+    .event-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.2); flex-shrink: 0; }
+    .event-info { display: flex; flex-direction: column; gap: 0.2rem; }
+    .event-year {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+    .event-name {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 400;
+      color: var(--celeste); letter-spacing: -0.01em; line-height: 1.15;
+    }
+    @media (hover: hover) {
+      .event-item:hover .event-name { opacity: 0.8; }
+      .event-item:hover .event-day { color: var(--celeste); transition: color 0.2s; }
+    }
+
     /* ── BRANDS ──────────────────────────────── */
     .brands-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .brand-card {
@@ -1367,6 +1412,12 @@
 
       /* Lifestyle video full-bleed */
       .lifestyle-strip { height: 220px !important; }
+      .events-section { min-height: auto; }
+      .events-content { padding: 3rem 0; }
+      .event-item { grid-template-columns: 70px 1px 1fr; gap: 1.2rem; padding: 1.1rem 0; }
+      .event-day { font-size: 2rem; }
+      .event-name { font-size: 1.2rem; }
+      .events-title { font-size: 1.6rem; margin-bottom: 1.8rem; }
 
       /* Sezioni testo — padding ridotto */
       .section { padding: 3.2rem 0; }
@@ -1595,15 +1646,71 @@
     </div>
   </section>
 
-  <!-- LIFESTYLE VIDEO — below Jose -->
-  <div class="lifestyle-strip" style="position:relative;overflow:hidden;height:520px;" data-aos="fade-up">
-    <video autoplay muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <source src="public/assets/videos/lifestyle-01-web.mp4" type="video/mp4">
-    </video>
-    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,15,24,0.35) 0%,transparent 60%);pointer-events:none;"></div>
-    <div style="position:absolute;bottom:0;right:0;width:280px;height:70px;background:linear-gradient(to top left,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
-    <div style="position:absolute;bottom:0;left:0;width:200px;height:60px;background:linear-gradient(to top right,rgba(6,15,24,0.95) 0%,transparent 100%);pointer-events:none;z-index:2;"></div>
-  </div>
+  <!-- UPCOMING EVENTS -->
+  <section class="events-section">
+    <div class="events-bg-video">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="public/assets/videos/lifestyle-01-web.mp4" type="video/mp4">
+      </video>
+      <div class="events-overlay"></div>
+    </div>
+
+    <div class="container events-content">
+      <h2 class="events-title">Upcoming events</h2>
+
+      <div class="events-list">
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">September</span>
+            <span class="event-day">08</span>
+          </div>
+          <div class="event-divider"></div>
+          <div class="event-info">
+            <span class="event-year">2026</span>
+            <span class="event-name">Cannes Yachting Festival</span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">September</span>
+            <span class="event-day">23</span>
+          </div>
+          <div class="event-divider"></div>
+          <div class="event-info">
+            <span class="event-year">2026</span>
+            <span class="event-name">Monaco Yacht Show</span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">October</span>
+            <span class="event-day">28</span>
+          </div>
+          <div class="event-divider"></div>
+          <div class="event-info">
+            <span class="event-year">2026</span>
+            <span class="event-name">Fort Lauderdale Int. Boat Show</span>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">February</span>
+            <span class="event-day">12</span>
+          </div>
+          <div class="event-divider"></div>
+          <div class="event-info">
+            <span class="event-year">2027</span>
+            <span class="event-name">Miami International Boat Show</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- BRANDS -->
   <section class="section bg-white">
