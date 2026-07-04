@@ -409,6 +409,11 @@
       .pj-vs-video { min-height: 300px; }
       .pj-vs-text { padding: 3rem 2rem; }
       .pj-video-content { padding: 0 2rem; }
+      .listings-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .listings-frame-col { min-height: 200px; }
+      .listings-ctas { flex-direction: column; }
+      .listings-ctas .btn-celeste, .listings-ctas .btn-outline { width: 100%; justify-content: center; text-align: center; }
+      .listings-sub, .listings-note { max-width: 100%; }
     }
 
     /* ── TESTIMONIALS ────────────────────────── */
@@ -1018,6 +1023,36 @@
     .office-map-link:hover { color: var(--celeste); }
     .office-map-col { position: relative; min-height: 420px; }
     .office-map-col iframe { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+    /* ── LISTINGS SECTION ────────────────────── */
+    .listings-section { padding: 5rem 0; }
+    .listings-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+    .listings-info h2 {
+      font-family: 'Cormorant Garant', Georgia, serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; color: var(--navy);
+      margin: 0.4rem 0 1rem;
+    }
+    .listings-sub { font-size: 0.88rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 2rem; max-width: 420px; }
+    .listings-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .listings-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+    .listings-note { font-size: 0.78rem; color: var(--text-mid); font-style: italic; line-height: 1.6; max-width: 360px; }
+    .listings-frame-col {
+      border: 1px solid var(--light-grey); min-height: 240px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--off-white); overflow: hidden;
+    }
+    .yw-loading-state {
+      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+      font-size: 0.75rem; letter-spacing: 0.08em; color: var(--text-mid);
+    }
+    .yw-static-preview { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 3rem 2rem; }
+    .yw-preview-inner { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .yw-preview-text { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; }
+    .yw-preview-link {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--navy); text-decoration: none; transition: color 0.2s;
+    }
+    .yw-preview-link:hover { color: var(--celeste); }
 
     /* ── BRAND PAGES ─────────────────────────── */
     .brand-page-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -1892,59 +1927,58 @@
     </div>
   </div>
 
-  <!-- YachtWorld Live Listings -->
-  <section class="section bg-white" style="padding-top:60px;padding-bottom:80px;">
+  <!-- YachtWorld Live Listings — redesigned -->
+  <section class="section bg-white listings-section">
     <div class="container">
-      <div class="section-header fade-in-up" style="margin-bottom:2.5rem;">
-        <div class="eyebrow">Live Portfolio</div>
-        <h2 style="font-family:'Cormorant Garant',serif;font-size:2.4rem;font-weight:300;color:var(--text-dark);margin-bottom:0.5rem;">Our Current Listings</h2>
-        <p style="font-size:0.9rem;color:var(--text-mid);font-weight:300;">Listings powered by YachtWorld — updated in real time.</p>
+
+      <div class="listings-grid fade-in-up">
+
+        <!-- Colonna sinistra: info + bottoni -->
+        <div class="listings-info">
+          <span class="eyebrow">Live Portfolio</span>
+          <h2>Our Current Listings</h2>
+          <p class="listings-sub">Our complete and up-to-date portfolio is hosted on YachtWorld — the world's largest yacht marketplace. All listings are updated in real time.</p>
+
+          <div class="listings-ctas">
+            <a href="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
+               target="_blank" rel="noopener" class="btn-celeste listings-btn-primary">
+              View All Listings
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <button class="btn-outline" onclick="showPage('page-contact')">Contact Us</button>
+          </div>
+
+          <p class="listings-note">Looking for something specific? We have access to exclusive off-market vessels not listed publicly.</p>
+        </div>
+
+        <!-- Colonna destra: iframe YachtWorld -->
+        <div class="listings-frame-col">
+          <div id="yw-loading" class="yw-loading-state">
+            <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke="var(--celeste)" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="18" cy="18" r="15" stroke-opacity="0.15"/><path d="M18 3 A15 15 0 0 1 33 18" stroke-linecap="round"/></svg>
+            <span>Loading listings…</span>
+          </div>
+          <iframe
+            id="yw-frame"
+            src="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
+            style="width:100%;height:520px;border:none;display:none;"
+            title="1 Ocean Yachts — Live Listings on YachtWorld"
+            onload="onYWLoad(this)"
+            onerror="onYWError()">
+          </iframe>
+          <div id="yw-fallback" class="yw-static-preview" style="display:none;">
+            <div class="yw-preview-inner">
+              <p class="yw-preview-text">View the full portfolio directly on YachtWorld</p>
+              <a href="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
+                 target="_blank" rel="noopener" class="yw-preview-link">
+                Open YachtWorld →
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <!-- iframe wrapper -->
-    <div id="yw-wrap" style="position:relative;width:100%;min-height:800px;">
-      <div id="yw-loading" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;color:var(--text-light);font-size:0.85rem;letter-spacing:0.05em;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="#0099C8" stroke-width="2" style="animation:spin 1s linear infinite">
-          <circle cx="18" cy="18" r="15" stroke-opacity="0.2"/>
-          <path d="M18 3 A15 15 0 0 1 33 18" stroke-linecap="round"/>
-        </svg>
-        Loading listings…
-      </div>
-      <iframe
-        id="yw-frame"
-        src="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
-        style="width:100%;height:900px;border:none;opacity:0;transition:opacity 0.4s ease;"
-        title="1 Ocean Yachts — Live Listings on YachtWorld"
-        onload="onYWLoad(this)"
-        onerror="onYWError()"
-      ></iframe>
-      <!-- Fallback shown if iframe is blocked -->
-      <div id="yw-fallback" style="display:none;text-align:center;padding:60px 24px;">
-        <div style="font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--celeste);margin-bottom:1rem;">Our Listings</div>
-        <h3 style="font-family:'Cormorant Garant',serif;font-size:2rem;font-weight:300;color:var(--text-dark);margin-bottom:1rem;">View Our Full Portfolio on YachtWorld</h3>
-        <p style="font-size:0.9rem;color:var(--text-mid);max-width:440px;margin:0 auto 2rem;font-weight:300;line-height:1.7;">Our complete and up-to-date listings are hosted on YachtWorld, the world's largest yacht marketplace.</p>
-        <a href="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/" target="_blank" rel="noopener"
-          style="display:inline-flex;align-items:center;gap:8px;background:#0D1B2A;color:#fff;font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 2rem;text-decoration:none;transition:background 0.2s;">
-          View All Listings
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </a>
-        <button onclick="showPage('page-contact')" style="margin-top:1.5rem;background:none;border:1px solid rgba(0,0,0,0.18);color:var(--text-dark);font-family:'DM Sans',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.65rem 1.6rem;cursor:pointer;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='#0D1B2A';this.style.color='#0D1B2A'" onmouseout="this.style.borderColor='rgba(0,0,0,0.18)';this.style.color='var(--text-dark)'">Contact Us</button>
-      </div>
-    </div>
-
-    <!-- spacer below iframe, removed from old static grid -->
-    </div><!-- /hidden yacht-grid placeholder -->
-
   </section>
-
-  <!-- Private advisory strip -->
-  <div style="background:var(--off-white);padding:2rem 0;border-top:1px solid var(--light-grey);">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
-      <p style="font-size:0.88rem;color:var(--text-mid);font-weight:300;">Looking for something not listed? We have access to exclusive off-market yachts.</p>
-      <button class="btn-celeste" style="padding:0.7rem 1.8rem;white-space:nowrap;" onclick="goToContactBuying()">Request Private Advisory</button>
-    </div>
-  </div>
 
 </div><!-- /page-sale -->
 
@@ -3630,38 +3664,29 @@
   }
 
   /* ── YACHTWORLD IFRAME ───────────────────── */
-  function onYWLoad(iframe) {
-    var loading = document.getElementById('yw-loading');
-    var fallback = document.getElementById('yw-fallback');
+  function onYWLoad(frame) {
     try {
-      /* If same-origin, this works; if cross-origin blocked it throws */
-      var doc = iframe.contentDocument || iframe.contentWindow.document;
-      if (doc && doc.body && doc.body.innerHTML.length > 100) {
-        if (loading) loading.style.display = 'none';
-        iframe.style.opacity = '1';
-        return;
-      }
-    } catch(e) { /* cross-origin — check if it loaded visually */ }
-    /* YachtWorld blocked the iframe — show fallback */
-    if (loading) loading.style.display = 'none';
-    iframe.style.display = 'none';
-    if (fallback) fallback.style.display = 'block';
+      var loading = document.getElementById('yw-loading');
+      var fallback = document.getElementById('yw-fallback');
+      var col = frame.parentElement;
+      if (loading) loading.style.display = 'none';
+      if (fallback) fallback.style.display = 'none';
+      frame.style.display = 'block';
+      if (col) col.style.minHeight = 'auto';
+    } catch(e) { onYWError(); }
   }
   function onYWError() {
     var loading = document.getElementById('yw-loading');
     var fallback = document.getElementById('yw-fallback');
-    var iframe = document.getElementById('yw-frame');
+    var frame = document.getElementById('yw-frame');
     if (loading) loading.style.display = 'none';
-    if (iframe) iframe.style.display = 'none';
-    if (fallback) fallback.style.display = 'block';
+    if (frame) frame.style.display = 'none';
+    if (fallback) fallback.style.display = 'flex';
   }
-  /* Timeout fallback: if after 8s the iframe hasn't resolved, show fallback */
   setTimeout(function() {
-    var iframe = document.getElementById('yw-frame');
-    if (iframe && iframe.style.opacity !== '1') {
-      onYWError();
-    }
-  }, 8000);
+    var loading = document.getElementById('yw-loading');
+    if (loading && loading.style.display !== 'none') { onYWError(); }
+  }, 5000);
 
   /* ── INIT ────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function() {
