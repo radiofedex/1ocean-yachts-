@@ -681,23 +681,23 @@
     /* ── LOGO STRIP ──────────────────────────── */
     .logo-strip {
       overflow: hidden;
-      background: var(--off-white);
+      background: #fff;
       border-top: 1px solid var(--light-grey);
       border-bottom: 1px solid var(--light-grey);
-      padding: 1.2rem 0;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+      padding: 1.4rem 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
     }
     .logo-strip-track {
-      display: flex; align-items: center; gap: 3.5rem;
+      display: flex; align-items: center; gap: 4rem;
       width: max-content;
       animation: logoScroll 24s linear infinite;
     }
     .logo-strip:hover .logo-strip-track { animation-play-state: paused; }
-    .logo-strip-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; height: 28px; }
+    .logo-strip-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; height: 32px; }
     .logo-strip-item img {
-      height: 100%; width: auto; max-width: 100px; object-fit: contain;
-      filter: grayscale(100%) opacity(0.3); transition: filter 0.25s ease;
+      height: 100%; width: auto; max-width: 110px; object-fit: contain;
+      filter: grayscale(100%) opacity(0.55); transition: filter 0.25s ease;
     }
     .logo-strip-item img:hover { filter: grayscale(0%) opacity(1); }
     @keyframes logoScroll {
@@ -935,8 +935,8 @@
       .about-closing-mark { font-size: 3.5rem; }
       .acs-number { font-size: 2rem; }
       .logo-strip { padding: 1rem 0; }
-      .logo-strip-item { height: 22px; }
-      .logo-strip-item img { max-width: 70px; }
+      .logo-strip-item { height: 26px; }
+      .logo-strip-item img { max-width: 80px; }
       .logo-strip-track { gap: 2.5rem; animation-duration: 18s; }
       .og-slide { width: 85vw; height: 240px; }
       .og-arrow { display: none; }
