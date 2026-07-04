@@ -1952,28 +1952,8 @@
         </div>
 
         <!-- Colonna destra: iframe YachtWorld -->
-        <div class="listings-frame-col">
-          <div id="yw-loading" class="yw-loading-state">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke="var(--celeste)" stroke-width="2" style="animation:spin 1s linear infinite"><circle cx="18" cy="18" r="15" stroke-opacity="0.15"/><path d="M18 3 A15 15 0 0 1 33 18" stroke-linecap="round"/></svg>
-            <span>Loading listings…</span>
-          </div>
-          <iframe
-            id="yw-frame"
-            src="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
-            style="width:100%;height:520px;border:none;display:none;"
-            title="1 Ocean Yachts — Live Listings on YachtWorld"
-            onload="onYWLoad(this)"
-            onerror="onYWError()">
-          </iframe>
-          <div id="yw-fallback" class="yw-static-preview" style="display:none;">
-            <div class="yw-preview-inner">
-              <p class="yw-preview-text">View the full portfolio directly on YachtWorld</p>
-              <a href="https://www.yachtworld.it/barche-in-vendita/broker-1-ocean-yachts-group-52281/"
-                 target="_blank" rel="noopener" class="yw-preview-link">
-                Open YachtWorld →
-              </a>
-            </div>
-          </div>
+        <div class="listings-frame-col" style="border:none;background:none;min-height:auto;">
+          <img src="public/assets/photos/costa-smeralda-charter.jpg" alt="Luxury yacht" style="width:100%;height:480px;object-fit:cover;display:block;">
         </div>
 
       </div>
