@@ -1409,7 +1409,7 @@
     .ch-dest-img-wrap img.ch-img-active { opacity: 1; }
 
     /* Destination items */
-    .ch-dest-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 0.6rem; border-bottom: 1px solid #eee; cursor: default; transition: background 0.2s; }
+    .ch-dest-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.5rem 0.6rem; border-bottom: 1px solid #eee; cursor: pointer; transition: background 0.2s; }
     .ch-dest-item:hover { background: rgba(201,169,97,0.05); }
     .ch-dest-num { font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.9rem; color: var(--celeste); min-width: 2rem; transition: font-size 0.2s; flex-shrink: 0; }
     .ch-dest-item:hover .ch-dest-num { font-size: 1.15rem; }
@@ -1417,8 +1417,8 @@
     .ch-dest-name { font-family: 'DM Sans', system-ui, sans-serif; font-size: 1.2rem; font-weight: 400; color: var(--navy); margin: 0 0 0.1rem; }
     .ch-dest-tagline { font-size: 0.82rem; color: var(--text-mid); margin: 0; max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.3s ease, opacity 0.25s ease; }
     .ch-dest-item:hover .ch-dest-tagline { max-height: 2.5rem; opacity: 1; }
-    .ch-dest-arrow { font-size: 1rem; color: var(--celeste); opacity: 0; transition: opacity 0.2s; flex-shrink: 0; }
-    .ch-dest-item:hover .ch-dest-arrow { opacity: 1; }
+    .ch-dest-arrow { font-size: 1rem; color: var(--celeste); opacity: 0; transition: opacity 0.2s, transform 0.2s; flex-shrink: 0; }
+    .ch-dest-item:hover .ch-dest-arrow { opacity: 1; transform: translateX(4px); }
 
     /* Icons strip */
     .ch-icons-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.8rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -2263,7 +2263,7 @@
       <div class="ch-dest-panel active" id="ch-panel-americas">
         <div class="ch-dest-layout">
           <div class="ch-dest-list" id="ch-list-americas">
-            <div class="ch-dest-item" data-imgidx="0">
+            <div class="ch-dest-item" data-imgidx="0" onclick="scrollToBooking()">
               <span class="ch-dest-num">I</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Miami &amp; South Florida</h4>
@@ -2271,7 +2271,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="1">
+            <div class="ch-dest-item" data-imgidx="1" onclick="scrollToBooking()">
               <span class="ch-dest-num">II</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">The Bahamas</h4>
@@ -2279,7 +2279,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="2">
+            <div class="ch-dest-item" data-imgidx="2" onclick="scrollToBooking()">
               <span class="ch-dest-num">III</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Caribbean</h4>
@@ -2287,7 +2287,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="3">
+            <div class="ch-dest-item" data-imgidx="3" onclick="scrollToBooking()">
               <span class="ch-dest-num">IV</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">British Virgin Islands</h4>
@@ -2311,7 +2311,7 @@
       <div class="ch-dest-panel" id="ch-panel-med">
         <div class="ch-dest-layout">
           <div class="ch-dest-list" id="ch-list-med">
-            <div class="ch-dest-item" data-imgidx="0">
+            <div class="ch-dest-item" data-imgidx="0" onclick="scrollToBooking()">
               <span class="ch-dest-num">I</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Costa Smeralda, Sardinia</h4>
@@ -2319,7 +2319,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="1">
+            <div class="ch-dest-item" data-imgidx="1" onclick="scrollToBooking()">
               <span class="ch-dest-num">II</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Balearic Islands</h4>
@@ -2327,7 +2327,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="2">
+            <div class="ch-dest-item" data-imgidx="2" onclick="scrollToBooking()">
               <span class="ch-dest-num">III</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">French Riviera &amp; Monaco</h4>
@@ -2335,7 +2335,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="3">
+            <div class="ch-dest-item" data-imgidx="3" onclick="scrollToBooking()">
               <span class="ch-dest-num">IV</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Corsica</h4>
@@ -2343,7 +2343,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="4">
+            <div class="ch-dest-item" data-imgidx="4" onclick="scrollToBooking()">
               <span class="ch-dest-num">V</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Elba</h4>
@@ -2351,7 +2351,7 @@
               </div>
               <span class="ch-dest-arrow">→</span>
             </div>
-            <div class="ch-dest-item" data-imgidx="5">
+            <div class="ch-dest-item" data-imgidx="5" onclick="scrollToBooking()">
               <span class="ch-dest-num">VI</span>
               <div class="ch-dest-info">
                 <h4 class="ch-dest-name">Amalfi Coast</h4>
