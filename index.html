@@ -689,28 +689,29 @@
       background: #fff;
       border-top: 1px solid var(--light-grey);
       border-bottom: 1px solid var(--light-grey);
-      padding: 1.4rem 0;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      padding: 2rem 0;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
     }
     .logo-strip-track {
-      display: flex; align-items: center; gap: 4rem;
+      display: flex; align-items: center; gap: 5rem;
       width: max-content;
-      animation: logoScroll 24s linear infinite;
+      will-change: transform;
+      animation: logoScroll 20s linear infinite;
     }
     .logo-strip:hover .logo-strip-track { animation-play-state: paused; }
-    .logo-strip-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; height: 32px; }
+    .logo-strip-item { display: flex; align-items: center; justify-content: center; flex-shrink: 0; height: 42px; }
     .logo-strip-item img {
-      height: 100%; width: auto; max-width: 110px; object-fit: contain;
-      filter: grayscale(100%) opacity(0.55); transition: filter 0.25s ease;
+      height: 100%; width: auto; max-width: 130px; object-fit: contain;
+      filter: grayscale(100%) opacity(0.65); transition: filter 0.25s ease;
     }
     .logo-strip-item img:hover { filter: grayscale(0%) opacity(1); }
     @keyframes logoScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .logo-strip-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; gap: 2rem; padding: 0 2rem; }
+      .logo-strip-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; gap: 2.5rem; padding: 0 2rem; }
       .logo-strip-item:nth-child(n+7) { display: none; }
     }
 
@@ -939,9 +940,9 @@
       .about-closing-stats { border-left: none; border-top: 1px solid var(--light-grey); padding-left: 0; padding-top: 2.5rem; }
       .about-closing-mark { font-size: 3.5rem; }
       .acs-number { font-size: 2rem; }
-      .logo-strip { padding: 1rem 0; }
-      .logo-strip-item { height: 26px; }
-      .logo-strip-item img { max-width: 80px; }
+      .logo-strip { padding: 1.4rem 0; }
+      .logo-strip-item { height: 32px; }
+      .logo-strip-item img { max-width: 90px; }
       .logo-strip-track { gap: 2.5rem; animation-duration: 18s; }
       .og-slide { width: 85vw; height: 240px; }
       .og-arrow { display: none; }
@@ -2408,24 +2409,6 @@
       </div>
     </div>
   </section>
-
-  <!-- LOGO STRIP -->
-  <div class="logo-strip">
-    <div class="logo-strip-track">
-      <div class="logo-strip-item"><img src="public/assets/logos/iyba.png" alt="IYBA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/myba.png" alt="MYBA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/iss.png" alt="ISS"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/ecpy.png" alt="ECPY"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/ayca.png" alt="AYCA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/cpyb.png" alt="CPYB"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/iyba.png" alt="IYBA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/myba.png" alt="MYBA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/iss.png" alt="ISS"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/ecpy.png" alt="ECPY"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/ayca.png" alt="AYCA"></div>
-      <div class="logo-strip-item"><img src="public/assets/logos/cpyb.png" alt="CPYB"></div>
-    </div>
-  </div>
 
   <!-- BRAND PHILOSOPHY / CREDENTIALS -->
   <section class="section bg-off about-closing-section">
