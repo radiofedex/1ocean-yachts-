@@ -885,6 +885,34 @@
     .about-page-img { width: 100%; height: 580px; object-fit: cover; display: block; }
     .about-mattia-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
     .about-mattia-img { width: 100%; height: 360px; object-fit: cover; display: block; }
+
+    /* ── FOUNDER SCENIC (Jose) ───────────────── */
+    .founder-scenic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; padding: 2rem 0; }
+    .founder-scenic-photos { position: relative; min-height: 560px; }
+    .fs-photo { position: absolute; overflow: hidden; box-shadow: 0 24px 60px rgba(9,32,44,0.18); }
+    .fs-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fs-photo-main { width: 78%; height: 480px; top: 0; left: 0; z-index: 2; }
+    .fs-photo-accent { width: 48%; height: 260px; bottom: 0; right: 0; z-index: 3; border: 6px solid var(--white, #fff); }
+    .founder-scenic-content { padding-left: 1rem; }
+    .founder-scenic-content h3 { font-size: clamp(1.8rem,2.8vw,2.4rem); font-weight: 300; color: var(--navy); margin: 0.3rem 0 0.3rem; line-height: 1.2; }
+    .founder-scenic-role { font-size: 0.82rem; font-style: italic; color: var(--text-mid); margin-bottom: 1.6rem; }
+    .founder-scenic-bio { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2rem; max-width: 460px; }
+    .founder-scenic-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .fs-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; color: var(--text-mid); border: 1px solid var(--light-grey); padding: 0.45rem 1rem; white-space: nowrap; }
+    .fs-tag-accent { color: var(--navy); border-color: var(--celeste); font-weight: 600; }
+    @media (max-width: 900px) {
+      .founder-scenic { grid-template-columns: 1fr; gap: 2.5rem; padding: 1rem 0; }
+      .founder-scenic-photos { min-height: 420px; }
+      .fs-photo-main { width: 82%; height: 340px; }
+      .fs-photo-accent { width: 55%; height: 200px; }
+      .founder-scenic-content { padding-left: 0; }
+      .founder-scenic-bio { max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .founder-scenic-photos { min-height: 360px; }
+      .fs-photo-main { width: 88%; height: 280px; }
+      .fs-photo-accent { width: 60%; height: 170px; }
+    }
     .about-text-body h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
     .about-text-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
     .member-badges { display: flex; gap: 0; margin-top: 1.5rem; flex-wrap: wrap; align-items: center; }
@@ -2474,25 +2502,31 @@
   <!-- TEAM: Jose -->
   <section class="section bg-off">
     <div class="container">
-      <div class="about-page-grid fade-in-up">
-        <div class="about-text-body">
-          <span class="eyebrow" data-i18n="about.jose.eyebrow">Our Founder</span>
-          <h2>Jose Arana Muñoz De Cote</h2>
-          <p style="font-size:0.88rem;color:var(--text-mid);margin-bottom:1.8rem;font-style:italic;" data-i18n="about.jose.subtitle">Founder &amp; CEO · Yacht Broker · Brand Representative</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.2rem;" data-i18n="about.jose.p1">Jose's career in luxury yachting began in 1997 with Ferretti of America. Over the following decades he held key positions at Koch Newton &amp; Partners, Merrill-Stevens Yachts, and Fraser Yachts — one of the world's largest superyacht brokerage firms — building an unrivalled depth of industry knowledge and a network spanning every major yachting market.</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.2rem;" data-i18n="about.jose.p2">Throughout his career Jose has represented the world's most prestigious yacht builders. A defining chapter has been the strategic growth of 1 Ocean Yachts Group's dealership division: his ability to align with top-tier manufacturers and drive market penetration has positioned the firm as a dominant force across sales, charter and brand representation — including the exclusive dealership for Palmer Johnson and G-Tender.</p>
-          <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.9;margin-bottom:1.8rem;" data-i18n="about.jose.p3">Fluent in English, Spanish and Italian, Jose brings a uniquely global perspective to every client relationship — serving ultra-high-net-worth individuals with absolute discretion, from first inquiry to long-term ownership.</p>
-          <div class="founder-tags">
-            <span class="founder-tag">Ferretti of America</span>
-            <span class="founder-tag">Fraser Yachts</span>
-            <span class="founder-tag">Palmer Johnson</span>
-            <span class="founder-tag">G-Tender</span>
-            <span class="founder-tag" data-i18n="about.jose.tag.years">25+ Years</span>
+      <div class="founder-scenic fade-in-up">
+
+        <div class="founder-scenic-photos">
+          <div class="fs-photo fs-photo-main">
+            <img src="public/assets/jose.avif" alt="Jose Arana Muñoz De Cote" style="object-position:top center;">
+          </div>
+          <div class="fs-photo fs-photo-accent">
+            <img src="public/assets/jose-portrait.png" alt="Jose Arana Muñoz De Cote" style="object-position:top center;">
           </div>
         </div>
-        <div>
-          <img src="public/assets/jose.avif" alt="Jose Arana Muñoz De Cote" class="about-page-img" style="object-position:top center;">
+
+        <div class="founder-scenic-content">
+          <span class="eyebrow" data-i18n="about.jose.eyebrow">Our Founder</span>
+          <h3>Jose Arana Muñoz De Cote</h3>
+          <p class="founder-scenic-role" data-i18n="about.jose.subtitle">Yacht Broker · Brand Representative</p>
+          <p class="founder-scenic-bio" data-i18n="about.jose.bio">With nearly three decades in luxury yachting — from Ferretti of America to Fraser Yachts — Jose has built a network spanning every major market and now leads 1 Ocean Yachts Group's dealership, sales and charter operations with the same discretion he brings to every client relationship.</p>
+          <div class="founder-scenic-tags">
+            <span class="fs-tag">Ferretti of America</span>
+            <span class="fs-tag">Fraser Yachts</span>
+            <span class="fs-tag">Palmer Johnson</span>
+            <span class="fs-tag">G-Tender</span>
+            <span class="fs-tag fs-tag-accent" data-i18n="about.jose.tag.years">25+ Years</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -3360,7 +3394,7 @@
       'gt.strip.h3':'Interested in G-Tender?','gt.strip.cta':'Get in Touch',
       'about.hero.breadcrumb':' / About','about.hero.h1':'About',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'A Different Kind of Yachting Company','about.story.p':'Built on discretion, personal service and genuine expertise — not volume. We operate as exclusive dealers for world-renowned brands and trusted advisors for yacht sales, charter, management and new construction.',
-      'about.jose.eyebrow':'Our Founder','about.jose.subtitle':'Founder & CEO · Yacht Broker · Brand Representative','about.jose.p1':'Jose\'s career in luxury yachting began in 1997 with Ferretti of America. Over the following decades he held key positions at Koch Newton & Partners, Merrill-Stevens Yachts, and Fraser Yachts — one of the world\'s largest superyacht brokerage firms — building an unrivalled depth of industry knowledge and a network spanning every major yachting market.','about.jose.p2':'Throughout his career Jose has represented the world\'s most prestigious yacht builders. A defining chapter has been the strategic growth of 1 Ocean Yachts Group\'s dealership division: his ability to align with top-tier manufacturers and drive market penetration has positioned the firm as a dominant force across sales, charter and brand representation — including the exclusive dealership for Palmer Johnson and G-Tender.','about.jose.p3':'Fluent in English, Spanish and Italian, Jose brings a uniquely global perspective to every client relationship — serving ultra-high-net-worth individuals with absolute discretion, from first inquiry to long-term ownership.',
+      'about.jose.eyebrow':'Our Founder','about.jose.subtitle':'Yacht Broker · Brand Representative','about.jose.bio':'With nearly three decades in luxury yachting — from Ferretti of America to Fraser Yachts — Jose has built a network spanning every major market and now leads 1 Ocean Yachts Group\'s dealership, sales and charter operations with the same discretion he brings to every client relationship.',
       'about.jose.tag.years':'25+ Years',
       'about.quote.text':'Yachting, done properly, is not a transaction. It is a relationship built on trust, discretion and an obsessive attention to detail — long before the first sea trial, and long after the final signature.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Years of Experience','about.stat2.label':'Vessels Sold & Chartered',
@@ -3406,7 +3440,7 @@
       'gt.strip.h3':'¿Le interesa G-Tender?','gt.strip.cta':'Contáctenos',
       'about.hero.breadcrumb':' / Nosotros','about.hero.h1':'Nosotros',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'Una Empresa de Náutica Diferente','about.story.p':'Construida sobre la discreción, el servicio personal y la experiencia genuina — no el volumen. Operamos como distribuidores exclusivos de marcas de renombre mundial y asesores de confianza para venta, charter, gestión y nueva construcción de yates.',
-      'about.jose.eyebrow':'Nuestro Fundador','about.jose.subtitle':'Fundador y CEO · Bróker de Yates · Representante de Marca','about.jose.p1':'La carrera de Jose en la náutica de lujo comenzó en 1997 con Ferretti of America. En las décadas siguientes ocupó puestos clave en Koch Newton & Partners, Merrill-Stevens Yachts y Fraser Yachts — una de las mayores firmas de corretaje de superyates del mundo — consolidando una profundidad incomparable de conocimiento del sector y una red que abarca todos los principales mercados náuticos.','about.jose.p2':'A lo largo de su carrera, Jose ha representado a los constructores de yates más prestigiosos del mundo. Un capítulo definitorio ha sido el crecimiento estratégico de la división de distribución de 1 Ocean Yachts Group: su capacidad para alinearse con fabricantes de primer nivel y penetrar en el mercado ha posicionado a la firma como una fuerza dominante en ventas, charter y representación de marcas — incluida la distribución exclusiva de Palmer Johnson y G-Tender.','about.jose.p3':'Fluido en inglés, español e italiano, Jose aporta una perspectiva verdaderamente global a cada relación con el cliente — atendiendo a individuos de ultra alto patrimonio con absoluta discreción, desde la primera consulta hasta la propiedad a largo plazo.',
+      'about.jose.eyebrow':'Nuestro Fundador','about.jose.subtitle':'Bróker de Yates · Representante de Marca','about.jose.bio':'Con casi tres décadas en la náutica de lujo — desde Ferretti of America hasta Fraser Yachts — Jose ha construido una red que abarca todos los principales mercados y ahora dirige las operaciones de distribución, ventas y charter de 1 Ocean Yachts Group con la misma discreción que aporta a cada relación con el cliente.',
       'about.jose.tag.years':'25+ Años',
       'about.quote.text':'La náutica, bien hecha, no es una transacción. Es una relación construida sobre confianza, discreción y una atención obsesiva al detalle — mucho antes del primer ensayo en el mar, y mucho después de la firma final.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Años de Experiencia','about.stat2.label':'Embarcaciones Vendidas y Alquiladas',
@@ -3452,7 +3486,7 @@
       'gt.strip.h3':'Interessato a G-Tender?','gt.strip.cta':'Contattaci',
       'about.hero.breadcrumb':' / Chi Siamo','about.hero.h1':'Chi Siamo',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'Un\'Azienda Nautica Diversa','about.story.p':'Fondata sulla discrezione, il servizio personale e una competenza autentica — non sui volumi. Operiamo come dealer esclusivi di marchi di fama mondiale e consulenti di fiducia per la vendita, il charter, la gestione e la nuova costruzione di yacht.',
-      'about.jose.eyebrow':'Il Nostro Fondatore','about.jose.subtitle':'Fondatore e CEO · Broker Nautico · Rappresentante di Marchio','about.jose.p1':'La carriera di Jose nella nautica di lusso è iniziata nel 1997 con Ferretti of America. Nei decenni successivi ha ricoperto posizioni chiave presso Koch Newton & Partners, Merrill-Stevens Yachts e Fraser Yachts — una delle più grandi società di brokeraggio di superyacht al mondo — costruendo una profondità di conoscenza del settore senza pari e una rete che abbraccia ogni grande mercato nautico.','about.jose.p2':'Nel corso della sua carriera Jose ha rappresentato i costruttori di yacht più prestigiosi al mondo. Un capitolo fondamentale è stata la crescita strategica della divisione di distribuzione di 1 Ocean Yachts Group: la sua capacità di allinearsi con produttori di primissimo livello e guidare la penetrazione del mercato ha posizionato la società come forza dominante nelle vendite, nel charter e nella rappresentanza di marchi — tra cui la distribuzione esclusiva di Palmer Johnson e G-Tender.','about.jose.p3':'Fluente in inglese, spagnolo e italiano, Jose porta una prospettiva genuinamente globale in ogni relazione con il cliente — assistendo individui di altissimo patrimonio con assoluta discrezione, dalla prima richiesta alla proprietà a lungo termine.',
+      'about.jose.eyebrow':'Il Nostro Fondatore','about.jose.subtitle':'Broker Nautico · Rappresentante di Marchio','about.jose.bio':'Con quasi tre decenni nel segmento nautico di lusso — da Ferretti of America a Fraser Yachts — Jose ha costruito una rete che abbraccia ogni grande mercato e guida oggi le operazioni di distribuzione, vendita e charter di 1 Ocean Yachts Group con la stessa discrezione che riserva a ogni relazione con i clienti.',
       'about.jose.tag.years':'25+ Anni',
       'about.quote.text':'La nautica, fatta come si deve, non è una transazione. È una relazione fondata su fiducia, discrezione e un\'attenzione ossessiva ai dettagli — ben prima del primo collaudo in mare, e ben dopo la firma finale.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Anni di Esperienza','about.stat2.label':'Imbarcazioni Vendute e Noleggiate',
@@ -3498,7 +3532,7 @@
       'gt.strip.h3':'Intéressé par G-Tender ?','gt.strip.cta':'Nous Contacter',
       'about.hero.breadcrumb':' / À Propos','about.hero.h1':'À Propos',
       'about.story.eyebrow':'Est. Miami, Floride','about.story.h2':'Une Société de Yachting Différente','about.story.p':'Fondée sur la discrétion, le service personnel et une véritable expertise — pas le volume. Nous opérons en tant que distributeurs exclusifs de marques mondialement reconnues et conseillers de confiance pour la vente, l\'affrètement, la gestion et la construction neuve de yachts.',
-      'about.jose.eyebrow':'Notre Fondateur','about.jose.subtitle':'Fondateur et PDG · Courtier Nautique · Représentant de Marque','about.jose.p1':'La carrière de Jose dans le yachting de luxe a débuté en 1997 avec Ferretti of America. Au cours des décennies suivantes, il a occupé des postes clés chez Koch Newton & Partners, Merrill-Stevens Yachts et Fraser Yachts — l\'une des plus grandes sociétés de courtage de superyachts au monde — développant une connaissance approfondie du secteur et un réseau couvrant tous les grands marchés du yachting.','about.jose.p2':'Tout au long de sa carrière, Jose a représenté les constructeurs de yachts les plus prestigieux au monde. Un chapitre déterminant a été la croissance stratégique de la division de distribution de 1 Ocean Yachts Group : sa capacité à s\'aligner avec des fabricants de premier plan et à pénétrer le marché a positionné la société comme une force dominante dans la vente, l\'affrètement et la représentation de marques — dont la distribution exclusive de Palmer Johnson et G-Tender.','about.jose.p3':'Parlant couramment l\'anglais, l\'espagnol et l\'italien, Jose apporte une perspective véritablement mondiale à chaque relation client — servant des individus à très haut patrimoine avec une discrétion absolue, de la première demande à la propriété à long terme.',
+      'about.jose.eyebrow':'Notre Fondateur','about.jose.subtitle':'Courtier Nautique · Représentant de Marque','about.jose.bio':'Fort de près de trois décennies dans le yachting de luxe — de Ferretti of America à Fraser Yachts — Jose a bâti un réseau couvrant tous les grands marchés et dirige aujourd\'hui les opérations de distribution, vente et affrètement de 1 Ocean Yachts Group avec la même discrétion qu\'il apporte à chaque relation client.',
       'about.jose.tag.years':'25+ Ans',
       'about.quote.text':'Le yachting, bien fait, n\'est pas une transaction. C\'est une relation fondée sur la confiance, la discrétion et une attention obsessionnelle aux détails — bien avant le premier essai en mer, et bien après la signature finale.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Années d\'Expérience','about.stat2.label':'Navires Vendus et Affrétés',
