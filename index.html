@@ -1668,33 +1668,22 @@
     @media (min-width: 768px) and (max-width: 1024px) {
       .hero-content { padding: 0 3rem; max-width: 620px; }
       .hero h1 { font-size: clamp(2.8rem, 5vw, 4rem); }
-
       .featured-grid { grid-template-columns: repeat(2, 1fr); }
-
       .about-grid { gap: 3rem; }
       .about-img { height: 420px; }
-
       .testi-grid { grid-template-columns: repeat(2, 1fr); }
-
       .numbers-strip-grid { grid-template-columns: repeat(4, 1fr); }
-
       .ch-split { flex-direction: row; }
-
       .listings-grid { grid-template-columns: 1fr; gap: 3rem; }
       .listings-frame-col { min-height: 400px; }
-
-      /* iPad nav — keep desktop layout but slightly tighter */
       .header-inner { padding: 0 2rem; }
-
-      /* Office gallery wider cards */
       .og-slide { width: 380px; height: 280px; }
-
-      /* About closing grid full width on iPad portrait */
-      @media (orientation: portrait) {
-        .about-closing-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-        .sell-split { grid-template-columns: 1fr; }
-        .sell-img-col { min-height: 380px; }
-      }
+    }
+    /* iPad portrait */
+    @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+      .about-closing-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sell-split { grid-template-columns: 1fr; }
+      .sell-img-col { min-height: 380px; }
     }
 
     /* ── GPU ACCELERATION ────────────────────── */
