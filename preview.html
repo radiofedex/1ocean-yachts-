@@ -886,32 +886,33 @@
     .about-mattia-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
     .about-mattia-img { width: 100%; height: 360px; object-fit: cover; display: block; }
 
-    /* ── FOUNDER SCENIC (Jose) ───────────────── */
+    /* ── JOSE: layout editoriale ─────────────── */
     .founder-scenic { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; padding: 2rem 0; }
-    .founder-scenic-photos { position: relative; min-height: 560px; }
-    .fs-photo { position: absolute; overflow: hidden; box-shadow: 0 24px 60px rgba(9,32,44,0.18); }
-    .fs-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .fs-photo-main { width: 78%; height: 480px; top: 0; left: 0; z-index: 2; }
-    .fs-photo-accent { width: 48%; height: 260px; bottom: 0; right: 0; z-index: 3; border: 6px solid var(--white, #fff); }
+    .jose-photos { display: grid; grid-template-columns: 1fr 0.62fr; gap: 1.75rem; align-items: end; min-height: 560px; }
+    .jose-photo-a { height: 560px; overflow: hidden; box-shadow: 0 30px 70px rgba(9,32,44,0.16); }
+    .jose-photo-a img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; }
+    .jose-photo-b { height: 400px; overflow: hidden; box-shadow: 0 24px 56px rgba(9,32,44,0.14); margin-bottom: -3rem; }
+    .jose-photo-b img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
     .founder-scenic-content { padding-left: 1rem; }
     .founder-scenic-content h3 { font-size: clamp(1.8rem,2.8vw,2.4rem); font-weight: 300; color: var(--navy); margin: 0.3rem 0 0.3rem; line-height: 1.2; }
     .founder-scenic-role { font-size: 0.82rem; font-style: italic; color: var(--text-mid); margin-bottom: 1.6rem; }
-    .founder-scenic-bio { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2rem; max-width: 460px; }
-    .founder-scenic-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .founder-scenic-bio { font-size: 0.92rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1.1rem; max-width: 460px; }
+    .founder-scenic-bio:last-of-type { margin-bottom: 2rem; }
+    .founder-scenic-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.5rem; }
     .fs-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.05em; color: var(--text-mid); border: 1px solid var(--light-grey); padding: 0.45rem 1rem; white-space: nowrap; }
     .fs-tag-accent { color: var(--navy); border-color: var(--celeste); font-weight: 600; }
     @media (max-width: 900px) {
       .founder-scenic { grid-template-columns: 1fr; gap: 2.5rem; padding: 1rem 0; }
-      .founder-scenic-photos { min-height: 420px; }
-      .fs-photo-main { width: 82%; height: 340px; }
-      .fs-photo-accent { width: 55%; height: 200px; }
+      .jose-photos { grid-template-columns: 1fr 0.7fr; gap: 1rem; min-height: 420px; }
+      .jose-photo-a { height: 420px; }
+      .jose-photo-b { height: 300px; margin-bottom: -2rem; }
       .founder-scenic-content { padding-left: 0; }
       .founder-scenic-bio { max-width: 100%; }
     }
-    @media (max-width: 480px) {
-      .founder-scenic-photos { min-height: 360px; }
-      .fs-photo-main { width: 88%; height: 280px; }
-      .fs-photo-accent { width: 60%; height: 170px; }
+    @media (max-width: 600px) {
+      .jose-photos { grid-template-columns: 1fr; gap: 1rem; min-height: auto; }
+      .jose-photo-a { height: 360px; }
+      .jose-photo-b { height: 280px; margin-bottom: 0; }
     }
     .about-text-body h2 { font-size: 2.2rem; font-weight: 300; margin-bottom: 1.2rem; }
     .about-text-body p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; }
@@ -2493,12 +2494,12 @@
     <div class="container">
       <div class="founder-scenic fade-in-up">
 
-        <div class="founder-scenic-photos">
-          <div class="fs-photo fs-photo-main">
-            <img src="public/assets/jose.avif" alt="Jose Arana Muñoz De Cote" style="object-position:top center;">
+        <div class="jose-photos">
+          <div class="jose-photo-a">
+            <img src="public/assets/jose.avif" alt="Jose Arana Muñoz De Cote">
           </div>
-          <div class="fs-photo fs-photo-accent">
-            <img src="public/assets/jose-portrait.png" alt="Jose Arana Muñoz De Cote" style="object-position:top center;">
+          <div class="jose-photo-b">
+            <img src="public/assets/jose-portrait.png" alt="Jose Arana Muñoz De Cote">
           </div>
         </div>
 
@@ -2506,7 +2507,8 @@
           <span class="eyebrow" data-i18n="about.jose.eyebrow">Our Founder</span>
           <h3>Jose Arana Muñoz De Cote</h3>
           <p class="founder-scenic-role" data-i18n="about.jose.subtitle">Yacht Broker · Brand Representative</p>
-          <p class="founder-scenic-bio" data-i18n="about.jose.bio">With nearly three decades in luxury yachting — from Ferretti of America to Fraser Yachts — Jose has built a network spanning every major market and now leads 1 Ocean Yachts Group's dealership, sales and charter operations with the same discretion he brings to every client relationship.</p>
+          <p class="founder-scenic-bio" data-i18n="about.jose.bio">With nearly three decades in luxury yachting, Jose's path began in 1997 at Ferretti of America and carried him through Koch Newton &amp; Partners, Merrill-Stevens Yachts and Fraser Yachts — building a network that today spans every major yachting market in the world.</p>
+          <p class="founder-scenic-bio" data-i18n="about.jose.bio2">He now leads 1 Ocean Yachts Group's dealership, sales and charter operations, bringing the same discretion and precision to a first-time buyer as he does to a longstanding client managing a fleet. For Jose, yachting has never been about the transaction — it's about the relationship that follows it.</p>
           <div class="founder-scenic-tags">
             <span class="fs-tag">Ferretti of America</span>
             <span class="fs-tag">Fraser Yachts</span>
@@ -3383,7 +3385,7 @@
       'gt.strip.h3':'Interested in G-Tender?','gt.strip.cta':'Get in Touch',
       'about.hero.breadcrumb':' / About','about.hero.h1':'About',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'A Different Kind of Yachting Company','about.story.p':'Built on discretion, personal service and genuine expertise — not volume. We operate as exclusive dealers for world-renowned brands and trusted advisors for yacht sales, charter, management and new construction.',
-      'about.jose.eyebrow':'Our Founder','about.jose.subtitle':'Yacht Broker · Brand Representative','about.jose.bio':'With nearly three decades in luxury yachting — from Ferretti of America to Fraser Yachts — Jose has built a network spanning every major market and now leads 1 Ocean Yachts Group\'s dealership, sales and charter operations with the same discretion he brings to every client relationship.',
+      'about.jose.eyebrow':'Our Founder','about.jose.subtitle':'Yacht Broker · Brand Representative','about.jose.bio':'With nearly three decades in luxury yachting, Jose\'s path began in 1997 at Ferretti of America and carried him through Koch Newton & Partners, Merrill-Stevens Yachts and Fraser Yachts — building a network that today spans every major yachting market in the world.','about.jose.bio2':'He now leads 1 Ocean Yachts Group\'s dealership, sales and charter operations, bringing the same discretion and precision to a first-time buyer as he does to a longstanding client managing a fleet. For Jose, yachting has never been about the transaction — it\'s about the relationship that follows it.',
       'about.jose.tag.years':'25+ Years',
       'about.quote.text':'Yachting, done properly, is not a transaction. It is a relationship built on trust, discretion and an obsessive attention to detail — long before the first sea trial, and long after the final signature.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Years of Experience','about.stat2.label':'Vessels Sold & Chartered',
@@ -3429,7 +3431,7 @@
       'gt.strip.h3':'¿Le interesa G-Tender?','gt.strip.cta':'Contáctenos',
       'about.hero.breadcrumb':' / Nosotros','about.hero.h1':'Nosotros',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'Una Empresa de Náutica Diferente','about.story.p':'Construida sobre la discreción, el servicio personal y la experiencia genuina — no el volumen. Operamos como distribuidores exclusivos de marcas de renombre mundial y asesores de confianza para venta, charter, gestión y nueva construcción de yates.',
-      'about.jose.eyebrow':'Nuestro Fundador','about.jose.subtitle':'Bróker de Yates · Representante de Marca','about.jose.bio':'Con casi tres décadas en la náutica de lujo — desde Ferretti of America hasta Fraser Yachts — Jose ha construido una red que abarca todos los principales mercados y ahora dirige las operaciones de distribución, ventas y charter de 1 Ocean Yachts Group con la misma discreción que aporta a cada relación con el cliente.',
+      'about.jose.eyebrow':'Nuestro Fundador','about.jose.subtitle':'Bróker de Yates · Representante de Marca','about.jose.bio':'Con casi tres décadas en la náutica de lujo, la trayectoria de Jose comenzó en 1997 en Ferretti of America y lo llevó por Koch Newton & Partners, Merrill-Stevens Yachts y Fraser Yachts — construyendo una red que hoy abarca todos los principales mercados náuticos del mundo.','about.jose.bio2':'Hoy dirige las operaciones de distribución, ventas y charter de 1 Ocean Yachts Group, aportando la misma discreción y precisión tanto a un comprador primerizo como a un cliente consolidado que gestiona una flota. Para Jose, el yachting nunca ha sido una transacción — es la relación que la sigue.',
       'about.jose.tag.years':'25+ Años',
       'about.quote.text':'La náutica, bien hecha, no es una transacción. Es una relación construida sobre confianza, discreción y una atención obsesiva al detalle — mucho antes del primer ensayo en el mar, y mucho después de la firma final.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Años de Experiencia','about.stat2.label':'Embarcaciones Vendidas y Alquiladas',
@@ -3475,7 +3477,7 @@
       'gt.strip.h3':'Interessato a G-Tender?','gt.strip.cta':'Contattaci',
       'about.hero.breadcrumb':' / Chi Siamo','about.hero.h1':'Chi Siamo',
       'about.story.eyebrow':'Est. Miami, Florida','about.story.h2':'Un\'Azienda Nautica Diversa','about.story.p':'Fondata sulla discrezione, il servizio personale e una competenza autentica — non sui volumi. Operiamo come dealer esclusivi di marchi di fama mondiale e consulenti di fiducia per la vendita, il charter, la gestione e la nuova costruzione di yacht.',
-      'about.jose.eyebrow':'Il Nostro Fondatore','about.jose.subtitle':'Broker Nautico · Rappresentante di Marchio','about.jose.bio':'Con quasi tre decenni nel segmento nautico di lusso — da Ferretti of America a Fraser Yachts — Jose ha costruito una rete che abbraccia ogni grande mercato e guida oggi le operazioni di distribuzione, vendita e charter di 1 Ocean Yachts Group con la stessa discrezione che riserva a ogni relazione con i clienti.',
+      'about.jose.eyebrow':'Il Nostro Fondatore','about.jose.subtitle':'Broker Nautico · Rappresentante di Marchio','about.jose.bio':'Con quasi tre decenni nella nautica di lusso, il percorso di Jose è iniziato nel 1997 da Ferretti of America, passando per Koch Newton & Partners, Merrill-Stevens Yachts e Fraser Yachts — costruendo una rete che oggi abbraccia ogni grande mercato nautico del mondo.','about.jose.bio2':'Oggi guida le operazioni di distribuzione, vendita e charter di 1 Ocean Yachts Group, portando la stessa discrezione e precisione a un acquirente alle prime armi come a un cliente storico che gestisce una flotta. Per Jose, la nautica non è mai stata una transazione — è la relazione che ne segue.',
       'about.jose.tag.years':'25+ Anni',
       'about.quote.text':'La nautica, fatta come si deve, non è una transazione. È una relazione fondata su fiducia, discrezione e un\'attenzione ossessiva ai dettagli — ben prima del primo collaudo in mare, e ben dopo la firma finale.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Anni di Esperienza','about.stat2.label':'Imbarcazioni Vendute e Noleggiate',
@@ -3521,7 +3523,7 @@
       'gt.strip.h3':'Intéressé par G-Tender ?','gt.strip.cta':'Nous Contacter',
       'about.hero.breadcrumb':' / À Propos','about.hero.h1':'À Propos',
       'about.story.eyebrow':'Est. Miami, Floride','about.story.h2':'Une Société de Yachting Différente','about.story.p':'Fondée sur la discrétion, le service personnel et une véritable expertise — pas le volume. Nous opérons en tant que distributeurs exclusifs de marques mondialement reconnues et conseillers de confiance pour la vente, l\'affrètement, la gestion et la construction neuve de yachts.',
-      'about.jose.eyebrow':'Notre Fondateur','about.jose.subtitle':'Courtier Nautique · Représentant de Marque','about.jose.bio':'Fort de près de trois décennies dans le yachting de luxe — de Ferretti of America à Fraser Yachts — Jose a bâti un réseau couvrant tous les grands marchés et dirige aujourd\'hui les opérations de distribution, vente et affrètement de 1 Ocean Yachts Group avec la même discrétion qu\'il apporte à chaque relation client.',
+      'about.jose.eyebrow':'Notre Fondateur','about.jose.subtitle':'Courtier Nautique · Représentant de Marque','about.jose.bio':'Fort de près de trois décennies dans le yachting de luxe, le parcours de Jose a débuté en 1997 chez Ferretti of America avant de le mener chez Koch Newton & Partners, Merrill-Stevens Yachts et Fraser Yachts — constituant un réseau qui couvre aujourd\'hui tous les grands marchés nautiques du monde.','about.jose.bio2':'Il dirige aujourd\'hui les opérations de distribution, vente et affrètement de 1 Ocean Yachts Group, apportant la même discrétion et la même précision à un premier acheteur qu\'à un client fidèle gérant une flotte. Pour Jose, le yachting n\'a jamais été une transaction — c\'est la relation qui s\'ensuit.',
       'about.jose.tag.years':'25+ Ans',
       'about.quote.text':'Le yachting, bien fait, n\'est pas une transaction. C\'est une relation fondée sur la confiance, la discrétion et une attention obsessionnelle aux détails — bien avant le premier essai en mer, et bien après la signature finale.','about.quote.attr':'— 1 Ocean Yachts Group',
       'about.stat1.label':'Années d\'Expérience','about.stat2.label':'Navires Vendus et Affrétés',
