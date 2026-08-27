@@ -1011,6 +1011,8 @@
     .office-gallery::-webkit-scrollbar { display: none; }
     .office-gallery.dragging { cursor: grabbing; }
     .og-slide { flex-shrink: 0; width: 480px; height: 320px; overflow: hidden; background: var(--off-white); }
+    #officeGallery:has(.og-slide:only-child) { overflow: visible; }
+    #officeGallery:has(.og-slide:only-child) .og-slide { width: 100%; height: 480px; }
     .og-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
     .og-slide:hover img { transform: scale(1.03); }
     .og-slide-placeholder { background: #0D1B2A; display: flex; align-items: center; justify-content: center; }
@@ -2560,28 +2562,9 @@
     <div class="office-gallery-wrap">
       <div class="office-gallery" id="officeGallery">
         <div class="og-slide">
-          <img src="public/assets/office/office-04.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
-        </div>
-        <div class="og-slide">
-          <img src="public/assets/office/office-05.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
-        </div>
-        <div class="og-slide">
           <img src="public/assets/office/office-02.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
         </div>
-        <div class="og-slide">
-          <img src="public/assets/office/office-03.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
-        </div>
-        <div class="og-slide">
-          <img src="public/assets/office/office-01.jpg" alt="1 Ocean Yachts Group Office" onerror="this.parentElement.classList.add('og-slide-placeholder')">
-        </div>
       </div>
-
-      <button class="og-arrow og-arrow-prev" onclick="slideGallery(-1)" aria-label="Previous">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <button class="og-arrow og-arrow-next" onclick="slideGallery(1)" aria-label="Next">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
 
       <div class="og-dots" id="ogDots"></div>
     </div>
